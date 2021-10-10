@@ -1,0 +1,104 @@
+*{
+
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(rgb(106, 181, 235), rgb(196, 217, 247));
+}
+.title_bar{
+    position: fixed;
+    left: 20%;
+    width: 80%;
+    height: 15%;
+    background-color: rgb(24, 58, 83);
+    display: flex;
+    align-items: center;
+}
+
+.hospital_name
+{
+    color: white;
+    width: max-content;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+}
+.sidebar
+{
+    position: fixed;
+    top: 0; /* top and left to keep the side bar from left most and top most side */
+    left: 0%;
+    width: 20%;
+    height: 100%;
+    padding: 6px 14px;
+    background-color: rgb(38, 84, 118);
+
+}
+
+.sidebar .logo{
+    color: white;
+    width: max-content;
+    align-items: center;
+}
+
+.logo i{ /* for hospital's logo*/
+    font-size: 90px;
+}
+
+
+
+.sidebar #burger{
+    position: absolute;
+    color: white;
+    left: 90%;
+    top: 5px;
+    font-size: 25px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-10%);
+}
+
+.sidebar ul{
+    margin-top: 50px;
+}
+
+.sidebar ul li{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    margin: 0 5px; /* top and left */
+    list-style: none;/* to remove the dots/bullet beside each list */
+
+}
+
+.sidebar ul li a{
+    color: rgb(255, 255, 255);
+    font-size: large;
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* to remove violet highight and underline */
+}
+
+.sidebar ul li a:hover{
+   color: rgb(59, 109, 225);
+   background-color: white;
+   border-radius: 10px;
+}
+
+.sidebar ul li a i{
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
+

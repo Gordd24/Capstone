@@ -3,7 +3,7 @@
 <head>
   <title>Title of the document</title>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
@@ -49,7 +49,7 @@
 </div>
 <div class="title_bar">
     <div class="hospital_name">
-        Ofelia E. Mendoza Maternity and General Hospital
+        Ofelia L. Mendoza Maternity and General Hospital
     </div>
 </div>
 
