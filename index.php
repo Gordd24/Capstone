@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect('localhost','root', '','olmmgh_db') or die ('Unable to Connect');
+include_once 'dbconn.php';
 
 ?>
 
@@ -59,7 +59,7 @@ $conn = mysqli_connect('localhost','root', '','olmmgh_db') or die ('Unable to Co
         }
     }
     if(isset($_SESSION["Username"])){
-        header("Location:login.php");
+        header("Location:home.php");
     }
     ?>
 </body>

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['Username'])){
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +25,7 @@
         <li>
             <a href="#">
                 <i class='bx bxs-user-circle' ></i>
-                <span class="username">Username</span>
+                <span class="username"><?php echo $_SESSION['Username']; ?></span>
             </a>
         </li>
         <li>
@@ -45,11 +52,17 @@
                 <span class="account_management">Account Management</span>
             </a>
         </li>
+        <li>
+            <a href="logout.php">
+                <i class='bx bxs-log-out'></i>
+                <span class="logout_account">Logout</span>
+            </a>
+        </li>
     </ul>
 </div>
 <div class="title_bar">
     <div class="hospital_name">
-        Ofelia L. Mendoza Maternity and General Hospital
+        Ofelia E. Mendoza Maternity and General Hospital
     </div>
 </div>
 
