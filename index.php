@@ -42,14 +42,14 @@ include_once 'dbconn.php';
         $Username =$_POST['Username'];
         $Password =$_POST['Password'];
 
-        $select = mysqli_query($conn,"SELECT * FROM tb_login WHERE Username = '$Username' AND Password = '$Password'");
+        $select = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username' AND password = '$Password'");
 
         $row = mysqli_fetch_array($select);
         
 
         if(is_array($row)){
-            $_SESSION["Username"] = $row['Username'];
-            $_SESSION["Password"] = $row['Password'];
+            $_SESSION["Username"] = $row['username'];
+            $_SESSION["Password"] = $row['password'];
             
         }else{
             echo '<script type = "text/javascript">';
