@@ -1,6 +1,7 @@
 body{
-    min-height: 100vh;
+    position: relative;
     width: 100%;
+    min-height: 100%;
     background-color: #c9d7f8;
   
 }
@@ -24,65 +25,60 @@ body{
     align-items: center;
 }
 
-.input_box{
-    padding: 15% 5% 15% 5%;
-    width:max-content;
-    height: max-content;
-    border-radius: 10%/10%;
-    background-color: rgba(28, 30, 44, 0.7);
+.input .input_box
+{
     margin: auto;
-    display: flex;
-    align-items: center;   
+    width: 55%;
+    padding: 16% 3% 16% 3%;
+    border-radius: 5%;
+    background-color: rgb(6, 7, 18,0.7);
 }
 
-.input_box form{
-    width: max-content;
-    height: max-content;
+
+.input .input_box form
+{
     text-align: center;
-    margin:auto;
+    margin: auto;
 }
 
+.input .input_box form .fields{
 
-.input_box form .fields{
-    
-    background: transparent;
-    border-top: transparent;
-    border-right: transparent;
-    border-left: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
     border-bottom-color: white;
-    width: 95%;
-    height: 15%;
-    font-size: 2vw;
     border-bottom-width: 0.1vw;
     color: white;
-  
-}
-
-.input_box form #password{
-   
-    margin-top: 10%;
-}
-
-.input_box form .button{
+    padding: 5% 2% 5% 2%;
+    width: 70%;
+    font-size: 1.5vw;
+    margin-bottom: 10%;
     
-    border-radius: 15%/50%;
+}
+
+.input .input_box form .fields::placeholder{
+
+    color: white;
+}
+
+
+
+.input .input_box form .button
+{
+    border-radius: 13%/40%;
     background-color: rgb(47, 145, 225);
     border: none;
-    width: 50%;
-    height: 10%;
+    width: 40%;
     padding: 3%;
-    font-size: 2vw;
-    margin-top: 20%;
+    font-size: 1.5vw;
     color: white;
+    cursor: pointer;
 
-  
 }
 
 
-.input_box form .fields::placeholder{
-    font-weight: lighter;
-    color: white;
-}  
+
 
 .title_logo{
     display: flex;
@@ -106,9 +102,4 @@ body{
     width: 60%;
     height: auto;
 
-}
-
-.shape
-{
-    width: 100%;
 }

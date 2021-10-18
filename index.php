@@ -14,28 +14,23 @@ include_once 'dbconn.php';
     <title>Login</title>
 </head>
 <body>
-    <div class="title_logo">
+        <div class="title_logo">
+            <div class="title_logo_cont">
+                <img class="logo" src="images/ofelia_logo.png" alt="Logo">
+                <h1 class="hosp_name">OFELIA L. MENDOZA<br/> MATERNITY AND <br/> GENERAL HOSPITAL</h1>
+            </div>
+        </div>
 
-    <div class="title_logo_cont">
-        <img class="logo" src="images/ofelia_logo.png" alt="Logo">
-        <h1 class="hosp_name">OFELIA L. MENDOZA<br/> MATERNITY AND <br/> GENERAL HOSPITAL</h1>
-    </div>
+        <div class="input">
+            <div class="input_box">
+                <form action="index.php" method="post">
+                    <input class="fields" id="username" type="text" name="Username" placeholder="Username" required= ""><br>
+                    <input class="fields" id="password" type="password" name = "Password" placeholder="Password" required= ""><br>
+                    <input class="button" type="submit" name="login" value="Log In">
+                </form>
+            </div>
+        </div>
 
-    </div>
-    <div class="input">
-
-
-    <div class="input_box">
-        <form action="index.php" method="post">
-            <input class="fields" id="username" type="text" name="Username" placeholder="Username" required= ""><br>
-            <input class="fields" id="password" type="password" name = "Password" placeholder="Password" required= ""><br>
-            <input class="button" type="submit" name="login" value="Log In">
-        </form>
-    </div>
-
-    </div>
-
-    <img class="shape" src="images/shape.svg" alt="svg">
 
 <?php
     if(isset($_POST['login'])){
