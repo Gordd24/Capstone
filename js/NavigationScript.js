@@ -36,7 +36,13 @@ $(document).ready(function(){
             }
         ),
         $(".sidebar ul li a i").css("margin","0"),
-        $(".sidebar ul li").css( "margin","0");
+        $(".sidebar ul li").css( "margin","0"),
+        $(".page_content_div").animate(
+            {
+                left:"25%",
+                width: "70%"
+            }
+        );
         
     }
 
@@ -63,6 +69,12 @@ $(document).ready(function(){
             }
         ),
         $(".sidebar ul li a i").css("margin","auto"),
-        $(".sidebar ul li").css( "margin","15% 0 15.5% 0");
+        $(".sidebar ul li").css( "margin","15% 0 15.5% 0"),
+        $(".page_content_div").animate(
+            {
+                left:"10%",
+                width: "85%"
+            }
+        );
     }
   });

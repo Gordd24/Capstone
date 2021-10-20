@@ -45,6 +45,7 @@ include_once 'dbconn.php';
         if(is_array($row)){
             $_SESSION["Username"] = $row['username'];
             $_SESSION["Password"] = $row['password'];
+            $_SESSION["ID"] = $row['emp_id'];
             
         }else{
             echo '<script type = "text/javascript">';

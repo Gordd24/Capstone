@@ -55,145 +55,113 @@ include_once 'dbconn.php';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Account Management</title>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/tabtest.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/account_management.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/account_management.js"></script>
+  <script src="js/NavigationScript.js" type="text/javascript"></script>
 </head>
-<style>
-  .tab button.active {
-  background-color: #ccc;
-}
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-</style>
-<body>
+<body>  
+    <div class="title_bar">
+        <div class="hospital_name">Ofelia E. Mendoza Maternity and General Hospital</div>
+    </div>
 
-<!-- <div class="sidebar">
-  
-     <div class="logo">
-         <i class='bx bxl-firebase' ></i>
-     </div>
+    <div class="sidebar active">
 
-    <i class='bx bx-menu' id="burger"></i>
-    <ul class="nav_list">
+        <div class="burger_div">
+            <i class='bx bx-menu' id="burger"></i>
+        </div>
+
+       <div class="title_logo">
+         <img class="logo" src="images/ofelia_logo.png" alt="Logo">
+       </div>
+      <ul class="nav_list">
         <li>
             <a href="#">
                 <i class='bx bxs-user-circle' ></i>
-                <span class="username"><?php echo $_SESSION['Username']; ?></span>
+                <span class="name">&nbsp;<?php include_once 'getName.php';?></span>
             </a>
         </li>
         <li>
              <a href="#">
                  <i class='bx bxs-dashboard' ></i>
-                 <span class="dashboard">Dashboard</span>
+                 <span class="dashboard">&nbsp;Dashboard</span>
             </a>
         </li>
         <li>
             <a href="#">
                 <i class='bx bx-library' ></i>
-                <span class="record_management">Record Management</span>
+                <span class="record_management">&nbsp;Record Management</span>
             </a>
         </li>
         <li>
             <a href="#">
                 <i class='bx bxs-report' ></i>
-                <span class="report_generation">Generate Report</span>
+                <span class="report_generation">&nbsp;Generate Report</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="./account_management.php" id="account_management_link">
                 <i class='bx bxs-cog'></i>
-                <span class="account_management">Account Management</span>
+                <span class="account_management">&nbsp;Account Management</span>
             </a>
         </li>
         <li>
-            <a href="logout.php">
-                <i class='bx bxs-log-out'></i>
-                <span class="logout_account">Logout</span>
+            <a href="logout.php" id="log_out_a">
+                <i class='bx bx-power-off'></i>
+                <span class="logout_account">&nbsp;Log Out</span>
             </a>
         </li>
-    </ul>
-</div>
-<div class="title_bar">
-    <div class="hospital_name">
-        Ofelia E. Mendoza Maternity and General Hospital
+        
+      </ul>
     </div>
-</div>  -->
 
-<div class="account_management_div">
- 
-  <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Accounts')">Accounts</button>
-    <button class="tablinks" onclick="openTab(event, 'Register')">Register</button>
-  </div>
+    <div class="page_content_div">
+        <div class="account_management_div">
 
-  <div  id="Accounts" class="tabcontent">
-    <div class="search_bar">
-      <form>
-        <input type="text">
-      </form>
+            <div class="tab">
+              <button class="tablinks" id="account_btn">Accounts</button>
+              <button class="tablinks" id="registration_btn">Register</button>
+            </div>
+
+            <div  id="accounts" class="tab_content">
+                    <form>
+                      <input type="text" class="search_bar" autocomplete="off">
+                    </form>
+                    <table>     
+                        <?php include_once 'fetch_Accounts.php';?>   
+                    </table>
+            </div>
+
+            <div id="registration" class="tabcontent">
+                <form class="registerForm" method="post" action="account_management.php">
+                  <input type="text" class="registerFields" name="registerUname" placeholder="Username" required=""><br/>
+                  <input type="password" class="registerFields" name="registerPword" placeholder="Password" required=""><br/>
+                  <input type="password" class="registerFields" name="registerCPword" placeholder="Confirm Password" required=""><br/>
+                  <input type="text" class="registerFields name" name="registerFname" placeholder="First Name" required="">
+                  <input type="text" class="registerFields name" name="registerMname" placeholder="Middle Name" >
+                  <input type="text" class="registerFields name" name="registerLname" placeholder="Last Name" required=""><br/>
+                  <input type="text" class="registerFields" name="registerEmpId" placeholder="Employee ID" required=""><br/>
+                  <label for="position">Position:</label>
+                  <select id="position" class="registerFields" name="registerPosition">
+                      <option value="Administrator">Administrator</option>
+                      <option value="Doctor">Doctor</option>
+                      <option value="Nurse">Nurse</option>
+                  </select><br/>
+                  <!-- <input type="text" class="registerFields" name="registerImage" placeholder="User Image" required=""> -->
+                  <input class="button" class="" type="submit" name="registerButton" value="Register">
+                  </form>
+            </div>
+
+        </div>  
     </div>
-      <table border="1">
-            
-        <tr>
-            <th>Employee ID</th>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
 
-        <?php include_once 'fetch_Accounts.php';?>   
-      </table>
-    </div>
-  
-  <div id="Register" class="tabcontent">
-    <h3>Register</h3>
-    <form class="registerForm" method="post" action="account_management.php">
-      <input type="text" class="registerFields" name="registerUname" placeholder="Username" required="">
-      <input type="password" class="registerFields" name="registerPword" placeholder="Password" required="">
-      <input type="password" class="registerFields" name="registerCPword" placeholder="Confirm Password" required="">
-      <input type="text" class="registerFields" name="registerFname" placeholder="First Name" required="">
-      <input type="text" class="registerFields" name="registerMname" placeholder="Middle Name" >
-      <input type="text" class="registerFields" name="registerLname" placeholder="Last Name" required="">
-      <input type="text" class="registerFields" name="registerEmpId" placeholder="Employee ID" required="">
-      <label for="position">Position:</label>
-      <select class="registerFields" name="registerPosition">
-        <option value="Administrator">Administrator</option>
-        <option value="Doctor">Doctor</option>
-        <option value="Nurse">Nurse</option>
-      </select>
-      <!-- <input type="text" class="registerFields" name="registerImage" placeholder="User Image" required=""> -->
-      <input class="button" class="" type="submit" name="registerButton" value="Register">
-    </form>
-  </div>
-</div>
-
-
-
-<script>
-    function openTab(evt, content) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-
-
-      document.getElementById(content).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-  </script>
 
 
 </body>

@@ -13,7 +13,7 @@ body{
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background-image: linear-gradient(rgb(106, 181, 235), rgb(196, 217, 247));
+    /* background-image: linear-gradient(rgb(106, 181, 235), rgb(196, 217, 247)); */
 }
 
 
@@ -132,6 +132,20 @@ body{
     display: flex;
    
  }
+
+ .page_content_div
+{
+    position: absolute;
+    left: 25%;
+    width: 70%;
+    height: 80%;
+    /* background-color: darkgreen; */
+    margin: 10% 0 0 0;
+    padding: 2% 2% 2% 2%;
+    /* background-color: rgba(96, 184, 228, 0.7); */
+    display: flex;
+    align-items: center;
+}
 
 
 

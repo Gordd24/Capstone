@@ -1,42 +1,183 @@
 .account_management_div
 {
-    position:absolute;  
-    top:30%;
-    left:40%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1%;
+    /* border: 0.2vw solid rgb(88, 142, 169); */
+    /* background-color: rgb(102, 37, 86); */
 
 }
 
-.sidebar ul li #account_management_link
-{
+.sidebar ul li #account_management_link{
     color: rgb(26, 57, 81);
     background-color: white;
 }
 
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    background-color: #ddd;
-  }
-  
-  /* Create an active/current tablink class */
-  .tab button.active {
-    background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
+.account_management_div .tab{
+    position: relative;
+    width: 100%;
+    border-bottom: 0.2vw solid rgb(52, 79, 95);
+    display: flex;
+    align-items: center;
+
+}
+
+.account_management_div .tab .tablinks
+{
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1% 2% 1% 2%;
+  font-size: 1.4vw;
+}
+
+.account_management_div .tab #account_btn
+{
+  background-color: rgb(52, 79, 95);
+  color: white;
+}
+
+.account_management_div .tab_content
+{
+    position:absolute;
+    padding: 1%;
+    /* background-color: crimson; */
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    
+}
+
+.account_management_div #registration
+{
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
+}
+
+.account_management_div .tab_content form{
+    margin-top: 2%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.account_management_div .tab_content form .search_bar{
+    width: 30%;
+    outline: none;
+    background-color: white;
+    border-radius: 10%/100%;
+    border-color: rgb(194, 194, 194);
+    border-width: 0.1vw;
+    padding: 0.5%;
+    font-size: 1vw;
+}
+
+.account_management_div .tab_content table{
+    width: 100%;
+    margin-top: 2%;
+    /* border: 0.1vw solid black; */
+    border-collapse: collapse;
+    font-size: 1.1vw;
+    
+}
+
+.account_management_div .tab_content table td{
+    border-bottom: 0.1vw solid rgb(52, 79, 95);
+    text-align: center;
+    padding: 0.5%;
+    background-color: rgb(52, 79, 95,0.2);
+}
+/* .account_management_div .tab_content table td:nth-child(even){
+    background-color: rgb(79, 131, 162);
+    color: white;
+}
+
+.account_management_div .tab_content table td:nth-child(odd){
+    background-color: rgb(68, 114, 141);
+    color: white;
+} */
+
+.account_management_div .tab_content table th{
+    border: transparent;
+    background-color: rgb(52, 79, 95);
+    color: white;
+    padding: 1%;
+    font-size: 1.2vw;
+}
+
+.bx.bxs-trash-alt
+{
+    font-size: 2vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(124, 14, 14);
+    background-color: rgb(255, 255, 255);
+}
+
+.bx.bxs-pencil
+{
+    font-size: 2vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(92, 51, 7);
+    background-color: rgb(255, 255, 255);
+}
+
+.account_management_div #registration
+{
+    height: 80%;
+    overflow-y: auto;
+    background-color: rgb(52, 79, 95,0.2);
+}
+.account_management_div #registration form 
+{   
+    padding: 2%;
+    text-align: left;
+    height: 100%;
+   
+    
+}
+.account_management_div #registration form input
+{   
+    font-size: 1vw;
+    outline: none;
+    
+}
+.account_management_div #registration form input[type=text],input[type=password]
+{   
+    border-radius: 4%/40%;
+    margin-top: 2%;
+    padding: 1%;
+    width: 40%;
+}
+
+.account_management_div #registration form .registerFields.name
+{   
+    border-radius: 10%/45%;
+    padding: 1%;
+    width: 12%;
+}
+
+.account_management_div #registration form label
+{   
+    font-size: 1.1vw;
+}
+.account_management_div #registration form select
+{   
+    margin-top: 2%;
+    font-size: 1.1vw;
+}
+
+.account_management_div #registration form input[type=submit]
+{   
+    margin-top: 2%;
+    float:right;
+    padding: 1%;
+    width: 25%;
+    border-radius: 10%/45%;
+}
