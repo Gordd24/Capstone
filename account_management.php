@@ -1,7 +1,16 @@
 <?php
 session_start();
+
+//error validator
+$errorUname="";
+$errorPass="";
+$errorCPass="";
+$errorEmpId="";
+$errorExist="";
+
 if(!isset($_SESSION['Username'])){
     header("Location: index.php");
+    
 }
 include_once 'dbconn.php';
 
@@ -18,38 +27,53 @@ include_once 'dbconn.php';
     $registerPosition = $_POST['registerPosition'];
     //$registerImage = $_POST['registerImage'];
 
-    //error validator
-    $errorUname="";
-    $errorPass="";
-    $errorExist="";
+    
 
     //if user exists
     $usersql = "SELECT * FROM tbl_accounts WHERE username = '$registerUname'";
     $userResult = mysqli_query($conn,$usersql);
     $userExist = mysqli_num_rows($userResult);
 
+    //if employeeID exists
+    $empsql = "SELECT * FROM tbl_accounts WHERE emp_id ='$registerEmpId'"; 
+    $empResult = mysqli_query($conn,$empsql);
+    $empExist = mysqli_num_rows($empResult);
+
     if($userExist>0){
       $errorUname = "User already exists";
       $errorExist .= $errorUname;
-      echo '<script type = "text/javascript">';
-      echo 'alert("'.$errorUname.'");';
-      echo '</script>';
+      // echo '<script type = "text/javascript">';
+      // echo 'alert("'.$errorUname.'");';
+      // echo '</script>';
     }
     if($registerPword != $registerCPword){
       $errorPass = "Passwords did not match";
+      $errorCPass = "Passwords did not match";
       $errorExist .= $errorPass;
-      echo '<script type = "text/javascript">';
-      echo 'alert("'.$errorPass.'");';
-      echo '</script>';
+      // echo '<script type = "text/javascript">';
+      // echo 'alert("'.$errorPass.'");';
+      // echo '</script>';
     }
+    if($empExist>0){
+      $errorEmpId = "Employee ID already exists";
+      $errorExist .= $errorEmpId;
+      // echo '<script type = "text/javascript">';
+      // echo 'alert("'.$errorEmpId.'");';
+      // echo '</script>';
+    }
+
 
     if(empty($errorExist)){
     $insertSql = "INSERT INTO tbl_accounts(username, password, first_name, middle_name, last_name, emp_id, position) VALUES ('$registerUname','$registerPword','$registerFname','$registerMname','$registerLname','$registerEmpId','$registerPosition');";
     mysqli_query($conn,$insertSql);
+    echo '<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
     echo '<script type = "text/javascript">';
-      echo 'alert("insert success");';
-      echo '</script>';
+    // echo "Swal.fire('Good job!','You clicked the button!','success')";
+    echo "alert('tangina')";
+    echo '</script>';
 
+   
+     
     }
   }
 
@@ -64,6 +88,7 @@ include_once 'dbconn.php';
   <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/account_management.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/account_management.js"></script>
   <script src="js/NavigationScript.js" type="text/javascript"></script>
 </head>
@@ -141,13 +166,30 @@ include_once 'dbconn.php';
 
             <div id="registration" class="tabcontent">
                 <form class="registerForm" method="post" action="account_management.php">
-                  <input type="text" class="registerFields" name="registerUname" placeholder="Username" required=""><br/>
+      
+                  <input type="text" class="registerFields" name="registerUname" placeholder="Username" required="" value="<?php echo isset($_POST['registerUname']) ? $_POST["registerUname"] : "";?>"><br/>
+                  <?php if($errorUname): ?>
+                  <p class = "errorRegister"><?php echo $errorUname; ?></p>
+                  <?php endif; ?>
+                 
                   <input type="password" class="registerFields" name="registerPword" placeholder="Password" required=""><br/>
+                  <?php if($errorPass): ?>
+                  <p class = "errorRegister"><?php echo $errorPass; ?></p>
+                  <?php endif; ?>
+                  
                   <input type="password" class="registerFields" name="registerCPword" placeholder="Confirm Password" required=""><br/>
-                  <input type="text" class="registerFields name" name="registerFname" placeholder="First Name" required="">
-                  <input type="text" class="registerFields name" name="registerMname" placeholder="Middle Name" >
-                  <input type="text" class="registerFields name" name="registerLname" placeholder="Last Name" required=""><br/>
-                  <input type="text" class="registerFields" name="registerEmpId" placeholder="Employee ID" required=""><br/>
+                  <?php if($errorPass): ?>
+                  <p class = "errorRegister"><?php echo $errorCPass; ?></p>
+                  <?php endif; ?>
+
+                  <input type="text" class="registerFields name" name="registerFname" placeholder="First Name" required=""  value="<?php echo isset($_POST['registerFname']) ? $_POST["registerFname"] : '';?>">
+                  <input type="text" class="registerFields name" name="registerMname" placeholder="Middle Name"  value="<?php echo isset($_POST['registerMname']) ? $_POST['registerMname'] : '';?>">
+                  <input type="text" class="registerFields name" name="registerLname" placeholder="Last Name" required="" value="<?php echo isset($_POST['registerLname']) ? $_POST['registerLname'] : '';?>"><br/>
+
+                  <input type="text" class="registerFields" name="registerEmpId" placeholder="Employee ID" required="" value="<?php echo isset($_POST['registerEmpId']) ? $_POST['registerEmpId'] : '';?>"><br/>
+                  <?php if($errorEmpId): ?>
+                  <p class = "errorRegister"><?php echo $errorEmpId; ?></p>
+                  <?php endif; ?>
                   <label for="position">Position:</label>
                   <select id="position" class="registerFields" name="registerPosition">
                       <option value="Administrator">Administrator</option>
