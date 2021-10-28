@@ -69,7 +69,7 @@ include_once 'dbconn.php';
     echo '<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
     echo '<script type = "text/javascript">';
     // echo "Swal.fire('Good job!','You clicked the button!','success')";
-    echo "alert('tangina')";
+    echo "alert('insert success')";
     echo '</script>';
 
    
