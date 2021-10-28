@@ -138,10 +138,10 @@ body{
     position: absolute;
     left: 25%;
     width: 70%;
-    height: 80%;
+    height: 70%;
     /* background-color: darkgreen; */
     margin: 10% 0 0 0;
-    padding: 2% 2% 2% 2%;
+    padding: 1% 1% 1% 1%;
     /* background-color: rgba(96, 184, 228, 0.7); */
     display: flex;
     align-items: center;

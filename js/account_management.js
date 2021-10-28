@@ -74,7 +74,42 @@ $(document).ready(function(){
           }
           });       
         
+    }),
+    $('body').on('click', '.bx.bxs-user-account', function(){
+      var id = $(this).attr('id');
+      $("table,.search_form").hide(),
+      $(".view_account").show(),
+      $('.view_form_div').html(''),
+      $.ajax({
+        url:"view_account.php",
+        method:"post",
+        data:{view:id},
+        dataType:"text",
+        success:function(data)
+        {
+          $('.view_form_div').html(data),
+          $("#view_form input[type='submit'],#view_form #viewEmpId").prop( "disabled", true ),
+          $(".viewFields").keyup(function() {
+                $("#view_form input[type='submit']").css("background-color","rgb(91, 220, 125)"),
+                $("#view_form input[type='submit']").prop( "disabled", false);
+          }),
+          $("#view_form select").change(function() {
+            $("#view_form input[type='submit']").css("background-color","rgb(91, 220, 125)"),
+            $("#view_form input[type='submit']").prop( "disabled", false);
+         });
+          
+          
+        }
+        }); 
+    }),
+    $('body').on('click', '.bx.bxs-x-circle', function(){
+      $("table,.search_form").show(),
+      $(".view_account").hide();
+     
+        
     });
+
+  
    
     
   });   
