@@ -20,6 +20,7 @@
     border-bottom: 0.2vw solid rgb(52, 79, 95);
     display: flex;
     align-items: center;
+    
 
 }
 
@@ -48,23 +49,18 @@
     height: 80%;
     overflow-y: auto;
     overflow-x: hidden;
-
-    
 }
 
-.account_management_div #registration
-{
-    display: none;
-}
 
-.account_management_div .tab_content form{
+.account_management_div .tab_content .search_form{
+    /* display: none; */
     margin-top: 2%;
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
-.account_management_div .tab_content form .search_bar{
+.account_management_div .tab_content .search_form .search_bar{
     width: 30%;
     outline: none;
     background-color: white;
@@ -76,6 +72,7 @@
 }
 
 .account_management_div .tab_content table{
+    /* display: none; */
     width: 100%;
     margin-top: 2%;
     /* border: 0.1vw solid black; */
@@ -88,17 +85,8 @@
     border-bottom: 0.1vw solid rgb(52, 79, 95);
     text-align: center;
     padding: 0.5%;
-    background-color: rgb(52, 79, 95,0.2);
+    /* background-color: rgb(52, 79, 95,0.2); */
 }
-/* .account_management_div .tab_content table td:nth-child(even){
-    background-color: rgb(79, 131, 162);
-    color: white;
-}
-
-.account_management_div .tab_content table td:nth-child(odd){
-    background-color: rgb(68, 114, 141);
-    color: white;
-} */
 
 .account_management_div .tab_content table th{
     border: transparent;
@@ -116,9 +104,10 @@
     border-radius: 20%;
     color: rgb(124, 14, 14);
     background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
 }
 
-.bx.bxs-pencil
+.bx.bxs-user-account
 {
     font-size: 2vw;
     margin: 2%;
@@ -126,29 +115,32 @@
     border-radius: 20%;
     color: rgb(92, 51, 7);
     background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
 }
 
 .account_management_div #registration
 {
-    height: 80%;
-    overflow-y: auto;
-    background-color: rgb(52, 79, 95,0.2);
+    display: none;
 }
-.account_management_div #registration form 
+
+
+.account_management_div #registration .registerForm 
 {   
     padding: 2%;
     text-align: left;
-    height: 100%;
-   
     
 }
-.account_management_div #registration form input
+.account_management_div #registration .registerForm .registerFields
 {   
     font-size: 1vw;
     outline: none;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border:0.1vw solid black;
+
     
 }
-.account_management_div #registration form input[type=text],input[type=password]
+.account_management_div #registration .registerForm .registerFields[type=text],.registerFields[type=password]
 {   
     border-radius: 4%/40%;
     margin-top: 2%;
@@ -156,38 +148,113 @@
     width: 40%;
 }
 
-.account_management_div #registration form .registerFields.name
+.account_management_div #registration .registerForm .registerFields.name
 {   
     border-radius: 10%/45%;
     padding: 1%;
     width: 12%;
+    margin-right: 1%;
 }
 
-.account_management_div #registration form label
+.account_management_div #registration .registerForm .registerFields.id
+{   
+    border-radius: 10%/45%;
+    padding: 1%;
+    width: 15%;
+}
+
+.account_management_div #registration .registerForm label
 {   
     font-size: 1.1vw;
+    margin-left: 1%;
 }
-.account_management_div #registration form select
+.account_management_div #registration .registerForm select
 {   
     margin-top: 2%;
     font-size: 1.1vw;
+    padding: 1%;
 }
 
-.account_management_div #registration form input[type=submit]
+.account_management_div #registration .registerForm input[type=submit]
 {   
-    margin-top: 2%;
+    margin-top: 1.2%;
     float:right;
     padding: 1%;
-    width: 25%;
-    border-radius: 10%/45%;
+    width: 15%;
+    border-radius: 15%/45%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 1.5vw;
+    color: white;
+    cursor: pointer;
 }
-/* CSS REGISTRATION INPUT ERRORS */
- .errorRegister{
-    font-size: 11px;
-    font-weight: 500;
-    margin-left: 9%;
-    text-align: left;
-    color: red;
-    margin: 0;
-    padding: 0;
+
+.tab_content .view_account
+{
+    display: none;
+    padding: 0.5%;
+}
+
+/* .tab_content .view_account .view_form_div
+{
+} */
+
+.tab_content .view_account .view_form_div #view_form
+{
+    font-size: 1.2vw;
+    font-weight: 700;
+    padding-left: 2%;
+}
+
+.tab_content .view_account .view_form_div #view_form label
+{
+    font-size:1.2vw;
+    margin: 2% 0 0 0;
+
+}
+
+.tab_content .view_account .view_form_div #view_form .viewFields[type=text]
+{
+    border-radius: 7%/40%;
+    margin: 2% 2% 0 0;
+    padding:1%;
+    font-size: 1vw;
+    outline: none;
+    background-color:transparent;
+    color: black;
+    border:0.1vw solid black;
+}
+
+.tab_content .view_account .view_form_div #view_form select
+{
+    margin-top: 2%;
+    font-size: 1vw;
+    padding: 1%;
+}
+
+.tab_content .view_account .view_form_div #view_form .viewFields.name
+{
+    margin: 2% 0 0 0;
+}
+
+.tab_content .view_account .view_form_div #view_form input[type=submit]
+{   
+    margin-top: 1.2%;
+    float:right;
+    padding: 1%;
+    width: 15%;
+    border-radius: 15%/45%;
+    background-color: rgb(62, 60, 72);
+    border:none;
+    font-size: 1.2vw;
+    color: white;
+    cursor: pointer;
+}
+
+.bx.bxs-x-circle
+{
+    font-size: 3vw;
+    border-radius: 20%;
+    color: rgb(124, 14, 14);
+    /* border: 0.1vw solid rgb(52, 79, 95); */
 }

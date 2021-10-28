@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['Username'])){
+if(!isset($_SESSION['ID'])){
     header("Location: index.php");
 }
 include_once 'dbconn.php';
@@ -17,61 +17,7 @@ include_once 'dbconn.php';
 </head>
 <body>
 
-    <div class="title_bar">
-        <div class="hospital_name">Ofelia E. Mendoza Maternity and General Hospital</div>
-    </div>
-
-    <div class="sidebar active">
-
-        <div class="burger_div">
-            <i class='bx bx-menu' id="burger"></i>
-        </div>
-
-        <div class="title_logo">
-            <img class="logo" src="images/ofelia_logo.png" alt="Logo">
-        </div>
-        
-        <ul class="nav_list">
-            <li>
-                <a href="#">
-                    <i class='bx bxs-user-circle' ></i>
-                    <span class="name">&nbsp;<?php include_once 'getName.php';?></span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-dashboard' ></i>
-                    <span class="dashboard">&nbsp;Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-library' ></i>
-                    <span class="record_management">&nbsp;Record Management</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bxs-report' ></i>
-                    <span class="report_generation">&nbsp;Generate Report</span>
-                </a>
-            </li>
-            <li>
-                <a href="./account_management.php">
-                    <i class='bx bxs-cog'></i>
-                    <span class="account_management">&nbsp;Account Management</span>
-                </a>
-            </li>
-            <li>
-                <a href="logout.php" id="log_out_a">
-                    <i class='bx bx-power-off'></i>
-                    <span class="logout_account">&nbsp;Log Out</span>
-                </a>
-            </li>
-        </ul>
-
-    </div>
-
+<?php include_once 'navigation_header.php'; ?>
 
 </body>
 </html>

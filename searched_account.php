@@ -19,14 +19,14 @@ if($result->num_rows>0)
 {
    while($row = $result -> fetch_assoc())
    {
-        if($row['emp_id'] != $_SESSION['ID'])
+        if($row['acc_id'] != $_SESSION['ID'])
         {
             echo "<tr>
             <td>".$row["emp_id"]."</td>
             <td>".$row["username"]."</td>
             <td>".$row["first_name"]." ".$row["middle_name"]." ".$row["last_name"]."</td>
             <td>
-                <i class='bx bxs-pencil' id='del'></i>
+                <i class='bx bxs-user-account' id='".$row["emp_id"]."'></i>
                 <i class='bx bxs-trash-alt' id='".$row["emp_id"]."'></i>
             </td>
             </tr>";

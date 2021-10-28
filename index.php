@@ -43,9 +43,7 @@ include_once 'dbconn.php';
         
 
         if(is_array($row)){
-            $_SESSION["Username"] = $row['username'];
-            $_SESSION["Password"] = $row['password'];
-            $_SESSION["ID"] = $row['emp_id'];
+            $_SESSION["ID"] = $row['acc_id'];
             
         }else{
             echo '<script type = "text/javascript">';
@@ -54,7 +52,7 @@ include_once 'dbconn.php';
             echo '</script>';
         }
     }
-    if(isset($_SESSION["Username"])){
+    if(isset($_SESSION["ID"])){
         header("Location:home.php");
     }
     ?>
