@@ -17,6 +17,7 @@ $(document).ready(function(){
 
     });
 
+  
     $("#registration_btn").click(function(){
       $(this).css(
         {
@@ -34,6 +35,8 @@ $(document).ready(function(){
       );
       
     });
+ //form validation
+    
 
     //stops submittin, or simply disable 13 or the enter key
     $('.search_bar').on('keypress', function(e) {
@@ -105,11 +108,6 @@ $(document).ready(function(){
     $('body').on('click', '.bx.bxs-x-circle', function(){
       $("table,.search_form").show(),
       $(".view_account").hide();
-     
-        
     });
-
-  
-   
-    
   });   
+  

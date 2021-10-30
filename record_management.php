@@ -14,6 +14,7 @@ if(!isset($_SESSION['ID'])){
   <script src="js/record_management.js"></script>
   <script src="js/NavigationScript.js" type="text/javascript"></script>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/record_management.css">
 </head>

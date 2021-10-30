@@ -258,3 +258,7 @@
     color: rgb(124, 14, 14);
     /* border: 0.1vw solid rgb(52, 79, 95); */
 }
+/* CSS REGISTRATION INPUT ERRORS */
+.errorRegister{
+    color: red;
+}
