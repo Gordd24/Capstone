@@ -22,7 +22,7 @@ if (!isset($_SESSION)) {
                   <td>".$row["first_name"]." ".$row["middle_name"]." ".$row["last_name"]."</td>
                   <td>status</td>
                   <td>
-                      <i class='bx bxs-file-find'></i>
+                      <i class='bx bxs-file-find' id='".$row['patient_id']."'></i>
                       <i class='bx bxs-file-plus'></i>
                       <i class='bx bxs-archive-in'></i>
                   </td>

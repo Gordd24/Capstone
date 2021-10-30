@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
   }
 
 $searched = $_POST['search'];
-$sql = "SELECT * FROM tbl_accounts where concat(first_name,last_name,middle_name,username,emp_id) LIKE '%".$searched."%'";
+$sql = "SELECT * FROM tbl_accounts where concat(first_name,' ',middle_name,' ',last_name,' ',username,' ',emp_id,' ',first_name,' ',last_name) LIKE '%".$searched."%'";
 $result = $conn -> query($sql);
 
     echo "<tr>
