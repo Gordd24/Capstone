@@ -25,7 +25,8 @@ $result = $conn -> query($sql);
             <td>status</td>
             <td>
                 <i class='bx bxs-file-find' id='".$row['patient_id']."'></i>
-                <i class='bx bxs-file-plus'></i>
+                <i class='bx bxs-file-plus' id='".$row['patient_id']."'></i>
+                <i class='bx bxs-user-minus' id='".$row['patient_id']."'></i>
                 <i class='bx bxs-archive-in'></i>
             </td>
             </tr>";

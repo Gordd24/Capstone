@@ -19,10 +19,22 @@ if(!isset($_SESSION['ID'])){
   <link rel="stylesheet" href="css/record_management.css">
 </head>
 <body>
-
+  
     <?php include_once 'navigation_header.php'; ?>
 
     <div class="page_content_div">
+
+        <div class="option_modal_div" tabindex="0">
+          <div class="option_modal_exit_div">
+            <i class='bx bxs-x-circle'></i>
+          </div>
+          <div class="modal_options_div">
+            <p class="option_buttons" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
+            <p class="option_buttons" id="admission"><i class='bx bx-user-plus' ></i> Admission Record</p>
+            <p class="option_buttons" id="med_cert"><i class='bx bx-certification' ></i> Medical Certificate</p>
+            <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
+          </div>
+        </div>
         <div class="record_management_div">
 
 
@@ -66,8 +78,8 @@ if(!isset($_SESSION['ID'])){
 
                     <label for="patient_contact_no">Contact No</label><br>
                     <input id="patient_contact_no" type="text" name="patient_contact_no" placeholder="Contact No. (Optional)"><br>
-                    <label for="patient_birthday">Birth Date</label><br>
-                    <input id="patient_birthday" type="text" name="patient_birthday" placeholder="Birth Date" required= ""><br>
+                    <label for='patient_birthday'>Birthday:</label><br>
+                    <input type='date' id='patient_birthday' name='patient_birthday' required='required'><br>
                     <label for="patient_address">Address</label><br>
                     <input id="patient_address" type="text" name="patient_address" placeholder="Address" required= ""><br>
                     <label for="patient_occupation">Occupation</label><br>
@@ -81,6 +93,8 @@ if(!isset($_SESSION['ID'])){
         </div>
 
         <div class="record_management_div_3"> </div>
+
+        <div class="record_management_div_4"> </div>
 
       </div>
     </div>

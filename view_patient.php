@@ -11,7 +11,7 @@ if($result->num_rows>0)
    {
         echo"
         <div class='cancel_view_patient_btn_div'>
-        <i class='bx bxs-x-circle'></i>
+            <i class='bx bxs-x-circle'></i>
         </div>
         <div class='patient_info'>
             <span>Patient ID: ".$row['patient_id']."</span><br>
