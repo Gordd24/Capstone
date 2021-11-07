@@ -8,10 +8,11 @@ $sql = "SELECT * FROM tbl_patients where patient_id = '".$patient."'";
 $result = $conn -> query($sql);
 
 
+
+
 if($result->num_rows>0)
 {
     $viewPatient = $result -> fetch_assoc();
-   
 
 
 echo "
@@ -22,20 +23,21 @@ echo "
 <div class='form_div'>
     <h2>Medical Certificate Form</h2> 
     <form action='make_med_cert.php' method='POST'>
-        
+        <label for='patient_id'>Patient ID:</label><br>
+        <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' readonly><br>
         <label for='patient_fname'>First name:</label><br>
-        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."' required='required'><br>
+        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."' readonly><br>
         <label for='patient_mname'>Middle Name:</label><br>
-        <input type='text' id='patient_mname' name='patient_mname' value='".$viewPatient['middle_name']."' required='required'><br>
+        <input type='text' id='patient_mname' name='patient_mname' value='".$viewPatient['middle_name']."' readonly><br>
         <label for='patient_lname'>Last name:</label><br>
-        <input type='text' id='patient_lname' name='patient_lname' value='".$viewPatient['last_name']."' required='required'><br>
+        <input type='text' id='patient_lname' name='patient_lname' value='".$viewPatient['last_name']."'  readonly><br>
+        <label for='patient_sex'>Patient Sex:</label><br>
+        <input type='text' sex='patient_sex' name='patient_sex' value='".$viewPatient['sex']."' required='required'><br>
         <label for='patient_age'>Age:</label><br>
         <input type='text' id='patient_age' name='patient_age' required='required'><br>
         <label for='patient_address'>Address:</label><br>
         <input type='text' id='patient_address' name='patient_address' value='".$viewPatient['address']."' required='required'><br><br>
 
-        <label for='patient_treatment'>Treatment:</label><br>
-        <input type='text' id='patient_treatment' name='patient_treatment' required='required'><br>
         <label for='patient_diagnosis'>Diagnosis:</label><br>
         <textarea id='patient_diagnosis' name='patient_diagnosis' rows=”15″ cols=”40″ required='required'></textarea><br><br>
 

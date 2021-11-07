@@ -37,7 +37,7 @@ echo "
 </div>
 <div class='form_div'>
     <h2>Admission Form</h2> 
-    <form action='makeAdmitionForm.php' method='POST'>
+    <form action='make_admission_form.php' method='POST'>
         <label for='patient_room_no'>Room No:</label><br>
         <input type='text' id='patient_room_no' name='patient_room_no'><br>
         <label for='patient_contact_no'>Contact No (Optional):</label><br>
@@ -45,12 +45,14 @@ echo "
         <label for='patient_case_no'>Case No:</label><br>
         <input type='text' id='patient_case_no' name='patient_case_no'><br><br>
 
+        <label for='patient_id'>Patient ID:</label><br>
+        <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' required='required' readonly><br>
         <label for='patient_fname'>First name:</label><br>
-        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."' required='required'><br>
+        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."' readonly><br>
         <label for='patient_mname'>Middle Name:</label><br>
-        <input type='text' id='patient_mname' name='patient_mname' value='".$viewPatient['middle_name']."' required='required'><br>
+        <input type='text' id='patient_mname' name='patient_mname' value='".$viewPatient['middle_name']."' readonly><br>
         <label for='patient_lname'>Last name:</label><br>
-        <input type='text' id='patient_lname' name='patient_lname' value='".$viewPatient['last_name']."' required='required'><br><br>
+        <input type='text' id='patient_lname' name='patient_lname' value='".$viewPatient['last_name']."' readonly><br><br>
 
         <label for='patient_age'>Age:</label><br>
         <input type='text' id='patient_age' name='patient_age' required='required'><br>

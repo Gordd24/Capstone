@@ -7,6 +7,10 @@ $mpdf = new \Mpdf\Mpdf();
 
 
 date_default_timezone_set('Asia/Manila');
+$patient_id = $_POST['patient_id'];
+$patient_lname = strtolower($_POST['patient_lname']);
+$path_date = date("Ymdgis");
+$record_date = date("Y-m-d");
 $patient_name = $_POST['patient_fname']." ".$_POST['patient_mname']." ".$_POST['patient_lname'];
 $patient_age = $_POST['patient_age'];
 $patient_sex = $_POST['patient_sex'];
@@ -120,22 +124,28 @@ $mpdf->WriteHTML('
 
 
 '
-
-
-
 );
 
+$path = "patient/".$patient_name;
+if (!is_dir( $path ) ) {
+    mkdir( $path );       
+} 
 
-$pdfString = $mpdf->Output("test.php","I");
+$path_type = $path."/consultation";
 
-// echo $pdfString;
-// $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_file,date) VALUES ('1','".$pdfString."','asd');";
-// mysqli_query($conn,$insertSql);
+if (!is_dir( $path_type ) ) {
+    mkdir( $path_type );       
+} 
+
+$file = $path_type."/".$path_date."-".$patient_lname.".pdf";
+
+$mpdf->Output($file,"F");
 
 
-// $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation) VALUES ('asd','asd','asd','asd','asd','ion','ion','ion','ion');";
-//     mysqli_query($conn,$insertSql);
-// header("Location: record_management.php");
+$insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date) VALUES ('".$patient_id."','".$file."','".$record_date."');";
+mysqli_query($conn,$insertSql);
+
+header('Location: record_management.php');
 
 
 

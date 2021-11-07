@@ -37,12 +37,14 @@ if($result->num_rows>0)
     <div class='form_div'>
       <h2>Consultation Form</h2> 
       <form action='make_consultation_form.php' method='POST'>
+        <label for='patient_id'>Patient ID:</label><br>
+        <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' required='required' readonly><br>
         <label for='patient_fname'>First name:</label><br>
-        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."' required='required'><br>
+        <input type='text' id='patient_fname' name='patient_fname' value='".$viewPatient['first_name']."'  readonly><br>
         <label for='patient_lname'>Middle name:</label><br>
-        <input type='text' id='patient_mname' value='".$viewPatient['middle_name']."' name='patient_mname'><br>
+        <input type='text' id='patient_mname' value='".$viewPatient['middle_name']."' name='patient_mname'  readonly><br>
         <label for='patient_mname'>Last Name:</label><br>
-        <input type='text' id='patient_lname' value='".$viewPatient['last_name']."' name='patient_lname' required='required'><br><br>
+        <input type='text' id='patient_lname' value='".$viewPatient['last_name']."' name='patient_lname'  readonly><br><br>
       
         <label for='patient_age'>Age:</label><br>
         <input type='text' id='patient_age' name='patient_age' required='required'><br>
