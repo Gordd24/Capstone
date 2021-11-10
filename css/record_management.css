@@ -271,9 +271,10 @@
     color: rgb(124, 14, 14);
 }
 
-.record_management_div_2 .cancel_view_patient_btn_div
+.record_management_div_3 .cancel_view_patient_btn_div
 {
     border-bottom: 0.2vw solid rgb(220, 218, 218);
+    
 }
 
 /* consultation form */
@@ -489,4 +490,70 @@ MODAL */
 	border:0.1vw solid rgb(16,120,173);
     cursor: pointer;
 
+}
+
+
+
+.record_table_div
+{
+    padding: 2%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.record_table_div #records_table
+{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2vw;
+    text-align: center;
+}
+
+.record_table_div #records_table th
+{
+    border: transparent;
+    background-color: rgb(52, 79, 95);
+    color: white;
+    padding: 1%;
+    font-size: 1.2vw;
+}
+
+
+.record_table_div #records_table td
+{
+    border-bottom: 0.1vw solid rgb(52, 79, 95);
+    padding: 0.5%;
+   
+} 
+
+.bx.bxs-file-export
+{
+    font-size: 2vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(199, 172, 64);
+    background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
+}
+
+.bx.bxs-file-pdf
+{
+    font-size: 2vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(160, 28, 28);
+    background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
+
+}
+
+
+.patient_info {
+    font-size: 1.3vw;
+    font-weight: bold;
+    padding: 2%;
+    margin-bottom: 1%;
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
 }

@@ -24,7 +24,10 @@ echo "
 
     <h3>Patient: ".$viewPatient['first_name']." ".$viewPatient['middle_name']." ".$viewPatient['last_name']."</h3>
 
-    <form action='makeAdmitionForm.php' method='POST'>
+    <form action='discharge_patient.php' method='POST'>
+    <label for='patient_id'>Patient ID:</label><br>
+    <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' required='required' readonly><br><br>
+    
     <label for='patient_date_discharged'>Date Discharged:</label><br>
     <input type='date' id='patient_date_discharged' name='patient_date_discharged' required='required'><br>
     <label for='patient_time_discharged'>Time Discharged:</label><br>
@@ -34,7 +37,7 @@ echo "
     <label for='patient_transferred_to_room'>Transferred to Room (Optional):</label><br>
     <input type='text' id='patient_transferred_to_room' name='patient_transferred_to_room'><br>
     <label for='patient_transferred_to_room_date'>Date (Optional):</label><br>
-    <input type='date' id='patient_transferred_to_room' name='patient_transferred_to_room'><br>
+    <input type='date' id='patient_transferred_to_room_date' name='patient_transferred_to_room_date'><br>
     <label for='patient_transferred_to_room_time'>Time (Optional):</label><br>
     <input type='time' id='patient_transferred_to_room_time' name='patient_transferred_to_room_time'><br><br>
 
@@ -60,7 +63,7 @@ echo "
     <label for='patient_died'>Died</label><br><br>
 
 
-  <input type='submit' value='Submit'>
+  <input type='submit' name='submit_discharged' value='Submit'>
   
     </form> 
    </div> 

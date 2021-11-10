@@ -85,11 +85,12 @@ if (!is_dir( $path_type ) ) {
 } 
 
 $file = $path_type."/".$path_date."-".$patient_lname.".pdf";
+$file_name = $path_date."-".$patient_lname.".pdf";
 
 $mpdf->Output($file,"F");
 
 
-$insertSql = "INSERT INTO tbl_med_cert(patient_id,pdf_path,date) VALUES ('".$patient_id."','".$file."','".$record_date."');";
+$insertSql = "INSERT INTO tbl_med_cert(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
 mysqli_query($conn,$insertSql);
 
 header('Location: record_management.php');

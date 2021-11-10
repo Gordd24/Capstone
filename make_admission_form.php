@@ -33,59 +33,11 @@ $patient_time_admitted = $_POST['patient_time_admitted'];
 $patient_admitted_by = $_POST['patient_admitted_by'];
 $patient_physician = $_POST['patient_physician'];
 $patient_admitting_diagnosis = $_POST['patient_admitting_diagnosis'];
-$patient_disposition = "";
-
-if(isset($_POST['patient_disposition']))
-{
-    if($_POST['patient_disposition']=="DISCHARGED")
-    {
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{&#10004;} DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } TRANSFERED</td>
+$patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } Discharged</td>
+    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } Transferred</td>
     <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } ABSCONDED</td>
+    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } Absconded</td>
     <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{ } DIED</td>';
-    }
-    else if($_POST['patient_disposition']=="TRANSFERRED")
-    {
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{&#10004;} TRANSFERED</td>
-    <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } ABSCONDED</td>
-    <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{ } DIED</td>';
-    }
-    else if($_POST['patient_disposition']=="HAMA")
-    {
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } TRANSFERED</td>
-    <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{&#10004;} HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } ABSCONDED</td>
-    <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{ } DIED</td>';
-    }
-    else if($_POST['patient_disposition']=="ABSCONDED")
-    {
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } TRANSFERED</td>
-    <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{&#10004;} ABSCONDED</td>
-    <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{ } DIED</td>';
-    }
-    else if($_POST['patient_disposition']=="DIED")
-    {
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } TRANSFERED</td>
-    <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } ABSCONDED</td>
-    <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{&#10004;} DIED</td>';
-    }
-}
-else{
-    $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{ } DISCHARGED</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } TRANSFERED</td>
-    <td colspan="1" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } HAMA</td>
-    <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } ABSCONDED</td>
-    <td colspan="1" style="border-top: none; border-left: none; text-align:center;">{ } DIED</td>';
-}
-
 
 
 $mpdf->WriteHTML('
@@ -193,8 +145,8 @@ $mpdf->WriteHTML('
 </tr>
 <tr>
   <td colspan="2" style="border-top:none;"><span style="font-weight: normal;">TRANSFERREDTOROOM</span></td>
-  <td colspan="2" style="border-top:none;"><span style="font-weight: normal;">TRANSFERREDTOROOMDATE</span></td>
-  <td colspan="4" style="border-top:none;"><span style="font-weight: normal;">TRANSFERREDTOROOMTIME</span></td>
+  <td colspan="2" style="border-top:none;"><span style="font-weight: normal;">TRANSDATE</span></td>
+  <td colspan="4" style="border-top:none;"><span style="font-weight: normal;">TRANSTIME</span></td>
 </tr>
 <tr>
   <td colspan="8" style="border-bottom:none;">Attending Physician: (FULL NAME)</td>
@@ -255,11 +207,16 @@ if (!is_dir( $path_type ) ) {
 } 
 
 $file = $path_type."/".$path_date."-".$patient_lname.".pdf";
+$file_name = $path_date."-".$patient_lname.".pdf";
 
 $mpdf->Output($file,"F");
 
-$insertSql = "INSERT INTO tbl_admission(patient_id,pdf_path,date) VALUES ('".$patient_id."','".$file."','".$record_date."');";
+$insertSql = "INSERT INTO tbl_admission(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
 mysqli_query($conn,$insertSql);
+
+$updateStat = "UPDATE tbl_patients SET status = 'Admitted' WHERE patient_id = '".$patient_id."';";
+mysqli_query($conn,$updateStat);
+
 
 header('Location: record_management.php');
 
