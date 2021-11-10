@@ -31,7 +31,7 @@ echo "
     <input type='text' id='patient_lname' name='patient_lname' value='".$viewPatient['last_name']."'  readonly><br><br>
     <label id='lab_res_up_button' for='patient_lab_res'> <i class='bx bx-test-tube'></i> Upload File</label>
     <input type='file' id='patient_lab_res' name='patient_lab_res' multiple><br>
-    <input type='submit' id='lab_res_upload' value='Submit'>
+    <button type='submit' id='lab_res_upload' name='lab_res_upload'>Submit</button>
     </form>
 </div>";
 
