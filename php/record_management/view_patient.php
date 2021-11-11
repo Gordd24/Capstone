@@ -47,9 +47,9 @@ if($result->num_rows>0)
                     <td>".$row2['file_name']."</td>
                     <td>".$row2['date']."</td>
                     <td>
-                        <a href='open_directory.php?path=".urlencode($row2['pdf_path'])."'><i class='bx bxs-file-find' id='".$row2['patient_id']."'></i></a>
+                        <a href='open_directory.php?path=".urlencode($row2['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row2['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row2['patient_id']."'></i>
-                        <i class='bx bxs-file-pdf' id='".$row2['patient_id']."'></i>
+                        <i class='bx bxs-download' id='".$row2['patient_id']."'></i>
                     </td>
                         </tr>";
                     
@@ -83,9 +83,9 @@ if($result->num_rows>0)
                         <td>".$row3['file_name']."</td>
                         <td>".$row3['date']."</td>
                         <td>
-                            <a href='open_directory.php?path=".urlencode($row3['pdf_path'])."'><i class='bx bxs-file-find' id='".$row3['patient_id']."'></i></a>
+                            <a href='open_directory.php?path=".urlencode($row3['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row3['patient_id']."'></i></a>
                             <i class='bx bxs-file-export' id='".$row3['patient_id']."'></i>
-                            <i class='bx bxs-file-pdf' id='".$row3['patient_id']."'></i>
+                            <i class='bx bxs-download' id='".$row3['patient_id']."'></i>
                         </td>
                             </tr>";    
                         
@@ -98,7 +98,40 @@ if($result->num_rows>0)
         <div class='record_table_div med_cert_div'>
         <table id='records_table'>";
                 
-        $sql4 = "SELECT * FROM tbl_med_cert WHERE patient_id = '".$viewed."' ORDER BY record_med_cert_id DESC;";
+        $sql5 = "SELECT * FROM tbl_med_cert WHERE patient_id = '".$viewed."' ORDER BY record_med_cert_id DESC;";
+        $result5 = $conn -> query($sql5);
+    
+            echo '<tr>
+            <th>File Name</th>
+            <th>Date</th>
+            <th>Action</th>
+            </tr>';
+            
+            if($result5->num_rows>0)
+            {
+                while($row5 = $result5 -> fetch_assoc())
+                {
+                    
+                    echo"<tr>
+                    <td>".$row5['file_name']."</td>
+                    <td>".$row5['date']."</td>
+                    <td>
+                        <a href='open_directory.php?path=".urlencode($row5['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row5['patient_id']."'></i></a>
+                        <i class='bx bxs-file-export' id='".$row5['patient_id']."'></i>
+                        <i class='bx bxs-download' id='".$row5['patient_id']."'></i>
+                    </td>
+                        </tr>";    
+                    
+                } 
+            }  
+        echo"  </table>
+        </div>";
+        
+        echo"
+        <div class='record_table_div lab_res_div'>
+        <table id='records_table'>";
+                
+        $sql4 = "SELECT * FROM tbl_lab_result WHERE patient_id = '".$viewed."' ORDER BY lab_result_id DESC;";
         $result4 = $conn -> query($sql4);
     
             echo '<tr>
@@ -116,19 +149,17 @@ if($result->num_rows>0)
                     <td>".$row4['file_name']."</td>
                     <td>".$row4['date']."</td>
                     <td>
-                        <a href='open_directory.php?path=".urlencode($row4['pdf_path'])."'><i class='bx bxs-file-find' id='".$row4['patient_id']."'></i></a>
+                        <a href='open_directory.php?path=".urlencode($row4['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row4['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row4['patient_id']."'></i>
-                        <i class='bx bxs-file-pdf' id='".$row4['patient_id']."'></i>
+                        <i class='bx bxs-download' id='".$row4['patient_id']."'></i>
                     </td>
                         </tr>";    
                     
                 } 
             }  
+
         echo"  </table>
         </div>";
-        
-        echo"
-        <div class='lab_res_div'>Laboratory Results ".$row['patient_id']."</div>";
 
    }
 } 

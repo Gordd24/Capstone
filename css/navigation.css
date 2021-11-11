@@ -4,7 +4,12 @@
     padding: 0;  
     box-sizing: border-box;
     font-family: Open Sans,sans-serif;
+
+
+    
+
 }
+
 
 ul.nav_list{
     padding: 0;
@@ -142,7 +147,7 @@ body{
     width: 70%;
     height: 70%;
     /* background-color: darkgreen; */
-    margin: 10% 0 0 0;
+    margin: 9% 0 0 0;
     padding: 1% 1% 1% 1%;
     /* background-color: rgba(96, 184, 228, 0.7); */
     display: flex;

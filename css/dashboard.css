@@ -1,4 +1,10 @@
-
+body{
+    background: url(../images/back_6.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .dashboard_div{
     width: 100%;

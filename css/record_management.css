@@ -1,3 +1,10 @@
+body{
+    background: url(../images/back_5.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .sidebar ul li #record_management_link{
     color: rgb(26, 57, 81);
     background-color: white;
@@ -548,7 +555,16 @@ MODAL */
     border: 0.1vw solid rgb(52, 79, 95);
 
 }
-
+.bx.bxs-download
+{
+    font-size: 2vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(44, 44, 44);
+    background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
+}
 
 .patient_info {
     font-size: 1.3vw;

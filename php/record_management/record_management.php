@@ -129,8 +129,8 @@ if(isset($_POST['lab_res_upload']))
 
 function make_med_cert(){
 
-include_once 'dbconn.php';
-require_once __DIR__ . '/vendor/autoload.php';
+include_once '../dbconn.php';
+require_once __DIR__ . '../../../vendor/autoload.php';
 
 $mpdf = new \Mpdf\Mpdf();
 date_default_timezone_set('Asia/Manila');
@@ -195,20 +195,20 @@ $mpdf->WriteHTML(
 );
 
 $path = "patient/".$patient_name;
-if (!is_dir( $path ) ) {
-    mkdir( $path );       
+if (!is_dir( "../../".$path ) ) {
+    mkdir( "../../".$path );       
 } 
 
 $path_type = $path."/medical certificate";
 
-if (!is_dir( $path_type ) ) {
-    mkdir( $path_type );       
+if (!is_dir( "../../".$path_type ) ) {
+    mkdir( "../../".$path_type );       
 } 
 
 $file = $path_type."/".$path_date."-".$patient_lname.".pdf";
 $file_name = $path_date."-".$patient_lname.".pdf";
 
-$mpdf->Output($file,"F");
+$mpdf->Output("../../".$file,"F");
 
 
 $insertSql = "INSERT INTO tbl_med_cert(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
@@ -220,8 +220,8 @@ header('Location: record_management.php');
 
 
 function make_consultation() {
-  include_once 'dbconn.php';
-  require_once __DIR__ . '/vendor/autoload.php';
+  include_once '../dbconn.php';
+  require_once __DIR__ . '../../../vendor/autoload.php';
   $mpdf = new \Mpdf\Mpdf();
   date_default_timezone_set('Asia/Manila');
   $patient_id = $_POST['patient_id'];
@@ -339,20 +339,20 @@ function make_consultation() {
   );
   
   $path = "patient/".$patient_name;
-  if (!is_dir( $path ) ) {
-      mkdir( $path );       
+  if (!is_dir( "../../".$path ) ) {
+      mkdir( "../../".$path );       
   } 
   
   $path_type = $path."/consultation";
   
-  if (!is_dir( $path_type ) ) {
-      mkdir( $path_type );       
+  if (!is_dir( "../../".$path_type ) ) {
+      mkdir( "../../".$path_type );       
   } 
   
   $file = $path_type."/".$path_date."-".$patient_lname.".pdf";
   $file_name = $path_date."-".$patient_lname.".pdf";
   
-  $mpdf->Output($file,"F");
+  $mpdf->Output("../../".$file,"F");
   
   
   $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
@@ -365,8 +365,8 @@ function make_consultation() {
   function make_admission()
   {
     
-    include_once 'dbconn.php';
-    require_once __DIR__ . '/vendor/autoload.php';
+    include_once '../dbconn.php';
+    require_once __DIR__ . '../../../vendor/autoload.php';
 
     $mpdf = new \Mpdf\Mpdf();
 
@@ -561,20 +561,20 @@ function make_consultation() {
 
 
       $path = "patient/".$patient_name;
-      if (!is_dir( $path ) ) {
-          mkdir( $path );       
+      if (!is_dir( "../../".$path ) ) {
+          mkdir( "../../".$path );       
       } 
 
       $path_type = $path."/admission";
 
-      if (!is_dir( $path_type ) ) {
-          mkdir( $path_type );       
+      if (!is_dir( "../../".$path_type ) ) {
+          mkdir( "../../".$path_type );       
       }  
 
       $file = $path_type."/".$path_date."-".$patient_lname.".pdf";
       $file_name = $path_date."-".$patient_lname.".pdf";
 
-      $mpdf->Output($file,"F");
+      $mpdf->Output("../../".$file,"F");
 
       $insertSql = "INSERT INTO tbl_admission(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
       mysqli_query($conn,$insertSql);
@@ -588,8 +588,8 @@ function make_consultation() {
 
   function discharge_patient()
   {
-    include_once 'dbconn.php';
-    require_once __DIR__ . '/vendor/autoload.php';
+    include_once '../dbconn.php';
+    require_once __DIR__ . '../../../vendor/autoload.php';
 
         $mpdf = new \Mpdf\Mpdf();
 
@@ -668,7 +668,7 @@ function make_consultation() {
           } 
         $updateStat = "UPDATE tbl_patients SET status = 'Not Admitted' WHERE patient_id = '".$patient_id."';";
         mysqli_query($conn,$updateStat);
-        $mpdf->OverWrite($pdf_path, $search, $replacement, 'F', $pdf_path );
+        $mpdf->OverWrite("../../".$pdf_path, $search, $replacement, 'F', "../../".$pdf_path );
         header('Location: record_management.php');
 
   }
@@ -676,7 +676,7 @@ function make_consultation() {
 
 
   function make_lab_res(){
-    include_once 'dbconn.php';
+    include_once '../dbconn.php';
 
     date_default_timezone_set('Asia/Manila');
     $patient_id = $_POST['patient_id'];
@@ -690,13 +690,13 @@ function make_consultation() {
         //$destination = 'patient/' . $pdfName;
 
         $path = "patient/".$patient_name;
-        if (!is_dir( $path ) ) {
-            mkdir( $path );       
+        if (!is_dir( "../../".$path ) ) {
+            mkdir( "../../".$path );       
         } 
         $path_type = $path."/laboratory_result";
         
-        if (!is_dir( $path_type ) ) {
-            mkdir( $path_type );       
+        if (!is_dir( "../../".$path_type ) ) {
+            mkdir( "../../".$path_type );       
         } 
 
         //destination
@@ -707,8 +707,8 @@ function make_consultation() {
         //$size = $_FILES['patient_lab_res']['size'];//for size limit
       
             // move the uploaded (temporary) file to the specified destination
-            if (move_uploaded_file($tmp_file, $file)) {
-                $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,filename) VALUES ('$patient_id','$file','$record_date','$pdfName');";
+            if (move_uploaded_file($tmp_file, "../../".$file)) {
+                $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name) VALUES ('$patient_id','$file','$record_date','$pdfName');";
                 if (mysqli_query($conn, $insertSql)) {
                     echo "File uploaded successfully";
                     header('Location: record_management.php');
