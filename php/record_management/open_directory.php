@@ -3,7 +3,7 @@
 
 if(isset( $_GET['path']))
 {
-    $dir = $_GET['path'];
+    $dir = "../../".$_GET['path'];
 
     // Header content type
     header("Content-type: application/pdf");

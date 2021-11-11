@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 $view = $_POST['view'];
 $sql = "SELECT * FROM tbl_accounts where emp_id = '".$view."'";

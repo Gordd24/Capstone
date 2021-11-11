@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 if(isset($_POST['addPatientBtn'])){
 
      //post inputs
@@ -30,7 +30,7 @@ if(isset($_POST['addPatientBtn'])){
    
 
     if(empty($errorExist)){
-    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation');";
+    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation,status) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation','Not Admitted');";
     mysqli_query($conn,$insertSql);
     header("Location: record_management.php");
 

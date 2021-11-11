@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 $viewed = $_POST['view'];
 $sql = "SELECT * FROM tbl_patients where patient_id = '".$viewed."';";
 $result = $conn -> query($sql);
@@ -20,7 +20,7 @@ if($result->num_rows>0)
         </div>
 
         <div class='tab'>
-        <button class='tablinks' id='admition_btn'><i class='bx bxs-user-check'></i> Admition</button>
+        <button class='tablinks' id='admition_btn'><i class='bx bxs-user-check'></i> Admission</button>
         <button class='tablinks' id='consultation_btn'><i class='bx bx-notepad' ></i> Consultation</button>
         <button class='tablinks' id='med_cert_btn'><i class='bx bxs-certification' ></i> Medical Certificate</button>
         <button class='tablinks' id='lab_res_btn'><i class='bx bx-test-tube' ></i> Laboratory Results</button>
@@ -83,7 +83,7 @@ if($result->num_rows>0)
                         <td>".$row3['file_name']."</td>
                         <td>".$row3['date']."</td>
                         <td>
-                            <i class='bx bxs-file-find' id='".$row3['patient_id']."'></i>
+                            <a href='open_directory.php?path=".urlencode($row3['pdf_path'])."'><i class='bx bxs-file-find' id='".$row3['patient_id']."'></i></a>
                             <i class='bx bxs-file-export' id='".$row3['patient_id']."'></i>
                             <i class='bx bxs-file-pdf' id='".$row3['patient_id']."'></i>
                         </td>
@@ -116,7 +116,7 @@ if($result->num_rows>0)
                     <td>".$row4['file_name']."</td>
                     <td>".$row4['date']."</td>
                     <td>
-                        <i class='bx bxs-file-find' id='".$row4['patient_id']."'></i>
+                        <a href='open_directory.php?path=".urlencode($row4['pdf_path'])."'><i class='bx bxs-file-find' id='".$row4['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row4['patient_id']."'></i>
                         <i class='bx bxs-file-pdf' id='".$row4['patient_id']."'></i>
                     </td>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'dbconn.php';
+include_once 'php/dbconn.php';
 
 ?>
 
@@ -64,7 +64,7 @@ include_once 'dbconn.php';
         // }
     }
     if(isset($_SESSION["ID"])){
-        header("Location:dashboard.php");
+        header("Location:php/dashboard/dashboard.php");
     }
     ?>
 </body>

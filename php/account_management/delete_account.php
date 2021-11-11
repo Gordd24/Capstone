@@ -1,7 +1,7 @@
 <?php
 
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 $delete = $_POST['delete'];
 $sql = "DELETE FROM tbl_accounts WHERE emp_id='".$delete."'";

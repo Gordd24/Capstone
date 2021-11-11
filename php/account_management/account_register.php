@@ -2,10 +2,10 @@
 session_start();
 
 if(!isset($_SESSION['ID'])){
-    header("Location: index.php");
+    header("Location: ../../index.php");
 }
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
     if(isset($_POST['username_check'])){
         $regUname = $_POST['regisUname'];

@@ -24,7 +24,7 @@ echo "
 
     <h3>Patient: ".$viewPatient['first_name']." ".$viewPatient['middle_name']." ".$viewPatient['last_name']."</h3>
 
-    <form action='discharge_patient.php' method='POST'>
+    <form method='POST'>
     <label for='patient_id'>Patient ID:</label><br>
     <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' required='required' readonly><br><br>
     
@@ -63,7 +63,7 @@ echo "
     <label for='patient_died'>Died</label><br><br>
 
 
-  <input type='submit' name='submit_discharged' value='Submit'>
+  <input type='submit' name='discharged_submit' value='Submit'>
   
     </form> 
    </div> 

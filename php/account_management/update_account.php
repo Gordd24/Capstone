@@ -1,9 +1,9 @@
 <?php
     session_start();
     if(!isset($_SESSION['Username'])){
-        header("Location: index.php");
+        header("Location: ../../index.php");
     }
-    include_once 'dbconn.php';
+    include_once '../dbconn.php';
 
     if(isset($_POST['saveChangesButton'])){
 

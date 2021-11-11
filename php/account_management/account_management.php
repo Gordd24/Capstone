@@ -3,9 +3,9 @@ session_start();
 
 
 if(!isset($_SESSION['ID'])){
-    header("Location: index.php");
+    header("Location: ../../index.php");
 }
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 ?>
 
@@ -21,20 +21,20 @@ include_once 'dbconn.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/account_management.css">
+  <link rel="stylesheet" href="../../css/navigation.css">
+  <link rel="stylesheet" href="../../css/account_management.css">
   <!-- Jquery + bootstrap js + sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/account_management.js"></script>
-  <script src="js/NavigationScript.js" type="text/javascript"></script>
+  <script src="../../js/account_management.js"></script>
+  <script src="../../js/NavigationScript.js" type="text/javascript"></script>
 </head>
 <body>  
     
-    <?php include_once 'navigation_header.php'; ?>
+    <?php include_once '../navigation_header.php'; ?>
 
     <div class="page_content_div">
         <div class="account_management_div">

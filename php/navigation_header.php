@@ -29,7 +29,7 @@ echo " <div class=\"title_bar\">
 </div>
 
 <div class=\"title_logo\">
- <img class=\"logo\" src=\"images/ofelia_logo.png\" alt=\"Logo\">
+ <img class=\"logo\" src=\"../../images/ofelia_logo.png\" alt=\"Logo\">
 </div>
 <ul class=\"nav_list\">
 <li>
@@ -39,13 +39,13 @@ echo " <div class=\"title_bar\">
     </a>
 </li>
 <li>
-     <a href=\"./dashboard.php\" id=\"dashboard_link\">
+     <a href=\"../dashboard/dashboard.php\" id=\"dashboard_link\">
          <i class='bx bxs-dashboard' ></i>
          <span class=\"dashboard\">&nbsp;Dashboard</span>
     </a>
 </li>
 <li>
-    <a href=\"./record_management.php\" id=\"record_management_link\">
+    <a href=\"../record_management/record_management.php\" id=\"record_management_link\">
         <i class='bx bx-library' ></i>
         <span class=\"record_management\">&nbsp;Record Management</span>
     </a>
@@ -57,13 +57,13 @@ echo " <div class=\"title_bar\">
     </a>
 </li>
 <li>
-    <a href=\"./account_management.php\" id=\"account_management_link\">
+    <a href=\"../account_management/account_management.php\" id=\"account_management_link\">
         <i class='bx bxs-cog'></i>
         <span class=\"account_management\">&nbsp;Account Management</span>
     </a>
 </li>
 <li>
-    <a href=\"logout.php\" id=\"log_out_a\">
+    <a href=\"../logout.php\" id=\"log_out_a\">
         <i class='bx bx-power-off'></i>
         <span class=\"logout_account\">&nbsp;Log Out</span>
     </a>

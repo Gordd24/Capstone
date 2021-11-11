@@ -1,5 +1,5 @@
 <?php
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 if (!isset($_SESSION)) {
     session_start();
   }

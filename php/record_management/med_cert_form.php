@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 
 $patient = $_POST['patient'];
@@ -22,7 +22,7 @@ echo "
 </div>
 <div class='form_div'>
     <h2>Medical Certificate Form</h2> 
-    <form action='make_med_cert.php' method='POST'>
+    <form  method='POST'>
         <label for='patient_id'>Patient ID:</label><br>
         <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' readonly><br>
         <label for='patient_fname'>First name:</label><br>
@@ -50,7 +50,7 @@ echo "
         <input type='text' id='patient_physician_license' name='patient_physician_license' required='required'><br>
         
 
-        <input type='submit' value='Submit'>
+        <input type='submit' name='med_cert_submit' value='Submit'>
     </form> 
    </div> 
 ";

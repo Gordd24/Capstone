@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 
 $patient = $_POST['patient'];
@@ -37,7 +37,7 @@ echo "
 </div>
 <div class='form_div'>
     <h2>Admission Form</h2> 
-    <form action='make_admission_form.php' method='POST'>
+    <form method='POST'>
         <label for='patient_room_no'>Room No:</label><br>
         <input type='text' id='patient_room_no' name='patient_room_no'><br>
         <label for='patient_contact_no'>Contact No (Optional):</label><br>
@@ -93,7 +93,7 @@ echo "
         <label for='patient_admitting_diagnosis'>Admitting Diagnosis:</label><br>
         <textarea id='patient_admitting_diagnosis' name='patient_admitting_diagnosis' rows=”15″ cols=”40″ required='required'></textarea><br><br>
 
-        <input type='submit' value='Submit'>
+        <input type='submit' name='admission_submit' value='Submit'>
     </form> 
    </div> 
 ";

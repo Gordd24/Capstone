@@ -1,6 +1,6 @@
 <?php
 
-include_once 'dbconn.php';
+include_once '../dbconn.php';
 
 
 $patient = $_POST['patient'];
@@ -20,7 +20,7 @@ echo "
     <h2>Laboratory Result</h2> 
 
 
-    <form action='make_lab_res.php' method='POST' enctype='multipart/form-data'>
+    <form method='POST' enctype='multipart/form-data'>
     <label for='patient_id'>Patient ID:</label><br>
     <input type='text' id='patient_id' name='patient_id' value='".$viewPatient['patient_id']."' required='required' readonly><br>
     <label for='patient_fname'>First name:</label><br>
