@@ -39,7 +39,7 @@ echo " <div class=\"title_bar\">
     </a>
 </li>
 <li>
-     <a href=\"#\">
+     <a href=\"./dashboard.php\" id=\"dashboard_link\">
          <i class='bx bxs-dashboard' ></i>
          <span class=\"dashboard\">&nbsp;Dashboard</span>
     </a>
