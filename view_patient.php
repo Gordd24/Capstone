@@ -47,7 +47,7 @@ if($result->num_rows>0)
                     <td>".$row2['file_name']."</td>
                     <td>".$row2['date']."</td>
                     <td>
-                        <i class='bx bxs-file-find' id='".$row2['patient_id']."'></i>
+                        <a href='open_directory.php?path=".urlencode($row2['pdf_path'])."'><i class='bx bxs-file-find' id='".$row2['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row2['patient_id']."'></i>
                         <i class='bx bxs-file-pdf' id='".$row2['patient_id']."'></i>
                     </td>

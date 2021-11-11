@@ -64,7 +64,7 @@ include_once 'dbconn.php';
         // }
     }
     if(isset($_SESSION["ID"])){
-        header("Location:home.php");
+        header("Location:dashboard.php");
     }
     ?>
 </body>
