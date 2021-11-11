@@ -708,7 +708,7 @@ function make_consultation() {
       
             // move the uploaded (temporary) file to the specified destination
             if (move_uploaded_file($tmp_file, $file)) {
-                $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date) VALUES ('$patient_id','$file','$record_date');";
+                $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,filename) VALUES ('$patient_id','$file','$record_date','$pdfName');";
                 if (mysqli_query($conn, $insertSql)) {
                     echo "File uploaded successfully";
                     header('Location: record_management.php');
