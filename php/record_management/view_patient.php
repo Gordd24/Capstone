@@ -49,7 +49,7 @@ if($result->num_rows>0)
                     <td>
                         <a href='open_directory.php?path=".urlencode($row2['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row2['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row2['patient_id']."'></i>
-                        <i class='bx bxs-download' id='".$row2['patient_id']."'></i>
+                        <a href='download_directory.php?path=".urlencode($row2['pdf_path'])."&file_name=".urlencode($row2['file_name'])."'><i class='bx bxs-download' id='".$row2['patient_id']."'></i></a>
                     </td>
                         </tr>";
                     
@@ -85,7 +85,7 @@ if($result->num_rows>0)
                         <td>
                             <a href='open_directory.php?path=".urlencode($row3['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row3['patient_id']."'></i></a>
                             <i class='bx bxs-file-export' id='".$row3['patient_id']."'></i>
-                            <i class='bx bxs-download' id='".$row3['patient_id']."'></i>
+                            <a href='download_directory.php?path=".urlencode($row3['pdf_path'])."&file_name=".urlencode($row3['file_name'])."'><i class='bx bxs-download' id='".$row3['patient_id']."'></i></a>
                         </td>
                             </tr>";    
                         
@@ -118,7 +118,7 @@ if($result->num_rows>0)
                     <td>
                         <a href='open_directory.php?path=".urlencode($row5['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row5['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row5['patient_id']."'></i>
-                        <i class='bx bxs-download' id='".$row5['patient_id']."'></i>
+                        <a href='download_directory.php?path=".urlencode($row5['pdf_path'])."&file_name=".urlencode($row5['file_name'])."'><i class='bx bxs-download' id='".$row5['patient_id']."'></i></a>
                     </td>
                         </tr>";    
                     
@@ -151,7 +151,7 @@ if($result->num_rows>0)
                     <td>
                         <a href='open_directory.php?path=".urlencode($row4['pdf_path'])."'><i class='bx bxs-file-pdf' id='".$row4['patient_id']."'></i></a>
                         <i class='bx bxs-file-export' id='".$row4['patient_id']."'></i>
-                        <i class='bx bxs-download' id='".$row4['patient_id']."'></i>
+                        <a href='download_directory.php?path=".urlencode($row4['pdf_path'])."&file_name=".urlencode($row4['file_name'])."'><i class='bx bxs-download' id='".$row4['patient_id']."'></i></a>
                     </td>
                         </tr>";    
                     
