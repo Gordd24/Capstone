@@ -16,7 +16,7 @@ if($result->num_rows>0)
         <div class='patient_info'>
             <span>Patient ID: ".$row['patient_id']."</span><br>
             <span>Patient Name: ".$row['first_name']." ".$row['middle_name']." ".$row['last_name']."</span>
-            <i class='bx bxs-edit'></i>
+            <a href='edit_patient.php?id=".$row['patient_id']."'><i class='bx bxs-edit'></i></a>
         </div>
 
         <div class='tab'>

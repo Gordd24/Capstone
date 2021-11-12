@@ -5,15 +5,15 @@
     box-sizing: border-box;
     font-family: Open Sans,sans-serif;
 
-
-    
-
 }
 
 
 ul.nav_list{
     padding: 0;
+    margin:0;
 }
+
+
 /* whattt??? */
 body{
     position: relative;
@@ -34,8 +34,6 @@ body{
     background-color: rgb(38, 84, 118);
     /* border-right: 0.2vw solid rgb(10, 24, 35); */
 }
-
-
 
 
 .title_bar{
@@ -95,7 +93,6 @@ body{
     padding-right: 2%;
     /* background-color: rgb(48, 96, 131); */
     /* border-bottom: 0.1vw solid rgb(26, 57, 81); */
-
 }
 
 .sidebar ul li a{
@@ -129,7 +126,6 @@ body{
 
 }
 
-
 .title_logo{
     /* border-bottom: 0.2vw solid rgb(20, 69, 107); */
     text-align: center;
@@ -137,7 +133,6 @@ body{
     padding-bottom: 5%;
     padding-top: 5%;
     display: flex;
-   
  }
 
  .page_content_div

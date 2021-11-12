@@ -6,6 +6,11 @@ body{
     background-size: cover;
 }
 
+/* line-height prob */
+/* ul.nav_list li{
+    line-height: ;
+} */
+
 .account_management_div
 {
     position: relative;
@@ -16,6 +21,8 @@ body{
     /* background-color: rgb(102, 37, 86); */
 
 }
+
+
 
 .sidebar ul li #account_management_link{
     color: rgb(26, 57, 81);

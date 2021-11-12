@@ -55,8 +55,8 @@ if(isset($_POST['lab_res_upload']))
             <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
           </div>
         </div>
+        
         <div class="record_management_div">
-
 
           <div class="record_management_div_1">
             <div class="patient_search_div">
