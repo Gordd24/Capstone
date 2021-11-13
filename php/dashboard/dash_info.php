@@ -68,7 +68,7 @@ if (!isset($_SESSION)) {
         </div>
     </div>
     <div class='set'>
-        <h1>Currenttly Admitted</h1>
+        <h1>Currently Admitted</h1>
         <div class='block_div'>
             <div class='block admitted'>
                 <div class='icon_div'><i class='bx bxs-group'></i></div>

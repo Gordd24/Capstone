@@ -33,7 +33,7 @@ echo " <div class=\"title_bar\">
 </div>
 <ul class=\"nav_list\">
 <li>
-    <a href=\"#\">
+    <a href=\"../profile/view_profile.php\" id=\"profile_link\">
         <i class='bx bxs-user-circle' ></i>
         <span class=\"name\">&nbsp;".$active_account_name."</span>
     </a>

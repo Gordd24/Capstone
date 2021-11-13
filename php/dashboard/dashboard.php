@@ -3,7 +3,7 @@ session_start();
 
 
 if(!isset($_SESSION['ID'])){
-    header("Location: index.php");
+    header("Location: ../../index.php");
 }
 include_once '../dbconn.php';
 
