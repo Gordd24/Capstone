@@ -38,11 +38,6 @@ include_once '../dbconn.php';
                <?php include_once 'dash_info.php'; ?>
 
             </div>
-            
-
-            
-
-            
 
 
         </div>

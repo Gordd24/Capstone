@@ -46,12 +46,13 @@ if(isset($_POST['edit_profile_submit'])){
     <?php include_once '../navigation_header.php'; ?>
 
     <div class="page_content_div">
-
+        
         <div class="profile_management_div">
-
+            
             <div class="profile_management_edit_div">
+            <h2>Account Profile</h2> 
                 <div class="edit_profile_form_div">
-                    <h2>Account Profile</h2> 
+                    
 
                   
                     
@@ -87,14 +88,6 @@ if(isset($_POST['edit_profile_submit'])){
                         <input class="profile_editable" id="profile_lname" type="text" name="profile_lname" placeholder="Last Name" required="" value="<?php echo $view_profile['last_name']; ?>" autocomplete="off" readonly><br>
                         <label for="profile_emp_id">Employee ID</label><br>
                         <input class="profile_editable" id="profile_emp_id" type="text" name="profile_emp_id" required="" placeholder="Employee ID" value="<?php echo $view_profile['emp_id']; ?>" autocomplete="off" readonly><br>
-
-                              
-
-                        
-                        
-                        
-                        
-
 
                         <input class="button" type="submit" name="edit_profile_submit" value="Save Changes" disabled>    
                     </form>

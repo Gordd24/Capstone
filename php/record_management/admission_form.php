@@ -77,7 +77,7 @@ echo "
         <label for='patient_spouse_name'>Spouse's Name (Optional):</label><br>
         <input type='text' id='patient_spouse_name' name='patient_spouse_name'><br>
         <label for='patient_date_of_marriage'>Date Of Marriage (Optional):</label><br>
-        <input type='date' id='patient_date_of_marriage' name='patient_date_of_marriage' required='required'><br>
+        <input type='date' id='patient_date_of_marriage' name='patient_date_of_marriage'><br>
         <label for='patient_place_of_marraige'>Place Of Marriage (Optional):</label><br>
         <input type='text' id='patient_place_of_marraige' name='patient_place_of_marriage'><br><br>
 

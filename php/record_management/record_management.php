@@ -194,7 +194,7 @@ $mpdf->WriteHTML(
 '
 );
 
-$path = "patient/".$patient_name;
+$path = "patient/".$patient_id;
 if (!is_dir( "../../".$path ) ) {
     mkdir( "../../".$path );       
 } 
@@ -338,7 +338,7 @@ function make_consultation() {
   '
   );
   
-  $path = "patient/".$patient_name;
+  $path = "patient/".$patient_id;
   if (!is_dir( "../../".$path ) ) {
       mkdir( "../../".$path );       
   } 
@@ -560,7 +560,7 @@ function make_consultation() {
     );
 
 
-      $path = "patient/".$patient_name;
+      $path = "patient/".$patient_id;
       if (!is_dir( "../../".$path ) ) {
           mkdir( "../../".$path );       
       } 
@@ -684,12 +684,12 @@ function make_consultation() {
     $path_date = date("Ymdgis");
     $record_date = date("Y-m-d");
 
-    $patient_name = $_POST['patient_fname']." ".$_POST['patient_mname']." ".$_POST['patient_lname'];
+    // $patient_name = $_POST['patient_fname']." ".$_POST['patient_mname']." ".$_POST['patient_lname'];
 
         $pdfName =$_FILES['patient_lab_res']['name'];
         //$destination = 'patient/' . $pdfName;
 
-        $path = "patient/".$patient_name;
+        $path = "patient/".$patient_id;
         if (!is_dir( "../../".$path ) ) {
             mkdir( "../../".$path );       
         } 
