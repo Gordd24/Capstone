@@ -37,13 +37,13 @@ if(isset($_POST['lab_res_upload']))
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/record_management.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
   
     <?php include_once '../navigation_header.php'; ?>
 
     <div class="page_content_div">
-
         <div class="option_modal_div" tabindex="0">
           <div class="option_modal_exit_div">
             <i class='bx bxs-x-circle'></i>
@@ -51,13 +51,12 @@ if(isset($_POST['lab_res_upload']))
           <div class="modal_options_div">
             <p class="option_buttons" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
             <p class="option_buttons" id="admission"><i class='bx bx-user-plus' ></i> Admission Record</p>
-            <p class="option_buttons" id="med_cert"><i class='bx bx-certification' ></i> Medical Certificate</p>
+            <p class="option_buttons" id="med_cert"><i class='bx bx-certification'></i> Medical Certificate</p>
             <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
           </div>
         </div>
         
         <div class="record_management_div">
-
           <div class="record_management_div_1">
             <div class="patient_search_div">
               <form action="index.php" method="post">
@@ -66,6 +65,7 @@ if(isset($_POST['lab_res_upload']))
             </div>
             <div class="add_patient_btn_div">
                 <button id="add_patient_btn">Add Patient</button>
+                <a href='archives.php'><button id="archives_btn">Archives</button></a>
             </div>
             <div class="patient_table_div">
               <table id="table_patient">
@@ -111,9 +111,6 @@ if(isset($_POST['lab_res_upload']))
                 </div>
                 
         </div>
-
-        <div class="record_management_div_3"> </div>
-
         <div class="record_management_div_4"> </div>
 
       </div>

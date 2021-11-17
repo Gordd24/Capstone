@@ -25,12 +25,8 @@ body{
     /* display: none; */
 }
 
-
-
 .profile_management_edit_div .edit_profile_form_div 
 {
-
-
     background: rgba(240, 238, 240, 0.61);
     box-shadow: 0px 10px 20px 3px #6b6a6a; 
     backdrop-filter: blur(2.8px);
@@ -45,7 +41,7 @@ body{
 .profile_management_div h2
 {
     font-size: 2vw;
-    padding: 2% 2% 2% 0;
+    padding: 1% 1% 1% 0;
     border-bottom: 0.1vw solid rgb(220, 218, 218);
 }
 

@@ -138,15 +138,16 @@ body{
  .page_content_div
 {
     position: absolute;
-    left: 25%;
-    width: 70%;
+    left: 21%;
+    width: 78%;
     height: 70%;
     /* background-color: darkgreen; */
     margin: 9% 0 0 0;
-    padding: 1% 1% 1% 1%;
+    padding: 1% 0 1% 0;
     /* background-color: rgba(96, 184, 228, 0.7); */
     display: flex;
     align-items: center;
+    
 }
 
 

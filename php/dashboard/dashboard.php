@@ -25,6 +25,7 @@ include_once '../dbconn.php';
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>  
     

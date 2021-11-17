@@ -27,6 +27,7 @@ if(isset($_POST['edit_patient_submit'])){
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/edit_patient.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
   
@@ -38,7 +39,10 @@ if(isset($_POST['edit_patient_submit'])){
 
             <div class="record_management_edit_div">
                 <div class="cancel_add_patient_btn_div">
-                   <a href="record_management.php"><i class='bx bxs-x-circle'></i></a>
+                    <?php
+                         echo "<a href='view_patient.php?id=".base64_encode(base64_encode($patient))."'><i class='bx bxs-x-circle'></i></a>";
+                    ?>
+                   
                 </div>
                 <div class="edit_patient_form_div">
                     <h2>Patient Information</h2> 
