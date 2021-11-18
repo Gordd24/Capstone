@@ -189,6 +189,10 @@ $(document).ready(function(){
                         $('#regMname').val('')
                         $('#regLname').val('')
                         $('#regEmpId').val('')
+
+                    //     setTimeout(function(){
+                    //      window.location.reload(1);
+                    //   }, 1000);
                        
                    }
               })

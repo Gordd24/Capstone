@@ -81,7 +81,7 @@ include_once '../dbconn.php';
                     $auto_id_query = "UPDATE tbl_accounts SET auto_id = '".$auto_id."' WHERE acc_id='".$last_id."'";
                     mysqli_query($conn,$auto_id_query);  
                     echo "saved";
-                    header("Location: account_management.php");
+                    
                     exit();  
                 }
             }
