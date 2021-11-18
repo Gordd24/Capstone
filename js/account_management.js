@@ -197,6 +197,204 @@ $(document).ready(function(){
          return false;
     }
 
+     /*--------------------UPDATE ACCOUNT------------------------*/
+
+     var upd_uname_state = true;
+
+    //to get the original username value
+     var currentUname = $('#viewUname').val()
+ 
+     $('#viewUname').on('blur', function () {
+
+          var viewUname =  $('#viewUname').val()
+          if(viewUname == ''){ 
+               upd_uname_state = false;
+               $('#viewUname').parent().removeClass();
+               $('#viewUname').parent().removeClass("form_error");
+               $('#viewUname').siblings("span").text('');
+     
+               return
+          }
+
+          if(viewUname!=currentUname){ 
+               $.ajax({
+                    type: "POST",
+                    url: "update_validation.php",
+                    data: {
+                         'upd_username_check': 1,
+                         'viewUname' : viewUname,
+                    },
+                    success: function (response) {
+                         
+                         if(response == 0){
+                              upd_uname_state = false; 
+                              $('#viewUname').parent().removeClass();
+                              $('#viewUname').parent().addClass("form_error");
+                              $('#viewUname').siblings("span").text('Username already taken');
+                                   
+                         }
+                         else if(response==1){    
+                              upd_uname_state = true;
+                              $('#viewUname').parent().removeClass();
+                              $('#viewUname').parent().removeClass("form_error");
+                              $('#viewUname').siblings("span").text('');
+                         }
+                         else{
+                              alert(response);
+                              $('#viewUname').parent().removeClass();
+                              $('#viewUname').parent().removeClass("form_error");
+                              $('#viewUname').siblings("span").text(response);
+                         }
+                                   
+                    }
+               });
+          }
+          else if(viewUname==currentUname){
+               upd_uname_state = true;
+               $('#viewUname').parent().removeClass();
+               $('#viewUname').parent().removeClass("form_error");
+               $('#viewUname').siblings("span").text('');
+          }
+     });
+ 
+     var current_pword_state = true
+
+     $('#currentPword').on('blur', function(){
+          var currentPword = $('#currentPword').val()
+          if(currentPword==''){
+               current_pword_state = true
+               $('#currentPword').parent().removeClass();
+               $('#currentPword').parent().removeClass("form_error");
+               $('#currentPword').siblings("span").text('');
+               return
+          }
+          $.ajax({
+               type: "POST",
+               url: "update_validation.php",
+               data: {
+                    'upd_password_check': 1,
+                    'currentUname' : currentUname,
+                    'currentPword' : currentPword
+                    
+               },
+               success: function (response) {
+                    
+                    if(response == 0){
+                         
+                         current_pword_state = false 
+                         $('#currentPword').parent().removeClass();
+                         $('#currentPword').parent().addClass("form_error");
+                         $('#currentPword').siblings("span").text('Current Password is wrong');
+                              
+                    }
+                    else if(response==1){    
+                         
+                         current_pword_state = true
+                         $('#currentPword').parent().removeClass();
+                         $('#currentPword').parent().removeClass("form_error");
+                         $('#currentPword').siblings("span").text('');
+                    }
+                    else{
+                         alert(response);
+                         $('#currentPword').parent().removeClass();
+                         $('#currentPword').parent().removeClass("form_error");
+                         $('#currentPword').siblings("span").text(response);
+                    }
+                              
+               }
+          });
+     })
+
+    $("#view_form").validate({
+     rules:{
+          viewUname:{
+               required: true,
+          },
+          
+          viewFname:{
+               required: true,    
+          },
+          viewLname:{
+               required: true,
+          },
+          newPword:{
+               minlength: 5
+          },
+          confirmPword:{
+               equalTo: '#newPword'
+          },
+     },
+     messages:{
+          viewUname: "Please enter username",  
+          viewFname: "Please enter first name",
+          viewLname: "Please enter last name",
+         
+          newPword: {
+             
+               minlength:"password must atleast have 5 characters"
+          },
+          confirmPword: {
+               
+               equalTo: "Password does not match"
+          },
+     },
+     submitHandler: submitFormUpdate
+})
+
+//form submitter update
+function submitFormUpdate(){
+     var data = $('#view_form').serialize();
+     if(upd_uname_state == false || current_pword_state == false){
+     Swal.fire(
+          'Error!',
+          'Please fix the errors',
+          'error'
+     )
+     }else{
+          Swal.fire({
+               title: 'Are you sure?',
+               text: "Do you want to update this account!",
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, delete it!'
+             }).then((result) => {
+               if (result.isConfirmed) {
+                    $.ajax({
+                         type:'POST',
+                         url: "update_validation.php",
+                         data:data,
+                         success : function(response){
+                              
+                              if(response==1){
+                                   Swal.fire(
+                                        'Success',
+                                        'Update is successful',
+                                        'success'
+                                      )  
+                                      setTimeout(function(){
+                                        window.location.reload(1);
+                                     }, 1000);
+                              }
+                              else{
+                                   alert(response);
+                                   $('#currentPword').parent().removeClass();
+                                   $('#currentPword').parent().removeClass("form_error");
+                                   $('#currentPword').siblings("span").text(response);
+                              }
+                         }
+                    })
+               }
+             })
+
+          
+     }
+    
+     return false;
+}
+
+   
     //stops submittin, or simply disable 13 or the enter key
     $('.search_bar').on('keypress', function(e) {
       return e.which !== 13;

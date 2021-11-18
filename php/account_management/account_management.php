@@ -23,9 +23,6 @@ include_once '../dbconn.php';
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/account_management.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
   <!-- Jquery + bootstrap js + sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -34,6 +31,9 @@ include_once '../dbconn.php';
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/account_management.js"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
 </head>
 <body>  
     
@@ -60,7 +60,7 @@ include_once '../dbconn.php';
                         <?php include_once 'fetch_Accounts.php';?>   
                     </table>
             </div>
-            <div id="registration" class="tabcontent">
+            <div id="registration" class="tabcontent" >
               <div class ="container mt-5" style="max-width: 500px">
                   <form method="post" id="regForm" class="form-signin">
                   <div id="show_message" class="alert alert-success" style="display: none">Insert Success</div>

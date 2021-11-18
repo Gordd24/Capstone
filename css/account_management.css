@@ -291,3 +291,8 @@ body{
   .error{
     color: #D83D5A;
   }
+
+  #regForm{
+      max-height: 500px;
+      overflow-y: scroll;
+  }
