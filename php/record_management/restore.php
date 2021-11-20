@@ -15,6 +15,7 @@ if(isset($_GET['id']))
     mysqli_query($conn,$updateStat);
     header('Location: archives.php');
 }
+
 else{
     header('Location: record_management.php');
 }

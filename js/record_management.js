@@ -52,32 +52,21 @@ $(document).ready(function () {
   });
 
 
-  $("#add_patient_btn").click(function () {
-    $(".record_management_div_1").hide(),
-      $(".record_management_div_2").show();
-
-  });
-
   $(".bx.bxs-x-circle").click(function () {
     $(".record_management_div_2").hide(),
       $(".record_management_div_1").show();
-
   });
 
   $(".bx.bxs-file-plus").click(function () {
     $('.option_modal_div').show();
     $('.option_modal_div').focus();
     $('.option_modal_div').attr('id', this.id);
-
-
   });
 
   $('.option_modal_div').focusout(function () {
     $(this).hide();
     $('.option_modal_div').attr('id', "");
   });
-
-
 
   $('.option_modal_exit_div').click(function () {
     $('.option_modal_div').hide();

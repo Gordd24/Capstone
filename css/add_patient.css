@@ -1,0 +1,98 @@
+body{
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.sidebar ul li #record_management_link{
+    color: rgb(26, 57, 81);
+    background-color: white;
+}
+
+.page_content_div .record_management_div
+{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100%;
+}
+
+.page_content_div .record_management_div .add_patient_div
+{
+    /* background-color: rgb(255, 255, 255); */
+    padding: 1% 0 1% 0;
+    height: 100%;
+}
+
+ .add_patient_div .add_patient_form_div 
+{
+    height: 100%;
+    overflow-y: auto;
+    /* background-image: linear-gradient(to bottom right, rgb(161, 204, 231), rgb(255, 255, 255)); */
+    background: rgba(240, 238, 240, 0.61);
+    box-shadow: 0px 10px 20px 3px #6b6a6a; 
+    backdrop-filter: blur(2.8px);
+    -webkit-backdrop-filter: blur(2.8px);
+    padding: 1% 1% 6% 1%;
+}
+
+
+
+ .add_patient_div .add_patient_form_div h2
+{
+    font-size: 2vw;
+    margin-bottom: 2%;
+}
+ .add_patient_div .add_patient_form 
+{
+    font-size: 1.1vw;
+}
+ .add_patient_div .add_patient_form input[type=text],.add_patient_form input[type=date]
+{
+    font-size: 1vw;
+    outline: none;
+    border: 0.1vw solid black;
+    border-radius: 4%/40%;
+    margin-bottom: 2%;
+    padding: 1%;
+    width: 40%;
+}
+
+ .add_patient_div .add_patient_form input[type="radio"] {
+    margin-bottom: 2%;
+}
+ .add_patient_div .add_patient_form input[type=submit]
+{
+    margin-top: 1.2%;
+    float:right;
+    padding: 1%;
+    width: 15%;
+    border-radius: 15%/45%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 1.2vw;
+    color: white;
+    cursor: pointer;
+}
+ .add_patient_div .add_patient_form label
+{
+   font-weight: bold;
+
+}
+ .add_patient_div .add_patient_form p
+{
+    margin-bottom: 1%;
+    font-weight: bold;
+    
+}
+
+ .add_patient_div .cancel_add_patient_btn_div .bx.bxs-x-circle
+{
+    font-size: 2.5vw;
+    color: rgb(124, 14, 14);
+}
+ .add_patient_div .cancel_add_patient_btn_div 
+{
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
+}

@@ -11,13 +11,10 @@ body{
     background-color: white;
 }
 
-
 .page_content_div .view_patient_div
 {
     height: 100%;
     width: 100%;
-
-
 }
 
 .page_content_div .view_patient_div .patient_records_div
@@ -29,7 +26,6 @@ body{
     width: 100%;
     height: 94%;
     overflow-y: auto;
-
 }
 
 .view_patient_div .tab{
@@ -38,7 +34,6 @@ body{
     border-bottom: 0.1vw solid rgb(52, 79, 95);
     display: flex;
     align-items: center;
-
 }
 
 .view_patient_div .tab .tablinks

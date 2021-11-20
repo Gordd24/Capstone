@@ -1,5 +1,5 @@
 body{
-    background: url(../images/back_7.jpg) no-repeat center center fixed; 
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,23 +19,30 @@ body{
 
 .page_content_div .profile_management_div .profile_management_edit_div
 {
-    /* background-color: rgb(255, 255, 255); */
     padding: 1% 0 1% 0;
     height: 100%;
-    /* display: none; */
 }
 
 .profile_management_edit_div .edit_profile_form_div 
 {
     background: rgba(240, 238, 240, 0.61);
     box-shadow: 0px 10px 20px 3px #6b6a6a; 
-    backdrop-filter: blur(2.8px);
-    -webkit-backdrop-filter: blur(2.8px);
+    /* backdrop-filter: blur(2.8px);
+    -webkit-backdrop-filter: blur(2.8px); */
     height: 100%;
     overflow-y: auto;
     /* background-image: linear-gradient(to bottom right, rgb(161, 204, 231), rgb(255, 255, 255)); */
     /* box-shadow: 1vw 1vw 1vw rgb(184, 184, 196); */
     padding: 3% 1% 6% 1%;
+
+}
+
+
+.profile_management_edit_div .edit_profile_form_div span
+{
+   font-size: 1.8vw;
+   display: block;
+   margin-bottom:1%;
 }
 
 .profile_management_div h2
@@ -57,18 +64,7 @@ body{
     font-size: 1.1vw;
 }
 
-.profile_management_edit_div .edit_profile_form input[type=text],.edit_profile_form input[type=date],.edit_profile_form input[type=password]
-{
-    font-size: 1vw;
-    outline: none;
-    border: 0.1vw solid black;
-    border-radius: 4%/40%;
-    margin-bottom: 2%;
-    padding: 1%;
-    width: 40%;
-}
-
-.profile_management_edit_div .edit_profile_form select
+.profile_management_edit_div .edit_profile_form input[type=password]
 {
     font-size: 1vw;
     outline: none;
@@ -80,9 +76,7 @@ body{
 }
 
 
-.profile_management_edit_div .edit_profile_form input[type="radio"] {
-    margin-bottom: 2%;
-}
+
 
 .profile_management_edit_div .edit_profile_form input[type=submit]
 {
