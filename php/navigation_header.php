@@ -6,7 +6,9 @@ if (!isset($_SESSION)) {
 
 
 $ID = $_SESSION['ID'];
+$position = $_SESSION['position'];
 $sql = "SELECT * FROM tbl_accounts where acc_id = '$ID'";
+
 $result = $conn -> query($sql);
 $active_account_name = "";
  
@@ -14,7 +16,7 @@ if($result->num_rows>0)
 {
    while($row = $result -> fetch_assoc())
    {
-        $active_account_name = $row['first_name']." ".$row['last_name']; 
+        $active_account_name = $row['first_name']." ".$row['last_name'];
    }
 }
 

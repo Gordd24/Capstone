@@ -40,11 +40,13 @@ include_once 'php/dbconn.php';
 
         $select = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username' AND password = '$Password'");
         $selectUname = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username'");
+        //$selectPos = mysqli_query($conn,"SELECT position FROM tbl_accounts WHERE username = '$Username'");
 
         $row = mysqli_fetch_array($selectUname);
         
         if(password_verify($Password, $row['password'])){
             $_SESSION["ID"] = $row['acc_id'];
+            $_SESSION["position"] = $row['position'];
         }
         else{
             echo '<script type = "text/javascript">';
