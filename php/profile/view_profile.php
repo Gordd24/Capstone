@@ -52,7 +52,6 @@ if(isset($_POST['edit_profile_submit'])){
   <title>Profile</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
-  <script src="../../js/view_profile.js" type="text/javascript"></script>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="../../css/navigation.css">
@@ -65,11 +64,9 @@ if(isset($_POST['edit_profile_submit'])){
     <div class="page_content_div">
         <div class="profile_management_div">
             <div class="profile_management_edit_div">
-            <h2>Account Profile</h2> 
+            <h2>My Account</h2> 
                 <div class="edit_profile_form_div">
-                    
-
-                  
+            
                     
                     <?php 
                         
@@ -84,23 +81,39 @@ if(isset($_POST['edit_profile_submit'])){
                         }    
                     
                     ?>
-                    <span><strong>Account ID: </strong> <?php echo $view_profile['acc_id']; ?> </span><br>
-                    <span><strong>Position: </strong> <?php echo $view_profile['position']; ?> </span><br>
-                    <span><strong>Username: </strong> <?php echo $view_profile['username']; ?> </span><br>
-                    <span><strong>Name: </strong> <?php echo $view_profile['first_name']." ".$view_profile['middle_name']." ".$view_profile['last_name']; ?> </span><br>
-                    <span><strong>Employee ID: </strong> <?php echo $view_profile['emp_id']; ?> </span><br>
-                    <form class="edit_profile_form" method="POST">
-                        </select><br>
-                        <h5>Change Password</h5><br>
-                        <label for='currentPword'>Current Password:</label><br>
-                        <input type='password' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'><br>
-                        <label for='newPword'>New Password:</label><br>
-                        <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
-                        <label for='confirmPword'>Confirm New Password:</label><br>
-                        <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
-                        <input type='text' id='updateAccID' name='updateAccID' placeholder='' style='visibility:hidden' value='<?php echo $view_profile['acc_id']; ?>'>
-                        <input class='button' type='submit' name='edit_profile_submit' value='Save Changes'>
-                    </form>
+                   
+                    
+                   <div class="account_info_div">
+                        <form class="view_profile_form">
+                            <h5>Account Profile</h5><br>
+                            <label  for='acc_id'>Account ID:</label><br>
+                            <input type='text' id='acc_id'class='viewFields'  value="<?php echo $view_profile['acc_id']; ?>" ><br>
+                            <label  for='emp_id'>Employee ID:</label><br>
+                            <input type='text' id='emp_id' class='viewFields'  value="<?php echo $view_profile['emp_id']; ?>" readonly><br>
+                            <label  for='name'>Name:</label><br>
+                            <input type='text' id='name' class='viewFields'  value="<?php echo $view_profile['position']." ".$view_profile['first_name']." ".$view_profile['middle_name']." ".$view_profile['last_name']; ?>" readonly><br>
+                            <label  for='username'>Username:</label><br>
+                            <input type='text' id='username' class='viewFields'  value="<?php echo $view_profile['username']; ?>" readonly><br>
+                        </form>
+                            
+                    </div>
+
+                    <div class="account_info_div">
+                        <form class="edit_profile_form" method="POST">                            
+                            <h5>Change Password</h5><br>
+                            <label for='currentPword'>Current Password:</label><br>
+                            <input type='password' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'><br>
+                            <label for='newPword'>New Password:</label><br>
+                            <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
+                            <label for='confirmPword'>Confirm New Password:</label><br>
+                            <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
+                            <input type='text' id='updateAccID' name='updateAccID' placeholder='' style='visibility:hidden' value='<?php echo $view_profile['acc_id']; ?>'><br>
+                            <input type='submit' name='edit_profile_submit' value='Save Changes'>
+                        </form>
+                    </div>
+
+
+                    
                 </div>
             </div>
         </div>

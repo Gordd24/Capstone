@@ -49,19 +49,24 @@ echo " <div class=\"title_bar\">
         <i class='bx bx-library' ></i>
         <span class=\"record_management\">&nbsp;Record Management</span>
     </a>
-</li>
-<li>
-    <a href=\"#\">
-        <i class='bx bxs-report' ></i>
-        <span class=\"report_generation\">&nbsp;Generate Report</span>
-    </a>
-</li>
-<li>
-    <a href=\"../account_management/account_management.php\" id=\"account_management_link\">
-        <i class='bx bxs-cog'></i>
-        <span class=\"account_management\">&nbsp;Account Management</span>
-    </a>
-</li>
+</li>";
+if(isset($_SESSION["position"]) && $_SESSION["position"]=="Administrator"){
+    echo"
+    <li>
+        <a href=\"#\">
+            <i class='bx bxs-report' ></i>
+            <span class=\"report_generation\">&nbsp;Generate Report</span>
+        </a>
+    </li>
+    <li>
+        <a href=\"../account_management/account_management.php\" id=\"account_management_link\">
+            <i class='bx bxs-cog'></i>
+            <span class=\"account_management\">&nbsp;Account Management</span>
+        </a>
+    </li>";
+}
+
+echo"
 <li>
     <a href=\"../logout.php\" id=\"log_out_a\">
         <i class='bx bx-power-off'></i>
