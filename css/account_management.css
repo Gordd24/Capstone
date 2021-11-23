@@ -32,7 +32,8 @@ body{
 .account_management_div .tab{
     position: relative;
     width: 100%;
-    border-bottom: 0.2vw solid rgb(52, 79, 95);
+    box-shadow: 0px 0px 10px 3px #6b6a6a; 
+    border-bottom: 0.1vw solid rgb(52, 79, 95);
     display: flex;
     align-items: center;
     
@@ -40,12 +41,12 @@ body{
 
 .account_management_div .tab .tablinks
 {
-  background-color: inherit;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1% 2% 1% 2%;
-  font-size: 1.4vw;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1% 2% 1% 2%;
+    font-size: 1.2vw;
 }
 
 .account_management_div .tab #account_btn
@@ -227,6 +228,19 @@ body{
     margin: 2% 0 0 0;
 
 }
+
+.tab_content .view_account .view_form_div #view_form .viewFields[type=text]
+{
+    border-radius: 7%/40%;
+    margin: 2% 2% 0 0;
+    padding:1%;
+    font-size: 1vw;
+    outline: none;
+    background-color:transparent;
+    color: black;
+    border:0.1vw solid black;
+}
+
 
 .tab_content .view_account .view_form_div #view_form .viewFields
 {

@@ -21,7 +21,7 @@ body{
 {
     width: 100%;
     border-collapse: collapse;
-    font-size: 1.2vw;
+    font-size: 0.8vw;
     text-align: center;
 }
 
@@ -39,26 +39,29 @@ body{
 
 }
 
+
+
+
 .archives_div  #table_archives th
 {
     border: transparent;
     background-color: rgb(52, 79, 95);
     color: white;
     padding: 1%;
-    font-size: 1.2vw;
+    font-size: 0.9vw;
 }
 
 
 .archives_div  #table_archives td
 {
-    border-bottom: 0.1vw solid rgb(52, 79, 95);
-    padding: 0.5%;
+    border: 0.02vw solid rgb(52, 79, 95);
    
 }
 
+
 .bx.bx-refresh
 {
-    font-size: 2vw;
+    font-size: 1.5vw;
     margin: 2%;
     padding: 1%;
     border-radius: 20%;
@@ -67,16 +70,15 @@ body{
     border: 0.1vw solid rgb(52, 79, 95);
 }
 
-
 .archives_div form #patient_search
 {
+    margin-bottom: 2%;
     width: 35%;
     outline: none;
     background-color: white;
-    border-radius: 12%/100%;
+    border-radius: 3%/30%;
     border-color: rgb(194, 194, 194);
     border-width: 0.1vw;
     padding: 1%;
     font-size: 1vw;
-    margin-bottom: 2%;
 }

@@ -46,19 +46,20 @@
                             <input type='text' id='username' class='viewFields'  value="<?php echo $view_profile['username']; ?>" readonly><br>
                         </form>
                             
-                    </div>
-                    <div class="account_info_div">
-                        <form class="edit_profile_form" id="edit_profile_form" method="POST">
-                            <h5>Change Password</h5><br>
-                            <label for='currentPword'>Current Password:</label><br>
-                            <input type='password' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'><br>
-                            <label for='newPword'>New Password:</label><br>
-                            <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
-                            <label for='confirmPword'>Confirm New Password:</label><br>
-                            <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
-                            <input type='text' id='updateAccID' name='updateAccID' placeholder='' style='visibility:hidden' value='<?php echo $view_profile['acc_id']; ?>'>
-                            <input class='button' type='submit' name='edit_profile_submit' value='Save Changes'>
-                        </form>
+                  
+                        <div class="password_info_div">
+                            <form class="edit_profile_form" id="edit_profile_form" method="POST">
+                                <h5>Change Password</h5><br>
+                                <label for='currentPword'>Current Password:</label><br>
+                                <input type='password' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'><br>
+                                <label for='newPword'>New Password:</label><br>
+                                <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
+                                <label for='confirmPword'>Confirm New Password:</label><br>
+                                <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
+                                <input type='text' id='updateAccID' name='updateAccID' placeholder='' style='visibility:hidden' value='<?php echo $view_profile['acc_id']; ?>'><br>
+                                <input class='button' type='submit' name='edit_profile_submit' value='Save Changes'>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

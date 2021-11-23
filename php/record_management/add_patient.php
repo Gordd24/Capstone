@@ -66,34 +66,56 @@ if(isset($_POST['addPatientBtn'])){
         <div class="add_patient_div">
                 <div class="cancel_add_patient_btn_div">
                   <i class='bx bxs-x-circle'></i>
+                  <h2>Add New Patient</h2> 
                 </div>
                 <div class="add_patient_form_div">
-                  <h2>Add New Patient</h2> 
+                
                   <form class="add_patient_form" method="POST">
-                    <label for="patient_fname">First Name</label><br>
-                    <input id="patient_fname" type="text" name="patient_fname" placeholder="First Name" required= "" autocomplete="off"><br>
-                    <label for="patient_mname">Middle Name (Optional)</label><br>
-                    <input id="patient_mname" type="text" name="patient_mname" placeholder="Middle Name" autocomplete="off"><br>
-                    <label for="patient_lname">Last Name</label><br>
-                    <input id="patient_lname" type="text" name="patient_lname" placeholder="Last Name" required= "" autocomplete="off"><br><br>      
+                    <div class="name_sex_bday">
 
-                    <p>Sex</p>
-                    <input type="radio" id="patient_sex_male" name="patient_sex" value="Male" checked="checked">
-                    <label for="html">Male</label>
-                    <input type="radio" id="patient_sex_female" name="patient_sex" value="Female">
-                    <label for="css">Female</label><br><br>
+                      <div class="name">
+                        <label for="patient_fname">First Name</label><br>
+                        <input id="patient_fname" type="text" name="patient_fname" placeholder="First Name" required= "" autocomplete="off"><br>
+                        <label for="patient_mname">Middle Name (Optional)</label><br>
+                        <input id="patient_mname" type="text" name="patient_mname" placeholder="Middle Name" autocomplete="off"><br>
+                        <label for="patient_lname">Last Name</label><br>
+                        <input id="patient_lname" type="text" name="patient_lname" placeholder="Last Name" required= "" autocomplete="off">     
+                      </div>
+                      
+                      <div class="sex_bday">
+                        <p>Sex</p>
+                        <input type="radio" id="patient_sex_male" name="patient_sex" value="Male" checked="checked">
+                        <label for="html">Male</label>
+                        <input type="radio" id="patient_sex_female" name="patient_sex" value="Female">
+                        <label for="css">Female</label><br><br>
+                        <label for='patient_birthday'>Birthday:</label><br>
+                        <input type='date' id='patient_birthday' name='patient_birthday' required='required'><br>
+                      </div>
 
-                    <label for="patient_contact_no">Contact No (Optional)</label><br>
-                    <input id="patient_contact_no" type="text" name="patient_contact_no" placeholder="Contact No." autocomplete="off"><br>
-                    <label for='patient_birthday'>Birthday:</label><br>
-                    <input type='date' id='patient_birthday' name='patient_birthday' required='required'><br>
-                    <label for="patient_address">Address</label><br>
-                    <input id="patient_address" type="text" name="patient_address" placeholder="Address" required= "" autocomplete="off"><br>
-                    <label for="patient_occupation">Occupation (Optional)</label><br>
-                    <input id="patient_occupation" type="text" name="patient_occupation" placeholder="Occupation" autocomplete="off"><br>
-                    <label for="patient_religion">Religion (Optional)</label><br>
-                    <input id="patient_religion" type="text" name="patient_religion" placeholder="Religion" autocomplete="off"><br><br>
-                    <input class="button" type="submit" name="addPatientBtn" value="Add Patient">    
+                    </div>
+                    
+
+                    <div class="contact_address_occupation_religion">
+
+                      <div class="contact_address">
+                        <label for="patient_contact_no">Contact No (Optional)</label><br>
+                        <input id="patient_contact_no" type="text" name="patient_contact_no" placeholder="Contact No." autocomplete="off"><br>
+                        <label for="patient_address">Address</label><br>
+                        <input id="patient_address" type="text" name="patient_address" placeholder="Address" required= "" autocomplete="off"><br>
+                      </div>
+                      
+                      <div class="occupation_religion">
+                        <label for="patient_occupation">Occupation (Optional)</label><br>
+                        <input id="patient_occupation" type="text" name="patient_occupation" placeholder="Occupation" autocomplete="off"><br>
+                        <label for="patient_religion">Religion (Optional)</label><br>
+                        <input id="patient_religion" type="text" name="patient_religion" placeholder="Religion" autocomplete="off"><br><br>
+                        <input class="button" type="submit" name="addPatientBtn" value="Add Patient">  
+                      </div>
+
+                    </div>
+                    
+                   
+                     
                   </form>
                 </div>
                 
