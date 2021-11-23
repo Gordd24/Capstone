@@ -261,7 +261,7 @@ $(document).ready(function(){
           }
      });
  
-     var current_pword_state = true
+/*      var current_pword_state = true
 
      $('#currentPword').on('blur', function(){
           var currentPword = $('#currentPword').val()
@@ -307,7 +307,7 @@ $(document).ready(function(){
                               
                }
           });
-     })
+     }) */
 
     $("#view_form").validate({
      rules:{
@@ -343,12 +343,13 @@ $(document).ready(function(){
           },
      },
      submitHandler: submitFormUpdate
-})
+     })
 
 //form submitter update
 function submitFormUpdate(){
      var data = $('#view_form').serialize();
-     if(upd_uname_state == false || current_pword_state == false){
+     // if(upd_uname_state == false || current_pword_state == false){
+     if(upd_uname_state == false){
      Swal.fire(
           'Error!',
           'Please fix the errors',
@@ -362,7 +363,7 @@ function submitFormUpdate(){
                showCancelButton: true,
                confirmButtonColor: '#3085d6',
                cancelButtonColor: '#d33',
-               confirmButtonText: 'Yes, delete it!'
+               confirmButtonText: 'Yes'
              }).then((result) => {
                if (result.isConfirmed) {
                     $.ajax({
@@ -488,8 +489,5 @@ function submitFormUpdate(){
       $("table,.search_form").show(),
       $(".view_account").hide();
     });
-
-    
-
   });   
   

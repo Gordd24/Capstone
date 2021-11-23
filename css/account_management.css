@@ -228,7 +228,7 @@ body{
 
 }
 
-.tab_content .view_account .view_form_div #view_form .viewFields[type=text]
+.tab_content .view_account .view_form_div #view_form .viewFields
 {
     border-radius: 7%/40%;
     margin: 2% 2% 0 0;

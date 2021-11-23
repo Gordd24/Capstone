@@ -22,7 +22,7 @@ $result = $conn -> query($sql);
 if($result->num_rows>0)
 {
     $viewAcc = $result -> fetch_assoc();
-    echo    "<form id='view_form' method='POST' action='update_account.php'>
+    echo    "<form id='view_form' method='POST'>
     <div>
     <label for='viewUname'>Username:</label>
     <input type='text' class='viewFields' id='viewUname' name='viewUname' placeholder='Username' required='' value='".$viewAcc['username']."'>
@@ -64,16 +64,16 @@ if($result->num_rows>0)
 
         echo"    
         </select><br/><br>
-        <h5>Change Password</h5>
-        <div>
+        <h5 style='font-weight:bold;'>Reset Password</h5>
+        <!--<div>
         <label for='currentPword'>Current Password:</label>
         <input type='text' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'>
         <span></span><br/>
-        <div>
+        </div>-->
         <label for='newPword'>New Password:</label>
-        <input type='text' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
+        <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
         <label for='confirmPword'>Confirm New Password:</label>
-        <input type='text' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
+        <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
         <!-- <input type='text' class='viewFields' name='registerImage' placeholder='User Image' > -->
         <input type='text' id='updateAccID' name='updateAccID' placeholder=''style='visibility:hidden' value='".$viewAcc['emp_id']."'>
         <input class='button'  type='submit' name='saveChangesButton' value='Save Changes'>

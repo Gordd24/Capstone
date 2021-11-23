@@ -20,7 +20,7 @@ if(isset($_POST['upd_username_check'])){
     }
     exit();
 }
-if (isset($_POST['upd_password_check'])){
+/* if (isset($_POST['upd_password_check'])){
     $currentUname = $_POST['currentUname'];
     $currentPword = $_POST['currentPword'];
 
@@ -37,7 +37,7 @@ if (isset($_POST['upd_password_check'])){
             //password not correct.
             echo '0';
         }
-}
+} */
 
 if(isset($_POST['saveChangesButton'])){
 
@@ -71,10 +71,6 @@ if(isset($_POST['saveChangesButton'])){
             echo mysqli_error($conn);
         }
     }
-
-    
- 
-
 }
 
 ?>
