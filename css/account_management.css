@@ -1,5 +1,5 @@
 body{
-    background: url(../images/back_7.jpg) no-repeat center center fixed; 
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -33,7 +33,6 @@ body{
     position: relative;
     width: 100%;
     box-shadow: 0px 0px 10px 3px #6b6a6a; 
-    border-bottom: 0.1vw solid rgb(52, 79, 95);
     display: flex;
     align-items: center;
     
@@ -58,18 +57,17 @@ body{
 .account_management_div .tab_content
 {
     position:absolute;
+    width: 98%;
     padding: 1%;
-    /* background-color: crimson; */
-    width: 100%;
-    height: 80%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100%;
+    background-color: rgb(16, 35, 35);
+    
 }
 
 
 .account_management_div .tab_content .search_form{
     /* display: none; */
-    margin-top: 2%;
+    margin-top: 0.5%;
     position: relative;
     width: 100%;
     display: flex;
@@ -79,42 +77,46 @@ body{
     width: 30%;
     outline: none;
     background-color: white;
-    border-radius: 10%/100%;
+    border-radius: 3%/30%;
     border-color: rgb(194, 194, 194);
     border-width: 0.1vw;
     padding: 0.5%;
     font-size: 1vw;
 }
 
+.account_management_div .tab_content .accounts_table_div{
+    height: 90%;
+    margin-top: 1.5%;
+    background: rgba(240, 238, 240, 0.61);
+    box-shadow: 0px 0px 20px 3px #6b6a6a; 
+    overflow-y: auto;
+    padding: 1%;
+}
+
 .account_management_div .tab_content table{
-    /* display: none; */
     width: 100%;
-    margin-top: 2%;
-    /* border: 0.1vw solid black; */
     border-collapse: collapse;
-    font-size: 1.1vw;
-    
+    font-size: 0.8vw;
+    text-align: center;
+   
 }
 
 .account_management_div .tab_content table td{
-    border-bottom: 0.1vw solid rgb(52, 79, 95);
-    text-align: center;
-    padding: 0.5%;
-    /* background-color: rgb(52, 79, 95,0.2); */
+    border: 0.02vw solid rgb(52, 79, 95);
+    font-size: 0.8vw;
 }
 
 .account_management_div .tab_content table th{
-    border: transparent;
     background-color: rgb(52, 79, 95);
+    border: 0.02vw solid rgb(52, 79, 95);
     color: white;
     padding: 1%;
-    font-size: 1.2vw;
-    text-align: center;
+    font-size: 0.9vw;
 }
 
 .bx.bxs-trash-alt
 {
-    font-size: 2vw;
+    font-size: 1.5vw;
     margin: 2%;
     padding: 1%;
     border-radius: 20%;
@@ -123,13 +125,13 @@ body{
     border: 0.1vw solid rgb(52, 79, 95);
 }
 
-.bx.bxs-user-account
+.bx.bxs-user
 {
-    font-size: 2vw;
+    font-size: 1.5vw;
     margin: 2%;
     padding: 1%;
     border-radius: 20%;
-    color: rgb(92, 51, 7);
+    color: rgb(3, 35, 57);
     background-color: rgb(255, 255, 255);
     border: 0.1vw solid rgb(52, 79, 95);
 }
@@ -209,6 +211,8 @@ body{
 {
     display: none;
     padding: 0.5%;
+    background-color: aqua;
+    height: 100%;
 }
 
 /* .tab_content .view_account .view_form_div
@@ -309,4 +313,13 @@ body{
   #regForm{
       max-height: 500px;
       overflow-y: scroll;
+  }
+
+
+  .view_form_div {
+    height: 90%;
+    background: rgba(76, 8, 76, 0.61);
+    box-shadow: 0px 0px 20px 3px #6b6a6a; 
+    overflow-y: auto;
+    padding: 1%;
   }

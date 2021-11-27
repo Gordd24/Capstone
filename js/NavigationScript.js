@@ -11,7 +11,7 @@ $(document).ready(function () {
     });
 
     $.fn.activeChange = function () {
-
+        console.log("working");
         $(".sidebar").animate({
             width: "20%"
         }),

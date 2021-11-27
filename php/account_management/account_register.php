@@ -5,6 +5,10 @@ if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
 
+
+$today = date("Y-m-d"); 
+$time = date("H:i:s");
+
 include_once '../dbconn.php';
 
     if(isset($_POST['username_check'])){
@@ -70,8 +74,8 @@ include_once '../dbconn.php';
         else{
             //encrypt password
             $hashedRegisterPword = password_hash($registerPword, PASSWORD_DEFAULT);
-            $insertQuery = "INSERT INTO tbl_accounts(username, password, first_name, middle_name, last_name, emp_id, position) VALUES 
-            ('$registerUname','$hashedRegisterPword','$registerFname','$registerMname','$registerLname','$registerEmpId','$registerPosition');";
+            $insertQuery = "INSERT INTO tbl_accounts(username, password, first_name, middle_name, last_name, emp_id, position,date_created,time_created) VALUES 
+            ('$registerUname','$hashedRegisterPword','$registerFname','$registerMname','$registerLname','$registerEmpId','$registerPosition','".$today."','".$time."');";
             $insertResult= mysqli_query($conn,$insertQuery);
             if($insertResult){
                 $last_id = mysqli_insert_id($conn);

@@ -53,7 +53,7 @@ echo " <div class=\"title_bar\">
 if(isset($_SESSION["position"]) && $_SESSION["position"]=="Administrator"){
     echo"
     <li>
-        <a href=\"#\">
+        <a href=\"../report_generation/report_generation.php\" id=\"report_generation_link\">
             <i class='bx bxs-report' ></i>
             <span class=\"report_generation\">&nbsp;Generate Report</span>
         </a>

@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
   }
 
 $searched = $_POST['search'];
-$sql = "SELECT * FROM tbl_accounts where concat(first_name,' ',middle_name,' ',last_name,' ',username,' ',emp_id,' ',first_name,' ',last_name) LIKE '%".$searched."%'";
+$sql = "SELECT * FROM tbl_accounts where concat(first_name,' ',middle_name,' ',last_name,' ',username,' ',emp_id,' ',first_name,' ',last_name) LIKE '%".$searched."%' ORDER BY date_created,time_created DESC";
 $result = $conn -> query($sql);
 
     echo "<tr>
@@ -26,10 +26,12 @@ if($result->num_rows>0)
             <td>".$row["username"]."</td>
             <td>".$row["first_name"]." ".$row["middle_name"]." ".$row["last_name"]."</td>
             <td>
-                <i class='bx bxs-user-account' id='".$row["emp_id"]."'></i>
-                <i class='bx bxs-trash-alt' id='".$row["emp_id"]."'></i>
+                <i class='bx bxs-user' id='".$row["emp_id"]."' title='View Account'></i>
+                <i class='bx bxs-trash-alt' id='".$row["emp_id"]."' title='Delete'></i>
             </td>
             </tr>";
+
+            
         }
    }
 } 

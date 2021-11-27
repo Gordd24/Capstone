@@ -64,9 +64,13 @@ include_once '../dbconn.php';
                     <form class="search_form">
                       <input type="text" class="search_bar" autocomplete="off">
                     </form>
-                    <table>     
-                        <?php include_once 'fetch_Accounts.php';?>   
-                    </table>
+                    
+                    <div class="accounts_table_div">
+                        <table>     
+                            <?php include_once 'fetch_Accounts.php';?>   
+                        </table>
+                    </div>
+                    
             </div>
             <div id="registration" class="tabcontent" >
               <div class ="container mt-5" style="max-width: 500px">

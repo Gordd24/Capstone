@@ -211,7 +211,7 @@ function make_consultation() {
   <div  style="position:relative;">
   <table style="width:100%">
       <tr>
-      <td><img src="images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
+      <td><img src="..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
       <td style="text-align:Center; font-family:arial; ">OFELIA L. MENDOZA MATERNITY AND GENERAL HOSPITAL <br/>
                                           MOJON, CITY OF MALOLOS, BULACAN <br/>
                                               TEL NO. (044)794-7113
@@ -368,7 +368,7 @@ function make_consultation() {
     <div  style="position:relative;">
     <table style="width:100%">
         <tr>
-        <td><img src="images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
+        <td><img src="..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
         <td style="text-align:Center; font-family:arial; ">OFELIA L. MENDOZA MATERNITY AND GENERAL HOSPITAL <br/>
                                             MOJON, CITY OF MALOLOS, BULACAN <br/>
                                                 TEL NO. (044)794-7113
@@ -589,7 +589,7 @@ function make_consultation() {
           else if($_POST['patient_disposition']=='HAMA')
           {
           $patient_disposition = '{ } HAMA';
-          $patient_disposition_value = '{/} Transferred';
+          $patient_disposition_value = '{/} HAMA';
           }
           else if($_POST['patient_disposition']=='ABSCONDED')
           {
