@@ -7,6 +7,13 @@ $patient = $_POST['patient'];
 $sql = "SELECT * FROM tbl_patients where patient_id = '".$patient."'";
 $result = $conn -> query($sql);
 
+echo'<head>
+<title>Record Management</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../js/record_management.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>';
+
 if($result->num_rows>0)
 {
     $viewPatient = $result -> fetch_assoc();
@@ -20,7 +27,7 @@ echo "
     <h2>Laboratory Result</h2> 
 
 
-    <form method='POST' enctype='multipart/form-data'>
+    <form method='POST' id='lab_res_form' enctype='multipart/form-data'>
 
     <div class='immutable'>
             <div class='lab_cont patient_id'>

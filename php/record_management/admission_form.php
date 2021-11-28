@@ -7,6 +7,12 @@ $patient = $_POST['patient'];
 $sql = "SELECT * FROM tbl_patients where patient_id = '".$patient."'";
 $result = $conn -> query($sql);
 
+echo'<head>
+<title>Record Management</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../js/record_management.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>';
 
 if($result->num_rows>0)
 {
@@ -37,7 +43,7 @@ echo "
 </div>
 <div class='form_div'>
     <h2>Admission Form</h2> 
-    <form method='POST'>
+    <form id='admi_form' method='POST'>
 
      <div class='immutable'>
         <div class='admi_cont patient_id'>

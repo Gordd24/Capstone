@@ -23,8 +23,7 @@ if(isset($_POST['addPatientBtn'])){
     if($patientExist>0){
       $errorPatient = "Patient Already Have a Record";
       $errorExist .= $errorPatient;
-      echo '<script type = "text/javascript">';
-      echo 'alert("'.$errorPatient.'");';
+      echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
       echo '</script>';
     }
    
@@ -37,8 +36,6 @@ if(isset($_POST['addPatientBtn'])){
     }
 }
    
-  
-
 ?>
 
 <!DOCTYPE html>
@@ -46,10 +43,11 @@ if(isset($_POST['addPatientBtn'])){
 <head>
   <title>Add Patient</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/add_patient.js"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/add_patient.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +68,7 @@ if(isset($_POST['addPatientBtn'])){
                 </div>
                 <div class="add_patient_form_div">
                 
-                  <form class="add_patient_form" method="POST">
+                  <form class="add_patient_form" method="POST" id="add_patient_form">
                     <div class="name_sex_bday">
 
                       <div class="name">
