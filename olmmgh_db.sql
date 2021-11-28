@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 09:43 AM
+-- Generation Time: Nov 28, 2021 at 09:14 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -66,15 +66,6 @@ CREATE TABLE `tbl_admission` (
   `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_admission`
---
-
-INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(1, 3, 'patient/3/admission/2021111434500-legaspi.pdf', '2021-11-14', '2021111434500-legaspi.pdf'),
-(2, 1, 'patient/1/admission/2021112320627-mendoza.pdf', '2021-11-23', '2021112320627-mendoza.pdf'),
-(3, 1, 'patient/1/admission/20211126101552-mendoza.pdf', '2021-11-26', '20211126101552-mendoza.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -88,14 +79,6 @@ CREATE TABLE `tbl_consult` (
   `date` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_consult`
---
-
-INSERT INTO `tbl_consult` (`record_cons_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(1, 5, 'patient/5/consultation/2021111434754-de jesus.pdf', '2021-11-14', '2021111434754-de jesus.pdf'),
-(2, 1, 'patient/1/consultation/20211126101455-mendoza.pdf', '2021-11-26', '20211126101455-mendoza.pdf');
 
 -- --------------------------------------------------------
 
@@ -111,13 +94,6 @@ CREATE TABLE `tbl_lab_result` (
   `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_lab_result`
---
-
-INSERT INTO `tbl_lab_result` (`lab_result_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(1, 6, 'patient/6/laboratory_result/IT 403_Elective 5 (Web Systems and Technologies 3)_Syllabus.pdf', '2021-11-14', 'IT 403_Elective 5 (Web Systems and Technologies 3)_Syllabus.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -131,13 +107,6 @@ CREATE TABLE `tbl_med_cert` (
   `date` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_med_cert`
---
-
-INSERT INTO `tbl_med_cert` (`record_med_cert_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(1, 1, 'patient/1/medical certificate/2021111433848-mendoza.pdf', '2021-11-14', '2021111433848-mendoza.pdf');
 
 -- --------------------------------------------------------
 
@@ -157,19 +126,19 @@ CREATE TABLE `tbl_patients` (
   `birthdate` varchar(30) NOT NULL,
   `occupation` varchar(30) DEFAULT NULL,
   `status` varchar(255) NOT NULL,
-  `record_status` varchar(255) NOT NULL
+  `record_status` varchar(255) NOT NULL,
+  `date_added` date DEFAULT NULL,
+  `time_added` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_patients`
 --
 
-INSERT INTO `tbl_patients` (`patient_id`, `first_name`, `middle_name`, `last_name`, `contact_no`, `sex`, `religion`, `address`, `birthdate`, `occupation`, `status`, `record_status`) VALUES
-(1, 'Jasper Jake', 'Alvaro', 'Mendoza', '09089786754', 'Male', 'Roman Catholic', 'Maunlad Homes', '2021-10-28', 'Boxers', 'Not Admitted', 'Active'),
-(3, 'Lady Bojel', 'Ignacio', 'Legaspi', '09089786754', 'Female', 'Katoliko', 'Batia Bocaue', '1999-12-23', 'Axie Scholar', 'Not Admitted', 'Active'),
-(5, 'Dindy', 'Costales', 'de Jesus', '09089786754', 'Female', 'Roman Catholic', 'Malolos, Bulacan', '1999-09-15', 'Streamer', 'Not Admitted', 'Archive'),
-(6, 'Dexter', '', 'Balot', '09089786754', 'Male', 'INC', 'Mc Arthur Highway', '2021-11-11', 'Doctor', 'Not Admitted', 'Archive'),
-(8, 'Halord', 'Pechardo', 'de Tiger', '', 'Male', '', 'JEDS ISLAND', '1999-09-16', '', 'Not Admitted', 'Active');
+INSERT INTO `tbl_patients` (`patient_id`, `first_name`, `middle_name`, `last_name`, `contact_no`, `sex`, `religion`, `address`, `birthdate`, `occupation`, `status`, `record_status`, `date_added`, `time_added`) VALUES
+(10, 'Dexter', '', 'Balot', '0978675678', 'Male', 'INC', 'Robinson', '2021-11-28', 'Body Builder', 'Not Admitted', 'Active', '2021-11-28', '15:43:09'),
+(11, 'Lady Bojel', 'Ignacio', 'Legaspi', '0978675676', 'Female', 'Roman Catholic', 'Batia, Bocaue', '1999-12-23', 'Axie Master', 'Not Admitted', 'Active', '2021-11-28', '15:46:03'),
+(12, 'Jasper Jake', 'Alvaro', 'Mendoza', '0989787864', 'Male', 'Roman Catholic', 'Maunlad Homes', '2000-03-14', 'Axie Master / Streamer', 'Not Admitted', 'Active', '2021-11-28', '15:49:12');
 
 --
 -- Indexes for dumped tables
@@ -253,7 +222,7 @@ ALTER TABLE `tbl_med_cert`
 -- AUTO_INCREMENT for table `tbl_patients`
 --
 ALTER TABLE `tbl_patients`
-  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

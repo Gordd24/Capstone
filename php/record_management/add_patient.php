@@ -1,6 +1,11 @@
 <?php
 
 include_once '../dbconn.php';
+
+date_default_timezone_set('Asia/Manila');
+$today = date("Y-m-d"); 
+$time = date("H:i:s");
+
 if(isset($_POST['addPatientBtn'])){
 
      //post inputs
@@ -30,7 +35,7 @@ if(isset($_POST['addPatientBtn'])){
    
 
     if(empty($errorExist)){
-    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation,status,record_status) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation','Not Admitted','Active');";
+    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation,status,record_status,date_added,time_added) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation','Not Admitted','Active','".$today."','".$time."');";
     mysqli_query($conn,$insertSql);
     header("Location: record_management.php");
 
