@@ -136,6 +136,56 @@ $(document).ready(function () {
     });
   });
 
+  function sweetAlert(){
+    
+  }
+
+$('#cons_form').submit(function (e) { 
+  Swal.fire('Success!','Consultation form submitted successfully','success'
+)
+  //e.preventDefault();
+});
+
+$('#admi_form').submit(function (e) { 
+  Swal.fire('Success!','Admission form submitted successfully','success'
+)
+  //e.preventDefault();
+});
+
+$('#med_cert_form').submit(function (e) { 
+  Swal.fire('Success!','Medical Certificate form submitted successfully','success'
+)
+  //e.preventDefault();
+});
+
+$('#lab_res_form').submit(function (e) { 
+  Swal.fire('Success!','Laboratory result form submitted successfully','success'
+)
+// setTimeout(function(){
+//   window.location.reload(1);
+// }, 3000);
+  //e.preventDefault();
+});
+
+$('a').on('click',function(e) {
+  var archiveLink = this
+  e.preventDefault();
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Do you want to archive the patient",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, archive it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+        window.location=archiveLink.href
+    }
+  })
+})
+
+
 
 
 

@@ -7,6 +7,13 @@ if (!isset($_SESSION)) {
     $sql = "SELECT * FROM tbl_patients WHERE record_status='Active'";
     $result = $conn -> query($sql);
 
+    echo'<head>
+    <title>Record Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../js/record_management.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>';
+
         echo '<tr>
         <th>ID</th>
         <th>Name</th>
@@ -29,7 +36,7 @@ if (!isset($_SESSION)) {
                     <a href='view_patient.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i class='bx bxs-file-find'  title='View Patient'></i></a>
                     <i class='bx bxs-file-plus' id='".$row['patient_id']."' title='Create New Record'></i>
                     <i class='bx bxs-user-minus' id='".$row['patient_id']."' title='Discharge Patient'></i>
-                    <a href='archive_folder.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i class='bx bxs-archive-in' title='Archive Folder'></i></a>
+                    <a id='archive_btn' href='archive_folder.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i class='bx bxs-archive-in' title='Archive Folder'></i></a>
                     </td>
                     </tr>";
                 }
@@ -38,7 +45,7 @@ if (!isset($_SESSION)) {
                     <td>
                     <a href='view_patient.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i class='bx bxs-file-find'  title='View Patient'></i></a>
                     <i class='bx bxs-file-plus' id='".$row['patient_id']."'  title='Create New Record'></i>
-                    <a href='archive_folder.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i class='bx bxs-archive-in' title='Archive Folder'></i></a>
+                    <a id='archive_btn' href='archive_folder.php?id=".base64_encode(base64_encode($row['patient_id']))."'><i  class='bx bxs-archive-in' title='Archive Folder'></i></a>
                     </td>
                     </tr>";
                 }
