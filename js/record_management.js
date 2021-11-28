@@ -23,6 +23,24 @@ $(document).ready(function () {
             $('.option_modal_div').attr('id', this.id);
           });
 
+          $('tr td a#archive_btn').on('click', function (e) {
+            var archiveLink = this
+            e.preventDefault();
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "Do you want to archive the patient",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, archive it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location = archiveLink.href
+              }
+            })
+          });
+
           $('.patient_table_div .bx.bxs-user-minus').click(function () {
             var patient_id = $(this).attr('id');
             $('.record_management_div_1').hide();
@@ -108,7 +126,6 @@ $(document).ready(function () {
         });
         $('#patient_lab_res').change(function () {
           document.getElementById('lab_res_up_button').innerHTML = "<i class='bx bx-check'></i> File Uploaded";
-
         });
       }
     });
@@ -136,159 +153,55 @@ $(document).ready(function () {
     });
   });
 
-  function sweetAlert(){
-    
+  function sweetAlert() {
+
   }
 
-$('#cons_form').submit(function (e) { 
-  Swal.fire('Success!','Consultation form submitted successfully','success'
-)
-  //e.preventDefault();
-});
+  $('#cons_form').submit(function (e) {
+    Swal.fire('Success!', 'Consultation form submitted successfully', 'success'
+    )
+    //e.preventDefault();
+  });
 
-$('#admi_form').submit(function (e) { 
-  Swal.fire('Success!','Admission form submitted successfully','success'
-)
-  //e.preventDefault();
-});
+  $('#admi_form').submit(function (e) {
+    Swal.fire('Success!', 'Admission form submitted successfully', 'success'
+    )
+    //e.preventDefault();
+  });
 
-$('#med_cert_form').submit(function (e) { 
-  Swal.fire('Success!','Medical Certificate form submitted successfully','success'
-)
-  //e.preventDefault();
-});
+  $('#med_cert_form').submit(function (e) {
+    Swal.fire('Success!', 'Medical Certificate form submitted successfully', 'success'
+    )
+    //e.preventDefault();
+  });
 
-$('#lab_res_form').submit(function (e) { 
-  Swal.fire('Success!','Laboratory result form submitted successfully','success'
-)
-// setTimeout(function(){
-//   window.location.reload(1);
-// }, 3000);
-  //e.preventDefault();
-});
+  $('#lab_res_form').submit(function (e) {
+    Swal.fire('Success!', 'Laboratory result form submitted successfully', 'success'
+    )
+    // setTimeout(function(){
+    //   window.location.reload(1);
+    // }, 3000);
+    //e.preventDefault();
+  });
 
-$('a').on('click',function(e) {
-  var archiveLink = this
-  e.preventDefault();
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "Do you want to archive the patient",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, archive it!'
-  }).then((result) => {
-    if (result.isConfirmed) {
-        window.location=archiveLink.href
-    }
-  })
-})
+  $('tr td a#archive_btn').on('click', function (e) {
+    var archiveLink = this
+    e.preventDefault();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you want to archive the patient",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, archive it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location = archiveLink.href
+      }
+    })
+  });
 
-
-
-
-
-  // $.fn.viewFunction = function (patient_id) {
-
-  //   $('.record_management_div_3').html(''),
-  //     $.ajax({
-  //       url: "view_patient.php",
-  //       method: "post",
-  //       data: { view: patient_id },
-  //       dataType: "text",
-  //       success: function (data) {
-  //         $('.record_management_div_3').html(data);
-  //         $(".cancel_view_patient_btn_div .bx.bxs-x-circle").click(function () {
-  //           $(".record_management_div_3").hide(),
-  //             $(".record_management_div_1").show();
-
-  //         });
-
-  //         $("#admition_btn").click(function () {
-  //           $(this).css(
-  //             {
-  //               "background-color": "rgb(52, 79, 95)",
-  //               color: "white"
-  //             }
-  //           );
-  //           $("#consultation_btn,#med_cert_btn,#lab_res_btn").css(
-  //             {
-  //               "background-color": "transparent",
-  //               color: "black"
-  //             }
-  //           );
-
-  //           $(".consultation_div,.med_cert_div,.lab_res_div").hide();
-
-  //           $(".admition_div").show();
-
-  //         });
-
-  //         $("#consultation_btn").click(function () {
-  //           $(this).css(
-  //             {
-  //               "background-color": "rgb(52, 79, 95)",
-  //               color: "white"
-  //             }
-  //           );
-  //           $("#admition_btn,#med_cert_btn,#lab_res_btn").css(
-  //             {
-  //               "background-color": "transparent",
-  //               color: "black"
-  //             }
-  //           );
-
-  //           $(".admition_div,.med_cert_div,.lab_res_div").hide();
-
-  //           $(".consultation_div").show();
-
-  //         });
-
-  //         $("#med_cert_btn").click(function () {
-  //           $(this).css(
-  //             {
-  //               "background-color": "rgb(52, 79, 95)",
-  //               color: "white"
-  //             }
-  //           );
-  //           $("#admition_btn,#consultation_btn,#lab_res_btn").css(
-  //             {
-  //               "background-color": "transparent",
-  //               color: "black"
-  //             }
-  //           );
-
-  //           $(".admition_div,.consultation_div,.lab_res_div").hide();
-
-  //           $(".med_cert_div").show();
-
-  //         });
-
-  //         $("#lab_res_btn").click(function () {
-  //           $(this).css(
-  //             {
-  //               "background-color": "rgb(52, 79, 95)",
-  //               color: "white"
-  //             }
-  //           );
-  //           $("#admition_btn,#consultation_btn,#med_cert_btn").css(
-  //             {
-  //               "background-color": "transparent",
-  //               color: "black"
-  //             }
-  //           );
-
-  //           $(".admition_div,.consultation_div,.med_cert_div").hide();
-
-  //           $(".lab_res_div").show();
-
-
-  //         });
-
-  //       }
-  //     });
-  // }
 
 
 

@@ -508,6 +508,7 @@ $(document).ready(function () {
                     }
                });
      });
+
      $('body').on('click', '.bx.bxs-x-circle', function () {
           $(".accounts_table_div,.search_form").show(),
                $(".view_account").hide();
