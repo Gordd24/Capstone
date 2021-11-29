@@ -292,34 +292,6 @@ if($patient_added=="1")
         $mpdf->AddPage();
     }
 
-    $patient_added_td = '';
-
-
-    $patient_added_sql = "SELECT * FROM tbl_patients ORDER BY date_added,time_added DESC";
-    $patient_added = $conn -> query($patient_added_sql);
-
-
-    if($patient_added->num_rows>0)
-    {
-        while($row_patient_added = $patient_added -> fetch_assoc())
-        {
-           
-
-            $patient_added_td .='
-
-            <tr>
-                <td>'.$row_patient_added['patient_id'].'</td>
-                <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row_patient_added['first_name'].' '.$row_patient_added['middle_name'].' '.$row_patient_added['last_name'].'</td>
-                <td style="padding: 10px; background-color: rgb(250, 237, 203);">'.$row_patient_added['date_added'].'</td>
-                <td style="padding: 10px; background-color:rgb(201, 228, 222);">'.$row_patient_added['time_added'].'</td>
-        
-            </tr>';
-            
-            
-        }
-    }
-
-
     $mpdf->WriteHTML('
     <div  style="position:relative;">
     <table style="width:100%">
@@ -332,21 +304,6 @@ if($patient_added=="1")
         </tr>
     </table>
     </div>
-    <table border=1 style="width:100%; white-space: nowrap; border-collapse: collapse; text-align:center; font-family:sans-serif;">
-    <caption style="font-family:sans-serif; font-size:20px; font-weight:bold; padding:30px;">Added Patients</caption>
-            <tr>
-                <th style="padding: 10px;">Patient ID</th>
-                <th style="padding: 10px;">Patient Name</th>
-                <th style="padding: 10px; background-color:rgb(250, 237, 165);">Date Added</th>
-                <th style="padding: 10px; background-color:rgb(175, 228, 222);">Time Added</th>
-            </tr>
-
-            
-            '.$patient_added_td.'
-
-            
-    </table>
-    
     ');
     
 }

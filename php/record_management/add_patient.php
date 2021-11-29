@@ -1,11 +1,5 @@
 <?php
-
 include_once '../dbconn.php';
-
-date_default_timezone_set('Asia/Manila');
-$today = date("Y-m-d"); 
-$time = date("H:i:s");
-
 if(isset($_POST['addPatientBtn'])){
 
      //post inputs
@@ -28,13 +22,14 @@ if(isset($_POST['addPatientBtn'])){
     if($patientExist>0){
       $errorPatient = "Patient Already Have a Record";
       $errorExist .= $errorPatient;
-      echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+      echo '<script type="text/javascript"></script>';
+      echo 'alert("Patient already have a record")';
       echo '</script>';
     }
    
 
     if(empty($errorExist)){
-    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation,status,record_status,date_added,time_added) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation','Not Admitted','Active','".$today."','".$time."');";
+    $insertSql = "INSERT INTO tbl_patients(first_name,middle_name,last_name,contact_no,sex,religion,address,birthdate,occupation,status,record_status) VALUES ('$patient_fname','$patient_mname','$patient_lname','$patient_contact_no','$patient_sex','$patient_religion','$patient_address','$patient_birthday','$patient_occupation','Not Admitted','Active');";
     mysqli_query($conn,$insertSql);
     header("Location: record_management.php");
 
@@ -48,11 +43,10 @@ if(isset($_POST['addPatientBtn'])){
 <head>
   <title>Add Patient</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/add_patient.js"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/add_patient.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,8 +110,6 @@ if(isset($_POST['addPatientBtn'])){
                       </div>
 
                     </div>
-                    
-                   
                      
                   </form>
                 </div>

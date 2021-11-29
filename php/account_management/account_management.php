@@ -7,9 +7,6 @@ if(!isset($_SESSION['ID'])){
 }
 
 if(isset($_SESSION["position"]) && $_SESSION["position"]!="Administrator"){
-    // echo '<script type = "text/javascript">';
-    // echo 'alert("Only administrators have access to this part of the website");';
-    // echo '</script>';
     header("Location:../dashboard/dashboard.php");
 }
 

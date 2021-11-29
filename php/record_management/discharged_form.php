@@ -23,7 +23,7 @@ echo "
     <h2>Discharge Patient</h2> 
 
 
-    <form method='POST'>
+    <form id = discharged_form method='POST'>
     
     <div class='immutable'>
       <div class='dis_cont patient_id'>

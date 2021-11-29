@@ -1,14 +1,3 @@
-
-<head>
-
-<link rel="stylesheet" href="../../css/account_management.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../../js/account_management.js"></script>
-</head>
-
-
 <?php
 
 include_once '../dbconn.php';
