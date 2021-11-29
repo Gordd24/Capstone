@@ -120,12 +120,25 @@ body{
 
 
 
-.profile_management_edit_div input[type=submit]
+.profile_management_edit_div input[type=submit].enable
 {
     padding: 1%;
     width: 20%;
     border-radius: 5%/20%;
     background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+}
+
+
+.profile_management_edit_div input[type=submit]
+{
+    padding: 1%;
+    width: 20%;
+    border-radius: 5%/20%;
+    background-color: rgb(31, 31, 31);
     border:none;
     font-size: 0.9vw;
     color: white;
