@@ -22,23 +22,17 @@ include_once '../dbconn.php';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap css -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="../../css/navigation.css">
   <link rel="stylesheet" href="../../css/account_management.css">
-  <!-- Jquery + bootstrap js + sweetalert -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <!-- Jquery + sweetalert -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../js/account_management.js"></script>
   <script src="../../js/NavigationScript.js" type="text/javascript"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
+
 </head>
 <body>  
     
@@ -55,8 +49,10 @@ include_once '../dbconn.php';
             <div  id="accounts" class="tab_content">
 
                     <div class="view_account">
-                      <i class='bx bxs-x-circle'></i>
-                      <div class="view_form_div"> </div>
+                        <div class='cancel_form_btn_div'>
+                            <i class='bx bxs-x-circle'></i>
+                        </div>
+                        <div class="view_form_div"> </div>
                     </div>           
                     <form class="search_form">
                       <input type="text" class="search_bar" autocomplete="off">
@@ -69,59 +65,75 @@ include_once '../dbconn.php';
                     </div>
                     
             </div>
-            <div id="registration" class="tabcontent" >
-              <div class ="container mt-5" style="max-width: 500px">
+            <div id="registration" class="tabcontent">
+            <div class="registration_div">
                   <form method="post" id="regForm" class="form-signin">
                   <div id="show_message" class="alert alert-success" style="display: none">Insert Success</div>
                   <div id="error" class="alert alert-danger" style="display: none"></div>
                   <div id="error2" class="alert alert-danger" style="display: none"></div>
-                
+
+                <div class="mutable">
+
+               
                   
-                      <div class="form-group">
-                          <label>Username:</label>
-                          <input class="form-control" type="text" name="regUname" id="regUname" placeholder="mike123">
+                    <div class="reg_cont username">
+                          <label>Username: *</label><br>
+                          <input type="text" name="regUname" id="regUname" required autocomplete="off">
                           <span></span>
-                      </div>
-                      <div class="form-group">
-                          <label>Password:</label>
-                          <input  class="form-control" type="password" name="regPword" id="regPword" placeholder="Sample_Passw0rd">
-                      </div>
-                      <div class="form-group">
-                          <label>Confirm Password:</label>
-                          <input  class="form-control" type="password" name="regCPword" id="regCPword" placeholder="Sample_Passw0rd">
-                      </div>
-                      <div class="form-group">
-                          <label>First Name:</label>
-                          <input class="form-control" type="text" name="regFname" id="regFname" placeholder="Michael">
-                      </div>
-                      <div class="form-group">
-                          <label>Middle Name (Optional):</label>
-                          <input class="form-control" type="text" name="regMname" id="regMname" placeholder="Johnson">
-                      </div>
-                      <div class="form-group">
-                          <label>Last Name:</label>
-                          <input class="form-control" type="text" name="regLname" id="regLname" placeholder="Myers">
-                      </div>
-                      <div class="form-group">
-                          <label>Employee ID:</label>
-                          <input class="form-control" type="text" name="regEmpId" id="regEmpId" placeholder="123">
-                          <span></span>
-                      </div>
-                      <div class="form-group">
-                          <label>Select Position:</label>
-                          <select id="regPosition" class="form-select" name="regPosition">
-                                <option value="Administrator">Administrator</option>
-                                <option value="Doctor">Doctor</option>
-                                <option value="Nurse">Nurse</option>
-                            </select>
-                      </div>
+                    </div>
+                    
+                    <div class="reg_cont_div password">
+                        <div class="reg_cont password">
+                            <label>Password: *</label><br>
+                            <input  class="form-control" type="password" name="regPword" id="regPword" required >
+                        </div> 
+
+                        <div class="reg_cont confirm_password">
+                            <label>Confirm Password: *</label><br>
+                            <input  class="form-control" type="password" name="regCPword" id="regCPword" required >
+                        </div> 
+                    </div>
                       
-                      <br>
-                      <button type="submit" name="regSubmit" id="regSubmit" class="btn btn-primary">Register</button>
+                    <div class="reg_cont_div name">
+                        <div class="reg_cont first_name">
+                            <label>First Name: *</label><br>
+                            <input class="form-control" type="text" name="regFname" id="regFname" required autocomplete="off">
+                        </div> 
+                        
+                        <div class="reg_cont middle_name">
+                            <label>Middle Name:</label><br>
+                            <input class="form-control" type="text" name="regMname" id="regMname" autocomplete="off">
+                        </div> 
+                        
+                        <div class="reg_cont last_name">
+                            <label>Last Name: *</label><br>
+                            <input class="form-control" type="text" name="regLname" id="regLname" required autocomplete="off">
+                        </div> 
+                    </div>
+                      
+                    <div class="reg_cont_div emp_id_position">
+                        <div class="reg_cont emp_id">
+                            <label>Employee ID: *</label><br>
+                            <input class="form-control" type="text" name="regEmpId" id="regEmpId" required autocomplete="off">
+                            <span></span>
+                        </div>
+                        
+                        <div class="reg_cont position">
+                            <label>Select Position: *</label><br>
+                            <select id="regPosition" class="form-select" name="regPosition">
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Nurse">Nurse</option>
+                                </select>
+                        </div>
+                    </div>
+                     
+                    </div>
+                    <button type="submit" name="regSubmit" id="regSubmit" class="btn btn-primary">Register</button>
                       
 
                   </form>
-              </div>
+                </div>
             </div>
         </div>  
     </div>

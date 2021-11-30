@@ -14,66 +14,99 @@ if($result->num_rows>0)
     echo    "
 
     <form id='view_form' method='POST'>
-    
-    <div>
-    <label for='viewUname'>Username:</label><br>
-    <input type='text' class='viewFields' id='viewUname' name='viewUname' placeholder='Username' required='' value='".$viewAcc['username']."'>
-    <span></span><br/>
+        <div class='immutable'>
+            <div class='edit_acc_cont acc_id'>
+                <label for='acc_id'>Account ID:</label><br>
+                <input type='text' id='acc_id' name='acc_id' value='".$viewAcc['acc_id']."' readonly>
+            </div>
+        </div>
+
+
+        <div class='mutable'>
+            <h4>Double Click any of the following fields to update information</h4> 
+
+    <div class='edit_acc_cont username'>
+        <label for='viewUname'>Username: *</label><br>
+        <input type='text' class='viewFields' id='viewUname' name='viewUname' placeholder='Username' required='' value='".$viewAcc['username']."'  required readonly>
+        <span></span>
     </div>
-    <label for='viewFname'>Fname:</label><br>
-    <input type='text' class='viewFields name' id='viewFname' name='viewFname' placeholder='First Name' required='' value='".$viewAcc['first_name']."'><br>
-    <label for='viewMname'>Mname:</label><br>
-    <input type='text' class='viewFields name' id='viewMname' name='viewMname' placeholder='Middle Name' value='".$viewAcc['middle_name']."'><br>
-    <label for='viewLname'>Lname:</label><br>
-    <input type='text' class='viewFields name' id='viewLname' name='viewLname' placeholder='Last Name' required='' value='".$viewAcc['last_name']."'><br/>
-    <label for='viewEmpId'>Employee ID:</label>
-    <input type='text' class='viewFields id' id='viewEmpId' name='viewEmpId' placeholder='Employee ID' required='' value='".$viewAcc['emp_id']."'>
-    <label for='viewPosition'>Position:</label>
-        ";
 
-        echo"
-        <select id='viewPosition' class='viewFields' name='viewPosition' selected='Doctor'>";
+    <div class='edit_acc_div name'>
+        <div class='edit_acc_cont fname'>
+            <label for='viewFname'>First Name: *</label><br>
+            <input type='text' class='viewFields name' id='viewFname' name='viewFname' placeholder='First Name' required='' value='".$viewAcc['first_name']."'  required readonly>
+        </div>
 
-        if($viewAcc['position']=="Administrator")
-        {
-            echo " <option value='Administrator' selected='selected'>Administrator</option>
-                   <option value='Doctor'>Doctor</option>
-                   <option value='Nurse'>Nurse</option>";
-        }
-        else if($viewAcc['position']=="Doctor")
-        {
-            echo " <option value='Administrator'>Administrator</option>
-                   <option value='Doctor' selected='selected'>Doctor</option>
-                   <option value='Nurse'>Nurse</option>";
-        }
-        else if($viewAcc['position']=="Nurse")
-        {
-            echo " <option value='Administrator' selected='selected'>Administrator</option>
-                   <option value='Doctor'>Doctor</option>
-                   <option value='Nurse' selected='selected'>Nurse</option>";
-        }
-           
-           
+        <div class='edit_acc_cont mname'>
+            <label for='viewMname'>Middle Name:</label><br>
+            <input type='text' class='viewFields name' id='viewMname' name='viewMname' placeholder='Middle Name' value='".$viewAcc['middle_name']."'  readonly>
+        </div>
+
+        <div class='edit_acc_cont lname'>
+            <label for='viewLname'>Last Name: *</label><br>
+            <input type='text' class='viewFields name' id='viewLname' name='viewLname' placeholder='Last Name' required='' value='".$viewAcc['last_name']."'  required readonly>
+        </div>
+    </div>
 
 
-        echo"    
-        </select><br/><br>
-        <h5 style='font-weight:bold;'>Reset Password</h5>
-        <!--<div>
-        <label for='currentPword'>Current Password:</label>
-        <input type='text' class='viewFields' id='currentPword' name='currentPword' placeholder='Current Password'>
-        <span></span><br/>
-        </div>-->
-        <label for='newPword'>New Password:</label>
-        <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' ><br/>
-        <label for='confirmPword'>Confirm New Password:</label>
-        <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' ><br/>
-        <!-- <input type='text' class='viewFields' name='registerImage' placeholder='User Image' > -->
-        <input type='text' id='updateAccID' name='updateAccID' placeholder=''style='visibility:hidden' value='".$viewAcc['emp_id']."'>
-        <input class='button'  type='submit' name='saveChangesButton' value='Save Changes'>
+    <div class='edit_acc_div emp_id_positon'>
+        <div class='edit_acc_cont emp_id'>
+            <label for='viewEmpId'>Employee ID: *</label><br>
+            <input type='text' class='viewFields id' id='viewEmpId' name='viewEmpId' placeholder='Employee ID' required='' value='".$viewAcc['emp_id']."'  required readonly>
+        </div>
+
+        <div class='edit_acc_cont position'>
+        <label for='viewPosition'>Position: *</label><br>
+            ";
+
+            echo"
+            <select id='viewPosition' class='viewFields' name='viewPosition' selected='Doctor'>";
+
+            if($viewAcc['position']=="Administrator")
+            {
+                echo " <option value='Administrator' selected='selected' disabled>Administrator</option>
+                    <option value='Doctor' disabled>Doctor</option>
+                    <option value='Nurse' disabled>Nurse</option>";
+            }
+            else if($viewAcc['position']=="Doctor")
+            {
+                echo " <option value='Administrator' disabled>Administrator</option>
+                    <option value='Doctor' selected='selected' disabled>Doctor</option>
+                    <option value='Nurse' disabled>Nurse</option>";
+            }
+            else if($viewAcc['position']=="Nurse")
+            {
+                echo " <option value='Administrator' selected='selected' disabled>Administrator</option>
+                    <option value='Doctor' disabled>Doctor</option>
+                    <option value='Nurse' selected='selected' disabled>Nurse</option>";
+            }
+            
+            
+
+
+            echo"    
+            </select>
+        </div>
+    </div>
+    </div>
+    <div class='mutable'>
+    <div class='edit_acc_cont new_password'>
+        <label for='newPword'>New Password: *</label><br>
+        <input type='password' class='viewFields' id='newPword' name='newPword' placeholder='New Password' required readonly>
+    </div>
+
+    <div class='edit_acc_cont confirm_new_password'>
+        <label for='confirmPword'>Confirm New Password: *</label><br>
+        <input type='password' class='viewFields' id='confirmPword' name='confirmPword' placeholder='Confirm Password' required readonly>
+    </div>
+    </div>
+
+        <input class='button'  type='submit' name='saveChangesButton' value='Apply Changes'>
+
         </form>
         
         ";
+        
 
 }
 

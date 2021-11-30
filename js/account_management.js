@@ -188,9 +188,9 @@ $(document).ready(function () {
                          $('#regLname').val('')
                          $('#regEmpId').val('')
 
-                             setTimeout(function(){
+                         setTimeout(function () {
                               window.location.reload(1);
-                           }, 1000);
+                         }, 1000);
                     }
                })
           }
@@ -313,6 +313,145 @@ $(document).ready(function () {
                     dataType: "text",
                     success: function (data) {
                          $('table').html(data);
+                         var upd_uname_state = true;
+
+                         $(".bx.bxs-user").click(function () {
+                              var id = $(this).attr('id');
+                              $(".accounts_table_div,.search_form").hide(),
+                                   $(".view_account").show(),
+                                   $('.view_form_div').html(''),
+                                   $.ajax({
+                                        url: "view_account.php",
+                                        method: "post",
+                                        data: { view: id },
+                                        dataType: "text",
+                                        success: function (data) {
+                                             $('.view_form_div').html(data);
+
+                                             $(".mutable input[type=text],.mutable input[type=password],.mutable select").dblclick(function () {
+                                                  $("h4").text("You are Editing!");
+                                                  $("h4").css('color', 'rgb(91, 220, 125)');
+                                                  $(":submit").prop('disabled', false);
+                                                  $(".mutable input[type=text],.mutable input[type=password],.mutable select").prop('readonly', false);
+                                                  $("option").prop('disabled', false);
+                                                  if (!($(":submit").hasClass("enable"))) {
+                                                       $(":submit").addClass("enable");
+                                                  }
+
+                                             });
+
+                                             $(".bx.bxs-x-circle").click(function () {
+
+                                                  if ($(".view_form_div").hasClass("active")) {
+                                                       alert("ongoing pa sweet alert ulet");
+                                                       // Swal.fire(
+                                                       //      'Error!',
+                                                       //      'Adding is still ongoing.',
+                                                       //      'error'
+                                                       // )
+                                                  }
+                                                  else {
+                                                       window.location.href = "account_management.php";
+                                                  }
+                                             });
+
+
+                                             $("input").on("input", function () {
+                                                  $(".view_form_div").addClass("active");
+                                             });
+
+                                             //to get the current username
+                                             var currentUname = $('#viewUname').val()
+
+                                             $('#viewUname').on('blur', function () {
+                                                  var viewUname = $('#viewUname').val()
+                                                  if (viewUname === '') {
+                                                       upd_uname_state = false;
+                                                       $('#viewUname').parent().removeClass();
+                                                       $('#viewUname').parent().removeClass("form_error");
+                                                       $('#viewUname').siblings("span").text('Please enter Username');
+
+                                                       return
+                                                  }
+
+                                                  if (viewUname !== currentUname) {
+                                                       $.ajax({
+                                                            type: "POST",
+                                                            url: "update_validation.php",
+                                                            data: {
+                                                                 'upd_username_check': 1,
+                                                                 'viewUname': viewUname,
+                                                            },
+                                                            success: function (response) {
+
+                                                                 if (response == 0) {
+                                                                      upd_uname_state = false;
+                                                                      $('#viewUname').parent().removeClass();
+                                                                      $('#viewUname').parent().addClass("form_error");
+                                                                      $('#viewUname').siblings("span").text('Username already taken');
+
+                                                                 }
+                                                                 else if (response == 1) {
+                                                                      upd_uname_state = true;
+                                                                      $('#viewUname').parent().removeClass();
+                                                                      $('#viewUname').parent().removeClass("form_error");
+                                                                      $('#viewUname').siblings("span").text('');
+                                                                 }
+                                                                 else {
+                                                                      alert(response);
+                                                                      $('#viewUname').parent().removeClass();
+                                                                      $('#viewUname').parent().removeClass("form_error");
+                                                                      $('#viewUname').siblings("span").text(response);
+                                                                 }
+                                                            }
+                                                       });
+                                                  }
+                                                  else if (viewUname === currentUname) {
+                                                       upd_uname_state = true;
+                                                       $('#viewUname').parent().removeClass();
+                                                       $('#viewUname').parent().removeClass("form_error");
+                                                       $('#viewUname').siblings("span").text('');
+                                                  }
+                                             });
+
+                                             $("#view_form").validate({
+                                                  rules: {
+                                                       viewUname: {
+                                                            required: true,
+                                                       },
+
+                                                       viewFname: {
+                                                            required: true,
+                                                       },
+                                                       viewLname: {
+                                                            required: true,
+                                                       },
+                                                       newPword: {
+                                                            minlength: 5
+                                                       },
+                                                       confirmPword: {
+                                                            equalTo: '#newPword'
+                                                       },
+                                                  },
+                                                  messages: {
+                                                       viewUname: "Please enter username",
+                                                       viewFname: "Please enter first name",
+                                                       viewLname: "Please enter last name",
+
+                                                       newPword: {
+
+                                                            minlength: "password must atleast have 5 characters"
+                                                       },
+                                                       confirmPword: {
+
+                                                            equalTo: "Password does not match"
+                                                       },
+                                                  },
+                                                  submitHandler: submitFormUpdate
+                                             })
+                                        }
+                                   });
+                         });
                     }
                });
           //somehow return false stops keyup functioning twice
@@ -393,76 +532,100 @@ $(document).ready(function () {
                     data: { view: id },
                     dataType: "text",
                     success: function (data) {
-                         $('.view_form_div').html(data),
-                              $("#view_form input[type='submit'],#view_form #viewEmpId").prop("disabled", true),
-                              $(".viewFields").keyup(function () {
-                                   $("#view_form input[type='submit']").css("background-color", "rgb(91, 220, 125)"),
-                                        $("#view_form input[type='submit']").prop("disabled", false);
-                              }),
-                              $("#view_form select").change(function () {
-                                   $("#view_form input[type='submit']").css("background-color", "rgb(91, 220, 125)"),
-                                        $("#view_form input[type='submit']").prop("disabled", false);
-                              });
-                              //to get the current username
-                              var currentUname = $('#viewUname').val()
+                         $('.view_form_div').html(data);
 
-                              $('#viewUname').on('blur', function () {
-                                   var viewUname = $('#viewUname').val()
-                                   if (viewUname === '') {
-                                        upd_uname_state = false;
-                                        $('#viewUname').parent().removeClass();
-                                        $('#viewUname').parent().removeClass("form_error");
-                                        $('#viewUname').siblings("span").text('Please enter Username');
-                         
-                                        return
-                                   }
-                         
-                                   if (viewUname !== currentUname) {
-                                        $.ajax({
-                                             type: "POST",
-                                             url: "update_validation.php",
-                                             data: {
-                                                  'upd_username_check': 1,
-                                                  'viewUname': viewUname,
-                                             },
-                                             success: function (response) {
-                         
-                                                  if (response == 0) {
-                                                       upd_uname_state = false;
-                                                       $('#viewUname').parent().removeClass();
-                                                       $('#viewUname').parent().addClass("form_error");
-                                                       $('#viewUname').siblings("span").text('Username already taken');
-                         
-                                                  }
-                                                  else if (response == 1) {
-                                                       upd_uname_state = true;
-                                                       $('#viewUname').parent().removeClass();
-                                                       $('#viewUname').parent().removeClass("form_error");
-                                                       $('#viewUname').siblings("span").text('');
-                                                  }
-                                                  else {
-                                                       alert(response);
-                                                       $('#viewUname').parent().removeClass();
-                                                       $('#viewUname').parent().removeClass("form_error");
-                                                       $('#viewUname').siblings("span").text(response);
-                                                  }
+                         $(".mutable input[type=text],.mutable input[type=password],.mutable select").dblclick(function () {
+                              $("h4").text("You are Editing!");
+                              $("h4").css('color', 'rgb(91, 220, 125)');
+                              $(":submit").prop('disabled', false);
+                              $(".mutable input[type=text],.mutable input[type=password],.mutable select").prop('readonly', false);
+                              $("option").prop('disabled', false);
+                              if (!($(":submit").hasClass("enable"))) {
+                                   $(":submit").addClass("enable");
+                              }
+
+                         });
+
+                         $(".bx.bxs-x-circle").click(function () {
+
+                              if ($(".view_form_div").hasClass("active")) {
+                                   alert("ongoing pa sweet alert ulet");
+                                   // Swal.fire(
+                                   //      'Error!',
+                                   //      'Adding is still ongoing.',
+                                   //      'error'
+                                   // )
+                              }
+                              else {
+                                   window.location.href = "account_management.php";
+                              }
+                         });
+
+
+                         $("input").on("input", function () {
+                              $(".view_form_div").addClass("active");
+                         });
+
+                         //to get the current username
+                         var currentUname = $('#viewUname').val()
+
+                         $('#viewUname').on('blur', function () {
+                              var viewUname = $('#viewUname').val()
+                              if (viewUname === '') {
+                                   upd_uname_state = false;
+                                   $('#viewUname').parent().removeClass();
+                                   $('#viewUname').parent().removeClass("form_error");
+                                   $('#viewUname').siblings("span").text('Please enter Username');
+
+                                   return
+                              }
+
+                              if (viewUname !== currentUname) {
+                                   $.ajax({
+                                        type: "POST",
+                                        url: "update_validation.php",
+                                        data: {
+                                             'upd_username_check': 1,
+                                             'viewUname': viewUname,
+                                        },
+                                        success: function (response) {
+
+                                             if (response == 0) {
+                                                  upd_uname_state = false;
+                                                  $('#viewUname').parent().removeClass();
+                                                  $('#viewUname').parent().addClass("form_error");
+                                                  $('#viewUname').siblings("span").text('Username already taken');
+
                                              }
-                                        });
-                                   }
-                                   else if (viewUname === currentUname) {
-                                        upd_uname_state = true;
-                                        $('#viewUname').parent().removeClass();
-                                        $('#viewUname').parent().removeClass("form_error");
-                                        $('#viewUname').siblings("span").text('');
-                                   }
-                              });
-                    
+                                             else if (response == 1) {
+                                                  upd_uname_state = true;
+                                                  $('#viewUname').parent().removeClass();
+                                                  $('#viewUname').parent().removeClass("form_error");
+                                                  $('#viewUname').siblings("span").text('');
+                                             }
+                                             else {
+                                                  alert(response);
+                                                  $('#viewUname').parent().removeClass();
+                                                  $('#viewUname').parent().removeClass("form_error");
+                                                  $('#viewUname').siblings("span").text(response);
+                                             }
+                                        }
+                                   });
+                              }
+                              else if (viewUname === currentUname) {
+                                   upd_uname_state = true;
+                                   $('#viewUname').parent().removeClass();
+                                   $('#viewUname').parent().removeClass("form_error");
+                                   $('#viewUname').siblings("span").text('');
+                              }
+                         });
+
                          $("#view_form").validate({
                               rules: {
                                    viewUname: {
                                         required: true,
                                    },
-                    
+
                                    viewFname: {
                                         required: true,
                                    },
@@ -480,23 +643,20 @@ $(document).ready(function () {
                                    viewUname: "Please enter username",
                                    viewFname: "Please enter first name",
                                    viewLname: "Please enter last name",
-                    
+
                                    newPword: {
-                    
+
                                         minlength: "password must atleast have 5 characters"
                                    },
                                    confirmPword: {
-                    
+
                                         equalTo: "Password does not match"
                                    },
                               },
                               submitHandler: submitFormUpdate
-                         })     
+                         })
                     }
                });
      });
-     $('body').on('click', '.bx.bxs-x-circle', function () {
-          $(".accounts_table_div,.search_form").show(),
-               $(".view_account").hide();
-     });
+
 });
