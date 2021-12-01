@@ -73,14 +73,10 @@ include_once '../dbconn.php';
                   <div id="error2" class="alert alert-danger" style="display: none"></div>
 
                 <div class="mutable">
-
-               
-                  
                     <div class="reg_cont username">
                           <label>Username: *</label><br>
                           <input type="text" name="regUname" id="regUname" required autocomplete="off">
-                          <span></span>
-                    </div>
+                    </div> 
                     
                     <div class="reg_cont_div password">
                         <div class="reg_cont password">
@@ -115,7 +111,7 @@ include_once '../dbconn.php';
                         <div class="reg_cont emp_id">
                             <label>Employee ID: *</label><br>
                             <input class="form-control" type="text" name="regEmpId" id="regEmpId" required autocomplete="off">
-                            <span></span>
+                            
                         </div>
                         
                         <div class="reg_cont position">

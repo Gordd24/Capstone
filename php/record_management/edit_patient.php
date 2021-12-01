@@ -41,7 +41,7 @@ if(isset($_POST['edit_patient_submit'])){
                 <div class="cancel_edit_patient_btn_div">
                     
                     <?php
-                         echo "<a href='view_patient.php?id=".base64_encode(base64_encode($patient))."'><i class='bx bxs-x-circle'></i></a>";
+                         echo "<a id='edit_patient_exit' href='view_patient.php?id=".base64_encode(base64_encode($patient))."'><i class='bx bxs-x-circle'></i></a>";
                     ?>
                    <h2>Patient Information</h2> 
                 </div>

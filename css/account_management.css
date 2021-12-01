@@ -362,6 +362,8 @@ body{
     color: green;
   }
   .error{
+    display: block;
     color: #D83D5A;
+    
   }
 

@@ -180,7 +180,7 @@ $(document).ready(function () {
 
     });
   });
-
+  
   $('tr td a.archive_btn').on('click', function (e) {
     var archiveLink = this
 

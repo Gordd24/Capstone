@@ -37,7 +37,7 @@
                             <h5>Account Profile</h5><br>
                             <input type="hidden" id="currentUname" value="<?php echo $view_profile['username']; ?>">
                             <label  for='acc_id'>Account ID:</label><br>
-                            <input type='text' id='acc_id'class='viewFields'  value="<?php echo $view_profile['acc_id']; ?>" ><br>
+                            <input type='text' id='acc_id'class='viewFields'  value="<?php echo $view_profile['acc_id']; ?>" readonly><br>
                             <label  for='emp_id'>Employee ID:</label><br>
                             <input type='text' id='emp_id' class='viewFields'  value="<?php echo $view_profile['emp_id']; ?>" readonly><br>
                             <label  for='name'>Name:</label><br>

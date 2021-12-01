@@ -41,10 +41,6 @@ $(document).ready(function () {
           var regisUname = $('#regUname').val()
           if (regisUname == '') {
                reg_uname_state = false;
-               $('#regUname').parent().removeClass();
-               $('#regUname').parent().removeClass("form_error");
-               $('#regUname').siblings("span").text('');
-
                return
           }
           $.ajax({
@@ -57,15 +53,9 @@ $(document).ready(function () {
                success: function (response) {
                     if (response == 0) {
                          reg_uname_state = false;
-                         $('#regUname').parent().removeClass();
-                         $('#regUname').parent().addClass("form_error");
-                         $('#regUname').siblings("span").text('Username already taken');
                     }
                     else if (response == 1) {
                          reg_uname_state = true
-                         $('#regUname').parent().removeClass();
-                         $('#regUname').parent().removeClass("form_error");
-                         $('#regUname').siblings("span").text('');
                     }
                     else {
                          alert(response);
@@ -79,11 +69,7 @@ $(document).ready(function () {
      $('#regEmpId').on('blur', function () {
           var regisEmpid = $('#regEmpId').val()
           if (regisEmpid == '') {
-               reg_empid_state = false;
-
-               $('#regEmpId').parent().removeClass();
-               $('#regEmpId').parent().removeClass("form_error");
-               $('#regEmpId').siblings("span").text('');
+               reg_empid_state = false;              
                return
           }
           $.ajax({
@@ -96,15 +82,9 @@ $(document).ready(function () {
                success: function (response) {
                     if (response == 0) {
                          reg_empid_state = false;
-                         $('#regEmpId').parent().removeClass();
-                         $('#regEmpId').parent().addClass("form_error");
-                         $('#regEmpId').siblings("span").text('Employee Id already exist');
                     }
                     else if (response == 1) {
                          reg_empid_state = true;
-                         $('#regEmpId').parent().removeClass();
-                         $('#regEmpId').parent().removeClass("form_error");
-                         $('#regEmpId').siblings("span").text('');
                     }
                     else {
                          alert(response);
@@ -156,10 +136,12 @@ $(document).ready(function () {
      //form submitter
      function submitForm() {
           var data = $('#regForm').serialize();
-          if (reg_uname_state == false || reg_empid_state == false) {
-               $('#show_message').fadeOut;
-               $("#error").fadeIn().text("Fix the errors");
-          } else {
+          if (reg_uname_state == false) {
+               Swal.fire('Error','Username already exist','error')
+          } else if(reg_empid_state == false){
+               Swal.fire('Error','Employee ID already exist','error')
+
+          }else {
                $.ajax({
                     type: 'POST',
                     url: "account_register.php",
@@ -174,12 +156,6 @@ $(document).ready(function () {
                               'Registration is successful',
                               'success'
                          )
-                         $('#regUname').parent().removeClass();
-                         $('#regUname').parent().removeClass("form_error");
-                         $('#regUname').siblings("span").text('');
-                         $('#regEmpId').parent().removeClass();
-                         $('#regEmpId').parent().removeClass("form_error");
-                         $('#regEmpId').siblings("span").text('');
                          $('#regUname').val('')
                          $('#regPword').val('')
                          $('#regCPword').val('')
@@ -254,7 +230,7 @@ $(document).ready(function () {
           if (upd_uname_state == false) {
                Swal.fire(
                     'Error!',
-                    'Please fix the errors',
+                    'Username already exist',
                     'error'
                )
           } else {
@@ -286,9 +262,6 @@ $(document).ready(function () {
                                    }
                                    else {
                                         alert(response);
-                                        $('#currentPword').parent().removeClass();
-                                        $('#currentPword').parent().removeClass("form_error");
-                                        $('#currentPword').siblings("span").text(response);
                                    }
                               }
                          })
@@ -367,10 +340,7 @@ $(document).ready(function () {
                                                   var viewUname = $('#viewUname').val()
                                                   if (viewUname === '') {
                                                        upd_uname_state = false;
-                                                       $('#viewUname').parent().removeClass();
-                                                       $('#viewUname').parent().removeClass("form_error");
-                                                       $('#viewUname').siblings("span").text('Please enter Username');
-
+                                                       
                                                        return
                                                   }
 
@@ -386,31 +356,20 @@ $(document).ready(function () {
 
                                                                  if (response == 0) {
                                                                       upd_uname_state = false;
-                                                                      $('#viewUname').parent().removeClass();
-                                                                      $('#viewUname').parent().addClass("form_error");
-                                                                      $('#viewUname').siblings("span").text('Username already taken');
-
+                                                                      
                                                                  }
                                                                  else if (response == 1) {
                                                                       upd_uname_state = true;
-                                                                      $('#viewUname').parent().removeClass();
-                                                                      $('#viewUname').parent().removeClass("form_error");
-                                                                      $('#viewUname').siblings("span").text('');
+                                                                      
                                                                  }
                                                                  else {
                                                                       alert(response);
-                                                                      $('#viewUname').parent().removeClass();
-                                                                      $('#viewUname').parent().removeClass("form_error");
-                                                                      $('#viewUname').siblings("span").text(response);
                                                                  }
                                                             }
                                                        });
                                                   }
                                                   else if (viewUname === currentUname) {
                                                        upd_uname_state = true;
-                                                       $('#viewUname').parent().removeClass();
-                                                       $('#viewUname').parent().removeClass("form_error");
-                                                       $('#viewUname').siblings("span").text('');
                                                   }
                                              });
 
@@ -573,10 +532,6 @@ $(document).ready(function () {
                               var viewUname = $('#viewUname').val()
                               if (viewUname === '') {
                                    upd_uname_state = false;
-                                   $('#viewUname').parent().removeClass();
-                                   $('#viewUname').parent().removeClass("form_error");
-                                   $('#viewUname').siblings("span").text('Please enter Username');
-
                                    return
                               }
 
@@ -592,31 +547,19 @@ $(document).ready(function () {
 
                                              if (response == 0) {
                                                   upd_uname_state = false;
-                                                  $('#viewUname').parent().removeClass();
-                                                  $('#viewUname').parent().addClass("form_error");
-                                                  $('#viewUname').siblings("span").text('Username already taken');
-
                                              }
                                              else if (response == 1) {
                                                   upd_uname_state = true;
-                                                  $('#viewUname').parent().removeClass();
-                                                  $('#viewUname').parent().removeClass("form_error");
-                                                  $('#viewUname').siblings("span").text('');
+                                                  
                                              }
                                              else {
                                                   alert(response);
-                                                  $('#viewUname').parent().removeClass();
-                                                  $('#viewUname').parent().removeClass("form_error");
-                                                  $('#viewUname').siblings("span").text(response);
                                              }
                                         }
                                    });
                               }
                               else if (viewUname === currentUname) {
                                    upd_uname_state = true;
-                                   $('#viewUname').parent().removeClass();
-                                   $('#viewUname').parent().removeClass("form_error");
-                                   $('#viewUname').siblings("span").text('');
                               }
                          });
 

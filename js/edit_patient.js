@@ -8,24 +8,36 @@ $(document).ready(function () {
         $("input[type=radio]").prop('disabled', false);
     });
 
-
-    $(".bx.bxs-x-circle").click(function () {
-
-        if ($(".record_management_edit_div").hasClass("active")) {
-            Swal.fire(
-                'Error!',
-                'Adding is still ongoing.',
-                'error'
-            )
-        }
-        else {
-            // window.location.href = "record_management.php";
-        }
-    });
-
-
     $("input").on("input", function () {
         $(".record_management_edit_div").addClass("active");
     });
+
+    
+    $('a#edit_patient_exit').on('click', function (e) {
+        var editLink = this
+    
+        e.preventDefault();
+        
+        if ($(".record_management_edit_div").hasClass("active")) {
+            
+            Swal.fire({
+                title: 'Do you want to exit?',
+                text: "You are currently editing the patient",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location = editLink.href
+                }
+              })
+        }
+    
+        
+      })
+    
+    
 });
 
