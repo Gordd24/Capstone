@@ -107,6 +107,7 @@ body{
     font-size: 0.9vw;
     color: white;
     cursor: pointer;
+    box-shadow: 0px 0px 20px 1px #6b6a6a; 
 
 }
  .add_patient_div .add_patient_form label

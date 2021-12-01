@@ -18,15 +18,15 @@ if($result->num_rows>0)
     if($viewPatient['sex']=="Male")
     { 
         $sex = "  <input type='radio' id='patient_sex_male' name='patient_sex' value='Male' checked='checked'>
-                  <label for='html'>Male</label>
+                  <label for='patient_sex_male'>Male</label>
                   <input type='radio' id='patient_sex_female' name='patient_sex' value='Female'>
-                  <label for='css'>Female</label><br><br>";
+                  <label for='patient_sex_female'>Female</label><br><br>";
     }
     else{
       $sex = "  <input type='radio' id='patient_sex_male' name='patient_sex' value='Male' >
-                  <label for='html'>Male</label>
+                  <label for='patient_sex_male'>Male</label>
                   <input type='radio' id='patient_sex_female' name='patient_sex' value='Female' checked='checked'>
-                  <label for='css'>Female</label><br><br>";
+                  <label for='patient_sex_female'>Female</label><br><br>";
     }
 
     echo   "
@@ -61,57 +61,57 @@ if($result->num_rows>0)
         <div class='mutable'>
           <div class='cons_cont_div age_sex_bday'>
             <div class='cons_cont age'>
-              <label for='patient_age'>Age:</label><br>
-              <input type='text' id='patient_age' name='patient_age' required='required'>
+              <label for='patient_age'>Age: *</label><br>
+              <input type='text' id='patient_age' name='patient_age' required='required' autocomplete='off'>
             </div>
             <div class='cons_cont sex'>
               <p>Sex</p>
               ".$sex."
             </div>
             <div class='cons_cont bday'>
-              <label for='patient_birthday'>Birthday:</label><br>
+              <label for='patient_birthday'>Birthday: *</label><br>
               <input type='date' id='patient_birthday' name='patient_birthday' value='".$viewPatient['birthdate']."' required='required'>
             </div>
           </div>
 
           <div class='cons_cont_div address_contact'>
             <div class='cons_cont address'>
-              <label for='patient_address'>Address:</label><br>
-              <input type='text' id='patient_address' name='patient_address' value='".$viewPatient['address']."' required='required'><br>
+              <label for='patient_address'>Address: *</label><br>
+              <input type='text' id='patient_address' name='patient_address' value='".$viewPatient['address']."' required='required'  autocomplete='off'><br>
             </div>
             <div class='cons_cont contact'>
               <label for='patient_contact_no'>Contact No:</label><br>
-              <input type='text' id='patient_contact_no' value='".$viewPatient['contact_no']."' name='patient_contact_no'>
+              <input type='text' id='patient_contact_no' value='".$viewPatient['contact_no']."' name='patient_contact_no'  autocomplete='off'>
             </div>
           </div>
         
           <div class='cons_cont complaint'>
-            <label for='patient_complaint'>Chief Complaint:</label><br>
-            <textarea id='patient_complaint' name='patient_complaint' rows=”15″ cols=”40″></textarea>
+            <label for='patient_complaint'>Chief Complaint: *</label><br>
+            <textarea id='patient_complaint' name='patient_complaint' rows=”15″ cols=”40″ required='required'></textarea>
           </div>
 
           <div class='cons_cont_div vitals'>
             <div class='cons_cont vital_sign'>
-              <label for='patient_weight'>Weight:</label><br>
-              <input type='text' id='patient_weight' name='patient_weight'><br>
-              <label for='patient_bp'>BP:</label><br>
-              <input type='text' id='patient_bp' name='patient_bp'><br>
-              <label for='patient_temp'>Temp:</label><br>
-              <input type='text' id='patient_temp' name='patient_temp'><br>
-              <label for='patient_rr'>RR:</label><br>
-              <input type='text' id='patient_rr' name='patient_rr'><br>
-              <label for='patient_pr'>PR:</label><br>
-              <input type='text' id='patient_pr' name='patient_pr'>
+              <label for='patient_weight'>Weight: *</label><br>
+              <input type='text' id='patient_weight' name='patient_weight'  autocomplete='off' required='required'><br>
+              <label for='patient_bp'>BP: *</label><br>
+              <input type='text' id='patient_bp' name='patient_bp'  autocomplete='off' required='required'><br>
+              <label for='patient_temp'>Temp: *</label><br>
+              <input type='text' id='patient_temp' name='patient_temp'  autocomplete='off' required='required'><br>
+              <label for='patient_rr'>RR: *</label><br>
+              <input type='text' id='patient_rr' name='patient_rr'  autocomplete='off' required='required'><br>
+              <label for='patient_pr'>PR: *</label><br>
+              <input type='text' id='patient_pr' name='patient_pr'  autocomplete='off' required='required'>
             </div>
           
             <div class='cons_cont ob_patient'>
               <p>For OB Patient</p>
               <label for='patient_lmp'>LMP:</label><br>
-              <input type='text' id='patient_lmp' name='patient_lmp'><br>
+              <input type='text' id='patient_lmp' name='patient_lmp'  autocomplete='off' ><br>
               <label for='patient_aog'>AOG:</label><br>
-              <input type='text' id='patient_aog' name='patient_aog'><br>
+              <input type='text' id='patient_aog' name='patient_aog'  autocomplete='off'><br>
               <label for='patient_edc'>EDC:</label><br>
-              <input type='text' id='patient_edc' name='patient_edc'>
+              <input type='text' id='patient_edc' name='patient_edc'  autocomplete='off'>
             </div>
           </div>
         </div>

@@ -17,15 +17,15 @@ if($result->num_rows>0)
     if($viewPatient['sex']=="Male")
     { 
         $sex = "  <input type='radio' id='patient_sex_male' name='patient_sex' value='Male' checked='checked'>
-                  <label for='html'>Male</label>
+                  <label for='patient_sex_male'>Male</label>
                   <input type='radio' id='patient_sex_female' name='patient_sex' value='Female'>
-                  <label for='css'>Female</label><br><br>";
+                  <label for='patient_sex_female'>Female</label><br><br>";
     }
     else{
       $sex = "  <input type='radio' id='patient_sex_male' name='patient_sex' value='Male' >
-                  <label for='html'>Male</label>
+                  <label for='patient_sex_male'>Male</label>
                   <input type='radio' id='patient_sex_female' name='patient_sex' value='Female' checked='checked'>
-                  <label for='css'>Female</label><br><br>";
+                  <label for='patient_sex_female'>Female</label><br><br>";
     }
 
 
@@ -63,8 +63,8 @@ echo "
         <div class='mutable'>
             <div class='med_cont_div age_sex'>
                 <div class='med_cont age'>
-                    <label for='patient_age'>Age:</label><br>
-                    <input type='text' id='patient_age' name='patient_age' required='required'>
+                    <label for='patient_age'>Age: *</label><br>
+                    <input type='text' id='patient_age' name='patient_age' required='required' autocomplete='off'>
                 </div>
                 <div class='med_cont sex'>
                     <p>Sex</p>
@@ -73,28 +73,28 @@ echo "
             </div>
 
             <div class='med_cont address'>
-                <label for='patient_address'>Address:</label><br>
-                <input type='text' id='patient_address' name='patient_address' value='".$viewPatient['address']."' required='required'>
+                <label for='patient_address'>Address: *</label><br>
+                <input type='text' id='patient_address' name='patient_address' value='".$viewPatient['address']."' required='required'  autocomplete='off'>
             </div>
 
             <div class='med_cont diagnosis'>
-                <label for='patient_diagnosis'>Diagnosis:</label><br>
+                <label for='patient_diagnosis'>Diagnosis: *</label><br>
                 <textarea id='patient_diagnosis' name='patient_diagnosis' rows=”15″ cols=”40″ required='required'></textarea>
             </div>
 
             <div class='med_cont recommendation'>
-                <label for='patient_recommendation'>Recommendation/Advise:</label><br>
+                <label for='patient_recommendation'>Recommendation/Advise: *</label><br>
                 <textarea id='patient_recommendation' name='patient_recommendation' rows=”15″ cols=”40″ required='required'></textarea>
             </div>
 
             <div class='med_cont_div physician'>
                 <div class='med_cont physician'>
-                    <label for='patient_physician'>Physician (Full Name):</label><br>
-                    <input type='text' id='patient_physician' name='patient_physician' required='required'>
+                    <label for='patient_physician'>Physician (Full Name): *</label><br>
+                    <input type='text' id='patient_physician' name='patient_physician' required='required'  autocomplete='off'>
                 </div>
                 <div class='med_cont license'>
-                    <label for='patient_physician_license'>Physician License:</label><br>
-                    <input type='text' id='patient_physician_license' name='patient_physician_license' required='required'>
+                    <label for='patient_physician_license'>Physician License: *</label><br>
+                    <input type='text' id='patient_physician_license' name='patient_physician_license' required='required'  autocomplete='off'>
                 </div>
             </div>
         </div>
