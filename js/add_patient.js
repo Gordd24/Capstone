@@ -9,10 +9,10 @@ $(document).ready(function () {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes'
         }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "record_management.php";
-        }
-   })
+            if (result.isConfirmed) {
+                window.location.href = "record_management.php";
+            }
+        })
   })
 
         

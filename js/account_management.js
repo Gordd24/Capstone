@@ -315,13 +315,23 @@ $(document).ready(function () {
 
                                              $(".bx.bxs-x-circle").click(function () {
 
+
+
                                                   if ($(".view_form_div").hasClass("active")) {
-                                                       alert("ongoing pa sweet alert ulet");
-                                                       // Swal.fire(
-                                                       //      'Error!',
-                                                       //      'Adding is still ongoing.',
-                                                       //      'error'
-                                                       // )
+                                                       // alert("ongoing pa sweet alert ulet");
+                                                      Swal.fire({
+                                                            title: 'You are currently updating an acount',
+                                                            text: "Do you want to exit?",
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes'
+                                                            }).then((result) => {
+                                                                 if (result.isConfirmed) {
+                                                                      window.location.href = "account_management.php";
+                                                                 }
+                                                            })
                                                   }
                                                   else {
                                                        window.location.href = "account_management.php";
@@ -508,12 +518,20 @@ $(document).ready(function () {
                          $(".bx.bxs-x-circle").click(function () {
 
                               if ($(".view_form_div").hasClass("active")) {
-                                   alert("ongoing pa sweet alert ulet");
-                                   // Swal.fire(
-                                   //      'Error!',
-                                   //      'Adding is still ongoing.',
-                                   //      'error'
-                                   // )
+                                   // alert("ongoing pa sweet alert ulet");
+                                   Swal.fire({
+                                        title: 'You are currently updating an acount',
+                                        text: "Do you want to exit?",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes'
+                                        }).then((result) => {
+                                             if (result.isConfirmed) {
+                                                  window.location.href = "account_management.php";
+                                             }
+                                        })
                               }
                               else {
                                    window.location.href = "account_management.php";
