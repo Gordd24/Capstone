@@ -525,12 +525,12 @@ if($patient_added=="1")
 
 
     $patient_added_sql = "SELECT * FROM tbl_patients ORDER BY date_added,time_added DESC";
-    $patient_added = $conn -> query($patient_added_sql);
+    $patients_added = $conn -> query($patient_added_sql);
 
 
-    if($patient_added->num_rows>0)
+    if($patients_added->num_rows>0)
     {
-        while($row_patient_added = $patient_added -> fetch_assoc())
+        while($row_patient_added = $patients_added -> fetch_assoc())
         {
            
 

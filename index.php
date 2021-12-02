@@ -25,7 +25,7 @@ include_once 'php/dbconn.php';
         <div class="input">
             <div class="input_box">
                 <form action="index.php" method="post">
-                    <input class="fields" id="username" type="text" name="Username" placeholder="Username" required= "" autocomplete='off'><br>
+                    <input class="fields" id="username" type="text" name="Username" placeholder="Username" required= ""  autocomplete='off'><br>
                     <input class="fields" id="password" type="password" name = "Password" placeholder="Password" required= ""><br>
                     <input class="button" type="submit" name="login" value="Log In">
                 </form>
