@@ -1,11 +1,13 @@
 <?php
 include_once 'dbconn.php';
+
 if (!isset($_SESSION)) {
    session_start();
  }
 
 
 $ID = $_SESSION['ID'];
+
 $sql = "SELECT * FROM tbl_accounts where acc_id = '$ID'";
 $result = $conn -> query($sql);
 $active_account_name = "";

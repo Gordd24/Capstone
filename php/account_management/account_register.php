@@ -6,6 +6,7 @@ if(!isset($_SESSION['ID'])){
 }
 
 
+date_default_timezone_set('Asia/Manila');
 $today = date("Y-m-d"); 
 $time = date("H:i:s");
 
