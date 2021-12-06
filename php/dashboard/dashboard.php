@@ -1,11 +1,31 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+  }
+    include_once '../dbconn.php';
+    // include_once 'dbconn.php';
+    
+    $sql1 = "SELECT * FROM tbl_patients";
+    $total_patient = $conn -> query($sql1);
+    $sql2 = "SELECT * FROM tbl_patients WHERE sex = 'Male'";
+    $total_male_patient = $conn -> query($sql2);
+    $sql3 = "SELECT * FROM tbl_patients WHERE sex = 'Female'";
+    $total_female_patient = $conn -> query($sql3);
+    $sql4 = "SELECT * FROM tbl_consult";
+    $total_consult = $conn -> query($sql4);
+    $sql5 = "SELECT * FROM tbl_admission";
+    $total_admission = $conn -> query($sql5);
+    $sql6 = "SELECT * FROM tbl_med_cert";
+    $total_med_cert = $conn -> query($sql6);
+    $sql7 = "SELECT * FROM tbl_lab_result";
+    $total_lab_res = $conn -> query($sql7);
+    $sql8 = "SELECT * FROM tbl_patients WHERE status = 'Admitted'";
+    $total_admitted = $conn -> query($sql8);
+    $total_records = $total_med_cert->num_rows+$total_lab_res->num_rows+$total_admission->num_rows+$total_consult->num_rows;
 
 
-if(!isset($_SESSION['ID'])){
-    header("Location: ../../index.php");
-}
-include_once '../dbconn.php';
+
 
 ?>
 
@@ -13,36 +33,141 @@ include_once '../dbconn.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dashboard</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="../../css/navigation.css">
-  <link rel="stylesheet" href="../../css/dashboard.css">
-  <!-- Jquery + bootstrap js + sweetalert -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../../js/NavigationScript.js" type="text/javascript"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
-<body>  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
     
-    <?php include_once '../navigation_header.php'; ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 
-    <div class="page_content_div">
-        <div class="dashboard_div">
-            <h2>Dashboard</h1>
-            <div class="dash_info">
+    
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
-               <?php include_once 'dash_info.php'; ?>
+        var consult = <?php  echo $total_consult->num_rows; ?>;
+        var admission = <?php  echo $total_admission->num_rows; ?>;
+        var med_cert = <?php  echo $total_med_cert->num_rows; ?>;
+        var lab_res = <?php  echo $total_lab_res->num_rows; ?>;
+        
+        function drawChart() {
 
+            if(consult==0&&admission==0&&med_cert==0&&lab_res==0)
+            {
+                var data = google.visualization.arrayToDataTable([
+                ['Created', 'Records Today'],
+                ['No Records', 1]
+                ]);
+            }
+            else{
+                var data = google.visualization.arrayToDataTable([
+                ['Created', 'Hours per Day'],
+                ['Consultation', consult],
+                ['Admission', admission],
+                ['Medical Certificate', med_cert],
+                ['Laboratory Results', lab_res]
+                ]);
+            }
+          
+
+            var options = {
+                title: ''
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div class="container-lg align-items-center my-3 p-3">
+        <h1>Dashboard</h1>
+        <div class="row m-5">
+            <h3>Patients</h3>
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Total Patients</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"><?php  echo $total_patient->num_rows; ?></h1>
+                    </div>
+                </div>
             </div>
-
-
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Admitted</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"><?php  echo $total_admitted->num_rows; ?></h1>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row m-5">
+            <h3>Pending Request</h3>
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Laboratory Results</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title">7</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-5">
+            <h3>Patient Records</h3>
+            <div class="col-6 my-3 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Consultation</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"> <?php  echo $total_consult->num_rows; ?></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 my-3 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Admission</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"><?php  echo $total_admission->num_rows; ?></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 my-3 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Medical Certificate</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"><?php  echo $total_med_cert->num_rows; ?></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 my-3 col-md-3">
+                <div class="card shadow-sm" style="max-width: 13rem;">
+                    <div class="card-header text-white">Laboratory Results</div>
+                    <div class="card-body btn btn-muted text-center">
+                        <h1 class="card-title"><?php  echo $total_lab_res->num_rows; ?></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       
+        
+        <div class="container m-5 d-none d-md-block">
+        <h3>Created Record Today</h3>
+
+        <div id="piechart"  style="width: 900px; height: 500px;"></div>
+        </div>
+        
     </div>
+
+
+
+
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
-

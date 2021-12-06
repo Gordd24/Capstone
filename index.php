@@ -61,8 +61,6 @@ if(isset($_POST["signinSubmit"]))
 </head>
 
 <body>
-
-
     <form class="asm-form active" method="post" id="frmSignIn">
         <div class="asm-form__header">
             <h2>Sign In</h2>
