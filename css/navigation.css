@@ -110,8 +110,7 @@ body{
 }
 
 .sidebar ul li a:hover{
-    color: rgb(26, 57, 81);
-    background-color: white;
+    color:  #F7F6FB;
 }
 
 .sidebar ul li #log_out_a:hover{

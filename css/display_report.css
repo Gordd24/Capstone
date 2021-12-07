@@ -6,9 +6,8 @@ body{
     background-size: cover;
 }
 
-.sidebar ul li #report_generation_link{
-    color: rgb(26, 57, 81);
-    background-color: white;
+#report_generation_link{
+    color:  #F7F6FB;
 }
 
 .generated_report_div{

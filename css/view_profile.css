@@ -6,9 +6,8 @@ body{
     background-size: cover;
 }
 
-.sidebar ul li #profile_link{
-    color: rgb(26, 57, 81);
-    background-color: white;
+#profile_link{
+    color:  #F7F6FB;
 }
 
 .page_content_div .profile_management_div

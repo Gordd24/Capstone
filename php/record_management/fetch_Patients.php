@@ -2,7 +2,7 @@
 
 if (!isset($_SESSION)) {
     session_start();
-  }
+}
   include_once '../dbconn.php';
     $sql = "SELECT * FROM tbl_patients WHERE record_status='Active'";
     $result = $conn -> query($sql);

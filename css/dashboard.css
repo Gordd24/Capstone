@@ -1,3 +1,14 @@
 .card-header{
     background-color: rgb(27, 73, 101);
 }
+#dashboard_link{
+    color:  #F7F6FB;
+}
+#dashboard_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}

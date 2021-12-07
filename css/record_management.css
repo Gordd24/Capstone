@@ -6,9 +6,8 @@ body{
     background-size: cover;
 }
 
-.sidebar ul li #record_management_link{
-    color: rgb(26, 57, 81);
-    background-color: white;
+ #record_management_link{
+    color:  #F7F6FB;
 }
 
 

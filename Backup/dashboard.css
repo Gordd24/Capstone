@@ -17,9 +17,8 @@ body{
     border-bottom: 0.1vw solid rgb(220, 218, 218);
  
 }
-.sidebar ul li #dashboard_link{
-    color: rgb(26, 57, 81);
-    background-color: white;
+#dashboard_link{
+    color:  #F7F6FB;
 }
 
 .dash_info{

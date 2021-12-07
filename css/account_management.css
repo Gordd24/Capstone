@@ -20,9 +20,8 @@ body{
 
 
 
-.sidebar ul li #account_management_link{
-    color: rgb(26, 57, 81);
-    background-color: white;
+#account_management_link{
+    color:  #F7F6FB;
 }
 
 .account_management_div .tab{
