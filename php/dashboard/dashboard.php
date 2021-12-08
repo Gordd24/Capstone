@@ -4,7 +4,6 @@ if (!isset($_SESSION)) {
     session_start();
   }
     include_once '../dbconn.php';
-    // include_once 'dbconn.php';
     
     $sql1 = "SELECT * FROM tbl_patients";
     $total_patient = $conn -> query($sql1);

@@ -1,131 +1,87 @@
 $(document).ready(function () {
-     // $(".profile_editable").dblclick(function () {
-     //     $('.profile_editable').prop('readonly', false);
-     //     $(':submit').css("background-color", "rgb(91, 220, 125)");
-     //     $(":submit").prop('disabled', false);
-     //     $("#edit_stat").text("You are Editing!");
-     //     $("#edit_stat").css('color', "rgb(91, 220, 125)");
-     // });
+
+    //toggle forms
+    $("#edit_info").change(function () {
+        if (!$("#edit_info_div").hasClass("editing")) {
+            //check if there is ongoing update, 1 update at a time.
+            if ($("#up_username_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
+                $("#up_info_btn").toggleClass("d-none");
+                if ($("#up_info_btn").hasClass("d-none")) {
+                    $(".edit_info").attr("readonly", true);
+                } else {
+                    $(".edit_info").attr("readonly", false);
+                }
+            } else {
+                alert("You need to complete the ongoing update first.");
+                $("#edit_info").prop("checked", false);
+            }
+        } else {
+            alert("You have unsave changes!");
+            $("#edit_info").prop("checked", true);
+        }
+    });
+
+    $("#edit_username").change(function () {
+        if (!$("#edit_username_div").hasClass("editing")) {
+            //check if there is ongoing update, 1 update at a time.
+            if ($("#up_info_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
+                $("#up_username_btn").toggleClass("d-none");
+                if ($("#up_username_btn").hasClass("d-none")) {
+                    $(".edit_username").attr("readonly", true);
+                } else {
+                    $(".edit_username").attr("readonly", false);
+                }
+            } else {
+                alert("You need to complete the ongoing update first.");
+                $("#edit_username").prop("checked", false);
+            }
+        } else {
+            alert("You have unsave changes!");
+            $("#edit_username").prop("checked", true);
+        }
+
+    });
+
+    $("#edit_password").change(function () {
+        if (!$("#edit_password_div").hasClass("editing")) {
+            //check if there is ongoing update, 1 update at a time.
+            if ($("#up_info_btn").hasClass("d-none") && $("#up_username_btn").hasClass("d-none")) {
+                $("#up_password_btn").toggleClass("d-none");
+                if ($("#up_password_btn").hasClass("d-none")) {
+                    $(".edit_password").attr("readonly", true);
+                } else {
+                    $(".edit_password").attr("readonly", false);
+                }
+            } else {
+                alert("You need to complete the ongoing update first.");
+                $("#edit_password").prop("checked", false);
+            }
+        } else {
+            alert("You have unsave changes!");
+            $("#edit_password").prop("checked", true);
+        }
+    });
 
 
 
-     var current_pword_state = true
-     var currentUname = $('#currentUname').val();
-     $('#currentPword').on('blur', function () {
-          var currentPword = $('#currentPword').val()
-          if (currentPword == '') {
-               current_pword_state = false;
-               //   $('#currentPword').parent().removeClass();
-               //   $('#currentPword').parent().removeClass("form_error");
-               //   $('#currentPword').siblings("span").text('');
-               return
-          }
-          $.ajax({
-               type: "POST",
-               url: "view_profile_update.php",
-               data: {
-                    'upd_password_check': 1,
-                    'currentUname': currentUname,
-                    'currentPword': currentPword
-               },
-               success: function (response) {
+    // if input begins add editing class
+    $(".edit_info").on("input", function () {
+        if (!$("#edit_info_div").hasClass("editing")) {
+            $("#edit_info_div").addClass("editing");
+        }
+    });
 
-                    if (response == 0) {
-                         current_pword_state = false
-                    }
-                    else if (response == 1) {
-                         current_pword_state = true
-                    }
-                    else {
-                         alert(response);
+    $(".edit_username").on("input", function () {
+        if (!$("#edit_username_div").hasClass("editing")) {
+            $("#edit_username_div").addClass("editing");
+        }
+    });
 
-                    }
-
-               }
-          });
-     })
+    $(".edit_password").on("input", function () {
+        if (!$("#edit_password_div").hasClass("editing")) {
+            $("#edit_password_div").addClass("editing");
+        }
+    });
 
 
-     $("#edit_profile_form").validate({
-          rules: {
-               newPword: {
-                    minlength: 5
-               },
-               confirmPword: {
-                    equalTo: '#newPword'
-               },
-          },
-          messages: {
-               newPword: "password must atleast have 5 characters",
-               confirmPword: "Password does not match"
-
-          },
-          submitHandler: submitFormUpdate
-     })
-
-
-     //form submitter update
-     function submitFormUpdate() {
-          var data = $('#edit_profile_form').serialize();
-          if (current_pword_state == false) {
-               Swal.fire(
-                    'Error!',
-                    'Current password is wrong',
-                    'error'
-               )
-          } else {
-               Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Do you want to update this account!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes'
-               }).then((result) => {
-                    if (result.isConfirmed) {
-                         $.ajax({
-                              type: 'POST',
-                              url: "view_profile_update.php",
-                              data: data,
-                              success: function (response) {
-
-                                   if (response == 1) {
-                                        Swal.fire(
-                                             'Success',
-                                             'Update is successful',
-                                             'success'
-                                        )
-                                        setTimeout(function () {
-                                             window.location.reload(1);
-                                        }, 1000);
-                                   }
-                                   else {
-                                        alert(response);
-                                        $('#currentPword').parent().removeClass();
-                                        $('#currentPword').parent().removeClass("form_error");
-                                        $('#currentPword').siblings("span").text(response);
-                                   }
-                              }
-                         })
-                    }
-               })
-
-
-          }
-
-          return false;
-     }
-
-
-
-     $(".pass_field").on("input", function () {
-          if (!($(".button").hasClass("enable"))) {
-               $(".button").toggleClass("enable");
-               $(".button").prop("disabled", false);
-          }
-
-
-     });
 });
-
