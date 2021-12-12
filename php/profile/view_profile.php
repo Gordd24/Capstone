@@ -16,6 +16,7 @@
     <!-- css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="../../css/view_profile.css">
    
 
 </head>
@@ -48,8 +49,6 @@ if(isset($_POST['edit_info']))
     $stmt->bind_param("sssi", $fname,$mname,$lname,$id); // "is" means that $id is bound as an integer and $label as a string
     $stmt->execute();
     header("Location: view_profile.php");
-
-    
 }
 
 
@@ -79,49 +78,50 @@ if(isset($_POST['edit_username']))
     }
 }
 
-if(isset($_POST['edit_password']))
-{
-    $password = $_POST['password'];
-    $new_password = $_POST['new_password'];
-    $confirm_password = $_POST['confirm_password'];
 
-    $get_password_stmt = $connection->prepare("SELECT password FROM tbl_accounts where acc_id = ?");
+// if(isset($_POST['edit_password']))
+// {
+//     $password = $_POST['password'];
+//     $new_password = $_POST['new_password'];
+//     $confirm_password = $_POST['confirm_password'];
 
-    /* Prepared statement, stage 2: bind and execute */
-    $get_password_stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
-    $get_password_stmt->execute();
-    $pass_result = $get_password_stmt->get_result();
+//     $get_password_stmt = $connection->prepare("SELECT password FROM tbl_accounts where acc_id = ?");
+
+//     /* Prepared statement, stage 2: bind and execute */
+//     $get_password_stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
+//     $get_password_stmt->execute();
+//     $pass_result = $get_password_stmt->get_result();
    
-    if($pass_result->num_rows>0)
-    {
-        $pass_row = $pass_result->fetch_assoc();
-        if(password_verify($password,$pass_row['password'])){
-            //password correct.
-            if($new_password==$confirm_password){
-                //password match.
+//     if($pass_result->num_rows>0)
+//     {
+//         $pass_row = $pass_result->fetch_assoc();
+//         if(password_verify($password,$pass_row['password'])){
+//             //password correct.
+//             if($new_password==$confirm_password){
+//                 //password match.
 
-                // prepare
-                $up_password_stmt = $connection->prepare("UPDATE tbl_accounts SET password = ? WHERE acc_id = ?");
+//                 // prepare
+//                 $up_password_stmt = $connection->prepare("UPDATE tbl_accounts SET password = ? WHERE acc_id = ?");
 
-                //execute
-                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                $up_password_stmt->bind_param("si", $hashed_password,$id); // "is" means that $id is bound as an integer and $label as a string
-                $up_password_stmt->execute();
-                echo "<script>alert('Successfully updated the Password');</script>";
-                header("Location: view_profile.php");
+//                 //execute
+//                 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+//                 $up_password_stmt->bind_param("si", $hashed_password,$id); // "is" means that $id is bound as an integer and $label as a string
+//                 $up_password_stmt->execute();
+//                 echo "<script>alert('Successfully updated the Password');</script>";
+//                 header("Location: view_profile.php");
 
-            }else{
-                 //password not match.
-                echo "<script>alert('Confirm Your Password');</script>";
-            }
-        }else{
-            //password not correct.
-            echo "<script>alert('Wrong Password');</script>";
-        }
-    }
+//             }else{
+//                  //password not match.
+//                 echo "<script>alert('Confirm Your Password');</script>";
+//             }
+//         }else{
+//             //password not correct.
+//             echo "<script>alert('Wrong Password');</script>";
+//         }
+//     }
 
    
-}
+// }
 
 ?>
 <div class="height-100 bg-light">
@@ -157,7 +157,7 @@ if(isset($_POST['edit_password']))
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_info_btn">
                     <div class="col">
-                        <input type="submit" class="form-control btn btn-primary" name="edit_info" value="Apply Changes">
+                        <input type="submit" id="update_name_submit" class="form-control btn btn-primary" name="edit_info" value="Apply Changes">
                     </div>
                 </div>
             </form>
@@ -183,7 +183,7 @@ if(isset($_POST['edit_password']))
 
                 <div class="row mb-3  justify-content-center d-none" id="up_username_btn">
                     <div class="col">
-                        <input type="submit" class="form-control btn btn-primary" name="edit_username"  value="Apply Changes">
+                        <input type="submit" id="update_username_submit"  class="form-control btn btn-primary" name="edit_username"  value="Apply Changes">
                     </div>
                 </div>
             </form>
@@ -193,7 +193,7 @@ if(isset($_POST['edit_password']))
 
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_password_div">
-            <form method="POST">
+            <form method="POST" id="form_password">
                 <h3>Change Password</h3>
                 <div class="form-check my-3">
                     <input class="form-check-input" type="checkbox" value="" id="edit_password">
@@ -222,7 +222,8 @@ if(isset($_POST['edit_password']))
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_password_btn">
                     <div class="col">
-                        <input type="submit" class="form-control btn btn-primary" name="edit_password"  value="Apply Changes">
+                        <input type="submit" class="form-control btn btn-primary" id="password_submit" name="edit_password"  value="Apply Changes">
+                        <input type="hidden" name="edit_password" value = "1">
                     </div>
                 </div>
             </form>

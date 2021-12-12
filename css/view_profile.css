@@ -1,0 +1,167 @@
+body{
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#profile_link{
+    color:  #F7F6FB;
+}
+
+#profile_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color:#F7F6FB;
+}
+/* Hanggang dito nlng ata ang nagamit */
+
+.page_content_div .profile_management_div
+{
+    width: 100%;
+    height: 100%;
+}
+
+.page_content_div .profile_management_div .profile_management_edit_div
+{
+    padding: 1% 0 1% 0;
+    height: 100%;
+}
+
+.profile_management_edit_div .edit_profile_form_div 
+{
+    /* background: rgba(240, 238, 240, 0.61);
+    box-shadow: 0px 10px 20px 3px #6b6a6a;  */
+    
+    height: 100%;
+    overflow-y: auto;
+    padding: 3%;
+
+}
+
+.profile_management_edit_div .edit_profile_form_div .account_info_div
+{
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 3px #6b6a6a; 
+   border-radius: 1%/3%;
+   /* color: white; */
+   display: flex;
+
+
+}
+
+.edit_profile_form_div .account_info_div .view_profile_form
+{
+   padding: 1%;
+   border-radius: 1%/3%;
+   
+  
+   width: 45%;
+
+
+}
+
+
+.profile_management_edit_div .edit_profile_form_div .password_info_div
+{
+   padding: 1%;
+   border-radius: 1%/3%;
+   
+   width: 50%;
+   
+
+
+}
+
+
+.profile_management_edit_div .edit_profile_form_div h5
+{
+   font-size: 1vw;
+
+}
+
+.profile_management_div h2
+{
+    font-size: 2vw;
+    padding: 1% 1% 1% 0;
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
+}
+
+
+.profile_management_edit_div .edit_profile_form 
+{
+    font-size: 1vw;
+}
+
+.profile_management_edit_div .view_profile_form 
+{
+    font-size: 1vw;
+}
+
+
+.profile_management_edit_div input[type=text]
+{
+    font-size: 0.8vw;
+    outline: none;
+    border: 0.1vw solid black;
+    border-radius: 2%/20%;
+    margin-bottom: 2%;
+    padding: 1%;
+    width: 50%;
+}
+
+
+.profile_management_edit_div input[type=password]
+{
+    font-size: 0.8vw;
+    outline: none;
+    border: 0.1vw solid black;
+    border-radius: 2%/20%;
+    margin-bottom: 2%;
+    padding: 1%;
+    width: 50%;
+}
+
+
+
+
+.profile_management_edit_div input[type=submit].enable
+{
+    padding: 1%;
+    width: 20%;
+    border-radius: 5%/20%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+}
+
+
+.profile_management_edit_div input[type=submit]
+{
+    padding: 1%;
+    width: 20%;
+    border-radius: 5%/20%;
+    background-color: rgb(31, 31, 31);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+}
+
+.profile_management_edit_div label
+{
+   font-weight: bold;
+   font-size: 0.8vw;
+
+}
+
+
+
+
+

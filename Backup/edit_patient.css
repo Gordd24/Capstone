@@ -10,6 +10,15 @@ body{
     color:  #F7F6FB;
 }
 
+#record_management_link::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: #F7F6FB;
+}
+
 .page_content_div .record_management_div
 {
     width: 100%;
