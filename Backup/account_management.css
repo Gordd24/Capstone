@@ -1,0 +1,377 @@
+body{
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.account_management_div
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 1%;
+
+
+}
+
+
+
+#account_management_link{
+    color:  #F7F6FB;
+}
+
+#account_management_link::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: #F7F6FB;
+}
+
+.account_management_div .tab{
+    position: relative;
+    width: 100%;
+    box-shadow: 0px 0px 10px 3px #6b6a6a; 
+    display: flex;
+    align-items: center;
+    
+}
+
+.account_management_div .tab .tablinks
+{
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1% 2% 1% 2%;
+    font-size: 1.2vw;
+}
+
+.account_management_div .tab #account_btn
+{
+  background-color: rgb(52, 79, 95);
+  color: white;
+}
+
+.account_management_div .tab_content
+{
+    position:absolute;
+    width: 98%;
+    padding: 1%;
+    height: 100%;
+
+}
+
+
+.account_management_div .tab_content .search_form{
+    /* display: none; */
+    margin-top: 0.5%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.account_management_div .tab_content .search_form .search_bar{
+    width: 30%;
+    outline: none;
+    background-color: white;
+    border-radius: 3%/30%;
+    border-color: rgb(194, 194, 194);
+    border-width: 0.1vw;
+    padding: 0.5%;
+    font-size: 1vw;
+}
+
+.account_management_div .tab_content .accounts_table_div{
+    height: 90%;
+    margin-top: 1.5%;
+    background: rgba(240, 238, 240, 0.61);
+    box-shadow: 0px 0px 20px 3px #6b6a6a; 
+    overflow-y: auto;
+    padding: 1%;
+}
+
+.account_management_div .tab_content table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8vw;
+    text-align: center;
+   
+}
+
+.account_management_div .tab_content table td{
+    border: 0.02vw solid rgb(52, 79, 95);
+    font-size: 0.8vw;
+}
+
+.account_management_div .tab_content table th{
+    background-color: rgb(52, 79, 95);
+    border: 0.02vw solid rgb(52, 79, 95);
+    color: white;
+    padding: 1%;
+    font-size: 0.9vw;
+}
+
+.bx.bxs-trash-alt
+{
+    font-size: 1.5vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(124, 14, 14);
+    background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
+}
+
+.bx.bxs-user
+{
+    font-size: 1.5vw;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20%;
+    color: rgb(3, 35, 57);
+    background-color: rgb(255, 255, 255);
+    border: 0.1vw solid rgb(52, 79, 95);
+}
+
+.account_management_div #registration
+{
+    display: none;
+}
+
+
+
+
+
+.tab_content .view_account
+{
+    display: none;
+    padding: 0.5%;
+    height: 100%;
+}
+
+
+
+.tab_content .view_account .view_form_div #view_form
+{
+    font-size: 1vw;
+}
+
+
+.view_form_div .edit_acc_div
+{
+    display: flex;
+}
+
+.view_form_div .edit_acc_cont
+{
+    width: 30%;
+    margin: 1%;
+}
+
+.view_form_div h3
+{
+    font-size: 1.5vw;
+    margin-left: 1%;
+}
+
+.view_form_div label
+{
+    font-size: 0.9vw;
+    font-weight: bold;
+
+}
+
+.view_form_div .mutable
+{
+   border: 0.1vw solid rgb(194, 194, 194);
+   padding: 1%;
+   box-shadow: 0px 0px 10px 0px #6b6a6a; 
+   margin-bottom: 1%;
+
+}
+
+.view_form_div .immutable
+{
+   border: 0.1vw solid rgb(194, 194, 194);
+   padding: 1%;
+   box-shadow: 0px 0px 10px 0px #6b6a6a; 
+   margin-bottom: 1%;
+
+}
+
+
+.view_form_div h4
+{
+    font-size: 1vw;
+    margin-bottom: 2%;
+    color: brown;
+}
+
+.view_form_div input[type=submit].enable
+{
+ 
+    float:right;
+    padding: 1%;
+    width: 15%;
+    border-radius: 5%/20%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px #6b6a6a; 
+}
+
+
+
+.view_form_div input[type=submit]
+{
+
+    float:right;
+    padding: 1%;
+    width: 15%;
+    border-radius: 5%/20%;
+    background-color: rgb(31, 31, 31);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px #6b6a6a; 
+}
+
+
+
+.view_form_div {
+    height: 90%;
+    background-color: white;
+    box-shadow: 0px 0px 20px 3px #6b6a6a; 
+    overflow-y: auto;
+    padding: 1% 1% 6% 1%;
+
+  }
+
+
+  .view_account .cancel_form_btn_div .bx.bxs-x-circle
+  {
+      font-size: 2.5vw;
+      color: rgb(124, 14, 14);
+  }
+  
+  .view_account .cancel_form_btn_div 
+  {
+      border: 0.1vw solid rgb(220, 218, 218);
+      padding: 0.5%;
+      box-shadow: 0px 0px 10px 1px #6b6a6a; 
+      
+  }
+  .view_form_div input[type=text],  .view_form_div select,  .view_form_div input[type=password]
+  {
+      font-size: 0.8vw;
+      outline: none;
+      border: 0.1vw solid black;
+      border-radius: 2%/20%;
+      margin-bottom: 2%;
+      padding: 1.5%;
+      width: 70%;
+  }
+  
+
+  /* registration */
+#registration{
+   display: none;
+   height: 100%;
+   box-shadow: 0px 0px 10px 0px #6b6a6a; 
+}
+
+.tabcontent .registration_div{
+      height: 100%;
+      padding: 2%;
+      font-size: 1vw;
+}
+
+.registration_div .mutable
+{
+   border: 0.1vw solid rgb(194, 194, 194);
+   padding: 1%;
+   box-shadow: 0px 0px 10px 0px #6b6a6a; 
+   margin-bottom: 1%;
+
+}
+
+
+.registration_div .reg_cont_div
+{
+    display: flex;
+}
+
+
+.registration_div .reg_cont
+{
+    width: 30%;
+    margin: 1%;
+}
+
+
+
+
+.registration_div input[type=text],  .registration_div select,  .registration_div input[type=password]
+{
+    font-size: 0.8vw;
+    outline: none;
+    border: 0.1vw solid black;
+    border-radius: 2%/20%;
+    margin-bottom: 2%;
+    padding: 1.5%;
+    width: 70%;
+}
+
+.registration_div label
+{
+    font-size: 0.9vw;
+    font-weight: bold;
+
+}
+
+
+.registration_div button
+{
+    float:right;
+    padding: 1%;
+    width: 15%;
+    border-radius: 5%/20%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px #6b6a6a; 
+}
+
+
+/* CSS REGISTRATION INPUT ERRORS */
+.form_error span {
+    width: 80%;
+    height: 35px;
+    margin: 3px 10%;
+    font-size: 0.9em;
+    color: #D83D5A;
+  }
+  .form_success span {
+    width: 80%;
+    height: 35px;
+    margin: 3px 10%;
+    font-size: 0.9em;
+    color: green;
+  }
+  .error{
+    display: block;
+    color: #D83D5A;
+    
+  }
+
