@@ -23,7 +23,7 @@ $ID = $_SESSION['ID'];
             <!-- <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div> -->
         </header>
         <div class="l-navbar" id="nav-bar">
-            <nav class="nav"> 
+            <nav class="nav nav_class"> 
                 <div> 
                     <div class="title_logo">
                         <img class="logo" src="../images/ofelia_logo.png" alt="Logo">
@@ -33,7 +33,7 @@ $ID = $_SESSION['ID'];
                         <a href="../profile/view_profile.php" class="nav_link" id="profile_link"> <i class="bx bxs-user-circle nav_icon"></i> <span class="nav_name">'.$active_account_name.'</span> </a> 
                         <a href="../dashboard/dashboard.php" class="nav_link" id="dashboard_link"> <i class="bx bxs-dashboard nav_icon"></i> <span class="nav_name">Dashboard</span> </a> 
                         <a href="../record_management/record_management.php" class="nav_link" id="record_management_link"> <i class="bx bx-library nav_icon"></i> <span class="nav_name">Records Management</span> </a> 
-                        <a href="#" class="nav_link"> <i class="bx bxs-user-badge nav_icon"></i> <span class="nav_name">Patients</span> </a>
+                        <a href="../patients/patients.php" class="nav_link"> <i class="bx bxs-user-badge nav_icon"></i> <span class="nav_name">Patients</span> </a>
                         ';
                         if(isset($_SESSION["position"]) && $_SESSION["position"]=="Administrator"){
                         echo' 

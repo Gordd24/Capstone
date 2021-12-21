@@ -1,16 +1,39 @@
 <?php
-session_start();
-
-
-if(!isset($_SESSION['ID'])){
-    header("Location: ../../index.php");
-}
-
-if(isset($_SESSION["position"]) && $_SESSION["position"]!="Administrator"){
-    header("Location:../dashboard/dashboard.php");
-}
 
 include_once '../dbconn.php';
+
+date_default_timezone_set('Asia/Manila');
+
+if(isset($_POST['register']))
+{
+
+    $today = date("Y-m-d"); 
+    $time = date("H:i:s");
+    
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $last_name = $_POST['last_name'];
+    $position = $_POST['position'];
+    $emp_id = $_POST['emp_id'];
+    $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+
+    // prepare
+    $stmt = $connection->prepare("INSERT INTO tbl_accounts(username, password, first_name, middle_name, last_name, email, emp_id, position,date_created,time_created) VALUES 
+    (?,?,?,?,?,?,?,?,?,?);");
+
+
+    //execute
+    $stmt->bind_param("ssssssssss",$username,$hashed_pass,$first_name,$middle_name,$last_name,$email,$emp_id,$position,$today,$time); // "is" means that $id is bound as an integer and $label as a string
+    $stmt->execute();
+    header("Location: account_management.php");
+
+}
+
+
 
 ?>
 
@@ -18,131 +41,312 @@ include_once '../dbconn.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Management</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-    <script src="../../js/NavigationScript.js" type="text/javascript"></script>
-    <script src="../../js/view_profile.js" type="text/javascript"></script>
+    <title>Account Management</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="../../css/navigation.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-    <link rel="stylesheet" href="../../css/nav.css">
-    <script src="../../js/nav.js"></script>
-
-
+    <!-- css -->
     <link rel="stylesheet" href="../../css/account_management.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    
+    
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/account_management.js"></script>
-
+    <script src="../../js/nav.js"></script>
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<body id='body-pd'>  
+<body id="body-pd">
+
     
-    <?php //include_once '../navigation_header.php'; 
-    include_once '../admin_nav.php'
-    ?>
-    <div class="height-100 bg-light">
-    <!-- <div class="page_content_div"> -->
-        <div class="account_management_div">
+<?php include_once '../admin_nav.php';?>
+ 
+<div class="container-lg py-1">
 
-            <div class="tab">
-              <button class="tablinks" id="account_btn">Accounts</button>
-              <button class="tablinks" id="registration_btn">Register</button>
-            </div>
+    <div class="row">
+        <div class="col-12">
+            
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-account-tab" data-bs-toggle="tab" data-bs-target="#nav-account" type="button" role="tab" aria-controls="nav-account" aria-selected="true">Accounts</button>
+                        <button class="nav-link" id="nav-registration-tab" data-bs-toggle="tab" data-bs-target="#nav-registration" type="button" role="tab" aria-controls="nav-registration" aria-selected="false">Registration</button>
+                    </div>
+                </nav>
+                <div class="row tab-content" id="nav-tabContent">
 
-            <div  id="accounts" class="tab_content">
-
-                    <div class="view_account">
-                        <div class='cancel_form_btn_div'>
-                            <i class='bx bxs-x-circle'></i>
-                        </div>
-                        <div class="view_form_div"> </div>
-                    </div>           
-                    <form class="search_form">
-                      <input type="text" class="search_bar" autocomplete="off">
-                    </form>
+                    <!-- accounts -->
+                    <div class="col tab-pane fade show active" id="nav-account" role="tabpanel" aria-labelledby="nav-account-tab">
                     
-                    <div class="accounts_table_div">
-                        <table>     
-                            <?php include_once 'fetch_Accounts.php';?>   
-                        </table>
-                    </div>
-                    
-            </div>
-            <div id="registration" class="tabcontent">
-            <div class="registration_div">
-                  <form method="post" id="regForm" class="form-signin">
-                  <div id="show_message" class="alert alert-success" style="display: none">Insert Success</div>
-                  <div id="error" class="alert alert-danger" style="display: none"></div>
-                  <div id="error2" class="alert alert-danger" style="display: none"></div>
-
-                <div class="mutable">
-                    <div class="reg_cont username">
-                          <label>Username: *</label><br>
-                          <input type="text" name="regUname" id="regUname" required autocomplete="off">
-                    </div> 
-                    
-                    <div class="reg_cont_div password">
-                        <div class="reg_cont password">
-                            <label>Password: *</label><br>
-                            <input  class="form-control" type="password" name="regPword" id="regPword" required >
-                        </div> 
-
-                        <div class="reg_cont confirm_password">
-                            <label>Confirm Password: *</label><br>
-                            <input  class="form-control" type="password" name="regCPword" id="regCPword" required >
-                        </div> 
-                    </div>
-                      
-                    <div class="reg_cont_div name">
-                        <div class="reg_cont first_name">
-                            <label>First Name: *</label><br>
-                            <input class="form-control" type="text" name="regFname" id="regFname" required autocomplete="off">
-                        </div> 
-                        
-                        <div class="reg_cont middle_name">
-                            <label>Middle Name:</label><br>
-                            <input class="form-control" type="text" name="regMname" id="regMname" autocomplete="off">
-                        </div> 
-                        
-                        <div class="reg_cont last_name">
-                            <label>Last Name: *</label><br>
-                            <input class="form-control" type="text" name="regLname" id="regLname" required autocomplete="off">
-                        </div> 
-                    </div>
-                      
-                    <div class="reg_cont_div emp_id_position">
-                        <div class="reg_cont emp_id">
-                            <label>Employee ID: *</label><br>
-                            <input class="form-control" type="text" name="regEmpId" id="regEmpId" required autocomplete="off">
-                            
+                        <!-- search-box -->
+                        <div class="row my-4 justify-content-center">
+                            <div class="col-md-4">
+                                <form>
+                                        <div class="form-group shadow-lg">
+                                            <input type="text" class="form-control" id="search_account" placeholder="Search Account">
+                                        </div>
+                                </form>
+                            </div>
                         </div>
-                        
-                        <div class="reg_cont position">
-                            <label>Select Position: *</label><br>
-                            <select id="regPosition" class="form-select" name="regPosition">
-                                    <option value="Administrator">Administrator</option>
-                                    <option value="Doctor">Doctor</option>
-                                    <option value="Nurse">Nurse</option>
-                                </select>
-                        </div>
-                    </div>
-                     
-                    </div>
-                    <button type="submit" name="regSubmit" id="regSubmit" class="btn btn-primary">Register</button>
-                      
 
-                  </form>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                
+                                <table class="table">
+                                    <thead class="text-white">
+                                        <tr>
+                                            <th scope="col">Account ID</th>
+                                            <th scope="col">Employee ID</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Position</th>
+                                            <th scope="col" class="text-center">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <?php
+                                            include_once '../dbconn.php';
+
+                                            $connection->real_query("SELECT * FROM tbl_accounts ORDER BY date_created,time_created DESC");
+                                            $accounts_result = $connection->use_result();
+                                            foreach ($accounts_result as $row_account) {
+                                                
+                                                if($row_account['acc_id'] != 37)
+                                                {
+                                                    echo "
+                                                    <tr>
+                                                        <th scope='row'>".$row_account["acc_id"]."</th>
+                                                        <td>".$row_account["emp_id"]."</td>
+                                                        <td>".$row_account["username"]."</td>
+                                                        <td>".$row_account["first_name"]." ".$row_account["middle_name"]." ".$row_account["last_name"]."</td>
+                                                        <td>".$row_account["position"]."</td>
+                                                        <td class='text-center'><i class='bx bxs-trash-alt btn border border-danger text-danger' id='".$row_account["acc_id"]."' title='Delete'></i></td>
+                                                    </tr>";
+                                                }
+                                            }
+                                                
+                                            ?>
+                                    
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- accounts end -->
+
+
+                    <!-- registration -->
+                    <div class="col tab-pane fade" id="nav-registration" role="tabpanel" aria-labelledby="nav-registration-tab">
+                        
+                        <!-- container row -->
+                        <div class="row justify-content-center p-3">
+
+                            <!-- container column -->
+                            <div class="col-7">
+
+                                <!-- progressbar row container -->
+                                <div class="row">
+                                    <!-- progressbar column container -->
+                                    <div class="col">
+
+                                        <!-- actual progress bar -->
+                                        <div class="progress shadow-lg">
+                                            <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- progressbar row container end -->
+
+                               <!-- form row container -->
+                                <div class="row my-5">
+                                     <!-- form col container-->
+                                    <div class="col">
+                                        <form method="POST">
+                                            <!-- input group -->
+                                            <div class="row input_group active_group" id="account_group">
+
+                                                <div class="col">
+
+                                                    <div class="row my-1">
+                                                        <div class="col">
+                                                            <h3>Account Information</h3>
+                                                        </div>
+                                                     </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="username" class="form-label">Username</label>
+                                                            <input type="text" class="form-control" id="username" name="username" required autocomplete="off">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="email" class="form-label">Email</label>
+                                                            <input type="email" class="form-control" id="email" name="email" required autocomplete="off">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="password" class="form-label">Password</label>
+                                                            <input type="password" class="form-control" id="password" name="password" required autocomplete="off" >
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autocomplete="off" >
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <div class="row  justify-content-center">
+                                                                <div class="col-4 btn shadow-lg btn-primary m-3 p-2" id="account_next_btn">
+                                                                    Next
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- input group end -->
+
+
+                                             <!-- input group -->
+                                            <div class="row input_group" id="personal_group">
+
+                                                <div class="col">
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <h3>Personal Information</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="first_name" class="form-label">First Name *</label>
+                                                            <input type="text" class="form-control" id="first_name" name="first_name" required autocomplete="off" > 
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="middle_name" class="form-label">Middle Name</label>
+                                                            <input type="text" class="form-control" id="middle_name" name="middle_name" autocomplete="off" >
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="last_name" class="form-label">Last Name *</label>
+                                                            <input type="text" class="form-control" id="last_name" name="last_name" required autocomplete="off" >
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <div class="row  justify-content-center">
+                                                                <div class="col-4 btn shadow-lg btn-secondary m-3 p-2" id="personal_prev_btn">
+                                                                    Previous
+                                                                </div>
+                                                                <div class="col-4 btn shadow-lg btn-primary m-3 p-2" id="personal_next_btn">
+                                                                    Next
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- input group end -->
+
+                                            <!-- input group -->
+                                            <div class="row input_group" id="emp_group">
+
+                                                <div class="col">
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <h3>Employee Information</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="position" class="form-label">Position</label>
+                                                            <select class="form-select" id="position" name="position" aria-label="Default select example">
+                                                                <option value="Administrator">Administrator</option>
+                                                                <option value="Doctor">Doctor</option>
+                                                                <option value="Nurse">Nurse</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-1 my-2">
+                                                        <div class="col">
+                                                            <label for="emp_id" class="form-label">Employee ID</label>
+                                                            <input type="text" class="form-control" id="emp_id" name="emp_id" required autocomplete="off">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <div class="row  justify-content-center">
+                                                                <div class="col-4 btn shadow-lg btn-secondary m-3 p-2" id="emp_prev_btn">
+                                                                    Previous
+                                                                </div>
+                                                                <div class="col-4 m-3">
+                                                                    <input type="submit" class="form-control btn btn-primary p-2" name="register" id="emp_submit_btn">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <!-- input group end -->
+
+
+                                            
+                                        </form>
+                                    </div>
+                                    <!-- form col container end -->
+                                </div>
+                                <!-- form row container end -->
+
+                            </div>
+                             <!-- container column end -->
+
+                        </div>
+                         <!-- container row end -->
+
+                    </div>
+                    <!-- registration end -->                      
+
                 </div>
-            </div>
-        </div>  
+        </div>
     </div>
+    
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
-
