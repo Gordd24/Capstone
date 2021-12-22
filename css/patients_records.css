@@ -1,0 +1,44 @@
+thead{
+    background-color: rgb(27, 73, 101);
+}
+
+.btn.create_new{
+    background-color: rgb(27, 73, 101);
+    outline: none;
+}
+
+.btn.create_new:hover{
+    background-color: rgb(16, 42, 58);
+    outline: none;
+}
+
+.btn#create_record{
+    background-color: white;
+    color: rgb(23, 195, 178);
+}
+
+
+.btn#create_record:hover{
+    background-color: rgb(23, 195, 178);
+    color: white;
+}
+
+.btn#view_records{
+    background-color: white;
+    color: rgb(255, 203, 119);
+}
+
+.btn#view_records:hover{
+    background-color: rgb(255, 203, 119);
+    color: white;
+}
+
+.btn#archive{
+    background-color: white;
+    color: gray;
+}
+
+.btn#archive:hover{
+    background-color: gray;
+    color: white;
+}

@@ -30,7 +30,7 @@ include_once '../dbconn.php';
                             <td>".$row_account["username"]."</td>
                             <td>".$row_account["first_name"]." ".$row_account["middle_name"]." ".$row_account["last_name"]."</td>
                             <td>".$row_account["position"]."</td>
-                            <td class='text-center'><i class='bx bxs-trash-alt btn border border-danger text-danger' id='".$row_account["acc_id"]."' title='Delete'></i></td>
+                            <td class='text-center'><i class='bx bxs-trash-alt btn border' id='delete' title='Delete'></i></td>
                     </tr>";
                 }
             }

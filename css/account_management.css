@@ -2,6 +2,25 @@ thead{
     background-color: rgb(27, 73, 101);
 }
 
+.btn.add_patient{
+    background-color: rgb(27, 73, 101);
+    outline: none;
+}
+
+.btn.add_patient:hover{
+    background-color: rgb(16, 42, 58);
+    outline: none;
+}
+
+.btn#delete{
+    background-color: white;
+    color: rgb(143, 23, 23);
+}
+
+.btn#delete:hover{
+    background-color: rgb(143, 23, 23);
+    color: white;
+}
 
 .input_group{
     display: none;
@@ -9,4 +28,31 @@ thead{
 
 .input_group.active_group{
     display: block;
+}
+
+
+
+.next{
+    background-color: rgb(27, 73, 101);
+    color: white;
+}
+
+.next:hover{
+    background-color: rgb(16, 42, 58);
+    color: white;
+}
+
+
+.prev{
+    background-color: gray;
+    color: white;
+}
+
+.prev:hover{
+    color: white;
+    background-color: rgb(32, 32, 32);
+}
+
+.progress-bar{
+    background-color: rgb(27, 73, 101);
 }
