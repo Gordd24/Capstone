@@ -24,6 +24,20 @@
 
 <?php include_once '../admin_nav.php';?>
 
+                <!-- modal -->
+                        <div class="option_modal_div" tabindex="0">
+                        <div class="option_modal_exit_div">
+                            <i class='bx bxs-x-circle'></i>
+                        </div>
+                        <div class="modal_options_div">
+                            <p class="option_buttons" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
+                            <p class="option_buttons" id="admission"><i class='bx bx-user-plus' ></i> Admission Record</p>
+                            <p class="option_buttons" id="med_cert"><i class='bx bx-certification'></i> Medical Certificate</p>
+                            <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
+                        </div>
+                        </div>
+                <!-- modal end -->
+
                 <div class="row my-3">
                         <div class="col-12">
                                         <!-- search-box -->
@@ -40,20 +54,6 @@
                                         <!-- table row  -->
                                         <div class="row justify-content-center">
                                             <div class="col-md-10">
-
-                                                <!-- add button -->
-                                                <div class="row my-2">
-                                                    <div class="col-md-4">
-                                                        <form>
-                                                            <a href="add_patient.php"> 
-                                                                <div class="form-group btn create_new text-white">
-                                                                        Create New Record
-                                                                </div>
-                                                            </a>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                <!-- add button end-->
 
                                                 <table class="table">
                                                     <thead class="text-white">
@@ -75,7 +75,7 @@
                                                                         <th scope='row'>".$row_patient["patient_id"]."</th>
                                                                         <td>".$row_patient["first_name"]." ".$row_patient["middle_name"]." ".$row_patient["last_name"]."</td>
                                                                         <td class='text-center'>                                       
-                                                                            <i class='bx bxs-file-plus mx-1 btn border' id='create_record' title='Create Record'></i>
+                                                                            <i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>
                                                                             <i class='bx bxs-folder-open mx-1 btn border' id='view_records' title='View Records'></i>
                                                                             <i class='bx bxs-archive mx-1 btn border' id='archive' title='Archive'></i>
                                                                         </td>
@@ -90,6 +90,7 @@
                                         <!-- table row end -->
                             </div>
                         </div>
+                        
 
 
 </div>

@@ -1,0 +1,20 @@
+/* for consultation */
+.ob_patient{
+    display: none;
+}
+.ob_patient.yes_ob{
+    display: block;
+
+}
+
+
+
+/* for all */
+.input_group{
+    display: none;
+}
+
+.input_group.active_group{
+    display: block;
+
+}

@@ -1,72 +1,4 @@
 $(document).ready(function () {
-    $('#search_patient').on('keypress', function (e) {
-        return e.which !== 13;
-    });
-    $("#search_patient").keyup(function () {
-        var txt = $(this).val();
-        //???? what 
-        $('tbody').html('');
-        $.ajax({
-            url: "searched_patients_records.php",
-            method: "post",
-            data: { search: txt },
-            dataType: "text",
-            success: function (data) {
-                $('tbody').html(data);
-
-
-            }
-        });
-        //somehow return false stops keyup functioning twice
-        return false;
-    });
-
-
-    $(".btn.create_record").click(function () {
-        $('.option_modal_div').show();
-        $('.option_modal_div').focus();
-        $('.option_modal_div').attr('id', this.id);
-    });
-
-    $('.option_modal_div').focusout(function () {
-        $(this).hide();
-        $('.option_modal_div').attr('id', "");
-    });
-
-    $('.option_modal_exit_div').click(function () {
-        $('.option_modal_div').hide();
-        $('.option_modal_div').attr('id', "");
-    });
-
-    $('.modal_options_div .option_buttons').click(function () {
-        console.log($(this).attr('id'));
-        var patient_id = $('.option_modal_div').attr('id');
-        $('.option_modal_div').hide();
-        $('.option_modal_div').attr('id', "");
-        $('.record_management_div_1').hide();
-        $('.record_management_div_4').show();
-        $('.record_management_div_4').html('');
-        var url_path = "";
-        if ($(this).attr('id') == "consultation") {
-            url_path = "consultation.php?id=" + patient_id;
-
-        }
-        else if ($(this).attr('id') == "admission") {
-            url_path = "admission.php?id=" + patient_id;
-        }
-        else if ($(this).attr('id') == "med_cert") {
-            url_path = "medical_certificate.php?id=" + patient_id;
-        }
-        else if ($(this).attr('id') == "lab_res") {
-            url_path = "laboratory.php?id=" + patient_id;
-        }
-        location.href = url_path;
-
-    });
-
-
-
-
 
     $("#ob_patient").change(function () {
         $(".ob_patient").toggleClass("yes_ob");
@@ -197,6 +129,7 @@ $(document).ready(function () {
         $("#recommendation_group").addClass("active_group");
         $(".progress-bar").css('width', '75%');
     });
+
 
 
 });

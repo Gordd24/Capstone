@@ -12,13 +12,13 @@ thead{
     outline: none;
 }
 
-.btn#create_record{
+.btn.create_record{
     background-color: white;
     color: rgb(23, 195, 178);
 }
 
 
-.btn#create_record:hover{
+.btn.create_record:hover{
     background-color: rgb(23, 195, 178);
     color: white;
 }
@@ -41,4 +41,122 @@ thead{
 .btn#archive:hover{
     background-color: gray;
     color: white;
+}
+
+
+/* modal */
+.option_modal_div{
+    position: absolute;
+	width: 30%;
+	border-radius: 3%;
+	background-color: white;
+	border:0.1vw solid rgb(220, 218, 218);
+	left: 0; 
+	right: 0; 
+	margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+	overflow: hidden;
+	box-shadow: 1vw 1vw 6vw rgb(184, 184, 196);
+    display: none;
+    
+}
+
+.option_modal_div:focus{
+    outline:none;
+}
+
+
+
+.option_modal_exit_div
+{
+	padding: 1%;
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
+}
+
+
+.option_modal_exit_div .bx.bxs-x-circle
+{
+    font-size: 2.5vw;
+    color: rgb(124, 14, 14);
+}
+
+.modal_options_div
+{
+	padding: 5% 10% 5% 10%;
+}
+
+
+.modal_options_div .option_buttons
+{
+	text-align: center;
+	margin: auto;
+	margin-bottom: 3%;
+	border:0.1vw solid rgb(220, 218, 218);
+	padding-top: 4%;
+	padding-bottom: 4%;
+	border-radius: 5%/30%;
+	background-color: white;
+	font-size: 1.2vw;
+    font-weight: bold;
+	outline:none;
+}
+
+.modal_options_div .option_buttons:hover
+{
+	background-color: rgb(16,120,173);
+	color: white;
+	border:0.1vw solid rgb(16,120,173);
+    cursor: pointer;
+
+}
+
+
+/* for consultation */
+.ob_patient{
+    display: none;
+}
+.ob_patient.yes_ob{
+    display: block;
+
+}
+
+
+
+/* for all */
+.input_group{
+    display: none;
+}
+
+.input_group.active_group{
+    display: block;
+
+}
+
+
+
+/* create records */
+
+.next{
+    background-color: rgb(27, 73, 101);
+    color: white;
+}
+
+.next:hover{
+    background-color: rgb(16, 42, 58);
+    color: white;
+}
+
+.prev{
+    background-color: gray;
+    color: white;
+}
+
+.prev:hover{
+    color: white;
+    background-color: rgb(32, 32, 32);
+}
+
+.progress-bar{
+    background-color: rgb(27, 73, 101);
 }
