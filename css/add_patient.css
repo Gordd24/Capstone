@@ -1,0 +1,155 @@
+body{
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#record_management_link{
+    color:  #F7F6FB;
+}
+
+#record_management_link::before{
+    color:  #F7F6FB;
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}
+
+.page_content_div .record_management_div
+{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100%;
+}
+
+.page_content_div .record_management_div .add_patient_div
+{
+    padding: 1% 0 1% 0;
+    height: 100%;
+}
+
+ .add_patient_div .add_patient_form_div 
+{
+    height: 100%;
+    padding: 1%;
+    /* overflow-y: auto; */
+}
+
+
+
+
+
+ .add_patient_div .add_patient_form 
+{
+    font-size: 1.1vw;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 3px #6b6a6a; 
+    border-radius: 1%/3%;
+    padding: 0.01%;
+    /* color: white; */
+    
+}
+
+.add_patient_div .add_patient_form .name_sex_bday
+{
+    display: flex;
+    margin: 3%;
+}
+
+.add_patient_div .add_patient_form .name
+{
+    width: 50%;
+    
+}
+.add_patient_div .add_patient_form .sex_bday
+{
+    width: 50%;
+    
+}
+
+
+.add_patient_div .add_patient_form .contact_address_occupation_religion
+{
+    margin: 3%;
+    display: flex;
+    
+}
+
+.add_patient_div .add_patient_form .contact_address
+{
+    width: 50%;
+    
+}
+.add_patient_div .add_patient_form .occupation_religion
+{
+    width: 50%;
+    
+}
+
+
+ .add_patient_div .add_patient_form input[type=text],.add_patient_form input[type=date]
+{
+    font-size: 0.8vw;
+    outline: none;
+    border: 0.1vw solid black;
+    border-radius: 2%/20%;
+    margin-bottom: 2%;
+    padding: 1%;
+    width: 50%;
+}
+
+ .add_patient_div .add_patient_form input[type="radio"] {
+    margin-bottom: 2%;
+}
+ .add_patient_div .add_patient_form input[type=submit]
+{
+    padding: 2%;
+    width: 20%;
+    border-radius: 5%/20%;
+    background-color: rgb(91, 220, 125);
+    border:none;
+    font-size: 0.9vw;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 1px #6b6a6a; 
+
+}
+ .add_patient_div .add_patient_form label
+{
+   font-weight: bold;
+
+}
+ .add_patient_div .add_patient_form p
+{
+    margin-bottom: 1%;
+    font-weight: bold;
+    
+}
+
+ .add_patient_div .cancel_add_patient_btn_div .bx.bxs-x-circle
+{
+    font-size: 2.3vw;
+    color: rgb(124, 14, 14);
+    margin-right: 1%;
+    border-right: 0.1vw solid rgb(220, 218, 218);
+}
+
+
+.add_patient_div .cancel_add_patient_btn_div  h2
+{
+    font-size: 2vw;
+   
+}
+
+ .add_patient_div .cancel_add_patient_btn_div 
+{
+
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
+}

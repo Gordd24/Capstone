@@ -1,0 +1,158 @@
+*{
+
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+    font-family: Open Sans,sans-serif;
+
+}
+
+
+ul.nav_list{
+    padding: 0;
+    margin:0;
+}
+
+
+/* whattt??? */
+body{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    /* background-image: linear-gradient(rgb(106, 181, 235), rgb(196, 217, 247)); */
+}
+
+
+.sidebar
+{
+    position: fixed;
+    top: 0; /* top and left to keep the side bar from left most and top most side */
+    left: 0%;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(38, 84, 118);
+    /* border-right: 0.2vw solid rgb(10, 24, 35); */
+}
+
+
+.title_bar{
+    position: fixed;
+    left: 20%;
+    width: 80%;
+    padding: 2.5%;
+    background-color: rgb(24, 58, 83);
+    display: flex;
+    align-items: center;
+}
+
+.hospital_name
+{
+    color: white;
+    width: max-content;
+    margin: auto;
+    text-align: center;
+    font-size: 2vw;
+}
+
+
+
+.burger_div #burger{
+    position: relative;
+    left: 85%;
+    color: white;
+    margin:0;
+    font-size: 3vw;
+
+    
+}
+
+.burger_div
+{
+    position: relative;
+    width: 100%;
+    max-height: max-content;
+    display: flex;
+    background-color: rgb(24, 58, 83);
+}
+
+
+.sidebar ul{
+    position:relative;
+    width: 100%;
+    height: 50%;
+    /* overflow: scroll; */
+    /* overflow-x: hidden; */
+}
+
+.sidebar ul li{
+    list-style: none;
+    padding-bottom: 3%;
+    padding-top: 2.5%;
+    padding-left: 3%;
+    padding-right: 2%;
+    /* background-color: rgb(48, 96, 131); */
+    /* border-bottom: 0.1vw solid rgb(26, 57, 81); */
+}
+
+.sidebar ul li a{
+    text-decoration: white;
+    font-size: 1.3vw;
+    color: white; 
+    display: flex;
+    padding: 5%;
+    border-radius: 17%/100%;
+}
+
+.sidebar ul li a span{
+  
+    overflow: hidden;
+}
+
+.sidebar ul li a:hover{
+    color:  #F7F6FB;
+}
+
+.sidebar ul li #log_out_a:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(206, 92, 92);
+}
+
+.logo{
+    width: 45%;
+    height: auto;
+    margin: auto;
+
+}
+
+.title_logo{
+    /* border-bottom: 0.2vw solid rgb(20, 69, 107); */
+    text-align: center;
+    width: 100%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    display: flex;
+ }
+
+ .page_content_div
+{
+    position: absolute;
+    left: 21%;
+    width: 78%;
+    height: 70%;
+    /* background-color: darkgreen; */
+    margin: 9% 0 0 0;
+    padding: 1% 0 1% 0;
+    /* background-color: rgba(96, 184, 228, 0.7); */
+    display: flex;
+    align-items: center;
+    
+}
+
+
+
+
+
+
+
+

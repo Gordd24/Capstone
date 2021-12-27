@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission</title>
+    <title>Registration</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- boxicons -->
@@ -72,28 +72,28 @@
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="username" class="form-label">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" required autocomplete="off">
+                                            <input type="text" class="form-control account-inputs" id="username" name="username" required autocomplete="off">
                                         </div>
                                     </div>
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" required autocomplete="off">
+                                            <input type="email" class="form-control account-inputs" id="email" name="email" required autocomplete="off">
                                         </div>
                                     </div>
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" required autocomplete="off" >
+                                            <input type="password" class="form-control account-inputs" id="password" name="password" required autocomplete="off" >
                                         </div>
                                     </div>
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
-                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required autocomplete="off" >
+                                            <input type="password" class="form-control account-inputs" id="confirm_password" name="confirm_password" required autocomplete="off" >
                                         </div>
                                     </div>
 
@@ -127,21 +127,21 @@
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="first_name" class="form-label">First Name *</label>
-                                            <input type="text" class="form-control" id="first_name" name="first_name" required autocomplete="off" > 
+                                            <input type="text" class="form-control personal-inputs" id="first_name" name="first_name" required autocomplete="off" > 
                                         </div>
                                     </div>
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="middle_name" class="form-label">Middle Name</label>
-                                            <input type="text" class="form-control" id="middle_name" name="middle_name" autocomplete="off" >
+                                            <input type="text" class="form-control personal-inputs" id="middle_name" name="middle_name" autocomplete="off" >
                                         </div>
                                     </div>
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="last_name" class="form-label">Last Name *</label>
-                                            <input type="text" class="form-control" id="last_name" name="last_name" required autocomplete="off" >
+                                            <input type="text" class="form-control personal-inputs" id="last_name" name="last_name" required autocomplete="off" >
                                         </div>
                                     </div>
 
@@ -188,7 +188,7 @@
                                     <div class="row my-1 my-2">
                                         <div class="col">
                                             <label for="emp_id" class="form-label">Employee ID</label>
-                                            <input type="text" class="form-control" id="emp_id" name="emp_id" required autocomplete="off">
+                                            <input type="text" class="form-control emp-inputs" id="emp_id" name="emp_id" required autocomplete="off">
                                         </div>
                                     </div>
 
@@ -200,7 +200,7 @@
                                                     Previous
                                                 </div>
                                                 <div class="col-4 m-3">
-                                                    <input type="submit" class="form-control btn next p-2" name="register" id="emp_submit_btn">
+                                                    <input type="submit" class="form-control btn next p-2 reg-submit" name="register" id="emp_submit_btn">
                                                 </div>
                                             </div>
                                         </div>

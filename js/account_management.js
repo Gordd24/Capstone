@@ -63,7 +63,7 @@ $(document).ready(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
                 var id = $(this).attr('id');
@@ -89,19 +89,82 @@ $(document).ready(function () {
 
     });
 
-    // account group
+    function isEmail(email){
+        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(!regex.test(email)) {
+            return false;
+          }else{
+            return true;
+          }
+    }
+
+    //account group
     $("#account_next_btn").click(function () {
-        $("#account_group").removeClass("active_group");
-        $("#personal_group").addClass("active_group");
-        $(".progress-bar").css('width', '69%');
-    });
-
-
-    //personal group
-    $("#personal_next_btn").click(function () {
-        $("#personal_group").removeClass("active_group");
-        $("#emp_group").addClass("active_group");
-        $(".progress-bar").css('width', '100%');
+        uname=$('#username').val()
+        email=$('#email').val()
+        pword=$('#password').val()
+        cpword=$('#confirm_password').val()
+        if(uname!='' && email!='' && pword!='' && cpword!=''){
+            if(isEmail(email)==true){
+                if(pword==cpword){
+                    console.log('asdad')
+                    $("#account_group").removeClass("active_group");
+                    $("#personal_group").addClass("active_group");
+                    $(".progress-bar").css('width', '69%');
+                }else{
+                    Swal.fire('Error!','Password did not match.','error')
+                }
+            }else{
+                Swal.fire('Error!','Please use a valid email','error')
+            }
+                
+        }
+        else{
+            Swal.fire('Error!','Please fill up all fields.','error')
+        }
+    })
+    // $('.account-inputs').on('blur', function () {
+        
+    //     uname=$('#username').val()
+    //     email=$('#email').val()
+    //     pword=$('#password').val()
+    //     cpword=$('#confirm_password').val()
+        
+    //         // account group   
+    //         $("#account_next_btn").click(function () {    
+    //             if(uname!='' && email!='' && pword!='' && cpword!=''){
+    //                 console.log(uname)
+    //                 console.log(email)
+    //                 console.log(pword)
+    //                 console.log(cpword)
+    //                 if(pword==cpword){
+    //                     console.log('asdad')
+    //                     $("#account_group").removeClass("active_group");
+    //                     $("#personal_group").addClass("active_group");
+    //                     $(".progress-bar").css('width', '69%');
+    //                 }else{
+    //                     alert('password did not match.')
+    //                 }
+    //             }
+    //             else{
+    //                 alert('Please fill up all fields.')
+    //             }
+    //         }); 
+    // })
+     //personal group
+     $("#personal_next_btn").click(function () {
+        console.log('hellow')
+        fname=$('#first_name').val()
+        mname=$('#middle_name').val()
+        lname=$('#last_name').val()
+       
+        if(fname!='' && lname!=''){
+            $("#personal_group").removeClass("active_group");
+            $("#emp_group").addClass("active_group");
+            $(".progress-bar").css('width', '100%');
+        }else{
+            Swal.fire('Error!','Please fill up all the required fields.','error')
+        }
     });
 
     $("#personal_prev_btn").click(function () {
@@ -110,16 +173,17 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '33%');
     });
 
-    //employee group    
+    //employee group
+    $(".reg-submit").click(function () {   
+        emp_id = $('#empi_id').val()
+        if(emp_id==''){
+            Swal.fire('Error!','Please fill up all the required fields.','error')
+        }
+    }) 
     $("#emp_prev_btn").click(function () {
         $("#emp_group").removeClass("active_group");
         $("#personal_group").addClass("active_group");
         $(".progress-bar").css('width', '69%');
     });
-
-
-
-
-
-
+    
 });
