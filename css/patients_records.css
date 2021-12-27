@@ -23,12 +23,12 @@ thead{
     color: white;
 }
 
-.btn#view_records{
+.btn.view_records{
     background-color: white;
     color: rgb(255, 203, 119);
 }
 
-.btn#view_records:hover{
+.btn.view_records:hover{
     background-color: rgb(255, 203, 119);
     color: white;
 }
@@ -160,3 +160,57 @@ thead{
 .progress-bar{
     background-color: rgb(27, 73, 101);
 }
+
+
+
+
+
+
+
+/* PATIENT RECORDS . PHP
+search file */
+
+.row.select_year{
+    display: flex;
+}
+
+.row.select_month{
+    display:none;
+}
+
+.row.select_date{
+    display:none;
+}
+
+
+.btn.search_btn{
+    color: white;
+    background-color: rgb(27, 73, 101);
+}
+
+.btn.search_btn:hover{
+    background-color: rgb(16, 42, 58);
+    color: white;
+}
+
+.btn.refresh_btn{
+    color: white;
+    background-color:rgb(23, 195, 178);
+}
+
+.btn.refresh_btn:hover{
+    background-color: rgb(16, 143, 130);
+    color: white;
+}
+
+.btn.bxs-book-open{
+    background-color: white;
+    color: rgb(34, 124, 157);
+}
+
+.btn.bxs-book-open:hover{
+    background-color: rgb(34, 124, 157);
+    color: white;
+}
+
+
