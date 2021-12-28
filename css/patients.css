@@ -12,7 +12,7 @@ thead{
     outline: none;
 }
 
-.btn#view_patient{
+.btn.view_patient{
     background-color: white;
     color: rgb(34, 124, 157);
 }
@@ -29,7 +29,7 @@ thead{
 }
 
 
-.btn#view_patient:hover{
+.btn.view_patient:hover{
     background-color: rgb(34, 124, 157);
     color: white;
 }
@@ -50,6 +50,12 @@ thead{
 }
 
 
+
+/* edit patient  VIEW PATIENT . PHP*/
+
+.btn.apply_btn{
+    background-color: rgb(27, 73, 101);
+}
 
 /* add patient */
 

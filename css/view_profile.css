@@ -20,7 +20,9 @@ body{
 }
 /* Hanggang dito nlng ata ang nagamit */
 
-
+.btn.apply_btn{
+    background-color: rgb(27, 73, 101);
+}
 
 
 

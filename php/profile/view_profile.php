@@ -157,7 +157,7 @@ if(isset($_POST['edit_username']))
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_info_btn">
                     <div class="col">
-                        <input type="submit" id="update_name_submit" class="form-control btn btn-primary" name="edit_info" value="Apply Changes">
+                        <input type="submit" id="update_name_submit" class="form-control btn apply_btn text-white" name="edit_info" value="Apply Changes">
                     </div>
                 </div>
             </form>
@@ -183,7 +183,7 @@ if(isset($_POST['edit_username']))
 
                 <div class="row mb-3  justify-content-center d-none" id="up_username_btn">
                     <div class="col">
-                        <input type="submit" id="update_username_submit"  class="form-control btn btn-primary" name="edit_username"  value="Apply Changes">
+                        <input type="submit" id="update_username_submit"  class="form-control btn apply_btn text-white" name="edit_username"  value="Apply Changes">
                     </div>
                 </div>
             </form>
@@ -222,7 +222,7 @@ if(isset($_POST['edit_username']))
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_password_btn">
                     <div class="col">
-                        <input type="submit" class="form-control btn btn-primary" id="password_submit" name="edit_password"  value="Apply Changes">
+                        <input type="submit" class="form-control btn apply_btn text-white" id="password_submit" name="edit_password"  value="Apply Changes">
                         <input type="hidden" name="edit_password" value = "1">
                     </div>
                 </div>

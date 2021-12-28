@@ -13,7 +13,7 @@
     <!-- css -->
     <link href='../../css/patients.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../css/nav.css">
-    <link rel="stylesheet" href="../../css/view_profile.css">
+ 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/patients.js"></script>
@@ -38,7 +38,7 @@
                                 </form>
                             </div>
                         </div>
-
+                        <!-- search-box -->
                        
             
                         <!-- table row  -->
@@ -83,7 +83,7 @@
                                                         <td>".$row_patient["email"]."</td>
                                                         <td>".$row_patient["status"]."</td>
                                                         <td class='text-center'>
-                                                            <i class='bx bxs-user mx-1 btn border' id='view_patient' title='View Patient'></i>";
+                                                            <i class='bx bxs-user mx-1 btn border view_patient' id='".$row_patient["patient_id"]."' title='View Patient'></i>";
 
                                                     if($row_patient["status"]=="Admitted"){
                                                         echo "<i class='bx bxs-user-minus mx-1 btn border' id='discharge_patient' title='Discharge Patient'></i>";
