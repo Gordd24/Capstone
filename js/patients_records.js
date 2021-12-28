@@ -25,7 +25,7 @@ $(document).ready(function () {
     // view folder / view record
     $(".btn.view_records").click(function () {
 
-        location.href = "patient_records.php?id=" + $(this).attr('id');;
+        location.href = "patient_records.php?id=" + $(this).attr('id');
     });
 
     $(".btn.create_record").click(function () {

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +80,7 @@
     <!-- name row -->
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_name_div">
-            <form method="POST">
+            <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Patient's Name</h3>
                 <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox" value="" id="edit_name">
@@ -89,20 +92,20 @@
                 <div class="row mb-3 justify-content-center">
                     <div class="col">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control edit_name" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required readonly>
+                        <input type="text" class="form-control edit_name" id="first_name" name="first_name"  value="<?php echo $row['first_name']; ?>" required readonly autocomplete="off">
                     </div>
                 </div>
 
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
                         <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control edit_name" id="middle_name" name="middle_name"  value="<?php echo $row['middle_name']; ?>"  required readonly>
+                        <input type="text" class="form-control edit_name" id="middle_name" name="middle_name"  value="<?php echo $row['middle_name']; ?>" readonly autocomplete="off">
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control edit_name" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>"  required readonly>
+                        <input type="text" class="form-control edit_name" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>"  required readonly autocomplete="off">
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_name_btn">
@@ -118,7 +121,7 @@
      <!-- other -->
      <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
-            <form method="POST">
+            <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Other Information</h3>
                 <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox" value="" id="edit_info">
@@ -152,7 +155,7 @@
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control edit_info" id="address" name="address" value="<?php echo $row['address']; ?>"  required readonly>
+                        <input type="text" class="form-control edit_info" id="address" name="address" value="<?php echo $row['address']; ?>"  required readonly autocomplete="off">
                     </div>
                 </div>
 
@@ -172,7 +175,7 @@
     <!-- optional -->
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_optional_div">
-            <form method="POST">
+            <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Other Information (Optional)</h3>
                 <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox" value="" id="edit_optional">
@@ -184,21 +187,21 @@
                 <div class="row mb-3 justify-content-center">
                     <div class="col">
                         <label for="contact_no" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control edit_optional" id="contact_no" name="contact_no"  value="<?php echo $row['contact_no']; ?>" readonly>
+                        <input type="text" class="form-control edit_optional" id="contact_no" name="contact_no"  value="<?php echo $row['contact_no']; ?>" readonly autocomplete="off">
                     </div>
                 </div>
 
                 <div class="row mb-3 justify-content-center">
                     <div class="col">
                         <label for="religion" class="form-label">Religion</label>
-                        <input type="text" class="form-control edit_optional" id="religion" name="religion"  value="<?php echo $row['religion']; ?>" readonly>
+                        <input type="text" class="form-control edit_optional" id="religion" name="religion"  value="<?php echo $row['religion']; ?>" readonly autocomplete="off">
                     </div>
                 </div>
 
                 <div class="row mb-3 justify-content-center">
                     <div class="col">
                         <label for="occupation" class="form-label">Occupation</label>
-                        <input type="text" class="form-control edit_optional" id="occupation" name="occupation"  value="<?php echo $row['occupation']; ?>" readonly>
+                        <input type="text" class="form-control edit_optional" id="occupation" name="occupation"  value="<?php echo $row['occupation']; ?>" readonly autocomplete="off">
                     </div>
                 </div>
 
@@ -215,7 +218,7 @@
     <!-- email row  -->
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_email_div">
-            <form method="POST">
+            <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Email</h3>
                 <div class="form-check my-3">
                     <input class="form-check-input" type="checkbox" value="" id="edit_email">
@@ -225,7 +228,7 @@
                 </div>
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
-                        <input type="text" class="form-control edit_email" id="email" name="email" value="<?php echo $row['email']; ?>" required readonly>
+                        <input type="text" class="form-control edit_email" id="email" name="email" value="<?php echo $row['email']; ?>" required readonly autocomplete="off">
                     </div>
                 </div>
 
@@ -252,3 +255,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+

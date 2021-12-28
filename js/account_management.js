@@ -89,47 +89,47 @@ $(document).ready(function () {
 
     });
 
-    function isEmail(email){
+    function isEmail(email) {
         var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if(!regex.test(email)) {
+        if (!regex.test(email)) {
             return false;
-          }else{
+        } else {
             return true;
-          }
+        }
     }
 
     //account group
     $("#account_next_btn").click(function () {
-        uname=$('#username').val()
-        email=$('#email').val()
-        pword=$('#password').val()
-        cpword=$('#confirm_password').val()
-        if(uname!='' && email!='' && pword!='' && cpword!=''){
-            if(isEmail(email)==true){
-                if(pword==cpword){
+        uname = $('#username').val()
+        email = $('#email').val()
+        pword = $('#password').val()
+        cpword = $('#confirm_password').val()
+        if (uname != '' && email != '' && pword != '' && cpword != '') {
+            if (isEmail(email) == true) {
+                if (pword == cpword) {
                     console.log('asdad')
                     $("#account_group").removeClass("active_group");
                     $("#personal_group").addClass("active_group");
                     $(".progress-bar").css('width', '69%');
-                }else{
-                    Swal.fire('Error!','Password did not match.','error')
+                } else {
+                    Swal.fire('Error!', 'Password did not match.', 'error')
                 }
-            }else{
-                Swal.fire('Error!','Please use a valid email','error')
+            } else {
+                Swal.fire('Error!', 'Please use a valid email', 'error')
             }
-                
+
         }
-        else{
-            Swal.fire('Error!','Please fill up all fields.','error')
+        else {
+            Swal.fire('Error!', 'Please fill up all fields.', 'error')
         }
     })
     // $('.account-inputs').on('blur', function () {
-        
+
     //     uname=$('#username').val()
     //     email=$('#email').val()
     //     pword=$('#password').val()
     //     cpword=$('#confirm_password').val()
-        
+
     //         // account group   
     //         $("#account_next_btn").click(function () {    
     //             if(uname!='' && email!='' && pword!='' && cpword!=''){
@@ -151,19 +151,19 @@ $(document).ready(function () {
     //             }
     //         }); 
     // })
-     //personal group
-     $("#personal_next_btn").click(function () {
+    //personal group
+    $("#personal_next_btn").click(function () {
         console.log('hellow')
-        fname=$('#first_name').val()
-        mname=$('#middle_name').val()
-        lname=$('#last_name').val()
-       
-        if(fname!='' && lname!=''){
+        fname = $('#first_name').val()
+        mname = $('#middle_name').val()
+        lname = $('#last_name').val()
+
+        if (fname != '' && lname != '') {
             $("#personal_group").removeClass("active_group");
             $("#emp_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
-        }else{
-            Swal.fire('Error!','Please fill up all the required fields.','error')
+        } else {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
         }
     });
 
@@ -174,16 +174,16 @@ $(document).ready(function () {
     });
 
     //employee group
-    $(".reg-submit").click(function () {   
+    $(".reg-submit").click(function () {
         emp_id = $('#empi_id').val()
-        if(emp_id==''){
-            Swal.fire('Error!','Please fill up all the required fields.','error')
+        if (emp_id == '') {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
         }
-    }) 
+    })
     $("#emp_prev_btn").click(function () {
         $("#emp_group").removeClass("active_group");
         $("#personal_group").addClass("active_group");
         $(".progress-bar").css('width', '69%');
     });
-    
+
 });
