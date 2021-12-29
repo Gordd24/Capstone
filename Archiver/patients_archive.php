@@ -10,19 +10,17 @@
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- css -->
-    <link href='../../css/archive.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../css/nav.css">
+    <link href='../../css/patients_records.css' rel='stylesheet'>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../../js/archive.js"></script>
-    <script src="../../js/nav.js"></script>
+    <script src="archive.js"></script>
     <!-- sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body id="body-pd">
 
-<?php include_once '../admin_nav.php';?>
+
                 <div class="row my-3">
                         <div class="col-12">
                                         <!-- search-box -->
@@ -41,7 +39,7 @@
                                             <div class="col-md-10">
 
                                                 <table class="table">
-                                                    <thead class="text-white">
+                                                    <thead class="text-white bg-secondary">
                                                         <tr>
                                                             <th scope="col">Patient ID</th>
                                                             <th scope="col">Name</th>   
@@ -50,7 +48,7 @@
                                                     </thead>
                                                     <tbody>
                                                             <?php
-                                                            include_once '../dbconn.php';
+                                                            include_once 'dbconn.php';
 
                                                             $connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Archive' ORDER BY date_added,time_added DESC");
                                                             $patients_result = $connection->use_result();
