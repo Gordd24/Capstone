@@ -33,6 +33,7 @@ $ID = $_SESSION['ID'];
                         <a href="../profile/view_profile.php" class="nav_link" id="profile_link"> <i class="bx bxs-user-circle nav_icon"></i> <span class="nav_name">'.$active_account_name.'</span> </a> 
                         <a href="../dashboard/dashboard.php" class="nav_link" id="dashboard_link"> <i class="bx bxs-dashboard nav_icon"></i> <span class="nav_name">Dashboard</span> </a> 
                         <a href="../patients_record_management/patients_records.php" class="nav_link" id="record_management_link"> <i class="bx bx-library nav_icon"></i> <span class="nav_name">Patients Record</span> </a> 
+                        <a href="../patients_record_archive/patients_archive.php" class="nav_link"> <i class="bx bxs-archive"></i> <span class="nav_name">Patients Record Archive</span> </a>
                         <a href="../patients/patients.php" class="nav_link"> <i class="bx bxs-user-badge nav_icon"></i> <span class="nav_name">Patients</span> </a>
                         ';
                         if(isset($_SESSION["position"]) && $_SESSION["position"]=="Administrator"){
