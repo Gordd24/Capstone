@@ -30,7 +30,7 @@ include_once '../dbconn.php';
                         <td class='text-center'>                                       
                             <i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>
                             <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
-                            <i class='bx bxs-archive mx-1 btn border' id='archive' title='Archive'></i>
+                            <i class='bx bxs-archive mx-1 btn border archive' id='".$row_patient['patient_id']."' title='Archive'></i>
                         </td>
                     </tr>";
                 }                          

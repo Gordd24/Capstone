@@ -13,8 +13,18 @@ $(document).ready(function () {
             dataType: "text",
             success: function (data) {
                 $('tbody').html(data);
+                $(".btn.create_record").click(function () {
+                    $('.option_modal_div').show();
+                    $('.option_modal_div').focus();
+                    $('.option_modal_div').attr('id', this.id);
+                });
+                $(".btn.view_records").click(function () {
 
-
+                    location.href = "patient_records.php?id=" + $(this).attr('id');
+                });
+                $(".btn.archive").click(function () {
+                    location.href = "archive_folder.php?id=" + $(this).attr('id');
+                });
             }
         });
         //somehow return false stops keyup functioning twice
@@ -26,6 +36,11 @@ $(document).ready(function () {
     $(".btn.view_records").click(function () {
 
         location.href = "patient_records.php?id=" + $(this).attr('id');
+    });
+
+    // archive record
+    $(".btn.archive").click(function () {
+        location.href = "archive_folder.php?id=" + $(this).attr('id');
     });
 
     $(".btn.create_record").click(function () {
@@ -80,51 +95,50 @@ $(document).ready(function () {
     });
 
 
-      //consultation personal group
-      $("#consultation_personal_next_btn").click(function () {
+    //consultation personal group
+    $("#consultation_personal_next_btn").click(function () {
         address = $('#address').val()
         contact = $('#contact_no').val()
         age = $('#age').val();
-        if(address != '' && contact!='' && age !=''){
+        if (address != '' && contact != '' && age != '') {
             $("#consultation_personal_group").removeClass("active_group");
             $("#vital_group").addClass("active_group");
             $(".progress-bar").css('width', '70%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
         }
     });
 
 
     //vital group
-    if($('#ob_patient').is(':checked'))
-    {
+    if ($('#ob_patient').is(':checked')) {
         console.log('check')
-    }    
+    }
     $("#vital_next_btn").click(function () {
         weight = $('#weight').val()
         bp = $('#bp').val()
         temp = $('#temp').val()
         rr = $('#rr').val()
         pr = $('#pr').val()
-        if($('#ob_patient').is(':checked')){
+        if ($('#ob_patient').is(':checked')) {
             lmp = $('#lmp').val()
             aog = $('#aog').val()
             edc = $('#edc').val()
-            if(weight!='' && bp !='' && temp !='' && rr !='' && pr !='' && lmp !='' && aog !='' && edc !=''){
+            if (weight != '' && bp != '' && temp != '' && rr != '' && pr != '' && lmp != '' && aog != '' && edc != '') {
                 $("#vital_group").removeClass("active_group");
                 $("#complaint_group").addClass("active_group");
                 $(".progress-bar").css('width', '100%');
-            }else{
-                Swal.fire('Error','Please fill up all the fields','error')
-            }  
+            } else {
+                Swal.fire('Error', 'Please fill up all the fields', 'error')
+            }
         }
-        else{
-            if(weight!='' && bp !='' && temp !='' && rr !='' && pr !=''){
+        else {
+            if (weight != '' && bp != '' && temp != '' && rr != '' && pr != '') {
                 $("#vital_group").removeClass("active_group");
                 $("#complaint_group").addClass("active_group");
                 $(".progress-bar").css('width', '100%');
-            }else{
-                Swal.fire('Error','Please fill up all the fields','error')
+            } else {
+                Swal.fire('Error', 'Please fill up all the fields', 'error')
             }
         }
     });
@@ -136,10 +150,10 @@ $(document).ready(function () {
     });
 
     //consult submit
-    $('#consultation_form').on('submit', function(e){
+    $('#consultation_form').on('submit', function (e) {
         complaint = $('#complaint').val()
-        if(complaint==''){
-            Swal.fire('Error!','Please fill up all the required fields.','error')
+        if (complaint == '') {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
             e.preventDefault();
         }
     })
@@ -159,12 +173,12 @@ $(document).ready(function () {
         address = $('#address').val()
         contact = $('#contact_no').val()
         age = $('#age').val();
-        if(address != '' && contact!='' && age !=''){
+        if (address != '' && contact != '' && age != '') {
             $("#admission_personal_group").removeClass("active_group");
             $("#admission_personal2_group").addClass("active_group");
             $(".progress-bar").css('width', '50%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
         }
     });
 
@@ -183,20 +197,20 @@ $(document).ready(function () {
 
     //admitting group
     $("#admitting_next_btn").click(function () {
-        room_no=$('#room_no').val()
-        case_no=$('#case_no').val()
-        cs=$('#cs').val()
-        date_admit=$('#date_admitted').val()
-        time_admit=$('#time_admitted').val()
-        admit_by=$('#admitted_by').val()
+        room_no = $('#room_no').val()
+        case_no = $('#case_no').val()
+        cs = $('#cs').val()
+        date_admit = $('#date_admitted').val()
+        time_admit = $('#time_admitted').val()
+        admit_by = $('#admitted_by').val()
 
-        if(room_no!='' && case_no !='' && cs!='' && Date.parse(date_admit) && time_admit!='' && admit_by !=''){
+        if (room_no != '' && case_no != '' && cs != '' && Date.parse(date_admit) && time_admit != '' && admit_by != '') {
             $("#admitting_group").removeClass("active_group");
             $("#diagnosis_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
-        }   
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
+        }
     });
 
     $("#admitting_prev_btn").click(function () {
@@ -205,17 +219,17 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '50%');
     });
 
-     //admitting group
-     $('#admission_form').on('submit', function(e){
+    //admitting group
+    $('#admission_form').on('submit', function (e) {
         physician = $('#physician').val()
         diagnosis = $('#diagnosis').val()
-        if(physician=='' || diagnosis ==''){
-                Swal.fire('Error!','Please fill up all the required fields.','error')
-                e.preventDefault()
+        if (physician == '' || diagnosis == '') {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            e.preventDefault()
         }
     })
-    
-   
+
+
     $("#diagnosis_prev_btn").click(function () {
         $("#diagnosis_group").removeClass("active_group");
         $("#admitting_group").addClass("active_group");
@@ -226,14 +240,14 @@ $(document).ready(function () {
     //medical personal group
     $("#medical_personal_next_btn").click(function () {
         address = $('#address').val()
-        
+
         age = $('#age').val();
-        if(address != '' && age !=''){
+        if (address != '' && age != '') {
             $("#medical_personal_group").removeClass("active_group");
             $("#medical_diagnosis_group").addClass("active_group");
             $(".progress-bar").css('width', '50%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
         }
     });
 
@@ -246,14 +260,14 @@ $(document).ready(function () {
     });
 
     $("#medical_diagnosis_next_btn").click(function () {
-        
+
         diagnosis = $('#diagnosis').val()
-        if(diagnosis !=''){
+        if (diagnosis != '') {
             $("#medical_diagnosis_group").removeClass("active_group");
             $("#recommendation_group").addClass("active_group");
             $(".progress-bar").css('width', '75%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
         }
     });
 
@@ -265,14 +279,14 @@ $(document).ready(function () {
     });
 
     $("#recommendation_next_btn").click(function () {
-       
+
         recommendation = $('#recommendation').val()
-        if(recommendation !=''){
+        if (recommendation != '') {
             $("#recommendation_group").removeClass("active_group");
             $("#physician_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
-        }else{
-            Swal.fire('Error','Please fill up all the fields','error')
+        } else {
+            Swal.fire('Error', 'Please fill up all the fields', 'error')
         }
     });
 
@@ -283,23 +297,23 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '75%');
     });
 
-    $('#medcert_form').on('submit', function(e){
+    $('#medcert_form').on('submit', function (e) {
         physician = $('#physician').val()
         license = $('#license').val()
-        if(physician=='' || license ==''){
-                Swal.fire('Error!','Please fill up all the required fields.','error')
-                e.preventDefault()
+        if (physician == '' || license == '') {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            e.preventDefault()
         }
     })
 
     //laboratory validation
-    $('#lab_form').on('submit',function(e){
+    $('#lab_form').on('submit', function (e) {
         if ($('#lab_res').get(0).files.length === 0) {
-            Swal.fire('Error!','Please upload the laboratory','error')
+            Swal.fire('Error!', 'Please upload the laboratory', 'error')
             e.preventDefault()
         }
     })
-    
+
 
     // patient records . php
     $("#admission_select_search").on('change', function () {

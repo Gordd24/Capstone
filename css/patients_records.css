@@ -33,12 +33,12 @@ thead{
     color: white;
 }
 
-.btn#archive{
+.btn.archive{
     background-color: white;
     color: gray;
 }
 
-.btn#archive:hover{
+.btn.archive:hover{
     background-color: gray;
     color: white;
 }
