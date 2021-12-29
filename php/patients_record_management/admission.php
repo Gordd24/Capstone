@@ -109,7 +109,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST">
+                                        <form method="POST" id='admission_form'>
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="admission_personal_group">

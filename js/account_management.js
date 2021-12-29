@@ -174,12 +174,13 @@ $(document).ready(function () {
     });
 
     //employee group
-    $(".reg-submit").click(function () {
+    $("#regform").on('submit',function (e) {   
         emp_id = $('#empi_id').val()
-        if (emp_id == '') {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+        if(emp_id==''){
+            Swal.fire('Error!','Please fill up all the required fields.','error')
+            e.preventDefault()
         }
-    })
+    }) 
     $("#emp_prev_btn").click(function () {
         $("#emp_group").removeClass("active_group");
         $("#personal_group").addClass("active_group");

@@ -60,7 +60,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST">
+                                        <form method="POST" id='patient_form'>
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="patient1_group">
