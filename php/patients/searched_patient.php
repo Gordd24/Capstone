@@ -30,11 +30,10 @@ include_once '../dbconn.php';
                             <td>".$row_patient["email"]."</td>
                             <td>".$row_patient["status"]."</td>
                             <td class='text-center'>
-                                <i class='bx bxs-user mx-1 btn border' id='view_patient' title='View Patient'></i>
-                                <i class='bx bxs-file-plus mx-1 btn border' id='create_record' title='Create Record'></i>";
+                            <i class='bx bxs-user mx-1 btn border view_patient' id='".$row_patient["patient_id"]."' title='View Patient'></i>";
 
                         if($row_patient["status"]=="Admitted"){
-                            echo "<i class='bx bxs-user-minus mx-1 btn border' id='discharge_patient' title='Discharge Patient'></i>";
+                            echo "<i class='bx bxs-user-minus mx-1 btn border discharge_patient' id='".$row_patient["patient_id"]."' title='Discharge Patient'></i>";
                         }
                             
                         echo"

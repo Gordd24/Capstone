@@ -15,8 +15,6 @@ include_once '../dbconn.php';
         $get_patients_stmt->bind_param("s", $searched); // "is" means that $id is bound as an integer and $label as a string
         $get_patients_stmt->execute();
         $patients_result = $get_patients_stmt->get_result();
-        
-
 
         if($patients_result->num_rows>0)
         {

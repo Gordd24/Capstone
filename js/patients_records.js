@@ -527,4 +527,67 @@ $(document).ready(function () {
 
 
 
+
+
+
+    //DISCHARGEEE
+
+    // discharge
+
+    //discharge personal group
+    $("#discharge_personal_next_btn").click(function () {
+        $("#discharge_personal_group").removeClass("active_group");
+        $("#discharging_group").addClass("active_group");
+        $(".progress-bar").css('width', '40%');
+
+    });
+
+
+    // discharging group
+    $("#discharging_prev_btn").click(function () {
+        $("#discharging_group").removeClass("active_group");
+        $("#discharge_personal_group").addClass("active_group");
+        $(".progress-bar").css('width', '20%');
+    });
+
+    $("#discharging_next_btn").click(function () {
+        $("#discharging_group").removeClass("active_group");
+        $("#diagnosis_group").addClass("active_group");
+        $(".progress-bar").css('width', '60%');
+    });
+
+    // diagnosis group
+    $("#diagnosis_prev_btn").click(function () {
+        $("#diagnosis_group").removeClass("active_group");
+        $("#discharging_group").addClass("active_group");
+        $(".progress-bar").css('width', '40%');
+    });
+
+    $("#diagnosis_next_btn").click(function () {
+        $("#diagnosis_group").removeClass("active_group");
+        $("#code_group").addClass("active_group");
+        $(".progress-bar").css('width', '80%');
+    });
+
+    // code group
+    $("#code_prev_btn").click(function () {
+        $("#code_group").removeClass("active_group");
+        $("#diagnosis_group").addClass("active_group");
+        $(".progress-bar").css('width', '60%');
+    });
+
+    $("#code_next_btn").click(function () {
+        $("#code_group").removeClass("active_group");
+        $("#operation_group").addClass("active_group");
+        $(".progress-bar").css('width', '100%');
+    });
+
+    // operation group
+    $("#operation_prev_btn").click(function () {
+        $("#operation_group").removeClass("active_group");
+        $("#code_group").addClass("active_group");
+        $(".progress-bar").css('width', '8x`0%');
+    });
+
+
 });

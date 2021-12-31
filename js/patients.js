@@ -13,6 +13,17 @@ $(document).ready(function () {
             success: function (data) {
                 $('tbody').html(data);
 
+                //view_patient btn
+                $(".btn.view_patient").click(function () {
+                    var id = $(this).attr('id');
+                    location.href = "view_patient.php?id=" + id;
+                });
+
+                //discharge_patient btn
+                $(".btn.discharge_patient").click(function () {
+                    var id = $(this).attr('id');
+                    location.href = "../patients_record_management/discharge.php?id=" + id;
+                });
             }
         });
         //somehow return false stops keyup functioning twice
@@ -166,5 +177,12 @@ $(document).ready(function () {
 
     });
 
+
+    //discharge_patient btn
+
+    $(".btn.discharge_patient").click(function () {
+        var id = $(this).attr('id');
+        location.href = "../patients_record_management/discharge.php?id=" + id;
+    });
 
 });

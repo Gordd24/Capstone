@@ -40,37 +40,6 @@
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
-    $sex_field = '';
-
-    if($row['sex']=='Male')
-    {
-        $sex_field .= '<div class="row">
-                            <div class="col">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="male" value="Male" checked>
-                                    <label class="form-check-label" for="male">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Femaled">
-                                    <label class="form-check-label" for="female">Female</label>
-                                </div>
-                            </div>
-                        </div>';
-    }else if($row['sex']=='Female')
-    {
-        $sex_field .= '<div class="row">
-                            <div class="col">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="male" value="Male">
-                                    <label class="form-check-label" for="male">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Femaled" checked>
-                                    <label class="form-check-label" for="female">Female</label>
-                                </div>
-                            </div>
-                        </div>';
-    }
 }
 
     ?>

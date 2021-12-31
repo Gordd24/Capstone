@@ -25,7 +25,6 @@ if(isset($_POST['register']))
     $stmt = $connection->prepare("INSERT INTO tbl_accounts(username, password, first_name, middle_name, last_name, email, emp_id, position,date_created,time_created) VALUES 
     (?,?,?,?,?,?,?,?,?,?);");
 
-
     //execute
     $stmt->bind_param("ssssssssss",$username,$hashed_pass,$first_name,$middle_name,$last_name,$email,$emp_id,$position,$today,$time); // "is" means that $id is bound as an integer and $label as a string
     $stmt->execute();

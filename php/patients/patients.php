@@ -33,7 +33,7 @@
                             <div class="col-md-4">
                                 <form>
                                         <div class="form-group shadow-lg">
-                                            <input type="text" class="form-control" id="search_patient" placeholder="Search Patient">
+                                            <input type="text" class="form-control" id="search_patient" placeholder="Search Patient" autocomplete="off">
                                         </div>
                                 </form>
                             </div>
@@ -86,7 +86,7 @@
                                                             <i class='bx bxs-user mx-1 btn border view_patient' id='".$row_patient["patient_id"]."' title='View Patient'></i>";
 
                                                     if($row_patient["status"]=="Admitted"){
-                                                        echo "<i class='bx bxs-user-minus mx-1 btn border' id='discharge_patient' title='Discharge Patient'></i>";
+                                                        echo "<i class='bx bxs-user-minus mx-1 btn border discharge_patient' id='".$row_patient["patient_id"]."' title='Discharge Patient'></i>";
                                                     }
                                                         
                                                     echo"
