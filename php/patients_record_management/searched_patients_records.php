@@ -25,8 +25,17 @@ include_once '../dbconn.php';
                     <tr>
                         <th scope='row'>".$row_patient["patient_id"]."</th>
                         <td>".$row_patient["first_name"]." ".$row_patient["middle_name"]." ".$row_patient["last_name"]."</td>
-                        <td class='text-center'>                                       
-                            <i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>
+                        <td class='text-center'> ";
+                            if($row_patient['status']=="Admitted")    
+                            {
+                                echo "<i class='bx bxs-file-plus mx-1 btn border create_record discharge' id='".$row_patient['patient_id']."' title='Create Record'></i>";
+                            }else{
+                                echo "<i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>";
+                            }                 
+                        
+
+
+                            echo"
                             <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
                             <i class='bx bxs-archive mx-1 btn border archive' id='".$row_patient['patient_id']."' title='Archive'></i>
                         </td>

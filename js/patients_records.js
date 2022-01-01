@@ -14,9 +14,15 @@ $(document).ready(function () {
             success: function (data) {
                 $('tbody').html(data);
                 $(".btn.create_record").click(function () {
-                    $('.option_modal_div').show();
-                    $('.option_modal_div').focus();
-                    $('.option_modal_div').attr('id', this.id);
+                    if ($(this).hasClass("discharge")) {
+                        $('.option_modal_div2').show();
+                        $('.option_modal_div2').focus();
+                        $('.option_modal_div2').attr('id', this.id);
+                    } else {
+                        $('.option_modal_div').show();
+                        $('.option_modal_div').focus();
+                        $('.option_modal_div').attr('id', this.id);
+                    }
                 });
                 $(".btn.view_records").click(function () {
 
@@ -44,9 +50,15 @@ $(document).ready(function () {
     });
 
     $(".btn.create_record").click(function () {
-        $('.option_modal_div').show();
-        $('.option_modal_div').focus();
-        $('.option_modal_div').attr('id', this.id);
+        if ($(this).hasClass("discharge")) {
+            $('.option_modal_div2').show();
+            $('.option_modal_div2').focus();
+            $('.option_modal_div2').attr('id', this.id);
+        } else {
+            $('.option_modal_div').show();
+            $('.option_modal_div').focus();
+            $('.option_modal_div').attr('id', this.id);
+        }
     });
 
     $('.option_modal_div').focusout(function () {
@@ -63,9 +75,6 @@ $(document).ready(function () {
         var patient_id = $('.option_modal_div').attr('id');
         $('.option_modal_div').hide();
         $('.option_modal_div').attr('id', "");
-        $('.record_management_div_1').hide();
-        $('.record_management_div_4').show();
-        $('.record_management_div_4').html('');
         var url_path = "";
         if ($(this).attr('id') == "consultation") {
             url_path = "consultation.php?id=" + patient_id;
@@ -83,6 +92,39 @@ $(document).ready(function () {
         location.href = url_path;
 
     });
+
+    $('.option_modal_div2').focusout(function () {
+        $(this).hide();
+        $('.option_modal_div2').attr('id', "");
+    });
+
+    $('.option_modal_exit_div2').click(function () {
+        $('.option_modal_div2').hide();
+        $('.option_modal_div2').attr('id', "");
+    });
+
+    $('.modal_options_div2 .option_buttons2').click(function () {
+        var patient_id = $('.option_modal_div2').attr('id');
+        $('.option_modal_div2').hide();
+        $('.option_modal_div2').attr('id', "");
+        var url_path = "";
+        if ($(this).attr('id') == "consultation") {
+            url_path = "consultation.php?id=" + patient_id;
+
+        }
+        else if ($(this).attr('id') == "discharge") {
+            url_path = "discharge.php?id=" + patient_id;
+        }
+        else if ($(this).attr('id') == "med_cert") {
+            url_path = "medical_certificate.php?id=" + patient_id;
+        }
+        else if ($(this).attr('id') == "lab_res") {
+            url_path = "laboratory.php?id=" + patient_id;
+        }
+        location.href = url_path;
+
+    });
+
 
 
 

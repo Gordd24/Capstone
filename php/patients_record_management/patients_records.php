@@ -38,6 +38,20 @@
                         </div>
                 <!-- modal end -->
 
+                <!-- modal -->
+                <div class="option_modal_div2" tabindex="0">
+                        <div class="option_modal_exit_div2">
+                            <i class='bx bxs-x-circle'></i>
+                        </div>
+                        <div class="modal_options_div2">
+                            <p class="option_buttons2" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
+                            <p class="option_buttons2" id="discharge"><i class='bx bx-user-minus' ></i> Discharge Record</p>
+                            <p class="option_buttons2" id="med_cert"><i class='bx bx-certification'></i> Medical Certificate</p>
+                            <p class="option_buttons2" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
+                        </div>
+                        </div>
+                <!-- modal end -->
+
                 <div class="row my-3">
                         <div class="col-12">
                                         <!-- search-box -->
@@ -75,8 +89,17 @@
                                                                         <tr>
                                                                             <th scope='row'>".$row_patient["patient_id"]."</th>
                                                                             <td>".$row_patient["first_name"]." ".$row_patient["middle_name"]." ".$row_patient["last_name"]."</td>
-                                                                            <td class='text-center'>                                       
-                                                                                <i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>
+                                                                            <td class='text-center'> ";
+                                                                                if($row_patient['status']=="Admitted")    
+                                                                                {
+                                                                                    echo "<i class='bx bxs-file-plus mx-1 btn border create_record discharge' id='".$row_patient['patient_id']."' title='Create Record'></i>";
+                                                                                }else{
+                                                                                    echo "<i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>";
+                                                                                }                 
+                                                                                
+
+
+                                                                                echo"
                                                                                 <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
                                                                                 <i class='bx bxs-archive mx-1 btn border archive' id='".$row_patient['patient_id']."' title='Archive'></i>
                                                                             </td>

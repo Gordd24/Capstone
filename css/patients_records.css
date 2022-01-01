@@ -112,6 +112,74 @@ thead{
 }
 
 
+/* modal 2*/
+/* modal */
+.option_modal_div2{
+    position: absolute;
+	width: 30%;
+	border-radius: 3%;
+	background-color: white;
+	border:0.1vw solid rgb(220, 218, 218);
+	left: 0; 
+	right: 0; 
+	margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+	overflow: hidden;
+	box-shadow: 1vw 1vw 6vw rgb(184, 184, 196);
+    display: none;
+    
+}
+
+.option_modal_div2:focus{
+    outline:none;
+}
+
+
+
+.option_modal_exit_div2
+{
+	padding: 1%;
+    border-bottom: 0.1vw solid rgb(220, 218, 218);
+}
+
+
+.option_modal_exit_div2 .bx.bxs-x-circle
+{
+    font-size: 2.5vw;
+    color: rgb(124, 14, 14);
+}
+
+.modal_options_div2
+{
+	padding: 5% 10% 5% 10%;
+}
+
+
+.modal_options_div2 .option_buttons2
+{
+	text-align: center;
+	margin: auto;
+	margin-bottom: 3%;
+	border:0.1vw solid rgb(220, 218, 218);
+	padding-top: 4%;
+	padding-bottom: 4%;
+	border-radius: 5%/30%;
+	background-color: white;
+	font-size: 1.2vw;
+    font-weight: bold;
+	outline:none;
+}
+
+.modal_options_div2 .option_buttons2:hover
+{
+	background-color: rgb(16,120,173);
+	color: white;
+	border:0.1vw solid rgb(16,120,173);
+    cursor: pointer;
+
+}
+
 /* for consultation */
 .ob_patient{
     display: none;
