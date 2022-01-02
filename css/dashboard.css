@@ -12,3 +12,11 @@
     height: 32px;
     background-color:#F7F6FB;
 }
+
+.card.hover{
+    background-color: rgb(27, 73, 101);
+}
+
+.card-body.hover{
+    color:white;
+}

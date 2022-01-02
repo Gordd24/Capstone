@@ -43,6 +43,7 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <script src="../../js/nav.js"></script>
+    <script src="../../js/dashboard.js"></script>
     
    
     <link rel="stylesheet" href="../../css/dashboard.css">
@@ -105,7 +106,7 @@ if (!isset($_SESSION)) {
         <div class="row m-5">
             <h3>Patients</h3>
             <div class="col-6 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="patient">
                     <div class="card-header text-white">Total Patients</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"><?php  echo $total_patient->num_rows; ?></h1>
@@ -113,7 +114,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
             <div class="col-6 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="patient">
                     <div class="card-header text-white">Admitted</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"><?php  echo $total_admitted->num_rows; ?></h1>
@@ -135,7 +136,7 @@ if (!isset($_SESSION)) {
         <div class="row m-5">
             <h3>Patient Records</h3>
             <div class="col-6 my-3 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;"  id="record">
                     <div class="card-header text-white">Consultation</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"> <?php  echo $total_consult->num_rows; ?></h1>
@@ -143,7 +144,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
             <div class="col-6 my-3 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="record">
                     <div class="card-header text-white">Admission</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"><?php  echo $total_admission->num_rows; ?></h1>
@@ -151,7 +152,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
             <div class="col-6 my-3 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="record">
                     <div class="card-header text-white">Medical Certificate</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"><?php  echo $total_med_cert->num_rows; ?></h1>
@@ -159,7 +160,7 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
             <div class="col-6 my-3 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="record">
                     <div class="card-header text-white">Laboratory Results</div>
                     <div class="card-body btn btn-muted text-center">
                         <h1 class="card-title"><?php  echo $total_lab_res->num_rows; ?></h1>
@@ -171,7 +172,7 @@ if (!isset($_SESSION)) {
        
         
         <div class="container m-5 d-none d-md-block">
-        <h3>Created Record Today</h3>
+        <h3>Record Quantity Percentage</h3>
 
         <div id="piechart"  style="width: 900px; height: 500px;"></div>
         </div>
