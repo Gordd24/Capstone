@@ -79,7 +79,7 @@
 
     <!-- name row -->
     <div class="row">
-        <div class="col-5 container-lg border rounded my-5 p-2" id="edit_name_div">
+        <div class="col-5 container-lg border my-5 p-2" id="edit_name_div">
             <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Patient's Name</h3>
                 <div class="form-check my-3">
@@ -120,7 +120,7 @@
 
      <!-- other -->
      <div class="row">
-        <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
+        <div class="col-5 container-lg border my-5 p-2" id="edit_info_div">
             <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Other Information</h3>
                 <div class="form-check my-3">
@@ -174,7 +174,7 @@
 
     <!-- optional -->
     <div class="row">
-        <div class="col-5 container-lg border rounded my-5 p-2" id="edit_optional_div">
+        <div class="col-5 container-lg border my-5 p-2" id="edit_optional_div">
             <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Other Information (Optional)</h3>
                 <div class="form-check my-3">
@@ -217,7 +217,7 @@
 
     <!-- email row  -->
     <div class="row">
-        <div class="col-5 container-lg border rounded my-5 p-2" id="edit_email_div">
+        <div class="col-5 container-lg border my-5 p-2" id="edit_email_div">
             <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Email</h3>
                 <div class="form-check my-3">

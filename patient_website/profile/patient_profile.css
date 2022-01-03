@@ -1,0 +1,8 @@
+#profile{
+    border-radius: .2rem;
+    color: rgb(27, 73, 101);
+    font-weight: bolder;
+  }
+.btn.apply_btn{
+    background-color: rgb(27, 73, 101);
+}

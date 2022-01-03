@@ -12,7 +12,41 @@ if(isset($_POST["signinSubmit"]))
 {
    if(isset($_POST['account'])&&$_POST["account"]=="Patient")
    {
-        header("Location:php/patient/patient_home.php");
+        
+        $username =$_POST['username'];
+        $password =$_POST['password'];
+        $patient_id = '';
+
+        $get_patient_account = $connection->prepare("SELECT patient_id,username,password FROM tbl_patients WHERE username = ?");
+    
+            /* Prepared statement, stage 2: bind and execute */
+            $get_patient_account->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
+            $get_patient_account->execute();
+            $patient_account = $get_patient_account->get_result();
+
+            if($patient_account->num_rows>0)
+            {
+                while ($row = $patient_account->fetch_array(MYSQLI_ASSOC)) {
+                    
+                    $test_pass = $row['password'];
+                    $patient_id = $row['patient_id'];
+        
+                }
+
+                if(password_verify($password, $test_pass)){
+                    $_SESSION["ID"] = $patient_id;
+                    header("Location:patient_website/profile/patient_profile.php");
+                }
+                else{
+                    echo '<script type = "text/javascript">';
+                    echo 'alert("Invalid Username or Password!");';
+                    echo '</script>';
+                }
+            }else{
+                echo '<script type = "text/javascript">';
+                echo 'alert("Account Does Not Exist");';
+                echo '</script>';
+            }
    }
    if(isset($_POST['account'])&&$_POST["account"]=="Personnel")
    {
