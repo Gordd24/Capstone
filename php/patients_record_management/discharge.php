@@ -63,7 +63,7 @@
 
                                         <!-- actual progress bar -->
                                         <div class="progress shadow-lg">
-                                            <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar" role="progressbar" style="width: 16%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
 
                                     </div>
@@ -110,8 +110,6 @@
                                                             <label for="last_name" class="form-label">Last Name</label>
                                                             <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required autocomplete="off" readonly>
                                                         </div>
-                                                    </div>
-
                                                     </div>
                                                     
                                                     
@@ -175,6 +173,57 @@
 
                                                 </div>
                                                 
+                                            </div>
+                                            <!-- input group end -->
+
+                                             <!-- input group -->
+                                             <div class="row input_group" id="transfer_group">
+
+                                                <div class="col">
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <h5>Room Transfer Optional</h5>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <label for="transfer_room" class="form-label">Transfer To Room</label>
+                                                            <input type="text" class="form-control" id="transfer_room" name="transfer_room"> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <label for="transfer_date" class="form-label">Date</label>
+                                                            <input type="date" class="form-control" id="transfer_date" name="transfer_date"> 
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <label for="transfer_time" class="form-label">Time</label>
+                                                            <input type="time" class="form-control" id="transfer_time" name="transfer_time"> 
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <div class="row  justify-content-center">
+                                                                <div class="col-4 btn shadow-lg prev m-3 p-2" id="transfer_prev_btn">
+                                                                    Previous
+                                                                </div>
+                                                                <div class="col-4 btn shadow-lg next m-3 p-2" id="transfer_next_btn">
+                                                                    Next
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+
+                                                </div>
+
                                             </div>
                                             <!-- input group end -->
 

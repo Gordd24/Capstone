@@ -580,7 +580,7 @@ $(document).ready(function () {
     $("#discharge_personal_next_btn").click(function () {
         $("#discharge_personal_group").removeClass("active_group");
         $("#discharging_group").addClass("active_group");
-        $(".progress-bar").css('width', '40%');
+        $(".progress-bar").css('width', '32%');
 
     });
 
@@ -589,20 +589,34 @@ $(document).ready(function () {
     $("#discharging_prev_btn").click(function () {
         $("#discharging_group").removeClass("active_group");
         $("#discharge_personal_group").addClass("active_group");
-        $(".progress-bar").css('width', '20%');
+        $(".progress-bar").css('width', '16%');
     });
 
     $("#discharging_next_btn").click(function () {
         $("#discharging_group").removeClass("active_group");
+        $("#transfer_group").addClass("active_group");
+        $(".progress-bar").css('width', '48%');
+    });
+
+
+    // transfer group
+    $("#transfer_prev_btn").click(function () {
+        $("#transfer_group").removeClass("active_group");
+        $("#discharging_group").addClass("active_group");
+        $(".progress-bar").css('width', '32%');
+    });
+
+    $("#transfer_next_btn").click(function () {
+        $("#transfer_group").removeClass("active_group");
         $("#diagnosis_group").addClass("active_group");
-        $(".progress-bar").css('width', '60%');
+        $(".progress-bar").css('width', '64%');
     });
 
     // diagnosis group
     $("#diagnosis_prev_btn").click(function () {
         $("#diagnosis_group").removeClass("active_group");
-        $("#discharging_group").addClass("active_group");
-        $(".progress-bar").css('width', '40%');
+        $("#transfer_group").addClass("active_group");
+        $(".progress-bar").css('width', '48%');
     });
 
     $("#diagnosis_next_btn").click(function () {
@@ -615,7 +629,7 @@ $(document).ready(function () {
     $("#code_prev_btn").click(function () {
         $("#code_group").removeClass("active_group");
         $("#diagnosis_group").addClass("active_group");
-        $(".progress-bar").css('width', '60%');
+        $(".progress-bar").css('width', '64%');
     });
 
     $("#code_next_btn").click(function () {
@@ -628,7 +642,7 @@ $(document).ready(function () {
     $("#operation_prev_btn").click(function () {
         $("#operation_group").removeClass("active_group");
         $("#code_group").addClass("active_group");
-        $(".progress-bar").css('width', '8x`0%');
+        $(".progress-bar").css('width', '80%');
     });
 
 
