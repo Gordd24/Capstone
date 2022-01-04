@@ -1,8 +1,11 @@
 <?php
 
 include_once '../dbconn.php';
-
+if (!isset($_SESSION)) {
+    session_start();
+  }
 date_default_timezone_set('Asia/Manila');
+
 
 if(isset($_POST['register']))
 {
@@ -115,13 +118,20 @@ if(isset($_POST['register']))
                                     <tbody>
                                             <?php
                                             include_once '../dbconn.php';
+                                             /* Prepared statement, stage 1: prepare */
+                                            $get_accounts_stmt = $connection->prepare("SELECT * FROM tbl_accounts where acc_id != ? ORDER BY date_created,time_created DESC");
 
-                                            $connection->real_query("SELECT * FROM tbl_accounts ORDER BY date_created,time_created DESC");
-                                            $accounts_result = $connection->use_result();
-                                            foreach ($accounts_result as $row_account) {
-                                                
-                                                if($row_account['acc_id'] != 37)
-                                                {
+                                            /* Prepared statement, stage 2: bind and execute */
+                                            $get_accounts_stmt->bind_param("s", $_SESSION['ID']); // "is" means that $id is bound as an integer and $label as a string
+                                            $get_accounts_stmt->execute();
+                                            $accounts_result = $get_accounts_stmt->get_result();
+                                            
+
+
+                                            if($accounts_result->num_rows>0)
+                                            {
+                                                while($row_account = $accounts_result -> fetch_assoc())
+                                                {       
                                                     echo "
                                                     <tr>
                                                         <th scope='row'>".$row_account["acc_id"]."</th>
@@ -129,9 +139,10 @@ if(isset($_POST['register']))
                                                         <td>".$row_account["username"]."</td>
                                                         <td>".$row_account["first_name"]." ".$row_account["middle_name"]." ".$row_account["last_name"]."</td>
                                                         <td>".$row_account["position"]."</td>
-                                                        <td class='text-center'><i class='bx bxs-trash-alt btn border' id='delete' title='Delete'></i></td>
-                                                    </tr>";
+                                                        <td class='text-center'><i class='bx bxs-trash-alt btn border delete' id='".$row_account["acc_id"]."' title='Delete'></i></td>
+                                                    </tr>";                  
                                                 }
+                                            
                                             }
                                                 
                                             ?>

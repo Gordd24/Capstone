@@ -12,12 +12,12 @@ thead{
     outline: none;
 }
 
-.btn#delete{
+.btn.delete{
     background-color: white;
     color: rgb(143, 23, 23);
 }
 
-.btn#delete:hover{
+.btn.delete:hover{
     background-color: rgb(143, 23, 23);
     color: white;
 }

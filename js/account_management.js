@@ -21,22 +21,20 @@ $(document).ready(function () {
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
+                        confirmButtonText: 'Yes'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             var id = $(this).attr('id');
-                            //???? what 
-                            $('tbody').html(''),
 
-                                $.ajax({
-                                    url: "delete_account.php",
-                                    method: "post",
-                                    data: { delete: id },
-                                    dataType: "text",
-                                    success: function (data) {
-                                        $('tbody').html(data);
-                                    }
-                                });
+                            $.ajax({
+                                url: "delete_account.php",
+                                method: "post",
+                                data: { delete: id },
+                                dataType: "text",
+                                success: function (data) {
+                                    location.href = "account_management.php";
+                                }
+                            });
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
@@ -67,22 +65,21 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 var id = $(this).attr('id');
-                //???? what 
-                $('tbody').html(''),
 
-                    $.ajax({
-                        url: "delete_account.php",
-                        method: "post",
-                        data: { delete: id },
-                        dataType: "text",
-                        success: function (data) {
-                            $('tbody').html(data);
-                        }
-                    });
+                $.ajax({
+                    url: "delete_account.php",
+                    method: "post",
+                    data: { delete: id },
+                    dataType: "text",
+                    success: function (data) {
+                        location.href = "account_management.php";
+                    }
+                });
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
                     'success'
+
                 )
             }
         });
@@ -123,34 +120,7 @@ $(document).ready(function () {
             Swal.fire('Error!', 'Please fill up all fields.', 'error')
         }
     })
-    // $('.account-inputs').on('blur', function () {
 
-    //     uname=$('#username').val()
-    //     email=$('#email').val()
-    //     pword=$('#password').val()
-    //     cpword=$('#confirm_password').val()
-
-    //         // account group   
-    //         $("#account_next_btn").click(function () {    
-    //             if(uname!='' && email!='' && pword!='' && cpword!=''){
-    //                 console.log(uname)
-    //                 console.log(email)
-    //                 console.log(pword)
-    //                 console.log(cpword)
-    //                 if(pword==cpword){
-    //                     console.log('asdad')
-    //                     $("#account_group").removeClass("active_group");
-    //                     $("#personal_group").addClass("active_group");
-    //                     $(".progress-bar").css('width', '69%');
-    //                 }else{
-    //                     alert('password did not match.')
-    //                 }
-    //             }
-    //             else{
-    //                 alert('Please fill up all fields.')
-    //             }
-    //         }); 
-    // })
     //personal group
     $("#personal_next_btn").click(function () {
         console.log('hellow')
@@ -174,13 +144,13 @@ $(document).ready(function () {
     });
 
     //employee group
-    $("#regform").on('submit',function (e) {   
+    $("#regform").on('submit', function (e) {
         emp_id = $('#empi_id').val()
-        if(emp_id==''){
-            Swal.fire('Error!','Please fill up all the required fields.','error')
+        if (emp_id == '') {
+            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
             e.preventDefault()
         }
-    }) 
+    })
     $("#emp_prev_btn").click(function () {
         $("#emp_group").removeClass("active_group");
         $("#personal_group").addClass("active_group");
