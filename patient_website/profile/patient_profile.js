@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    // $("#profile").addClass("active");
+
     $("#edit_name").change(function () {
 
         if ($("#up_email_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_optional_btn").hasClass("d-none")) {
