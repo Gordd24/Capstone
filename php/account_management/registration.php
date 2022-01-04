@@ -73,6 +73,7 @@
                                         <div class="col">
                                             <label for="username" class="form-label">Username</label>
                                             <input type="text" class="form-control account-inputs" id="username" name="username" required autocomplete="off">
+                                            <div class="error" id="uname_error"></div>
                                         </div>
                                     </div>
 
@@ -80,6 +81,7 @@
                                         <div class="col">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control account-inputs" id="email" name="email" required autocomplete="off">
+                                            <div class="error" id="email_error"></div>
                                         </div>
                                     </div>
 
@@ -87,6 +89,7 @@
                                         <div class="col">
                                             <label for="password" class="form-label">Password</label>
                                             <input type="password" class="form-control account-inputs" id="password" name="password" required autocomplete="off" >
+                                            <div class="error" id="pword_error"></div>
                                         </div>
                                     </div>
 
@@ -94,6 +97,7 @@
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <input type="password" class="form-control account-inputs" id="confirm_password" name="confirm_password" required autocomplete="off" >
+                                            <div class="error" id="cpword_error"></div>
                                         </div>
                                     </div>
 
@@ -128,6 +132,7 @@
                                         <div class="col">
                                             <label for="first_name" class="form-label">First Name *</label>
                                             <input type="text" class="form-control personal-inputs" id="first_name" name="first_name" required autocomplete="off" > 
+                                            <div class="error" id="fname_error"></div>
                                         </div>
                                     </div>
 
@@ -135,6 +140,7 @@
                                         <div class="col">
                                             <label for="middle_name" class="form-label">Middle Name</label>
                                             <input type="text" class="form-control personal-inputs" id="middle_name" name="middle_name" autocomplete="off" >
+                                            
                                         </div>
                                     </div>
 
@@ -142,6 +148,7 @@
                                         <div class="col">
                                             <label for="last_name" class="form-label">Last Name *</label>
                                             <input type="text" class="form-control personal-inputs" id="last_name" name="last_name" required autocomplete="off" >
+                                            <div class="error" id="lname_error"></div>
                                         </div>
                                     </div>
 
@@ -189,6 +196,9 @@
                                         <div class="col">
                                             <label for="emp_id" class="form-label">Employee ID</label>
                                             <input type="text" class="form-control emp-inputs" id="emp_id" name="emp_id" required autocomplete="off">
+                                            <div class="error" id="empid_error"></div>
+                                            <input type="hidden" name="hidden_field" id="hidden_field" value="form_check">
+
                                         </div>
                                     </div>
 

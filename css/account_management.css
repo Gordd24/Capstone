@@ -22,6 +22,11 @@ thead{
     color: white;
 }
 
+.error{
+    color:red;
+    font-size: 13px;
+}
+
 .input_group{
     display: none;
 }

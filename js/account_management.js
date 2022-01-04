@@ -72,15 +72,18 @@ $(document).ready(function () {
                     data: { delete: id },
                     dataType: "text",
                     success: function (data) {
-                        location.href = "account_management.php";
+                        Swal.fire({
+                            title: 'Success',
+                            text:'Registration Successful',
+                            icon: 'success',
+                        }).then((result) => {
+                             // Reload the Page
+                             location.reload();
+                        });
+                        
                     }
                 });
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-
-                )
+                
             }
         });
 
@@ -95,31 +98,135 @@ $(document).ready(function () {
         }
     }
 
+    var reg_uname_state = false;
+    var reg_empid_state = false;
+    //check if uname exist
+    $('#username').on('blur', function(){
+        uname = $('#username').val()
+        $.ajax({
+            type: "POST",
+            url: "register_validation.php",
+            data: {
+                 'username_check': 1,
+                 'username': uname,
+            },
+            success: function (response) {
+                 if (response == 0) {
+                      reg_uname_state = false;
+                      console.log(response)
+                 }
+                 else if (response == 1) {
+                      reg_uname_state = true;
+                      console.log(response)
+                 }
+                 else {
+                      alert(response);
+                 }
+
+            }
+        })
+    })
+    //check if emp id exist
+    $('#emp_id').on('blur', function () {
+        emp_id = $('#emp_id').val()
+       
+        $.ajax({
+             type: "POST",
+             url: "register_validation.php",
+             data: {
+                  'empid_check': 1,
+                  'employeeId': emp_id,
+             },
+             success: function (response) {
+                  if (response == 0) {
+                       reg_empid_state = false;
+                       console.log(response)
+                  }
+                  else if (response == 1) {
+                       reg_empid_state = true;
+                       console.log(response)
+                  }
+                  else {
+                       alert(response);
+                       console.log(response)
+                  }
+             }
+        });
+   });
     //account group
+
+    // $("#account_next_btn").click(function () {
+    //     uname = $('#username').val()
+    //     email = $('#email').val()
+    //     pword = $('#password').val()
+    //     cpword = $('#confirm_password').val()
+    //     if (uname != '' && email != '' && pword != '' && cpword != '') {
+    //         if(reg_uname_state){
+                
+    //             if (isEmail(email) == true) {
+    //                 if (pword == cpword) {
+                        
+    //                     $("#account_group").removeClass("active_group");
+    //                     $("#personal_group").addClass("active_group");
+    //                     $(".progress-bar").css('width', '69%');
+    //                 } else {
+    //                     Swal.fire('Error!', 'Password did not match.', 'error')
+    //                 }
+    //             } else {
+    //                 Swal.fire('Error!', 'Please use a valid email', 'error')
+    //             }
+    //         }else{
+               
+    //             Swal.fire('Error!', 'Username already exist', 'error')
+    //         }
+    //     }
+    //     else {
+    //         Swal.fire('Error!', 'Please fill up all fields.', 'error')
+    //     }
+    // })
+
     $("#account_next_btn").click(function () {
         uname = $('#username').val()
         email = $('#email').val()
         pword = $('#password').val()
         cpword = $('#confirm_password').val()
         if (uname != '' && email != '' && pword != '' && cpword != '') {
-            if (isEmail(email) == true) {
-                if (pword == cpword) {
-                    console.log('asdad')
-                    $("#account_group").removeClass("active_group");
-                    $("#personal_group").addClass("active_group");
-                    $(".progress-bar").css('width', '69%');
+            if(reg_uname_state){
+                
+                if (isEmail(email) == true) {
+                    if (pword == cpword) {
+                        
+                        $("#account_group").removeClass("active_group");
+                        $("#personal_group").addClass("active_group");
+                        $(".progress-bar").css('width', '69%');
+                        //remove red texts if there is any
+                        $('#uname_error').html('')
+                        $('#email_error').html('')
+                        $('#pword_error').html('')
+                        $('#cpword_error').html('')   
+                    } else {
+                        Swal.fire('Error!', 'Password did not match.', 'error')
+                    }
                 } else {
-                    Swal.fire('Error!', 'Password did not match.', 'error')
+                    Swal.fire('Error!', 'Please use a valid email', 'error')
+                    $('#email_error').html('Please enter a valid email')
                 }
-            } else {
-                Swal.fire('Error!', 'Please use a valid email', 'error')
+            }else{
+               
+                Swal.fire('Error!', 'Username already exist', 'error')
+                $('#uname_error').html('Please enter valid username')
             }
-
         }
         else {
-            Swal.fire('Error!', 'Please fill up all fields.', 'error')
+            if(uname == '')$('#uname_error').html('Please enter username')
+            if(email =='')$('#email_error').html('Please enter email')
+            if(pword =='')$('#pword_error').html('Please enter password')
+            if(cpword =='')$('#cpword_error').html('Please enter password')
+            
         }
     })
+
+    
 
     //personal group
     $("#personal_next_btn").click(function () {
@@ -132,8 +239,14 @@ $(document).ready(function () {
             $("#personal_group").removeClass("active_group");
             $("#emp_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
+            //remove red texts if there is any
+            $('#fname_error').html('')
+            $('#lname_error').html('')
         } else {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            if(fname =='')$('#fname_error').html('Please enter first name')
+            if(lname =='')$('#lname_error').html('Please enter last name')
+            
+            
         }
     });
 
@@ -144,13 +257,40 @@ $(document).ready(function () {
     });
 
     //employee group
-    $("#regform").on('submit', function (e) {
+    $("#regform").on("submit",function (e) {   
+        var data = $('#regform').serialize();
         emp_id = $('#empi_id').val()
-        if (emp_id == '') {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+        if(emp_id==''){
+            $('#empid_error').html('Please enter employee id')
             e.preventDefault()
+           
+        }else{
+            if(reg_empid_state){
+                console.log(data)
+                e.preventDefault()
+                $.ajax({
+                    type: 'POST',
+                    url: 'register_validation.php',
+                    data: data,
+                    success: function (response){        
+                        Swal.fire({
+                           title: 'Success',
+                           text:'Registration Successful',
+                           icon: 'success',
+                          }).then((result) => {
+                            // Reload the Page
+                            $('#empid_error').html('')
+                            location.reload();
+                          });
+                    }
+                })
+                return false;
+            }else{
+                Swal.fire('Error!','Employee id already exists','error')
+                e.preventDefault()
+            }
         }
-    })
+    }) 
     $("#emp_prev_btn").click(function () {
         $("#emp_group").removeClass("active_group");
         $("#personal_group").addClass("active_group");
