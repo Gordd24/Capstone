@@ -4,16 +4,6 @@ $(document).ready(function () {
 
         var record = $(this).val();
         var id = $(this).attr("id");
-        // if (page == "consultation") {
-
-        // } else if (page == "admission") {
-
-        // } else if (page == "medical") {
-
-        // } else if (page == "laboratory") {
-
-        // }
-
         $.ajax({
             url: "fetch_records.php",
             method: "post",

@@ -22,6 +22,7 @@ $id = $_SESSION['ID'];
 
   <!-- boxicons -->
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  
 </head>
 
 <body>
@@ -37,9 +38,7 @@ $id = $_SESSION['ID'];
           <div class="col-12 col-sm-5 text-center">
 
           <select class="form-select record_select" id="<?php echo$id ?>" aria-label=".form-select-sm example">
-            <option value="consultation" selected>Consultation Records</option>
-            <option value="admission">Admission Records</option>
-            <option value="medical">Medical Certificate</option>
+            <option value="medical" selected>Medical Certificate</option>
             <option value="laboratory">Laboratory Results</option>
           </select>
 
@@ -64,7 +63,7 @@ $id = $_SESSION['ID'];
                                                             <?php
                                                             include_once '../dbconn.php';
                                                         
-                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_consult  WHERE patient_id = ? ORDER BY date ASC;");
+                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date ASC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_record_stmt->bind_param("s", $id); 

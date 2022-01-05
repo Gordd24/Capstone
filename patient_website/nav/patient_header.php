@@ -8,11 +8,12 @@ echo '<nav class="navbar navbar-expand-lg navbar-light">
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-link text-white p-2" id="profile" href="../profile/patient_profile.php">Profile</a>
-      <a class="nav-link text-white p-2" id="records" href="../records/patient_records.php">Records</a>
-      <a class="nav-link text-white p-2" id="follow" href="../follow/patient_follow.php">Follow Up Results</a>
-      <a class="nav-link text-white p-2" id="contact" href="../contact/patient_contact.php">Contact</a>
-      <a class="nav-link text-danger p-2" id="sign_out" href="../sign_out/sign_out.php">Sign Out</a>
+      <a class="nav-link p-2 mx-2 text-white" id="sign_out" href="../sign_out/sign_out.php">Sign Out <i class="bx bx-power-off"></i></a>
+      <a class="nav-link text-white p-2 mx-2" id="profile" href="../profile/patient_profile.php">Profile <i class="bx bxs-user"></i></a>
+      <a class="nav-link text-white p-2 mx-2" id="records" href="../records/patient_records.php">Records <i class="bx bxs-folder-open"></i></a>
+      <a class="nav-link text-white p-2 mx-2" id="follow" href="../follow/patient_follow.php">Follow Up Results <i class="bx bxs-message" ></i></i></a>
+      <a class="nav-link text-white p-2 mx-2" id="contact" href="../contact/patient_contact.php">Contact <i class="bx bxs-phone"></i></a>
+      
     </div>
   </div>
 </div>
