@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $("#edit_name").change(function () {
 
-        if ($("#up_email_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_optional_btn").hasClass("d-none")) {
+        if ($("#up_email_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_optional_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
             $("#up_name_btn").toggleClass("d-none");
             if ($("#up_name_btn").hasClass("d-none")) {
                 $(".edit_name").attr("readonly", true);
@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     $("#edit_optional").change(function () {
 
-        if ($("#up_email_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none")) {
+        if ($("#up_email_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
             $("#up_optional_btn").toggleClass("d-none");
             if ($("#up_optional_btn").hasClass("d-none")) {
                 $(".edit_optional").attr("readonly", true);
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     $("#edit_email").change(function () {
 
-        if ($("#up_optional_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none")) {
+        if ($("#up_optional_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
             $("#up_email_btn").toggleClass("d-none");
             if ($("#up_email_btn").hasClass("d-none")) {
                 $(".edit_email").attr("readonly", true);
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     $("#edit_info").change(function () {
 
-        if ($("#up_optional_btn").hasClass("d-none") && $("#up_email_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none")) {
+        if ($("#up_optional_btn").hasClass("d-none") && $("#up_email_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
             $("#up_info_btn").toggleClass("d-none");
             if ($("#up_info_btn").hasClass("d-none")) {
                 $(".edit_info").attr("readonly", true);
@@ -76,12 +76,23 @@ $(document).ready(function () {
 
     });
 
+    $("#edit_password").change(function () {
 
-    //discharge_patient btn
+        if ($("#up_optional_btn").hasClass("d-none") && $("#up_email_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none")) {
+            $("#up_password_btn").toggleClass("d-none");
+            if ($("#up_password_btn").hasClass("d-none")) {
+                $(".edit_password").attr("readonly", true);
+            } else {
+                $(".edit_password").attr("readonly", false);
+            }
 
-    $(".btn.discharge_patient").click(function () {
-        var id = $(this).attr('id');
-        location.href = "../patients_record_management/discharge.php?id=" + id;
+        }
+        else {
+            alert("editing");
+            $("#edit_password").prop("checked", false);
+        }
+
     });
+
 
 });

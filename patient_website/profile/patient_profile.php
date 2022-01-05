@@ -120,6 +120,50 @@
         </div>    
         <!-- name row end -->
 
+         <!-- password  -->
+         <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_password_div">
+                <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
+                <h3>Password</h3>
+                    <div class="form-check my-3">
+                        <input class="form-check-input" type="checkbox" value="" id="edit_password">
+                        <label class="form-check-label" for="edit_password">
+                            Change Password
+                        </label>
+                    </div>
+
+                    <div class="row mb-3  justify-content-center">
+                        <div class="col">
+                            <label for="password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control edit_password" id="password" name="password" required readonly autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3  justify-content-center">
+                        <div class="col">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" class="form-control edit_password" id="new_password" name="new_password" required readonly autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3  justify-content-center">
+                        <div class="col">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control edit_password" id="confirm_password" name="confirm_password" required readonly autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3  justify-content-center d-none" id="up_password_btn">
+                        <div class="col">
+                            <input type="submit" id="update_password_submit"  class="form-control btn apply_btn text-white" name="edit_password"  value="Apply Changes">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- password end -->
+
         <!-- other -->
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_info_div">
