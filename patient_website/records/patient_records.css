@@ -1,3 +1,7 @@
 #records{
     font-weight: bolder;
-  }
+}
+
+thead{
+    background-color: rgb(27, 73, 101);
+}
