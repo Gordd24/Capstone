@@ -155,6 +155,7 @@
                                                         <div class="col">
                                                             <label for="address" class="form-label">Address</label>
                                                             <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>" required autocomplete="off">
+                                                            <div class="error" id="address_error"></div>
                                                         </div>
                                                     </div>
 
@@ -163,12 +164,14 @@
                                                         <div class="col-6">
                                                             <label for="contact_no" class="form-label">Contact No.</label>
                                                             <input type="text" class="form-control" id="contact_no" name="contact_no" value="<?php echo $row['contact_no']; ?>" required autocomplete="off">
+                                                            <div class="error" id="contact_error"></div>
                                                         </div>
 
                                                     
                                                         <div class="col-2">
                                                             <label for="age" class="form-label">Age</label>
                                                             <input type="text" class="form-control" id="age" name="age" required autocomplete="off">
+                                                            <div class="error" id="age_error"></div>
                                                         </div>
 
                                                         <!-- radio button -->
@@ -234,7 +237,7 @@
                                                     <div class="row my-3">
                                                         <div class="col">
                                                             <label for="phil_health" class="form-label">Philhealth No.</label>
-                                                            <input type="text" class="form-control" id="phil_health" name="phil_health" autocomplete="off"> 
+                                                            <input type="text" class="form-control" id="philhealth_no" name="philhealth_no" autocomplete="off"> 
                                                         </div>
                                                     </div>
 
@@ -300,14 +303,17 @@
                                                         <div class="col">
                                                             <label for="room_no" class="form-label">Room No.</label>
                                                             <input type="text" class="form-control" id="room_no" name="room_no" autocomplete="off"> 
+                                                            <div class="error" id="room_error"></div>
                                                         </div>
                                                         <div class="col">
                                                             <label for="case_no" class="form-label">Case No.</label>
                                                             <input type="text" class="form-control" id="case_no" name="case_no" autocomplete="off"> 
+                                                            <div class="error" id="case_error"></div>
                                                         </div>
                                                         <div class="col">
                                                             <label for="cs" class="form-label">CS</label>
                                                             <input type="text" class="form-control" id="cs" name="cs" autocomplete="off"> 
+                                                            <div class="error" id="cs_error"></div>
                                                         </div>
                                                     </div>
 
@@ -315,10 +321,12 @@
                                                         <div class="col">
                                                             <label for="date_admitted" class="form-label">Date Admitted</label>
                                                             <input type="date" class="form-control" id="date_admitted" name="date_admitted" autocomplete="off"> 
+                                                            <div class="error" id="date_admit_error"></div>
                                                         </div>
                                                         <div class="col">
                                                             <label for="time_admitted" class="form-label">Time Admitted</label>
                                                             <input type="time" class="form-control" id="time_admitted" name="time_admitted" autocomplete="off"> 
+                                                            <div class="error" id="time_admit_error"></div>
                                                         </div>
                                                     </div>
 
@@ -326,6 +334,7 @@
                                                         <div class="col">
                                                             <label for="admitted_by" class="form-label">Admitted By</label>
                                                             <input type="text" class="form-control" id="admitted_by" name="admitted_by" autocomplete="off"> 
+                                                            <div class="error" id="admitby_error"></div>
                                                         </div>
                                                     </div>
 
@@ -360,6 +369,7 @@
                                                     <div class="col">
                                                         <label for="physician" class="form-label">Attending Physician</label>
                                                         <input type="text" class="form-control" id="physician" name="physician" autocomplete="off"> 
+                                                        <div class="error" id="phys_error"></div>
                                                     </div>
                                                 </div>
 
@@ -370,6 +380,8 @@
                                                             <div class="form-group">
                                                                 <label for="diagnosis" class="form-label">Admitting Diagnosis</label>
                                                                 <textarea class="form-control" id="diagnosis" name="diagnosis" rows="8"></textarea>
+                                                                <div class="error" id="diag_error"></div>
+                                                                <input type="hidden" name="hidden_field" id="hidden_field" value="form_check">
                                                             </div>
                                                         </div>
                                                     </div>

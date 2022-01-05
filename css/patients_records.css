@@ -281,4 +281,9 @@ search file */
     color: white;
 }
 
+.error{
+    color:red;
+    font-size: 13px;
+}
+
 

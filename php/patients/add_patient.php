@@ -53,9 +53,6 @@
                                 </div>
                                 <!-- progressbar row container end -->
 
-                              
-                                
-
                                <!-- form row container -->
                                 <div class="row my-5">
                                      <!-- form col container-->
@@ -77,6 +74,7 @@
                                                         <div class="col">
                                                             <label for="first_name" class="form-label">First Name</label>
                                                             <input type="text" class="form-control" id="first_name" name="first_name" required autocomplete="off"> 
+                                                            <div class="error" id="fname_error"></div>
                                                         </div>
                                                     </div>
 
@@ -84,6 +82,7 @@
                                                         <div class="col">
                                                             <label for="middle_name" class="form-label">Middle Name</label>
                                                             <input type="text" class="form-control" id="middle_name" name="middle_name" autocomplete="off"> 
+                                                            
                                                         </div>
                                                     </div>
 
@@ -91,6 +90,7 @@
                                                         <div class="col">
                                                             <label for="last_name" class="form-label">Last Name</label>
                                                             <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off"> 
+                                                            <div class="error" id="lname_error"></div>
                                                         </div>
                                                     </div>
 
@@ -98,6 +98,7 @@
                                                         <div class="col">
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="email" class="form-control" id="email" name="email" autocomplete="off"> 
+                                                            <div class="error" id="email_error"></div>
                                                         </div>
                                                     </div>
                                                     
@@ -133,6 +134,7 @@
                                                         <div class="col-8">
                                                             <label for="birthdate" class="form-label">Date of Birth</label>
                                                             <input type="date" class="form-control" id="birthdate" name="birthdate" required autocomplete="off">
+                                                            <div class="error" id="date_error"></div>
                                                         </div>
 
                                                         <!-- radio button -->
@@ -169,6 +171,7 @@
                                                         <div class="col">
                                                             <label for="address" class="form-label">Address</label>
                                                             <input type="text" class="form-control" id="address" name="address" required autocomplete="off">
+                                                            <div class="error" id="address_error"></div>
                                                         </div>
 
                                                     </div>
@@ -207,8 +210,16 @@
 
                                                     <div class="row my-3">
                                                         <div class="col">
+                                                            <label for="occupation" class="form-label">Contact Number</label>
+                                                            <input type="text" class="form-control" id="contact_no" name="contact_no" autocomplete="off">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
                                                             <label for="occupation" class="form-label">Occupation</label>
                                                             <input type="text" class="form-control" id="occupation" name="occupation" autocomplete="off">
+                                                            
                                                         </div>
                                                     </div>
 
@@ -216,6 +227,7 @@
                                                         <div class="col">
                                                             <label for="religion" class="form-label">Religion</label>
                                                             <input type="text" class="form-control" id="religion" name="religion" autocomplete="off">
+                                                            <input type="hidden" name="hidden_field" id="hidden_field" value="form_check">
                                                         </div>
                                                     </div>
                                                     

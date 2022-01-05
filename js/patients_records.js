@@ -125,11 +125,6 @@ $(document).ready(function () {
 
     });
 
-
-
-
-
-
     $("#ob_patient").change(function () {
         $(".ob_patient").toggleClass("yes_ob");
         $('.ob').val("");
@@ -219,8 +214,13 @@ $(document).ready(function () {
             $("#admission_personal_group").removeClass("active_group");
             $("#admission_personal2_group").addClass("active_group");
             $(".progress-bar").css('width', '50%');
+            $('#address_error').html('')
+            $('#contact_error').html('')
+            $('#age_error').html('')
         } else {
-            Swal.fire('Error', 'Please fill up all the fields', 'error')
+            if(address=='')$('#address_error').html('Please enter address')
+            if(contact=='')$('#contact_error').html('Please enter contact number')
+            if(age=='')$('#age_error').html('Please enter age')
         }
     });
 
@@ -250,8 +250,19 @@ $(document).ready(function () {
             $("#admitting_group").removeClass("active_group");
             $("#diagnosis_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
+            $('#room_error').html('')
+            $('#case_error').html('')
+            $('#cs_error').html('')
+            $('#date_admit_error').html('')
+            $('#time_admit_error').html('')
+            $('#admitby_error').html('')
         } else {
-            Swal.fire('Error', 'Please fill up all the fields', 'error')
+            if(room_no=='')$('#room_error').html('Please enter room number')
+            if(case_no=='')$('#case_error').html('Please enter case number')
+            if(cs=='')$('#cs_error').html('Please enter cs')
+            if(date_admit=='')$('#date_admit_error').html('Please enter the date of admission')
+            if(time_admit=='')$('#time_admit_error').html('Please enter the time of admission')
+            if(admit_by=='')$('#admitby_error').html('Please enter who admitted the patient')
         }
     });
 
@@ -263,13 +274,34 @@ $(document).ready(function () {
 
     //admitting group
     $('#admission_form').on('submit', function (e) {
+        var data = $('#admission_form').serialize();
         physician = $('#physician').val()
         diagnosis = $('#diagnosis').val()
         if (physician == '' || diagnosis == '') {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            if(physician=='')$('#phys_error').html('Please enter physician name')
+            if(diagnosis=='')$('#diag_error').html('Please enter diagnosis')
             e.preventDefault()
-        }
-    })
+        }else{
+            
+            e.preventDefault()
+            $.ajax({
+                type: 'POST',
+                url: 'admission_process.php',
+                data: data,
+                success: function (response){        
+                    Swal.fire({
+                    title: 'Success',
+                    text:'Admission Successful',
+                    icon: 'success',
+                    }).then((result) => {
+                        // Reload the Page
+                        location.reload();
+                    });
+                }
+            })
+            return false;
+            }
+        })
 
 
     $("#diagnosis_prev_btn").click(function () {

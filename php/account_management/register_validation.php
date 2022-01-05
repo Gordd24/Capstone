@@ -52,6 +52,7 @@ if(isset($_POST['empid_check'])){
     exit();
 }
 
+//substitute to submit since ajax can't see the submit button
 if (isset($_POST['hidden_field']) && $_POST['hidden_field'] === 'form_check'){
     echo 'pumasok';
     $username = $_POST['username'];

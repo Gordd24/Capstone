@@ -50,11 +50,17 @@ $(document).ready(function () {
                 $("#patient1_group").removeClass("active_group");
                 $("#patient2_group").addClass("active_group");
                 $(".progress-bar").css('width', '66%');
+                $('#fname_error').html('')
+                $('#lname_error').html('')
+                $('#email_error').html('')
             } else {
                 Swal.fire('Error!', 'Please enter a valid email', 'error')
+                $('#email_error').html('Please enter a valid email')
             }
         } else {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            if(fname == '')$('#fname_error').html('Please enter first name')
+            if(lname == '')$('#lname_error').html('Please enter last name')
+            if(email == '')$('#email_error').html('Please enter email')
         }
     });
 
@@ -67,9 +73,12 @@ $(document).ready(function () {
             $("#patient2_group").removeClass("active_group");
             $("#patient3_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
+            $('#date_error').html('')
+            $('#address_error').html('')
         }
         else {
-            Swal.fire('Error!', 'Please fill up all the required fields.', 'error')
+            if(bday == '')$('#date_error').html('Please enter birthday')
+            if(address == '')$('#address_error').html('Please enter address')
         }
     });
 
@@ -79,7 +88,26 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '33%');
     });
 
-
+    $("#patient_form").on("submit",function (e) { 
+        var data = $('#patient_form').serialize();
+        e.preventDefault()
+        $.ajax({
+            type: 'POST',
+            url: 'add_patient_validation.php',
+            data: data,
+            success: function (response){        
+                Swal.fire({
+                   title: 'Success',
+                   text:'Patient Added Successfully',
+                   icon: 'success',
+                  }).then((result) => {
+                    // Reload the Page
+                    location.reload();
+                  });
+            }
+        })
+        return false;
+    })
     // account group
     $("#patient3_prev_btn").click(function () {
         $("#patient3_group").removeClass("active_group");

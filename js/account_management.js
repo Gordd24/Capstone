@@ -154,37 +154,6 @@ $(document).ready(function () {
         });
    });
     //account group
-
-    // $("#account_next_btn").click(function () {
-    //     uname = $('#username').val()
-    //     email = $('#email').val()
-    //     pword = $('#password').val()
-    //     cpword = $('#confirm_password').val()
-    //     if (uname != '' && email != '' && pword != '' && cpword != '') {
-    //         if(reg_uname_state){
-                
-    //             if (isEmail(email) == true) {
-    //                 if (pword == cpword) {
-                        
-    //                     $("#account_group").removeClass("active_group");
-    //                     $("#personal_group").addClass("active_group");
-    //                     $(".progress-bar").css('width', '69%');
-    //                 } else {
-    //                     Swal.fire('Error!', 'Password did not match.', 'error')
-    //                 }
-    //             } else {
-    //                 Swal.fire('Error!', 'Please use a valid email', 'error')
-    //             }
-    //         }else{
-               
-    //             Swal.fire('Error!', 'Username already exist', 'error')
-    //         }
-    //     }
-    //     else {
-    //         Swal.fire('Error!', 'Please fill up all fields.', 'error')
-    //     }
-    // })
-
     $("#account_next_btn").click(function () {
         uname = $('#username').val()
         email = $('#email').val()
@@ -266,7 +235,7 @@ $(document).ready(function () {
            
         }else{
             if(reg_empid_state){
-                console.log(data)
+               
                 e.preventDefault()
                 $.ajax({
                     type: 'POST',
