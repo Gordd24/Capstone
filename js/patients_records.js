@@ -218,9 +218,9 @@ $(document).ready(function () {
             $('#contact_error').html('')
             $('#age_error').html('')
         } else {
-            if(address=='')$('#address_error').html('Please enter address')
-            if(contact=='')$('#contact_error').html('Please enter contact number')
-            if(age=='')$('#age_error').html('Please enter age')
+            if (address == '') $('#address_error').html('Please enter address')
+            if (contact == '') $('#contact_error').html('Please enter contact number')
+            if (age == '') $('#age_error').html('Please enter age')
         }
     });
 
@@ -257,12 +257,12 @@ $(document).ready(function () {
             $('#time_admit_error').html('')
             $('#admitby_error').html('')
         } else {
-            if(room_no=='')$('#room_error').html('Please enter room number')
-            if(case_no=='')$('#case_error').html('Please enter case number')
-            if(cs=='')$('#cs_error').html('Please enter cs')
-            if(date_admit=='')$('#date_admit_error').html('Please enter the date of admission')
-            if(time_admit=='')$('#time_admit_error').html('Please enter the time of admission')
-            if(admit_by=='')$('#admitby_error').html('Please enter who admitted the patient')
+            if (room_no == '') $('#room_error').html('Please enter room number')
+            if (case_no == '') $('#case_error').html('Please enter case number')
+            if (cs == '') $('#cs_error').html('Please enter cs')
+            if (date_admit == '') $('#date_admit_error').html('Please enter the date of admission')
+            if (time_admit == '') $('#time_admit_error').html('Please enter the time of admission')
+            if (admit_by == '') $('#admitby_error').html('Please enter who admitted the patient')
         }
     });
 
@@ -278,21 +278,21 @@ $(document).ready(function () {
         physician = $('#physician').val()
         diagnosis = $('#diagnosis').val()
         if (physician == '' || diagnosis == '') {
-            if(physician=='')$('#phys_error').html('Please enter physician name')
-            if(diagnosis=='')$('#diag_error').html('Please enter diagnosis')
+            if (physician == '') $('#phys_error').html('Please enter physician name')
+            if (diagnosis == '') $('#diag_error').html('Please enter diagnosis')
             e.preventDefault()
-        }else{
-            
+        } else {
+
             e.preventDefault()
             $.ajax({
                 type: 'POST',
                 url: 'admission_process.php',
                 data: data,
-                success: function (response){        
+                success: function (response) {
                     Swal.fire({
-                    title: 'Success',
-                    text:'Admission Successful',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Admission Successful',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
                         location.reload();
@@ -300,8 +300,8 @@ $(document).ready(function () {
                 }
             })
             return false;
-            }
-        })
+        }
+    })
 
 
     $("#diagnosis_prev_btn").click(function () {
@@ -487,6 +487,24 @@ $(document).ready(function () {
                 } else if (type == "laboratory") {
                     $('tbody#laboratory').html(data);
                 }
+
+                $(".btn.open_file").click(function () {
+
+                    if ($(this).hasClass("admission")) {
+                        var link = "open_file.php?type=admission&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("consultation")) {
+                        var link = "open_file.php?type=consultation&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("medical")) {
+                        var link = "open_file.php?type=medical&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("laboratory")) {
+                        var link = "open_file.php?type=laboratory&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    }
+
+                });
             }
         });
     });
@@ -524,6 +542,24 @@ $(document).ready(function () {
                 } else if (type == "laboratory") {
                     $('tbody#laboratory').html(data);
                 }
+
+                $(".btn.open_file").click(function () {
+
+                    if ($(this).hasClass("admission")) {
+                        var link = "open_file.php?type=admission&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("consultation")) {
+                        var link = "open_file.php?type=consultation&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("medical")) {
+                        var link = "open_file.php?type=medical&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("laboratory")) {
+                        var link = "open_file.php?type=laboratory&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    }
+
+                });
             }
         });
     });
@@ -560,6 +596,24 @@ $(document).ready(function () {
                 } else if (type == "laboratory") {
                     $('tbody#laboratory').html(data);
                 }
+
+                $(".btn.open_file").click(function () {
+
+                    if ($(this).hasClass("admission")) {
+                        var link = "open_file.php?type=admission&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("consultation")) {
+                        var link = "open_file.php?type=consultation&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("medical")) {
+                        var link = "open_file.php?type=medical&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("laboratory")) {
+                        var link = "open_file.php?type=laboratory&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    }
+
+                });
             }
         });
     });
@@ -594,6 +648,24 @@ $(document).ready(function () {
                 } else if (type == "laboratory") {
                     $('tbody#laboratory').html(data);
                 }
+
+                $(".btn.open_file").click(function () {
+
+                    if ($(this).hasClass("admission")) {
+                        var link = "open_file.php?type=admission&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("consultation")) {
+                        var link = "open_file.php?type=consultation&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("medical")) {
+                        var link = "open_file.php?type=medical&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    } else if ($(this).hasClass("laboratory")) {
+                        var link = "open_file.php?type=laboratory&file_name=" + $(this).attr('id');
+                        window.open(link, '_blank');
+                    }
+
+                });
 
             }
         });
@@ -678,4 +750,24 @@ $(document).ready(function () {
     });
 
 
+
+    //VIEW FILE
+
+    $(".btn.open_file").click(function () {
+
+        if ($(this).hasClass("admission")) {
+            var link = "open_file.php?type=admission&file_name=" + $(this).attr('id');
+            window.open(link, '_blank');
+        } else if ($(this).hasClass("consultation")) {
+            var link = "open_file.php?type=consultation&file_name=" + $(this).attr('id');
+            window.open(link, '_blank');
+        } else if ($(this).hasClass("medical")) {
+            var link = "open_file.php?type=medical&file_name=" + $(this).attr('id');
+            window.open(link, '_blank');
+        } else if ($(this).hasClass("laboratory")) {
+            var link = "open_file.php?type=laboratory&file_name=" + $(this).attr('id');
+            window.open(link, '_blank');
+        }
+
+    });
 });
