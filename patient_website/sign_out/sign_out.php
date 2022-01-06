@@ -1,7 +1,11 @@
 <?php
 
 session_start();
-if(session_destroy()){
+
+
+if(isset($_SESSION['ID'])){
+    header("Location: ../../index.php");
+}else if(session_destroy()){
     session_unset();
     header("location: ../../index.php");
 }

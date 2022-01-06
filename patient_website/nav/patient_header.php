@@ -1,10 +1,11 @@
 <?php
 
 if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
-  echo "error";
   header("Location: ../../index.php");
 }
-
+if(isset($_SESSION['ID'])){
+  header("Location: ../../index.php");
+}
 
 echo '<nav class="navbar navbar-expand-lg navbar-light">
 <div class="container-fluid">
