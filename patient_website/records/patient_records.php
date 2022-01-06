@@ -1,7 +1,14 @@
 <?php 
 session_start();
 
-$id = $_SESSION['ID'];
+if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+  echo "error";
+  header("Location: ../../index.php");
+}
+else{
+  $id = $_SESSION['PATIENT_ID'];
+}
+
 
 ?>
 <!DOCTYPE html>

@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+  echo "error";
+  header("Location: ../../index.php");
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

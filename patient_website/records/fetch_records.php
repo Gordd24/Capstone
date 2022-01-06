@@ -1,5 +1,15 @@
 <?php
 include_once '../dbconn.php';
+
+
+session_start();
+
+if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+  echo "error";
+  header("Location: ../../index.php");
+}
+
+
 if(isset($_POST['patient'])){
     if(isset($_POST['record'])){
         $id = $_POST['patient'];

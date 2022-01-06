@@ -1,4 +1,14 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+
+if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+    echo "error";
+    header("Location: ../../index.php");
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,8 +40,8 @@
   <?php include_once '../nav/patient_header.php' ?>
   <?php
     include_once '../dbconn.php';
-    if(isset($_SESSION['ID'])){
-        $id = $_SESSION['ID'];
+    if(isset($_SESSION['PATIENT_ID'])){
+        $id = $_SESSION['PATIENT_ID'];
       
         /* Prepared statement, stage 1: prepare */
         $stmt = $connection->prepare("SELECT * FROM tbl_patients where patient_id = ?");
