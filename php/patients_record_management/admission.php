@@ -381,7 +381,7 @@
                                                                 <label for="diagnosis" class="form-label">Admitting Diagnosis</label>
                                                                 <textarea class="form-control" id="diagnosis" name="diagnosis" rows="8"></textarea>
                                                                 <div class="error" id="diag_error"></div>
-                                                                <input type="hidden" name="hidden_field" id="hidden_field" value="form_check">
+                                                                <input type="hidden" name="hidden_field_admission" id="hidden_field_admission" value="form_check">
                                                             </div>
                                                         </div>
                                                     </div>

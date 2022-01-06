@@ -108,7 +108,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST" id = 'medcert_form'>
+                                        <form method="POST" id ='medcert_form'>
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="medical_personal_group">
@@ -147,6 +147,7 @@
                                                         <div class="col">
                                                             <label for="address" class="form-label">Address</label>
                                                             <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>" required autocomplete="off">
+                                                            <div class="error" id="address_error"></div>
                                                         </div>
                                                     </div>
 
@@ -155,6 +156,7 @@
                                                         <div class="col-8">
                                                             <label for="age" class="form-label">Age</label>
                                                             <input type="text" class="form-control" id="age" name="age" required autocomplete="off">
+                                                            <div class="error" id="age_error"></div>
                                                         </div>
 
                                                         <!-- radio button -->
@@ -204,6 +206,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <textarea class="form-control" id="diagnosis" name="diagnosis" rows="8"></textarea>
+                                                                <div class="error" id="diag_error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -239,6 +242,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <textarea class="form-control" id="recommendation" name="recommendation" rows="8"></textarea>
+                                                                <div class="error" id="recom_error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -275,6 +279,7 @@
                                                         <div class="col">
                                                             <label for="physician" class="form-label">Physician (Full Name)</label>
                                                             <input type="text" class="form-control" id="physician" name="physician" autocomplete="off"> 
+                                                            <div class="error" id="phys_error"></div>
                                                         </div>
                                                     </div>
 
@@ -282,6 +287,7 @@
                                                         <div class="col">
                                                             <label for="license" class="form-label">Physician License</label>
                                                             <input type="text" class="form-control" id="license" name="license" autocomplete="off"> 
+                                                            <div class="error" id="phys_license_error"></div>
                                                         </div>
                                                     </div>
 
@@ -292,7 +298,9 @@
                                                                     Previous
                                                                 </div>
                                                                 <div class="col-4 m-3">
-                                                                    <input type="submit" class="form-control btn next p-2" name="admission" id="medical_submit_btn">
+                                                                    <input type="submit" class="form-control btn next p-2" name="medcert" id="medical_submit_btn">
+                                                                    <input type="hidden" name="hidden_field_medcert" id="hidden_field_medcert" value="form_check">
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>

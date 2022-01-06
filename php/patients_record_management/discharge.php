@@ -77,7 +77,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST" id='discharge_form'>
+                                        <form method="POST" id='discharge_form' action='patient_records_process.php'>
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="discharge_personal_group">
@@ -144,10 +144,12 @@
                                                         <div class="col">
                                                             <label for="date_discharged" class="form-label">Date Discharged</label>
                                                             <input type="date" class="form-control" id="date_discharged" name="date_discharged" autocomplete="off"> 
+                                                            <div class="error" id="date_error"></div>
                                                         </div>
                                                         <div class="col">
                                                             <label for="time_discharged" class="form-label">Time Discharged</label>
                                                             <input type="time" class="form-control" id="time_discharged" name="time_discharged" autocomplete="off"> 
+                                                            <div class="error" id="time_error"></div>
                                                         </div>
                                                     </div>
 
@@ -155,6 +157,7 @@
                                                         <div class="col">
                                                             <label for="discharged_by" class="form-label">Discharged By</label>
                                                             <input type="text" class="form-control" id="discharged_by" name="discharged_by" autocomplete="off"> 
+                                                            <div class="error" id="dischargeby_error"></div>
                                                         </div>
                                                     </div>
 
@@ -183,7 +186,7 @@
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <h5>Room Transfer Optional</h5>
+                                                            <h5>Room Transfer (Optional)</h5>
                                                         </div>
                                                     </div>
 
@@ -191,12 +194,14 @@
                                                         <div class="col">
                                                             <label for="transfer_room" class="form-label">Transfer To Room</label>
                                                             <input type="text" class="form-control" id="transfer_room" name="transfer_room"> 
+                                                            <div class="error" id="trans_error"></div>
                                                         </div>
                                                     </div>
                                                     <div class="row my-3">
                                                         <div class="col">
                                                             <label for="transfer_date" class="form-label">Date</label>
                                                             <input type="date" class="form-control" id="transfer_date" name="transfer_date"> 
+                                                            <div class="error" id="trans_date_error"></div>
                                                         </div>
 
                                                     </div>
@@ -204,6 +209,7 @@
                                                         <div class="col">
                                                             <label for="transfer_time" class="form-label">Time</label>
                                                             <input type="time" class="form-control" id="transfer_time" name="transfer_time"> 
+                                                            <div class="error" id="trans_time_error"></div>
                                                         </div>
                                                     </div>
                                                     
@@ -240,6 +246,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <textarea class="form-control" id="diagnosis" name="diagnosis" rows="8"></textarea>
+                                                                <div class="error" id="diag_error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -278,6 +285,7 @@
                                                         <div class="col">
                                                             <label for="icd" class="form-label">ICD 10 CODE</label>
                                                             <input type="text" class="form-control" id="icd" name="icd" autocomplete="off"> 
+                                                            <div class="error" id="icd_error"></div>
                                                         </div>
                                                     </div>
 
@@ -285,6 +293,7 @@
                                                         <div class="col">
                                                             <label for="rvs" class="form-label">RVS CODE</label>
                                                             <input type="text" class="form-control" id="rvs" name="rvs" autocomplete="off"> 
+                                                            <div class="error" id="rvs_error"></div>
                                                         </div>
                                                     </div>
 
@@ -321,6 +330,7 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <textarea class="form-control" id="operation" name="operation" rows="8"></textarea>
+                                                                <div class="error" id="operation_error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -352,6 +362,7 @@
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio" name="disposition" id="died" value="died">
                                                                     <label class="form-check-label" for="died">Died</label>
+                                                                    <input type="hidden" name="hidden_field_discharge" id="hidden_field_consultation" value="form_check">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -363,7 +374,7 @@
                                                                     Previous
                                                                 </div>
                                                                 <div class="col-4 m-3">
-                                                                    <input type="submit" class="form-control btn next p-2" name="admission" id="admission_submit_btn">
+                                                                    <input type="submit" class="form-control btn next p-2" name="discharge" id="admission_submit_btn">
                                                                 </div>
                                                             </div>
                                                         </div>

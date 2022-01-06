@@ -77,7 +77,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST" id='lab_form'>
+                                        <form method="POST" id='lab_form'  enctype="multipart/form-data">
 
                                             <!-- input group -->
                                             <div class="row input_group active_group" id="physician_group">  
@@ -108,7 +108,8 @@
                                                     <div class="row my-5">
                                                         <div class="col">                                               
                                                                 <label for="lab_res" class="form-label"><i class='bx bx-test-tube'></i> Upload Laboratory Result</label>
-                                                                <input class="form-control" type="file" id="lab_res" name="lab_res">
+                                                                <input class="form-control file_upload" type="file" id="patient_lab_res" name="patient_lab_res">
+                                                                <input type="hidden" name="hidden_field_labres" id="hidden_field_labres" value="form_check">
                                                         </div>
                                                     </div>
 
@@ -116,7 +117,7 @@
                                                         <div class="col">
                                                             <div class="row  justify-content-center">
                                                                 <div class="col-4 m-3">
-                                                                    <input type="submit" class="form-control btn next p-2" name="admission" id="laboratory_submit_btn">
+                                                                    <input type="submit" class="form-control btn next p-2" name="labres" id="laboratory_submit_btn">
                                                                 </div>
                                                             </div>
                                                         </div>
