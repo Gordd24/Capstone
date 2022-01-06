@@ -40,7 +40,6 @@
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-
 }
 
     ?>
@@ -78,7 +77,7 @@
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST" id='discharge_form' action='patient_records_process.php'>
+                                        <form method="POST" id='discharge_form'>
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="discharge_personal_group">
@@ -363,7 +362,7 @@
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio" name="disposition" id="died" value="died">
                                                                     <label class="form-check-label" for="died">Died</label>
-                                                                    <input type="hidden" name="hidden_field_discharge" id="hidden_field_consultation" value="form_check">
+                                                                    <input type="hidden" name="hidden_field_discharge" id="hidden_field_discharge" value="form_check">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -869,33 +869,33 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '80%');
     });
 
-    // $('#discharge_form').on('submit', function (e) {  
-    //     operation = $('#operation').val()
-    //     data = $('$discharge_form').serialize()
-    //     if(operation !=''){
-    //         e.preventDefault();
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: 'patient_records_process.php',
-    //             data: data,
-    //             success: function (response){        
-    //                 Swal.fire({
-    //                 title: 'Success',
-    //                 text:'Discharge Successful',
-    //                 icon: 'success',
-    //                 }).then((result) => {
-    //                     // Reload the Page
-    //                     location.href='patients_records.php';
-    //                 });
-    //             }
-    //         })
-    //         return false;
-    //     }
-    //     else{
-    //         $('#operation_error').html('Please enter operation/s')
-    //         e.preventDefault()
-    //     }
-    // })
+    $('#discharge_form').on('submit', function (e) {  
+        operation = $('#operation').val()
+        data = $('#discharge_form').serialize()
+        if(operation !=''){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'patient_records_process.php',
+                data: data,
+                success: function (response){        
+                    Swal.fire({
+                    title: 'Success',
+                    text:'Discharge Successful',
+                    icon: 'success',
+                    }).then((result) => {
+                        // Reload the Page
+                        location.href='patients_records.php';
+                    });
+                }
+            })
+            return false;
+        }
+        else{
+            $('#operation_error').html('Please enter operation/s')
+            e.preventDefault()
+        }
+    })
 
     $(".btn.open_file").click(function () {
 

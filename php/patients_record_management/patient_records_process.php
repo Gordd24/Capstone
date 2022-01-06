@@ -24,8 +24,8 @@ if (isset($_POST['hidden_field_labres']) && $_POST['hidden_field_labres'] === 'f
   // if (isset($_POST['labres'])){
       make_lab_res();
 }
-// if (isset($_POST['hidden_field_discharge']) && $_POST['hidden_field_discharge'] === 'form_check'){
-  if (isset($_POST['discharge'])){
+if (isset($_POST['hidden_field_discharge']) && $_POST['hidden_field_discharge'] === 'form_check'){
+  // if (isset($_POST['discharge'])){
       discharge_patient();
 }
 
@@ -627,13 +627,13 @@ function discharge_patient() {
     $med_result = $get_med_stmt->get_result();
 
     while ($row = $med_result->fetch_array(MYSQLI_ASSOC)) {
-      echo 'pumasok sa loop';
+      
       $pdf_path=$row['pdf_path'];
-      echo 'pdf_path sa loop : ' . $pdf_path;
+      
       break;
     }
     
-    echo 'pdf_path: ' . $pdf_path;
+    
 
   /* Prepared statement, stage 1: prepare */
   $stmt = $connection->prepare("UPDATE tbl_patients SET status = 'Not Admitted' WHERE patient_id = ?;");
