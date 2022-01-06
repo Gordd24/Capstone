@@ -581,32 +581,32 @@ function discharge_patient() {
         
         if(isset($_POST['disposition']))
         {
-          if($_POST['disposition']=="DISCHARGED")
+          if($_POST['disposition']=="discharge")
           {
           $patient_disposition = '{ } Discharged';
           $patient_disposition_value = '{/} Discharged';
           }
-          else if($_POST['disposition']=='TRANSFERRED')
+          else if($_POST['disposition']=='transferred')
           {
           $patient_disposition = '{ } Transferred';
           $patient_disposition_value = '{/} Transferred';
           }
-          else if($_POST['disposition']=='HAMA')
+          else if($_POST['disposition']=='hama')
           {
           $patient_disposition = '{ } HAMA';
           $patient_disposition_value = '{/} HAMA';
           }
-          else if($_POST['disposition']=='ABSCONDED')
+          else if($_POST['disposition']=='absconded')
           {
           $patient_disposition = '{ } Absconded';
           $patient_disposition_value = '{/} Absconded';
           }
-          else if($_POST['disposition']=='DIED')
+          else if($_POST['disposition']=='died')
           {
           $patient_disposition = '{ } DIED';
           $patient_disposition_value = '{/} DIED';
           }
-  }
+        }
   
   $search = array(
     'DATEDISCHARGED','TIMEDISCHARGED','DISCHARGEDBY','TRANSFERREDTOROOM','TRANSDATE','TRANSTIME','FINALDIAGNOSIS','ICD10CODE','RVSCODE','OPERATIONS',$patient_disposition
@@ -619,10 +619,10 @@ function discharge_patient() {
   );
   
     $pdf_path='';
-    $get_med_stmt = $connection->prepare("SELECT pdf_path FROM tbl_admission WHERE patient_id = ? ORDER BY date ASC;");
+    $get_med_stmt = $connection->prepare("SELECT pdf_path FROM tbl_admission WHERE patient_id = ? ORDER BY record_admission_id DESC;");
 
     /* Prepared statement, stage 2: bind and execute */
-    $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
+    $get_med_stmt->bind_param("s", $patient_id); // "is" means that $id is bound as an integer and $label as a string
     $get_med_stmt->execute();
     $med_result = $get_med_stmt->get_result();
 
