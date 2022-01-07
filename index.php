@@ -7,6 +7,11 @@ if(isset($_SESSION["ID"])){
     header("Location:php/dashboard/dashboard.php");
 }
 
+if(isset($_SESSION["PATIENT_ID"])){
+    header("Location:patient_website/profile/patient_profile.php");
+}
+
+
 
 if(isset($_POST["signinSubmit"]))
 {
@@ -34,7 +39,7 @@ if(isset($_POST["signinSubmit"]))
                 }
 
                 if(password_verify($password, $test_pass)){
-                    $_SESSION["ID"] = $patient_id;
+                    $_SESSION["PATIENT_ID"] = $patient_id;
                     header("Location:patient_website/profile/patient_profile.php");
                 }
                 else{

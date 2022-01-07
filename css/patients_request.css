@@ -1,0 +1,13 @@
+thead{
+    background-color: rgb(27, 73, 101);
+}
+
+.btn.respond{
+    background-color: white;
+    color: rgb(255, 203, 119);
+}
+
+.btn.respond:hover{
+    background-color: rgb(255, 203, 119);
+    color: white;
+}
