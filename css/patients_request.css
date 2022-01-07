@@ -11,3 +11,13 @@ thead{
     background-color: rgb(255, 203, 119);
     color: white;
 }
+
+.btn.not_avail{
+    background-color: white;
+    color: rgb(143, 23, 23);
+}
+
+.btn.not_avail:hover{
+    background-color: rgb(143, 23, 23);
+    color: white;
+}

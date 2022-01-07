@@ -27,7 +27,8 @@ include_once '../dbconn.php';
                      <td>".$row_request['request_date']."</td>
                      <td class='text-center'>
                         <i class='bx bxs-envelope mx-1 btn border respond' id=".$row_request['patient_id']." title='Repond'></i>
-                     </td>
+                        <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row_request['request_id']." title='Not Available'></i>
+                    </td>
                     </tr>";                        
             }
         

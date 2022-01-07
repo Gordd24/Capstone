@@ -84,6 +84,7 @@
                                                                         <td>".$row['request_date']."</td>
                                                                         <td class='text-center'>
                                                                             <i class='bx bxs-envelope mx-1 btn border respond' id=".$row['patient_id']." title='Repond'></i>
+                                                                            <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row['request_id']." title='Not Available'></i>
                                                                         </td>
                                                                             </tr>";
 

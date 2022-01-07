@@ -17,6 +17,10 @@ $(document).ready(function () {
                 $(".bx.respond").click(function () {
                     location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
                 });
+                $(".bx.not_avail").click(function () {
+                    // location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
+                    console.log($(this).attr("id"));
+                });
 
             }
         });
@@ -28,5 +32,10 @@ $(document).ready(function () {
 
     $(".bx.respond").click(function () {
         location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
+    });
+
+    $(".bx.not_avail").click(function () {
+        // location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
+        console.log($(this).attr("id"));
     });
 });

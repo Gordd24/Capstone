@@ -22,6 +22,8 @@ if (!isset($_SESSION)) {
     $sql8 = "SELECT * FROM tbl_patients WHERE status = 'Admitted'";
     $total_admitted = $conn -> query($sql8);
     $total_records = $total_med_cert->num_rows+$total_lab_res->num_rows+$total_admission->num_rows+$total_consult->num_rows;
+    $sql9 = "SELECT * FROM tbl_requests WHERE request_status = 'sent'";
+    $total_request = $conn -> query($sql9);
 
 
 
@@ -125,10 +127,10 @@ if (!isset($_SESSION)) {
         <div class="row m-5">
             <h3>Pending Request</h3>
             <div class="col-6 col-md-3">
-                <div class="card shadow-sm" style="max-width: 13rem;">
+                <div class="card shadow-sm" style="max-width: 13rem;" id="request">
                     <div class="card-header text-white">Laboratory Results</div>
                     <div class="card-body btn btn-muted text-center">
-                        <h1 class="card-title">7</h1>
+                        <h1 class="card-title"><?php  echo $total_request->num_rows; ?></h1>
                     </div>
                 </div>
             </div>

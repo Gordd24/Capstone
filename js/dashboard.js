@@ -16,8 +16,12 @@ $(document).ready(function () {
             location.href = "../patients/patients.php";
         } else if (id == "record") {
             location.href = "../patients_record_management/patients_records.php";
+        } else if (id == "request") {
+            location.href = "../patients_request/patients_request.php";
         }
     });
+
+
 
 
 
