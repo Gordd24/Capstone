@@ -19,7 +19,7 @@ $request_status = "responded";
 $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
 
 /* Prepared statement, stage 2: bind and execute */
-$stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $today);
+$stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
 $stmt->execute();
 
 /* Prepared statement, stage 1: prepare */

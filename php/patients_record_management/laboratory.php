@@ -55,26 +55,10 @@
                                     </div>
                                 </div>
                                 <!-- title row container end -->
-
-                                <!-- progressbar row container -->
-                                <div class="row">
-                                    <!-- progressbar column container -->
-                                    <div class="col">
-
-                                        <!-- actual progress bar -->
-                                        <div class="progress shadow-lg">
-                                            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- progressbar row container end -->
-
-                              
                                 
 
                                <!-- form row container -->
-                                <div class="row my-5">
+                                <div class="row my-3">
                                      <!-- form col container-->
                                     <div class="col">
                                         <form method="POST" id='lab_form'  enctype="multipart/form-data">
@@ -104,6 +88,148 @@
                                                             <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $row['last_name']; ?>" required autocomplete="off" readonly>
                                                         </div>
                                                     </div>
+
+                                                    <!-- radio group  -->
+                                                    <div class="row my-5">
+                                                        <div class="col">
+
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <label>Laboratory Result Type</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- group 1 -->
+                                                            <div class="row my-3">
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="complete_blood_count" value="complete_blood_count" checked>
+                                                                        <label class="form-check-label" for="complete_blood_count">
+                                                                            Complete Blood Count (CBS)
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="platelet_count" value="platelet_count">
+                                                                        <label class="form-check-label" for="platelet_count">
+                                                                            Platelet Count
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="blood_typing" value="blood_typing">
+                                                                        <label class="form-check-label" for="blood_typing">
+                                                                            Blood Typing
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="cross_matching" value="cross_matching">
+                                                                        <label class="form-check-label" for="cross_matching">
+                                                                            Cross Matching
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- group 1 end -->
+
+                                                            <!-- group 2 -->
+                                                            <div class="row my-3">
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="hepatitis_b" value="hepatitis_b">
+                                                                        <label class="form-check-label" for="hepatitis_b">
+                                                                            Hepatitis B
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="blood_urea_nitrogen" value="blood_urea_nitrogen">
+                                                                        <label class="form-check-label" for="blood_urea_nitrogen">
+                                                                            Blood Urea Nitrogen
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="creatinine" value="creatinine">
+                                                                        <label class="form-check-label" for="creatinine">
+                                                                            Creatinine
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="fasting_blood_sugar" value="fasting_blood_sugar">
+                                                                        <label class="form-check-label" for="fasting_blood_sugar">
+                                                                            Fasting Blood Sugar
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- group 2 end -->
+
+                                                            <!-- group 3 -->
+                                                            <div class="row my-3">
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="fecalysis" value="fecalysis">
+                                                                        <label class="form-check-label" for="fecalysis">
+                                                                            Fecalysis
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="cholesterol" value="cholesterol">
+                                                                        <label class="form-check-label" for="cholesterol">
+                                                                            Cholesterol
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="uric_acid" value="uric_acid">
+                                                                        <label class="form-check-label" for="uric_acid">
+                                                                            Uric Acid
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">                                               
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="result" id="urinalysis" value="urinalysis">
+                                                                        <label class="form-check-label" for="urinalysis">
+                                                                            Urinalysis
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- group 3 end -->
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- radio group end -->
 
                                                     <div class="row my-5">
                                                         <div class="col">                                               

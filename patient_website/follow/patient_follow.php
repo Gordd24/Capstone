@@ -51,8 +51,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="cbc" value="cbc">
-                      <label class="form-check-label" for="cbc">
+                      <input class="form-check-input" type="checkbox" name="results[]" id="complete_blood_count" value="complete_blood_count">
+                      <label class="form-check-label" for="complete_blood_count">
                         Complete Blood Count (CBC)
                       </label>
                     </div>
@@ -62,8 +62,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="platelet" value="platelet">
-                      <label class="form-check-label" for="platelet">
+                      <input class="form-check-input" type="checkbox" name="results[]" id="platelet_count" value="platelet_count">
+                      <label class="form-check-label" for="platelet_count">
                         Platelet Count
                       </label>
                     </div>
@@ -112,8 +112,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="bun" value="bun">
-                      <label class="form-check-label" for="bun">
+                      <input class="form-check-input" type="checkbox" name="results[]" id="blood_urea_nitrogen" value="blood_urea_nitrogen">
+                      <label class="form-check-label" for="blood_urea_nitrogen">
                         Blood Urea Nitrogen (BUN)
                       </label>
                     </div>
@@ -140,8 +140,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="fbs" value="fbs">
-                      <label class="form-check-label" for="fbs">
+                      <input class="form-check-input" type="checkbox" name="results[]" id="fasting_blood_sugar" value="fasting_blood_sugar">
+                      <label class="form-check-label" for="fasting_blood_sugar">
                         Fasting Blood Sugar (FBS)
                       </label>
                     </div>

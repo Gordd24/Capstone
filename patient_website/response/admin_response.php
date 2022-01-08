@@ -48,7 +48,7 @@ if(isset($_SESSION['ID'])){
                                                     <?php 
                                                       include_once '../dbconn.php';
                                                         
-                                                      $get_response_stmt = $connection->prepare("SELECT * FROM tbl_responses  WHERE patient_id = ? ORDER BY response_date,response_time ASC;");
+                                                      $get_response_stmt = $connection->prepare("SELECT * FROM tbl_responses  WHERE patient_id = ? ORDER BY response_date,response_time DESC;");
 
                                                               $id = $_SESSION['PATIENT_ID'];
                                                               /* Prepared statement, stage 2: bind and execute */
@@ -60,7 +60,7 @@ if(isset($_SESSION['ID'])){
                                                                 
                                                                 $request_id = $response_row['request_id'];
 
-                                                                $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests  WHERE request_id = ? ORDER BY request_date,request_time ASC;");
+                                                                $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests  WHERE request_id = ?");
 
                                                                 /* Prepared statement, stage 2: bind and execute */
                                                                 $get_request_stmt->bind_param("s", $request_id); 
@@ -89,12 +89,12 @@ if(isset($_SESSION['ID'])){
                                                                     </div>
                                                                     <div class="row m-3">
                                                                       <div class="col px-5">
-                                                                        <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is not available</strong>
+                                                                        <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is not available.</strong>
                                                                       </div>
                                                                     </div>
                                                                   
                                                                   </li>';
-                                                                  }else if ($response_row['response_status']=="available")
+                                                                  }else if ($response_row['response_status']=="already available")
                                                                   {
                                                                     echo '
                                                                     <li class="list-group-item" aria-current="true">
@@ -115,7 +115,7 @@ if(isset($_SESSION['ID'])){
                                                                       </div>
                                                                       <div class="row m-3">
                                                                         <div class="col px-5">
-                                                                          <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is now available on your records section</strong>
+                                                                          <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is already available, kindly check your records section.</strong>
                                                                         </div>
                                                                       </div>
                                                                     
