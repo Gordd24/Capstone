@@ -69,7 +69,7 @@
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
                                                                    
-                                                                    $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests ORDER BY request_date,request_time DESC;");
+                                                                    $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests WHERE request_status = 'sent' ORDER BY request_date,request_time DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */ 
                                                                     $get_request_stmt->execute();
@@ -84,7 +84,8 @@
                                                                         <td>".$row['request_date']."</td>
                                                                         <td class='text-center'>
                                                                             <i class='bx bxs-envelope mx-1 btn border respond' id=".$row['patient_id']." title='Repond'></i>
-                                                                            <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row['request_id']." title='Not Available'></i>
+                                                                            <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row['patient_id'].'_'.$row['request_id']." title='Not Available'></i>
+                                                                            <i class='bx bxs-check-square mx-1 btn border avail' id=".$row['patient_id'].'_'.$row['request_id']." title='Already Available'></i>
                                                                         </td>
                                                                             </tr>";
 

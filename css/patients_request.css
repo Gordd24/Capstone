@@ -21,3 +21,15 @@ thead{
     background-color: rgb(143, 23, 23);
     color: white;
 }
+
+
+.btn.avail{
+    background-color: white;
+    color: rgb(23, 195, 178);
+}
+
+
+.btn.avail:hover{
+    background-color: rgb(23, 195, 178);
+    color: white;
+}

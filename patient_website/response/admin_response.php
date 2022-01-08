@@ -19,7 +19,7 @@ if(isset($_SESSION['ID'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact</title>
+  <title>Response</title>
  <!-- bootstrap -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="admin_response.css">
@@ -37,18 +37,103 @@ if(isset($_SESSION['ID'])){
 
                                         <!-- table row  -->
                                         <div class="row justify-content-center my-3 mx-2">
-                                            <div class="col-12 col-sm-7 ">
+                                            <div class="col-12 col-sm-7 col-md-7">
 
-                                                <table class="table">
-                                                    <thead class="text-white bg-primary">
-                                                        <tr>
-                                                            <th scope="col">Responses</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            
-                                                    </tbody>
-                                                </table>
+                                                
+
+
+
+                                                <ul class="list-group">
+                                                  <li class="list-group-item active" aria-current="true">Responses</li>
+                                                    <?php 
+                                                      include_once '../dbconn.php';
+                                                        
+                                                      $get_response_stmt = $connection->prepare("SELECT * FROM tbl_responses  WHERE patient_id = ? ORDER BY response_date,response_time ASC;");
+
+                                                              $id = $_SESSION['PATIENT_ID'];
+                                                              /* Prepared statement, stage 2: bind and execute */
+                                                              $get_response_stmt->bind_param("s", $id); 
+                                                              $get_response_stmt->execute();
+                                                              $response_result = $get_response_stmt->get_result();
+
+                                                              while ($response_row = $response_result->fetch_array(MYSQLI_ASSOC)) {
+                                                                
+                                                                $request_id = $response_row['request_id'];
+
+                                                                $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests  WHERE request_id = ? ORDER BY request_date,request_time ASC;");
+
+                                                                /* Prepared statement, stage 2: bind and execute */
+                                                                $get_request_stmt->bind_param("s", $request_id); 
+                                                                $get_request_stmt->execute();
+                                                                $request_result = $get_request_stmt->get_result();
+
+                                                                while ($request_row = $request_result->fetch_array(MYSQLI_ASSOC)) {
+
+                                                                  if($response_row['response_status']=="not available"){
+                                                                  echo '
+                                                                  <li class="list-group-item" aria-current="true">
+                                                                    <div class="row">
+                                                                      <div class="col">
+                                                                        <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                      <div class="col">
+                                                                        Sent on '.$request_row['request_date'].' '.$request_row['request_time'].'
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                      <div class="col">
+                                                                        Responded on '.$response_row['response_date'].' '.$response_row['response_time'].'
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="row m-3">
+                                                                      <div class="col px-5">
+                                                                        <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is not available</strong>
+                                                                      </div>
+                                                                    </div>
+                                                                  
+                                                                  </li>';
+                                                                  }else if ($response_row['response_status']=="available")
+                                                                  {
+                                                                    echo '
+                                                                    <li class="list-group-item" aria-current="true">
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          Sent on '.$request_row['request_date'].' '.$request_row['request_time'].'
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          Responded on '.$response_row['response_date'].' '.$response_row['response_time'].'
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row m-3">
+                                                                        <div class="col px-5">
+                                                                          <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is now available on your records section</strong>
+                                                                        </div>
+                                                                      </div>
+                                                                    
+                                                                    </li>';
+                                                                  }
+
+
+
+                                                                }
+
+                                                                
+
+                                                              }
+                                                                  
+                                                          
+                                                      ?>
+                                                    
+                                                </ul>
                                             </div>
                                         </div>
                                         <!-- table row end -->

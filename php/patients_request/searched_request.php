@@ -9,7 +9,7 @@ include_once '../dbconn.php';
 
 
         /* Prepared statement, stage 1: prepare */
-        $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests where concat(request_id,' ',patient_id,' ',request_date) LIKE ? ORDER BY request_date,request_time DESC");
+        $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests where concat(request_id,' ',patient_id,' ',request_date) LIKE ? and request_status = 'sent' ORDER BY request_date,request_time DESC");
 
         /* Prepared statement, stage 2: bind and execute */
         $get_request_stmt->bind_param("s", $searched); // "is" means that $id is bound as an integer and $label as a string
@@ -27,8 +27,9 @@ include_once '../dbconn.php';
                      <td>".$row_request['request_date']."</td>
                      <td class='text-center'>
                         <i class='bx bxs-envelope mx-1 btn border respond' id=".$row_request['patient_id']." title='Repond'></i>
-                        <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row_request['request_id']." title='Not Available'></i>
-                    </td>
+                        <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row_request['patient_id'].'_'.$row_request['request_id']." title='Not Available'></i>
+                        <i class='bx bxs-check-square mx-1 btn border avail' id=".$row_request['patient_id'].'_'.$row_request['request_id']." title='Already Available'></i>
+                     </td>
                     </tr>";                        
             }
         
