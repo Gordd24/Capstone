@@ -538,6 +538,34 @@ function make_lab_res() {
           if (move_uploaded_file($tmp_file, "../../".$file)) {
               $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name) VALUES ('$patient_id','$file','$record_date','$pdfName');";
               if (mysqli_query($conn, $insertSql)) {
+
+                
+
+                $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
+    
+                /* Prepared statement, stage 2: bind and execute */
+
+                $result_type = $_POST['result'];
+                $today = date("Y-m-d"); 
+                $time = date("H:i:s");
+                $request_status = 'created';
+                $stmt->bind_param("issss", $patient_id, $result_type, $today, $time, $request_status); 
+                
+                $stmt->execute();    
+
+                /* Prepared statement, stage 1: prepare */
+                $request_id = $connection->insert_id;
+                $response_status = 'available';
+                $today = date("Y-m-d"); 
+                $time = date("H:i:s"); 
+                
+                $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
+                
+                /* Prepared statement, stage 2: bind and execute */
+                $stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
+                $stmt->execute();
+                  
+
                   echo "File uploaded successfully";
                   // header('Location: record_management.php');
               }else{

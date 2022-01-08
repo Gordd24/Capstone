@@ -120,6 +120,32 @@ if(isset($_SESSION['ID'])){
                                                                       </div>
                                                                     
                                                                     </li>';
+                                                                  }else if ($response_row['response_status']=="available")
+                                                                  {
+                                                                    echo '
+                                                                    <li class="list-group-item" aria-current="true">
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          Sent on '.$request_row['request_date'].' '.$request_row['request_time'].'
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row">
+                                                                        <div class="col">
+                                                                          Responded on '.$response_row['response_date'].' '.$response_row['response_time'].'
+                                                                        </div>
+                                                                      </div>
+                                                                      <div class="row m-3">
+                                                                        <div class="col px-5">
+                                                                          <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is now available on your records section.</strong>
+                                                                        </div>
+                                                                      </div>
+                                                                    
+                                                                    </li>';
                                                                   }
 
 
