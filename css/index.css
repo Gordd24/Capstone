@@ -393,6 +393,12 @@ FOR TOGGLE */
     border-radius: 8%/20%;
     
 }
+.error{
+  color:red;
+  font-size: 13px;
+  margin-left: 2%;
+}
+
 
 
 

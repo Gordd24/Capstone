@@ -1,5 +1,6 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
 session_start();
 include_once 'php/dbconn.php';
 
@@ -94,7 +95,9 @@ if(isset($_POST["signinSubmit"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/pass_reset.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Sign In</title>
 
 </head>
@@ -153,7 +156,7 @@ if(isset($_POST["signinSubmit"]))
         </div>
     </form>
 
-    <form action="#" class="asm-form" id="frmForget">
+    <form method="POST" class="asm-form" id="frmForget">
         <div class="asm-form__header">
             <h2>Forget Password</h2>
         </div>
@@ -167,14 +170,17 @@ if(isset($_POST["signinSubmit"]))
                     <path
                         d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z" />
                 </svg>
-                <input class="asm-form__input validate" type="email" name="email" id="forgetEmail" required
-                    placeholder="email">
+                <input class="asm-form__input validate" type="email" name="email" id="forgetEmail"  placeholder="email">
                 <label class="asm-form__inputlabel" for="forgetEmail">email</label>
             </div>
+            <div class="error" id="email_error"></div>
+            <input type="hidden" name="hidden_field_forget" id="hidden_field_forget" value="form_check">
         </div>
-
+        
+        
+        
         <div class="asm-form__footer">
-            <button class="asm-form__btn" id="forgetSubmit">Send</button>
+            <button class="asm-form__btn" name='forgetSubmit' id="forgetSubmit">Send</button>
         </div>
     </form>
 
@@ -192,7 +198,6 @@ if(isset($_POST["signinSubmit"]))
 
         }
         function Patient() {
-
             z.style.left = "0";
             personnel.style.color = "black";
             patient.style.color = "white";
