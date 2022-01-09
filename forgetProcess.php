@@ -46,7 +46,7 @@ if (isset($_POST['hidden_field_forget']) && $_POST['hidden_field_forget'] === 'f
         $pass_reset->execute();
 
         $output.= '<p>Please click the link to reset password</p>';
-        $output.='<p><a href="http://localhost/capstoneprojek2/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/capstoneprojek2/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+        $output.='<p><a href="http://localhost/capstoneprojeks/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/capstoneprojek2/reset_password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
         $body = $output;
         $subject = "Password Recovery";
         $email_to = $email;

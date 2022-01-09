@@ -44,7 +44,7 @@ include_once 'php/dbconn.php';
                             if ($expDate >= $curDate) {
                                 ?> 
                                 <h2>Reset Password</h2>   
-                                <form method="post" id="reset_form">
+                                <form method="post" id="reset_form" action='reset_process.php'>
 
                                     
                                     <div class="form-group">
@@ -61,7 +61,7 @@ include_once 'php/dbconn.php';
                                     <input type="hidden" name="email" value="<?php echo $email; ?>"/>
                                     <div class="form-group">
                                         <input type="submit" id="reset" value="Reset Password" name='reset_submit'  class="btn btn-primary"/>
-                                        <input type="hidden" name="hidden_field_forget" id="hidden_field_forget" value="form_check">
+                                        <input type="hidden" name="hidden_field_reset" id="hidden_field_reset" value="form_check">
 
                                     </div>
 
