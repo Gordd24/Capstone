@@ -15,7 +15,7 @@ $ID = $_SESSION['ID'];
  {
     while($row = $result -> fetch_assoc())
     {
-         $active_account_name = $row['first_name']." ".$row['last_name']; 
+         $active_account_name = $row['first_name']; 
          echo '
         <header class="header" id="header">
             <div class="header_toggle"> <i class="bx bx-menu" id="header-toggle"></i> </div>
@@ -34,7 +34,7 @@ $ID = $_SESSION['ID'];
                         <a href="../dashboard/dashboard.php" class="nav_link" id="dashboard_link"> <i class="bx bxs-dashboard nav_icon"></i> <span class="nav_name">Dashboard</span> </a> 
                         <a href="../patients_record_management/patients_records.php" class="nav_link" id="record_management_link"> <i class="bx bx-library nav_icon"></i> <span class="nav_name">Patients Record</span> </a> 
                         <a href="../patients_record_archive/patients_archive.php" class="nav_link"> <i class="bx bxs-archive"></i> <span class="nav_name">Patients Record Archive</span> </a>
-                        <a href="../patients_request/patients_request.php" class="nav_link"> <i class="bx bxs-message-dots"></i> <span class="nav_name">Patients Request</span> </a>
+                        <a href="../patients_follow_ups/patients_follow_ups.php" class="nav_link"> <i class="bx bxs-message-dots"></i> <span class="nav_name">Patients Follow Ups</span> </a>
                         <a href="../patients/patients.php" class="nav_link"> <i class="bx bxs-user-badge nav_icon"></i> <span class="nav_name">Patients</span> </a>
                         
                         ';

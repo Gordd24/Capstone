@@ -23,13 +23,12 @@ if(isset($_POST['patient'])){
 
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                                                        
-               echo "<tr>
-                   <td>".$row['file_name']."</td>
-                   <td>".$row['date']."</td>
-                   <td class='text-center'>
-                       <i class='bx bxs-book-open mx-1 btn border' title='Open File'></i>
-                   </td>
-               </tr>";
+                echo "<tr>
+                        <td>".$row['file_name']."</td>
+                        <td>".$row['date']."</td>
+                        <td class='text-center'>
+                        <i class='bx bxs-book-open mx-1 btn border open_file medical' id=".$row['file_name']." title='Open File'></i>                                                                        </td>
+                      </tr>";
 
                }
         }else if($_POST['record']=="laboratory"){
@@ -42,13 +41,12 @@ if(isset($_POST['patient'])){
 
             while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
                                                                        
-               echo "<tr>
-                   <td>".$row['file_name']."</td>
-                   <td>".$row['date']."</td>
-                   <td class='text-center'>
-                       <i class='bx bxs-book-open mx-1 btn border' title='Open File'></i>
-                   </td>
-               </tr>";
+                echo "<tr>
+                    <td>".$row['file_name']."</td>
+                    <td>".$row['date']."</td>
+                    <td class='text-center'>
+                    <i class='bx bxs-book-open mx-1 btn border open_file laboratory' id=".$row['file_name']." title='Open File'></i>                                                                        </td>
+                </tr>";
 
                }
         }

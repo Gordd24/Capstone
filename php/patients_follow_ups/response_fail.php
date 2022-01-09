@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
 $idarr = preg_split("/[\s_]+/", $_GET['id']); 
 $patient_id = $idarr[0];
 $request_id = $idarr[1];
-$response_status = 'already available';
+$response_status = 'not available';
 $today = date("Y-m-d"); 
 $time = date("H:i:s");
 $request_status = "responded";
@@ -29,7 +29,7 @@ $request_stmt = $connection->prepare("UPDATE tbl_requests SET request_status = ?
 $request_stmt->bind_param("ss",$request_status, $request_id);
 $request_stmt->execute();
 
-header("Location: patients_request.php");
+header("Location: patients_follow_ups.php");
 
 }
 

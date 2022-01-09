@@ -203,8 +203,8 @@ if(isset($_SESSION['ID'])){
 
                  <!-- follow submit  -->
                  <div class="row justify-content-center">
-                    <div class="col-12 col-sm-4 p-2">
-                        <input class="form-control" type="submit" name="follow" value="Follow Up">
+                    <div class="col-12 col-sm-4 my-2 p-2">
+                        <input class="form-control next" type="submit" name="follow" value="Follow Up">
                     </div>
                 </div>
                 <!-- follow submit end-->

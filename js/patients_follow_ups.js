@@ -8,7 +8,7 @@ $(document).ready(function () {
         //???? what 
         $('tbody').html('');
         $.ajax({
-            url: "searched_request.php",
+            url: "searched_follow_ups.php",
             method: "post",
             data: { search: txt },
             dataType: "text",
@@ -18,10 +18,10 @@ $(document).ready(function () {
                     location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
                 });
                 $(".bx.not_avail").click(function () {
-                    location.href = "../patients_request/response_fail.php?id=" + $(this).attr("id");
+                    location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
                 });
                 $(".bx.avail").click(function () {
-                    location.href = "../patients_request/response_success.php?id=" + $(this).attr("id");
+                    location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
                     // console.log($(this).attr("id"));
                 });
 
@@ -38,12 +38,12 @@ $(document).ready(function () {
     });
 
     $(".bx.not_avail").click(function () {
-        location.href = "../patients_request/response_fail.php?id=" + $(this).attr("id");
+        location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
         // console.log($(this).attr("id"));
     });
 
     $(".bx.avail").click(function () {
-        location.href = "../patients_request/response_success.php?id=" + $(this).attr("id");
+        location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
         // console.log($(this).attr("id"));
     });
 

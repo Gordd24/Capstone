@@ -15,11 +15,11 @@
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- css -->
-    <link href='../../css/patients_request.css' rel='stylesheet'>
+    <link href='../../css/patients_follow_ups.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../css/nav.css">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../../js/patients_request.js"></script>
+    <script src="../../js/patients_follow_ups.js"></script>
     <script src="../../js/nav.js"></script>
     <!-- sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

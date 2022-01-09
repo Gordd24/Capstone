@@ -19,10 +19,10 @@ if(isset($_SESSION['ID'])){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Response</title>
+  <title>Notification</title>
  <!-- bootstrap -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="admin_response.css">
+  <link rel="stylesheet" href="notification.css">
   <link rel="stylesheet" href="../nav/patient_header.css">
    <!-- boxicons -->
    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
@@ -44,7 +44,7 @@ if(isset($_SESSION['ID'])){
 
 
                                                 <ul class="list-group">
-                                                  <li class="list-group-item active" aria-current="true">Responses</li>
+                                                  <li class="list-group-item head_list" aria-current="true">Responses</li>
                                                     <?php 
                                                       include_once '../dbconn.php';
                                                         
@@ -74,7 +74,7 @@ if(isset($_SESSION['ID'])){
                                                                   <li class="list-group-item" aria-current="true">
                                                                     <div class="row">
                                                                       <div class="col">
-                                                                        <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                        <h5 class="not_avail">'.ucwords(str_replace("_"," ",$request_row['result_type'])).'<i class="bx bx-question-mark" ></i></h5>
                                                                       </div>
                                                                     </div>
                                                                     <div class="row">
@@ -100,7 +100,7 @@ if(isset($_SESSION['ID'])){
                                                                     <li class="list-group-item" aria-current="true">
                                                                       <div class="row">
                                                                         <div class="col">
-                                                                          <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                          <h5 class="alr_avail">'.ucwords(str_replace("_"," ",$request_row['result_type'])).'<i class="bx bx-check-double" ></i></h5>
                                                                         </div>
                                                                       </div>
                                                                       <div class="row">
@@ -126,22 +126,17 @@ if(isset($_SESSION['ID'])){
                                                                     <li class="list-group-item" aria-current="true">
                                                                       <div class="row">
                                                                         <div class="col">
-                                                                          <h5>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</h5>
+                                                                          <h5 class="avail">'.ucwords(str_replace("_"," ",$request_row['result_type'])).'<i class="bx bx-check"></i></h5>
                                                                         </div>
                                                                       </div>
                                                                       <div class="row">
                                                                         <div class="col">
-                                                                          Sent on '.$request_row['request_date'].' '.$request_row['request_time'].'
-                                                                        </div>
-                                                                      </div>
-                                                                      <div class="row">
-                                                                        <div class="col">
-                                                                          Responded on '.$response_row['response_date'].' '.$response_row['response_time'].'
+                                                                          Created on '.$response_row['response_date'].' '.$response_row['response_time'].'
                                                                         </div>
                                                                       </div>
                                                                       <div class="row m-3">
                                                                         <div class="col px-5">
-                                                                          <strong>The result you followed up on '.$request_row['request_date'].' '.$request_row['request_time'].' is now available on your records section.</strong>
+                                                                          <strong>The result for your '.ucwords(str_replace("_"," ",$request_row['result_type'])).' test is now available on your records section.</strong>
                                                                         </div>
                                                                       </div>
                                                                     
