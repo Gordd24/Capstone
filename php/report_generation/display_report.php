@@ -10,413 +10,90 @@ if(!isset($_SESSION['ID'])){
 
 
 
-if(isset($_GET['report_btn']))
-{
-    $patient_list = isset($_GET['patient_list']) && $_GET['patient_list']  ? "1" : "0";
-
-    $account_created = isset($_GET['account_created']) && $_GET['account_created']  ? "1" : "0";
-
-    $patient_added = isset($_GET['patient_added']) && $_GET['patient_added']  ? "1" : "0";
-
-    if(!($patient_list=="1"||$patient_added=="1"||$account_created=="1"))
-    {
-        header("Location: report_generation.php");
-    }
-    
-
-}
-
-
-
-
-
-if(isset($_POST['pdf_view']))
-{
-    $patient_list = $_POST['patient_list'];
-    $account_created = $_POST['account_created'];
-    $patient_added = $_POST['patient_added'];
-    generate_report($patient_list,$account_created,$patient_added);
-
-}
-
-
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-    <script src="../../js/NavigationScript.js" type="text/javascript"></script>
-    <script src="../../js/view_profile.js" type="text/javascript"></script>
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="../../css/navigation.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-    <link rel="stylesheet" href="../../css/nav.css">
-    <script src="../../js/nav.js"></script>
-    <link rel="stylesheet" href="../../css/display_report.css">
-</head>
-
-<body id='body-pd'>  
-    
-<?php //include_once '../navigation_header.php'; 
-    include_once '../admin_nav.php'
-    ?>
-    <div class="height-100 bg-light">
-    <!-- <div class="page_content_div"> -->
-        <div class="generated_report_div">
-            <h2>Generated Report</h1>
-            <div class="generated_report_info">
-            <div class="report_div">
-                    <?php
-                    
-                    if($patient_list=="1")
-                    {
-                    
-                        $patient_td = '';
-                        $admission_count = '';
-                        $consultation_count = '';
-                        $med_cert_count = '';
-                        $lab_res_count = '';
-                    
-                        $sql = "SELECT patient_id,first_name,middle_name,last_name FROM tbl_patients";
-                        $result = $conn -> query($sql);
-                    
-                    
-                    
-                        if($result->num_rows>0)
-                        {
-                            while($row = $result -> fetch_assoc())
-                            {
-                                $sql2 = "SELECT * FROM tbl_admission WHERE patient_id = '".$row['patient_id']."';";
-                                $result2 = $conn -> query($sql2);
-                                if($result2->num_rows>0)
-                                {
-                                    $admission_count = $result2->num_rows;
-                                }
-                                else{
-                                    $admission_count = 0;
-                                }
-                    
-                                $sql3 = "SELECT * FROM tbl_consult WHERE patient_id = '".$row['patient_id']."';";
-                                $result3 = $conn -> query($sql3);
-                                if($result3->num_rows>0)
-                                {
-                                    $consultation_count = $result3->num_rows;
-                                }
-                                else{
-                                    $consultation_count = 0;
-                                }
-                                
-                                
-                                $sql4 = "SELECT * FROM tbl_med_cert WHERE patient_id = '".$row['patient_id']."';";
-                                $result4 = $conn -> query($sql4);
-                                if($result4->num_rows>0)
-                                {
-                                    $med_cert_count = $result4->num_rows;
-                                }
-                                else{
-                                    $med_cert_count = 0;
-                                }
-                    
-                                
-                                $sql5 = "SELECT * FROM tbl_lab_result WHERE patient_id = '".$row['patient_id']."';";
-                                $result5 = $conn -> query($sql5);
-                                if($result5->num_rows>0)
-                                {
-                                    $lab_res_count = $result5->num_rows;
-                                }
-                                else{
-                                    $lab_res_count = 0;
-                                }
-                    
-                                $patient_td .='
-                    
-                                <tr>
-                                    <td>'.$row['patient_id'].'</td>
-                                    <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row['first_name'].' '.$row['middle_name'].' '.$row['last_name'].'</td>
-                                    <td>'.$admission_count.'</td>
-                                    <td>'.$consultation_count.'</td>
-                                    <td>'.$med_cert_count.'</td>
-                                    <td>'.$lab_res_count.'</td>
-                            
-                                </tr>';
-                                
-                                
-                            }
-                        }
-                        else{
-                            $patient_td .= '
-                            <tr>
-                            <td></td>
-                    
-                            </tr>
-                        ';
-                        }
-                    
-                    
-                    
-                    
-                        echo "
-
-                        <table>
-                        <caption>Patient List</caption>
-                                <tr>
-                                    <th>Patient ID</th>
-                                    <th>Name</th>
-                                    <th>Admission Record</th>
-                                    <th>Consultation Record</th>
-                                    <th>Medical Certificate</th>
-                                    <th>Lab Result</th>
-                                </tr>
-                    
-                                
-                                ".$patient_td."
-                    
-                                
-                            </table>
-                        ";
-                    
-                    }
-
-                    if($account_created=="1")
-                    {
-
-                        $accounts_td = '';
-
-
-                        $account_sql = "SELECT * FROM tbl_accounts ORDER BY date_created,time_created DESC";
-                        $accounts = $conn -> query($account_sql);
-
-
-                        if($accounts->num_rows>0)
-                        {
-                            while($row_account = $accounts -> fetch_assoc())
-                            {
-                            
-
-                                $accounts_td .='
-
-                                <tr>
-                                    <td>'.$row_account['acc_id'].'</td>
-                                    <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row_account['username'].'</td>
-                                    <td>'.$row_account['position'].'</td>
-                                    <td>'.$row_account['date_created'].'</td>
-                                    <td>'.$row_account['time_created'].'</td>
-                            
-                                </tr>';
-                                
-                                
-                            }
-                        }
-
-
-                       echo '
-                        <table>
-                        <caption style="caption-side:top; text-align:center;">Account Created</caption>
-                                <tr>
-                                    <th>Account ID</th>
-                                    <th>Username</th>
-                                    <th>Position</th>
-                                    <th>Date Created</th>
-                                    <th>Time Created</th>
-                                </tr>
-
-                                
-                                '.$accounts_td.'
-
-                                
-                        </table>
-                        
-                        ';
-                        
-                    }
-
-                    if($patient_added=="1")
-                    {
-
-                        $patient_added_td = '';
-
-
-                        $patient_added_sql = "SELECT * FROM tbl_patients ORDER BY date_added,time_added DESC";
-                        $patients_added = $conn -> query($patient_added_sql);
-
-
-                        if($patients_added->num_rows>0)
-                        {
-                            while($row_patient_added = $patients_added -> fetch_assoc())
-                            {
-                            
-
-                                $patient_added_td .='
-
-                                <tr>
-                                    <td>'.$row_patient_added['patient_id'].'</td>
-                                    <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row_patient_added['first_name'].' '.$row_patient_added['middle_name'].' '.$row_patient_added['last_name'].'</td>
-                                    <td>'.$row_patient_added['date_added'].'</td>
-                                    <td>'.$row_patient_added['time_added'].'</td>
-                            
-                                </tr>';
-                                
-                                
-                            }
-                        }
-
-
-                        echo'
-                        
-                        <table>
-                        <caption>Added Patients</caption>
-                                <tr>
-                                    <th>Patient ID</th>
-                                    <th>Patient Name</th>
-                                    <th>Date Added</th>
-                                    <th>Time Added</th>
-                                </tr>
-
-                                
-                                '.$patient_added_td.'
-
-                                
-                        </table>
-                        
-                        ';
-                        
-                    }
-                    
-                    
-                    ?>
-              </div>  
-              <div class="pdf_div">
-                <form method="POST">
-                    
-                    <input type="text" name='patient_list' value='<?php echo $patient_list; ?>'>
-                    <input type="text" name='account_created' value='<?php echo $account_created; ?>'>
-                    <input type="text" name='patient_added' value='<?php echo $patient_added; ?>'>
-                    
-
-                    <button type='submit' name="pdf_view"><i class='bx bxs-file-pdf'></i> PDF View</button>
-                </form>
-            </div>
-            </div>
-          
-
-        </div>
-    </div>
-</body>
-    
-
-</html>
-
-
-
-<?php
-
-
-function generate_report($patient_list,$account_created,$patient_added){
 
 include_once '../dbconn.php';
 require_once __DIR__ . '../../../vendor/autoload.php';
 // Create an instance of the class:
 $mpdf = new \Mpdf\Mpdf();
+date_default_timezone_set('Asia/Manila');
+
+/* Prepared statement, stage 1: prepare */
+$today = date("Y-m-d"); 
+
+$get_admitted_stmt = $connection->prepare("SELECT * FROM tbl_admission where date = ?;");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_admitted_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_admitted_stmt->execute();
+$admitted_result = $get_admitted_stmt->get_result();
+
+
+
+
+$get_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'discharge';");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_discharge_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_discharge_stmt->execute();
+$discharge_result = $get_discharge_stmt->get_result();
+
+
+
+$get_transferred_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'transferred';");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_transferred_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_transferred_stmt->execute();
+$transferred_result = $get_transferred_stmt->get_result();
+
+$get_hama_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'hama';");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_hama_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_hama_stmt->execute();
+$hama_result = $get_hama_stmt->get_result();
+
+$get_absconded_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'absconded';");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_absconded_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_absconded_stmt->execute();
+$absconded_result = $get_absconded_stmt->get_result();
+
+$get_alive_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition != 'died';");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_alive_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_alive_stmt->execute();
+$alive_result = $get_alive_stmt->get_result();
+
+$get_died_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'died';");
+
+ /* Prepared statement, stage 2: bind and execute */
+$get_died_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_died_stmt->execute();
+$died_result = $get_died_stmt->get_result();
+
+$get_total_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ?;");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_total_discharge_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
+$get_total_discharge_stmt->execute();
+$total_discharge_result = $get_total_discharge_stmt->get_result();
+
+
+$id = $_SESSION['ID'];
+
+$get_account_stmt = $connection->prepare("SELECT * FROM tbl_accounts where acc_id = ?;");
+
+/* Prepared statement, stage 2: bind and execute */
+$get_account_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
+$get_account_stmt->execute();
+$account = $get_account_stmt->get_result();
+$account_row = $account->fetch_assoc();
+
 
 // Write some HTML code:
-if($patient_list=="1")
-{
-
-    $patient_td = '';
-    $admission_count = '';
-    $consultation_count = '';
-    $med_cert_count = '';
-    $lab_res_count = '';
-
-    $sql = "SELECT patient_id,first_name,middle_name,last_name FROM tbl_patients";
-    $result = $conn -> query($sql);
-
-
-
-    if($result->num_rows>0)
-    {
-        while($row = $result -> fetch_assoc())
-        {
-            $sql2 = "SELECT * FROM tbl_admission WHERE patient_id = '".$row['patient_id']."';";
-            $result2 = $conn -> query($sql2);
-            if($result2->num_rows>0)
-            {
-                $admission_count = $result2->num_rows;
-            }
-            else{
-                $admission_count = 0;
-            }
-
-            $sql3 = "SELECT * FROM tbl_consult WHERE patient_id = '".$row['patient_id']."';";
-            $result3 = $conn -> query($sql3);
-            if($result3->num_rows>0)
-            {
-                $consultation_count = $result3->num_rows;
-            }
-            else{
-                $consultation_count = 0;
-            }
-            
-            
-            $sql4 = "SELECT * FROM tbl_med_cert WHERE patient_id = '".$row['patient_id']."';";
-            $result4 = $conn -> query($sql4);
-            if($result4->num_rows>0)
-            {
-                $med_cert_count = $result4->num_rows;
-            }
-            else{
-                $med_cert_count = 0;
-            }
-
-            
-            $sql5 = "SELECT * FROM tbl_lab_result WHERE patient_id = '".$row['patient_id']."';";
-            $result5 = $conn -> query($sql5);
-            if($result5->num_rows>0)
-            {
-                $lab_res_count = $result5->num_rows;
-            }
-            else{
-                $lab_res_count = 0;
-            }
-
-            $patient_td .='
-
-            <tr>
-                <td>'.$row['patient_id'].'</td>
-                <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row['first_name'].' '.$row['middle_name'].' '.$row['last_name'].'</td>
-                <td style="padding: 10px; background-color: rgb(250, 237, 203)">'.$admission_count.'</td>
-                <td style="padding: 10px; background-color:rgb(201, 228, 222)">'.$consultation_count.'</td>
-                <td style="padding: 10px; background-color:rgb(198, 222, 241)">'.$med_cert_count.'</td>
-                <td style="padding: 10px; background-color:rgb(219, 205, 240)">'.$lab_res_count.'</td>
-        
-            </tr>';
-            
-            
-        }
-    }
-    else{
-        $patient_td .= '
-        <tr>
-        <td></td>
-
-        </tr>
-    ';
-    }
-
-
-
-
     $mpdf->WriteHTML('
     <div  style="position:relative;">
     <table style="width:100%">
@@ -429,172 +106,94 @@ if($patient_list=="1")
         </tr>
     </table>
     </div>
+    <caption style="font-family:sans-serif; font-size:20px; padding:30px;">Admission and Discharge Census</caption>
     <table border=1 style="width:100%; white-space: nowrap; border-collapse: collapse; text-align:center; font-family:sans-serif;">
-    <caption style="font-family:sans-serif; font-size:20px; font-weight:bold; padding:30px;">Patient List</caption>
+
             <tr>
-                <th style="padding: 10px;">Patient ID</th>
-                <th style="padding: 10px;">Name</th>
-                <th style="padding: 10px; background-color:rgb(250, 237, 165);">Admission Record</th>
-                <th style="padding: 10px; background-color:rgb(175, 228, 222);">Consultation Record</th>
-                <th style="padding: 10px; background-color:rgb(175, 222, 241);">Medical Certificate</th>
-                <th style="padding: 10px; background-color:rgb(219, 187, 240);">Lab Result</th>
+                <th style="padding: 10px; color: white; background-color: rgb(27, 73, 101);">Available Census Today</th>
+                <th style="padding: 10px; color: white; background-color: rgb(27, 73, 101);">Count</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; color: white;">...</td>
+                <td style="padding: 10px; color: white;">...</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);"><strong>Total Admission</strong></td>
+                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$admitted_result->num_rows.'</td>
             </tr>
 
-            
-            '.$patient_td.'
+            <tr>
+                <td style="padding: 10px; color: white;">...</td>
+                <td style="padding: 10px; color: white;">...</td>
+            </tr>
 
+            <tr>
+                <td style="padding: 10px; text-align:left;">Discharge (Discharge)</td>
+                <td style="padding: 10px; text-align:left;">'.$discharge_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left;">Discharge (Transferred)</td>
+                <td style="padding: 10px; text-align:left;">'.$transferred_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left;">Discharge (HAMA)</td>
+                <td style="padding: 10px; text-align:left;">'.$hama_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left;">Discharge (Absconded)</td>
+                <td style="padding: 10px; text-align:left;">'.$absconded_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left;"><strong>Discharges (Alive)</strong></td>
+                <td style="padding: 10px; text-align:left;">'.$alive_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left;"><strong>Discharges (Deaths)</strong></td>
+                <td style="padding: 10px; text-align:left;">'.$died_result->num_rows.'</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);"><strong>Total Discharges</strong></td>
+                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$total_discharge_result->num_rows.'</td>
+            </tr>
             
         </table>
     '
     );
 
-}
 
 
-if($account_created=="1")
-{
-    if($patient_list=="1")
-    {
-        $mpdf->AddPage();
-    }
-
-    $accounts_td = '';
-
-
-    $account_sql = "SELECT * FROM tbl_accounts ORDER BY date_created,time_created DESC";
-    $accounts = $conn -> query($account_sql);
-
-
-    if($accounts->num_rows>0)
-    {
-        while($row_account = $accounts -> fetch_assoc())
-        {
-           
-
-            $accounts_td .='
-
-            <tr>
-                <td>'.$row_account['acc_id'].'</td>
-                <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row_account['username'].'</td>
-                <td style="padding: 10px; background-color: rgb(250, 237, 203)">'.$row_account['position'].'</td>
-                <td style="padding: 10px; background-color:rgb(201, 228, 222)">'.$row_account['date_created'].'</td>
-                <td style="padding: 10px; background-color:rgb(198, 222, 241)">'.$row_account['time_created'].'</td>
-        
-            </tr>';
-            
-            
-        }
-    }
-
-
-    $mpdf->WriteHTML('
-    <div  style="position:relative;">
-    <table style="width:100%">
-        <tr>
-        <td><img src="..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
-        <td style="text-align:Center; font-family:arial; ">OFELIA L. MENDOZA MATERNITY AND GENERAL HOSPITAL <br/>
-                                            MOJON, CITY OF MALOLOS, BULACAN <br/>
-                                                TEL NO. (044)794-7113
-                                                    <hr></td>
-        </tr>
-    </table>
-    </div>
-    <table border=1 style="width:100%; white-space: nowrap; border-collapse: collapse; text-align:center; font-family:sans-serif;">
-    <caption style="font-family:sans-serif; font-size:20px; font-weight:bold; padding:30px;">Account Created</caption>
-            <tr>
-                <th style="padding: 10px;">Account ID</th>
-                <th style="padding: 10px;">Username</th>
-                <th style="padding: 10px; background-color:rgb(250, 237, 165);">Position</th>
-                <th style="padding: 10px; background-color:rgb(175, 228, 222);">Date Created</th>
-                <th style="padding: 10px; background-color:rgb(175, 222, 241);">Time Created</th>
-            </tr>
-
-            
-            '.$accounts_td.'
-
-            
-    </table>
-    
-    ');
-    
-}
-
-
-if($patient_added=="1")
-{
-    if($account_created=="1"||$patient_list=="1")
-    {
-        $mpdf->AddPage();
-    }
-
-    $patient_added_td = '';
-
-
-    $patient_added_sql = "SELECT * FROM tbl_patients ORDER BY date_added,time_added DESC";
-    $patients_added = $conn -> query($patient_added_sql);
-
-
-    if($patients_added->num_rows>0)
-    {
-        while($row_patient_added = $patients_added -> fetch_assoc())
-        {
-           
-
-            $patient_added_td .='
-
-            <tr>
-                <td>'.$row_patient_added['patient_id'].'</td>
-                <td style="padding: 10px; white-space: nowrap; text-align:left;">'.$row_patient_added['first_name'].' '.$row_patient_added['middle_name'].' '.$row_patient_added['last_name'].'</td>
-                <td style="padding: 10px; background-color: rgb(250, 237, 203);">'.$row_patient_added['date_added'].'</td>
-                <td style="padding: 10px; background-color:rgb(201, 228, 222);">'.$row_patient_added['time_added'].'</td>
-        
-            </tr>';
-            
-            
-        }
-    }
-
-
-    $mpdf->WriteHTML('
-    <div  style="position:relative;">
-    <table style="width:100%">
-        <tr>
-        <td><img src="..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
-        <td style="text-align:Center; font-family:arial; ">OFELIA L. MENDOZA MATERNITY AND GENERAL HOSPITAL <br/>
-                                            MOJON, CITY OF MALOLOS, BULACAN <br/>
-                                                TEL NO. (044)794-7113
-                                                    <hr></td>
-        </tr>
-    </table>
-    </div>
-    <table border=1 style="width:100%; white-space: nowrap; border-collapse: collapse; text-align:center; font-family:sans-serif;">
-    <caption style="font-family:sans-serif; font-size:20px; font-weight:bold; padding:30px;">Added Patients</caption>
-            <tr>
-                <th style="padding: 10px;">Patient ID</th>
-                <th style="padding: 10px;">Patient Name</th>
-                <th style="padding: 10px; background-color:rgb(250, 237, 165);">Date Added</th>
-                <th style="padding: 10px; background-color:rgb(175, 228, 222);">Time Added</th>
-            </tr>
-
-            
-            '.$patient_added_td.'
-
-            
-    </table>
-    
-    ');
-    
-}
-
-
-
-
-
-
+    $arr = array (
+        'odd' => array (
+          'L' => array (
+            'content' => $account_row['first_name'].' '.$account_row['last_name'],
+            'font-size' => 10,
+            'font-style' => 'B',
+            'font-family' => 'serif',
+            'color'=>'#000000'
+          ),
+          'C' => array (
+            'content' => '1/1',
+            'font-size' => 10,
+            'font-style' => 'B',
+            'font-family' => 'serif',
+            'color'=>'#000000'
+          ),
+          'R' => array (
+            'content' => $today,
+            'font-size' => 10,
+            'font-style' => 'B',
+            'font-family' => 'serif',
+            'color'=>'#000000'
+          ),
+          'line' => 1,
+        ),
+        'even' => array ()
+      );
+      
+      $mpdf->SetFooter($arr);
 // Output a PDF file directly to the browser
 $mpdf->Output();
 
-}
 
 
 ?>

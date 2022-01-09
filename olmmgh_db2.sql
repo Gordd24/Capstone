@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 01:16 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.5
+-- Generation Time: Jan 09, 2022 at 07:24 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `olmmgh_db13`
+-- Database: `olmmgh_db2`
 --
 
 -- --------------------------------------------------------
@@ -76,7 +76,9 @@ INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `d
 (10, 24, 'patient/24/admission/2022010615835-mendoza.pdf', '2022-01-06', '2022010615835-mendoza.pdf'),
 (11, 24, 'patient/24/admission/2022010615837-mendoza.pdf', '2022-01-06', '2022010615837-mendoza.pdf'),
 (12, 25, 'patient/25/admission/2022010620121-legaspi.pdf', '2022-01-06', '2022010620121-legaspi.pdf'),
-(13, 26, 'patient/26/admission/2022010632417-balot.pdf', '2022-01-06', '2022010632417-balot.pdf');
+(13, 26, 'patient/26/admission/2022010632417-balot.pdf', '2022-01-06', '2022010632417-balot.pdf'),
+(14, 15, 'patient/15/admission/20220109102049-macchiato.pdf', '2022-01-09', '20220109102049-macchiato.pdf'),
+(15, 15, 'patient/15/admission/20220109102052-macchiato.pdf', '2022-01-09', '20220109102052-macchiato.pdf');
 
 -- --------------------------------------------------------
 
@@ -98,6 +100,26 @@ CREATE TABLE `tbl_consult` (
 
 INSERT INTO `tbl_consult` (`record_cons_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
 (7, 14, 'patient/14/consultation/2021123041927-test.pdf', '2021-12-30', '2021123041927-test.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_discharge`
+--
+
+CREATE TABLE `tbl_discharge` (
+  `discharge_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `disposition` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_discharge`
+--
+
+INSERT INTO `tbl_discharge` (`discharge_id`, `patient_id`, `date`, `disposition`) VALUES
+(1, 15, '2022-01-09', 'transferred');
 
 -- --------------------------------------------------------
 
@@ -200,7 +222,7 @@ CREATE TABLE `tbl_patients` (
 --
 
 INSERT INTO `tbl_patients` (`patient_id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `contact_no`, `email`, `sex`, `religion`, `address`, `birthdate`, `occupation`, `status`, `record_status`, `date_added`, `time_added`) VALUES
-(14, '', '', 'Dean', '', 'Doe', '09089899291', 'deandoe@gmail.com', 'Female', 'Roman Catholic', 'Seoul, Korea', '1999-09-15', 'Streamer', 'Admitted', 'Active', '2021-12-02', '23:56:57'),
+(14, '', '', 'Dean', '', 'Doe', '09089899291', 'deandoe@gmail.com', 'Female', 'Roman Catholic', 'Seoul, Korea', '1999-09-15', 'Streamer', 'Not Admitted', 'Active', '2021-12-02', '23:56:57'),
 (15, '', '', 'Machi', '', 'Macchiato', '', NULL, 'Female', '', 'Malolos, Bulacan', '2021-12-03', '', 'Not Admitted', 'Active', '2021-12-03', '15:34:54'),
 (24, '2420211201', '$2y$10$U7R5RthTEiaGvcJtsH06/.dCKtLUdWoWMKW0Ew9ImrQjBHF1n4Qhu', 'Jasper', 'Alvaro', 'Mendoza', '0989786731', 'jas@gmail.com', 'Male', 'Roman Catholic', 'Maunlad Homes', '2021-12-01', 'Rapper', 'Not Admitted', 'Active', '2021-12-30', '12:20:34'),
 (25, '2520220106', '$2y$10$9CfN9vbVSmOHgv6JGp/GMONssphbbMCcENTSf29h/ZbaCPaT1Tzzy', 'Lady Jobel', 'Ignacio', 'Legaspi', '', 'ladyboj@gmail.com', 'Female', '', 'Batia, Bocaue', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '14:00:00'),
@@ -309,6 +331,13 @@ ALTER TABLE `tbl_consult`
   ADD KEY `patient_id` (`patient_id`);
 
 --
+-- Indexes for table `tbl_discharge`
+--
+ALTER TABLE `tbl_discharge`
+  ADD PRIMARY KEY (`discharge_id`),
+  ADD KEY `patient_id` (`patient_id`);
+
+--
 -- Indexes for table `tbl_lab_result`
 --
 ALTER TABLE `tbl_lab_result`
@@ -357,13 +386,19 @@ ALTER TABLE `tbl_accounts`
 -- AUTO_INCREMENT for table `tbl_admission`
 --
 ALTER TABLE `tbl_admission`
-  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_consult`
 --
 ALTER TABLE `tbl_consult`
   MODIFY `record_cons_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_discharge`
+--
+ALTER TABLE `tbl_discharge`
+  MODIFY `discharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_lab_result`
@@ -410,6 +445,12 @@ ALTER TABLE `tbl_admission`
 --
 ALTER TABLE `tbl_consult`
   ADD CONSTRAINT `tbl_consult_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `tbl_patients` (`patient_id`);
+
+--
+-- Constraints for table `tbl_discharge`
+--
+ALTER TABLE `tbl_discharge`
+  ADD CONSTRAINT `tbl_discharge_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `tbl_patients` (`patient_id`);
 
 --
 -- Constraints for table `tbl_lab_result`

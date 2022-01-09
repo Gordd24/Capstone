@@ -62,7 +62,7 @@ function make_consultation() {
   <div  style="position:relative;">
   <table style="width:100%">
       <tr>
-      <td><img src="..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
+      <td><img src="..\..\..\images\ofelia_logo.png" style="width:30mm; font-weight: bold;" /></td>
       <td style="text-align:Center; font-family:arial; ">OFELIA L. MENDOZA MATERNITY AND GENERAL HOSPITAL <br/>
                                           MOJON, CITY OF MALOLOS, BULACAN <br/>
                                               TEL NO. (044)794-7113
@@ -695,7 +695,20 @@ function discharge_patient() {
   $stmt->execute();
 
 
+  $discharge_stmt = $connection->prepare("INSERT INTO tbl_discharge(patient_id, date, disposition) VALUES (?, ?, ?)");
+                  
+  /* Prepared statement, stage 2: bind and execute */
+
+  $discharge_disposition = $_POST['disposition'];
+  $discharge_stmt->bind_param("sss",$patient_id, $patient_date_discharged, $discharge_disposition);
+  $discharge_stmt->execute();
+
+
   $mpdf->OverWrite("../../".$pdf_path, $search, $replacement, 'F', "../../".$pdf_path );
+
+
+
+
   // header('Location: record_management.php'); 
 }
 ?>

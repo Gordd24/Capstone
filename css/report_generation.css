@@ -1,99 +1,30 @@
-body{
-    background: url(../images/back_5.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.report_generation_div{
-    width: 100%;
-    height: 100%;
-
-}
-
-.report_generation_div h2{
-    font-size: 2vw;
-    padding: 1% 1% 1% 0;
-    border-bottom: 0.1vw solid rgb(220, 218, 218);
- 
-}
-#report_generation_link{
-    color:  #F7F6FB;
-}
-
-#report_generation_link::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 2px;
-    height: 32px;
-    background-color: #F7F6FB;
-}
-
-.report_generation_info{
-
-
-    background: rgba(240, 238, 240, 0.61);
-    box-shadow: 0px 10px 20px 3px #6b6a6a; 
-    backdrop-filter: blur(2.8px);
-    -webkit-backdrop-filter: blur(2.8px);
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
- 
-}
-
-.report_generation_info form{
-    /* background-color: aqua; */
+thead{
+    background-color: rgb(27, 73, 101);
     text-align: center;
-    font-size: 1vw;
-    padding: 2%;
-    width: 50%;
-
-    background: rgba(240, 238, 240, 0.61);
-    box-shadow: 0px 10px 20px 3px #6b6a6a; 
-    backdrop-filter: blur(2.8px);
-    -webkit-backdrop-filter: blur(2.8px);
+    border:0.1rem solid rgb(27, 73, 101);
 }
 
-.report_generation_info .report_checkboxes{
-   /* background-color: aquamarine; */
-   display: flex;
-   justify-content: center;
-   margin: 3%;
+.summary{
+    font-weight: bolder;
+}
 
+.total{
+    font-weight: bolder;
+    color: black;
+    background-color: rgb(190, 233, 232);
+}
+
+table{
+    border:0.1rem solid;
 }
 
 
+.generate{
+    background-color: rgb(27, 73, 101);
+    color: white;
+}
 
-.report_generation_info .report_checkboxes .checkbox{
-    font-size: 1vw;
-    width: 33%;
-    /* background-color: bisque; */
- 
- }
-
-
- .report_generation_info label {
-    font-size: 1vw;
-  }
-
-
-  .report_generation_info input[type=submit]
-  {
-      padding: 2%;
-      width: 20%;
-      margin-top: 10%;
-      border-radius: 5%/20%;
-      background-color: rgb(91, 220, 125);
-      border:none;
-      font-size: 0.9vw;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0px 0px 10px 1px #6b6a6a; 
-  
-  }
+.generate:hover{
+    background-color: rgb(16, 42, 58);
+    color: white;
+}
