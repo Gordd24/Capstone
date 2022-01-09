@@ -125,7 +125,7 @@ if (!isset($_SESSION)) {
             </div>
         </div>
         <div class="row m-5">
-            <h3>Pending Request</h3>
+            <h3>Patient Follow Ups</h3>
             <div class="col-6 col-md-3">
                 <div class="card shadow-sm" style="max-width: 13rem;" id="request">
                     <div class="card-header text-white">Laboratory Results</div>

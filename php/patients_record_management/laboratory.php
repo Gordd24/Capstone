@@ -28,19 +28,36 @@
 
     <!-- pre values -->
     <?php
-    if(isset($_GET['id'])){
     include_once '../dbconn.php';
-    $id = $_GET['id'];
-    /* Prepared statement, stage 1: prepare */
-    $stmt = $connection->prepare("SELECT * FROM tbl_patients where patient_id = ?");
 
-    /* Prepared statement, stage 2: bind and execute */
-    $stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+    if(isset($_GET['id'])){
+    
+        $id = $_GET['id'];
+        /* Prepared statement, stage 1: prepare */
+        $stmt = $connection->prepare("SELECT * FROM tbl_patients where patient_id = ?");
 
-}
+        /* Prepared statement, stage 2: bind and execute */
+        $stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+    }
+    
+    if(isset($_GET['req_id'])){
+
+        $req_id = $_GET['req_id'];
+        /* Prepared statement, stage 1: prepare */
+        $req_stmt = $connection->prepare("SELECT * FROM tbl_requests where request_id = ?");
+
+        /* Prepared statement, stage 2: bind and execute */
+        $req_stmt->bind_param("i", $req_id); // "is" means that $id is bound as an integer and $label as a string
+        $req_stmt->execute();
+        $req_result = $req_stmt->get_result();
+        $req_row = $req_result->fetch_assoc();
+
+
+    }
 
     ?>
 
@@ -73,6 +90,19 @@
                                                             <input type="text" class="form-control" id="patient_id" name="patient_id" value="<?php echo $row['patient_id']; ?>"  required autocomplete="off" readonly> 
                                                         </div>
                                                     </div>
+
+                                                    <?php
+
+                                                        if(isset($_GET['req_id'])){
+                                                            echo '
+                                                            <div class="row my-3 d-none">
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" id="request_id" name="request_id" value="'. $_GET['req_id'] .'"  required autocomplete="off" readonly> 
+                                                                </div>
+                                                            </div>';
+                                                        }
+        
+                                                    ?>
                                                   
                                                     <div class="row my-3">
                                                         <div class="col">
@@ -104,7 +134,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="complete_blood_count" value="complete_blood_count" checked>
+                                                                        <input class="form-check-input" type="radio" name="result" id="complete_blood_count" value="complete_blood_count" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="complete_blood_count" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="complete_blood_count">
                                                                             Complete Blood Count (CBS)
                                                                         </label>
@@ -113,7 +143,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="platelet_count" value="platelet_count">
+                                                                        <input class="form-check-input" type="radio" name="result" id="platelet_count" value="platelet_count"  <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="platelet_count" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="platelet_count">
                                                                             Platelet Count
                                                                         </label>
@@ -122,7 +152,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="blood_typing" value="blood_typing">
+                                                                        <input class="form-check-input" type="radio" name="result" id="blood_typing" value="blood_typing" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="blood_typing" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="blood_typing">
                                                                             Blood Typing
                                                                         </label>
@@ -131,7 +161,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="cross_matching" value="cross_matching">
+                                                                        <input class="form-check-input" type="radio" name="result" id="cross_matching" value="cross_matching" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="cross_matching" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="cross_matching">
                                                                             Cross Matching
                                                                         </label>
@@ -146,7 +176,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="hepatitis_b" value="hepatitis_b">
+                                                                        <input class="form-check-input" type="radio" name="result" id="hepatitis_b" value="hepatitis_b" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="hepatitis_b" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="hepatitis_b">
                                                                             Hepatitis B
                                                                         </label>
@@ -155,7 +185,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="blood_urea_nitrogen" value="blood_urea_nitrogen">
+                                                                        <input class="form-check-input" type="radio" name="result" id="blood_urea_nitrogen" value="blood_urea_nitrogen" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="blood_urea_nitrogen" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="blood_urea_nitrogen">
                                                                             Blood Urea Nitrogen
                                                                         </label>
@@ -164,7 +194,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="creatinine" value="creatinine">
+                                                                        <input class="form-check-input" type="radio" name="result" id="creatinine" value="creatinine" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="creatinine" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="creatinine">
                                                                             Creatinine
                                                                         </label>
@@ -173,7 +203,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="fasting_blood_sugar" value="fasting_blood_sugar">
+                                                                        <input class="form-check-input" type="radio" name="result" id="fasting_blood_sugar" value="fasting_blood_sugar" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="fasting_blood_sugar" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="fasting_blood_sugar">
                                                                             Fasting Blood Sugar
                                                                         </label>
@@ -188,7 +218,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="fecalysis" value="fecalysis">
+                                                                        <input class="form-check-input" type="radio" name="result" id="fecalysis" value="fecalysis" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="fecalysis" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="fecalysis">
                                                                             Fecalysis
                                                                         </label>
@@ -197,7 +227,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="cholesterol" value="cholesterol">
+                                                                        <input class="form-check-input" type="radio" name="result" id="cholesterol" value="cholesterol" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="cholesterol" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="cholesterol">
                                                                             Cholesterol
                                                                         </label>
@@ -206,7 +236,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="uric_acid" value="uric_acid">
+                                                                        <input class="form-check-input" type="radio" name="result" id="uric_acid" value="uric_acid" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="uric_acid" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="uric_acid">
                                                                             Uric Acid
                                                                         </label>
@@ -215,7 +245,7 @@
 
                                                                 <div class="col">                                               
                                                                     <div class="form-check">
-                                                                        <input class="form-check-input" type="radio" name="result" id="urinalysis" value="urinalysis">
+                                                                        <input class="form-check-input" type="radio" name="result" id="urinalysis" value="urinalysis" <?php echo isset($_GET['req_id'])&&$req_row['result_type']=="urinalysis" ? "checked" : ''; ?>>
                                                                         <label class="form-check-label" for="urinalysis">
                                                                             Urinalysis
                                                                         </label>

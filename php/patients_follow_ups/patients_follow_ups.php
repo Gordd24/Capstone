@@ -83,7 +83,7 @@
                                                                         <td>".ucwords(str_replace("_"," ",$row['result_type']))."</td>
                                                                         <td>".$row['request_date']."</td>
                                                                         <td class='text-center'>
-                                                                            <i class='bx bxs-envelope mx-1 btn border respond' id=".$row['patient_id']." title='Repond'></i>
+                                                                            <i class='bx bxs-envelope mx-1 btn border respond' id=".$row['patient_id'].'_'.$row['request_id']." title='Repond'></i>
                                                                             <i class='bx bxs-x-square mx-1 btn border not_avail' id=".$row['patient_id'].'_'.$row['request_id']." title='Not Available'></i>
                                                                             <i class='bx bxs-check-square mx-1 btn border avail' id=".$row['patient_id'].'_'.$row['request_id']." title='Already Available'></i>
                                                                         </td>

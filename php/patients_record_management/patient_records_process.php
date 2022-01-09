@@ -512,6 +512,8 @@ function make_lab_res() {
   $path_date = date("Ymdgis");
   $record_date = date("Y-m-d");
 
+
+
   // $patient_name = $_POST['patient_fname']." ".$_POST['patient_mname']." ".$_POST['patient_lname'];
 
       $pdfName =$_FILES['patient_lab_res']['name'];
@@ -533,41 +535,64 @@ function make_lab_res() {
       //$extension = pathinfo($pdfName, PATHINFO_EXTENSION);//check if the extension is correct
       $tmp_file = $_FILES['patient_lab_res']['tmp_name'];
       //$size = $_FILES['patient_lab_res']['size'];//for size limit
+
     
           // move the uploaded (temporary) file to the specified destination
           if (move_uploaded_file($tmp_file, "../../".$file)) {
               $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name) VALUES ('$patient_id','$file','$record_date','$pdfName');";
-              if (mysqli_query($conn, $insertSql)) {
+                if (mysqli_query($conn, $insertSql)) {
 
-                
+                  if(isset($_POST['request_id']))
+                  {
+                    $request_id = $_POST['request_id'];
+                    $response_status = 'available';
+                    $today = date("Y-m-d"); 
+                    $time = date("H:i:s");
+                    $request_status = "responded";
 
-                $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
-    
-                /* Prepared statement, stage 2: bind and execute */
+                    $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
 
-                $result_type = $_POST['result'];
-                $today = date("Y-m-d"); 
-                $time = date("H:i:s");
-                $request_status = 'created';
-                $stmt->bind_param("issss", $patient_id, $result_type, $today, $time, $request_status); 
-                
-                $stmt->execute();    
+                    /* Prepared statement, stage 2: bind and execute */
+                    $stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
+                    $stmt->execute();
 
-                /* Prepared statement, stage 1: prepare */
-                $request_id = $connection->insert_id;
-                $response_status = 'available';
-                $today = date("Y-m-d"); 
-                $time = date("H:i:s"); 
-                
-                $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
-                
-                /* Prepared statement, stage 2: bind and execute */
-                $stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
-                $stmt->execute();
+                    /* Prepared statement, stage 1: prepare */
+                    $request_stmt = $connection->prepare("UPDATE tbl_requests SET request_status = ? WHERE request_id = ?");
+
+
+                    $request_stmt->bind_param("ss",$request_status, $request_id);
+                    $request_stmt->execute();
+
+                  }else{
+
+                  $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
+      
+                  /* Prepared statement, stage 2: bind and execute */
+
+                  $result_type = $_POST['result'];
+                  $today = date("Y-m-d"); 
+                  $time = date("H:i:s");
+                  $request_status = 'created';
+                  $stmt->bind_param("issss", $patient_id, $result_type, $today, $time, $request_status); 
                   
+                  $stmt->execute();    
+
+                  /* Prepared statement, stage 1: prepare */
+                  $request_id = $connection->insert_id;
+                  $response_status = 'available';
+                  $today = date("Y-m-d"); 
+                  $time = date("H:i:s"); 
+                  
+                  $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
+                  
+                  /* Prepared statement, stage 2: bind and execute */
+                  $stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
+                  $stmt->execute();
 
                   echo "File uploaded successfully";
                   // header('Location: record_management.php');
+
+                  }
               }else{
                   echo mysqli_error($conn);
               }
@@ -589,7 +614,6 @@ function discharge_patient() {
         // COMMENTED, POST INPUTS
         $patient_id = $_POST['patient_id'];
 
-
         $patient_date_discharged = $_POST['date_discharged'];
         $patient_time_discharged = $_POST['time_discharged'];
         $patient_discharged_by = $_POST['discharged_by'];
@@ -601,7 +625,6 @@ function discharge_patient() {
         $patient_ICD_10_code = $_POST['icd'];
         $patient_rvs_code = $_POST['rvs'];
         $patient_operations = $_POST['operation'];
-
 
         $patient_disposition = "";
         $patient_disposition_value = "";

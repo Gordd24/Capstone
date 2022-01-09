@@ -15,7 +15,10 @@ $(document).ready(function () {
             success: function (data) {
                 $('tbody').html(data);
                 $(".bx.respond").click(function () {
-                    location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
+                    var idarr = $(this).attr('id').split("_");
+                    var id = idarr[0];
+                    var req_id = idarr[1];
+                    location.href = "../patients_record_management/laboratory.php?id=" + id + "&req_id=" + req_id;
                 });
                 $(".bx.not_avail").click(function () {
                     location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
@@ -34,7 +37,10 @@ $(document).ready(function () {
 
 
     $(".bx.respond").click(function () {
-        location.href = "../patients_record_management/laboratory.php?id=" + $(this).attr("id");
+        var idarr = $(this).attr('id').split("_");
+        var id = idarr[0];
+        var req_id = idarr[1];
+        location.href = "../patients_record_management/laboratory.php?id=" + id + "&req_id=" + req_id;
     });
 
     $(".bx.not_avail").click(function () {

@@ -46,14 +46,14 @@ if(isset($_SESSION['ID'])){
                       </div>
                       <div class="row mb-3 px-3 justify-content-center">
                           <div class="col">
-                              <label for="email" class="form-label">Email <i class='bx bx-envelope' ></i></label>
+                              <label for="email" class="form-label"><i class='bx bx-envelope'></i> Email</label>
                               <input type="text" class="form-control edit_name" id="email" name="email"  value="olmmgh@gmail.com" required readonly autocomplete="off">
                           </div>
                       </div>
 
                       <div class="row mb-3 px-3  justify-content-center">
                           <div class="col">
-                              <label for="contact_no" class="form-label">Contact No. <i class='bx bx-phone' ></i></label>
+                              <label for="contact_no" class="form-label"><i class='bx bx-phone' ></i> Contact No.</label>
                               <input type="text" class="form-control edit_name" id="contact_no" name="contact_no"  value="+63 9089899291" readonly autocomplete="off">
                           </div>
                       </div>
