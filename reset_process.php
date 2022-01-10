@@ -12,8 +12,8 @@ if (isset($_POST['hidden_field_reset']) && $_POST['hidden_field_reset'] === 'for
    
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $connection->prepare("UPDATE tbl_patients SET password = ?");
-        $stmt -> bind_param('s', $hashed_password);
+        $stmt = $connection->prepare("UPDATE tbl_patients SET password = ? WHERE email = ?");
+        $stmt -> bind_param('ss', $hashed_password,$email);
         $stmt -> execute();
         $stmt -> close();
         
@@ -31,8 +31,8 @@ if (isset($_POST['hidden_field_reset']) && $_POST['hidden_field_reset'] === 'for
    
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $connection->prepare("UPDATE tbl_accounts SET password = ?");
-        $stmt -> bind_param('s', $hashed_password);
+        $stmt = $connection->prepare("UPDATE tbl_accounts SET password = ? WHERE email = ?");
+        $stmt -> bind_param('ss', $hashed_password,$email);
         $stmt -> execute();
         $stmt -> close();
         
