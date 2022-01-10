@@ -6,11 +6,11 @@ body{
     background-size: cover;
 }
 
-#record_management_link{
+#patients_link{
     color:  #F7F6FB;
 }
 
-#record_management_link::before{
+#patients_link::before{
     color:  #F7F6FB;
     content: '';
     position: absolute;

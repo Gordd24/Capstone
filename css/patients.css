@@ -2,6 +2,20 @@ thead{
     background-color: rgb(27, 73, 101);
 }
 
+#patients_link{
+    color:  #F7F6FB;
+}
+
+#patients_link::before{
+    color:  #F7F6FB;
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}
+
 .btn.add_patient{
     background-color: rgb(27, 73, 101);
     outline: none;

@@ -2,6 +2,18 @@ thead{
     background-color: rgb(27, 73, 101);
 }
 
+#account_management_link{
+    color:  #F7F6FB;
+}
+#account_management_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color:#F7F6FB;
+}
+
 .btn.add_patient{
     background-color: rgb(27, 73, 101);
     outline: none;

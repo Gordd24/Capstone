@@ -2,6 +2,20 @@ thead{
     background-color: rgb(27, 73, 101);
 }
 
+#followup_link{
+    color:  #F7F6FB;
+}
+
+#followup_link::before{
+    color:  #F7F6FB;
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}
+
 .btn.respond{
     background-color: white;
     color: rgb(255, 203, 119);
