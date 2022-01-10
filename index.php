@@ -160,6 +160,24 @@ if(isset($_POST["signinSubmit"]))
         <div class="asm-form__header">
             <h2>Forget Password</h2>
         </div>
+        <!-- this is for toggle account type -->
+        <div class="button-box">
+                <div id="forgot_btn"></div>
+                <div class="toggle-btn-div">
+                    <input type="radio" name="account" id="forgot_patient" value="Patient" class="toggle-btn"
+                    onclick="Forgot_Patient()" checked><label for="forgot_patient" class="account-label"
+                    id="forgot_patient-label">Patient</label>
+                </div>
+
+                <div class="toggle-btn-div">
+                    <input type="radio" name="account" id="forgot_personnel" value="Personnel" class="toggle-btn"
+                    onclick="Forgot_Personnel()"><label for="forgot_personnel" class="account-label"
+                    id="forgot_personnel-label">Personnel</label>
+                </div>
+        </div>
+
+
+
         <div class="asm-form__body">
             <div class="asm-form__linkbox">
                 <button type="button" class="asm-form__link" data-action="show-form" data-target="#frmSignIn">Sign
@@ -201,6 +219,24 @@ if(isset($_POST["signinSubmit"]))
             z.style.left = "0";
             personnel.style.color = "black";
             patient.style.color = "white";
+        }
+
+
+        var forgot_z = document.getElementById("forgot_btn");
+        var forgot_personnel = document.getElementById("forgot_personnel-label");
+        var forgot_patient = document.getElementById("forgot_patient-label");
+        function Forgot_Personnel() {
+
+            forgot_z.style.left = "50%";
+            forgot_patient.style.color = "black";
+            forgot_personnel.style.color = "white";
+
+
+        }
+        function Forgot_Patient() {
+            forgot_z.style.left = "0";
+            forgot_personnel.style.color = "black";
+            forgot_patient.style.color = "white";
         }
 
     </script>

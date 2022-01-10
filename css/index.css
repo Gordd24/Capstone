@@ -393,6 +393,26 @@ FOR TOGGLE */
     border-radius: 8%/20%;
     
 }
+
+#forgot_personnel-label
+{
+
+  color: rgb(0, 0, 0);
+}
+
+
+#forgot_btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color:rgb(27, 73, 101);
+    width: 50%;
+    height: 100%;
+    transition: .5 s;
+    border-radius: 8%/20%;
+    
+}
+
 .error{
   color:red;
   font-size: 13px;
