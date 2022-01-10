@@ -60,7 +60,7 @@ $(document).ready(function () {
                                icon: 'success',
                               }).then((result) => {
                                 // Reload the Page
-                                $('#empid_error').html('')
+                                $('#email_error').html('')
                                 location.reload();
                               });
                         }
@@ -98,7 +98,8 @@ $(document).ready(function () {
                            icon: 'success',
                           }).then((result) => {
                             // Reload the Page
-                            $('#empid_error').html('')
+                            $('#password_error').html('')
+                            $('#cpassword_error').html('')
                             location.href= 'index.php';
                           });
                     }

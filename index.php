@@ -164,13 +164,13 @@ if(isset($_POST["signinSubmit"]))
         <div class="button-box">
                 <div id="forgot_btn"></div>
                 <div class="toggle-btn-div">
-                    <input type="radio" name="account" id="forgot_patient" value="Patient" class="toggle-btn"
+                    <input type="radio" name="account" id="forgot_patient" value="patient" class="toggle-btn"
                     onclick="Forgot_Patient()" checked><label for="forgot_patient" class="account-label"
                     id="forgot_patient-label">Patient</label>
                 </div>
 
                 <div class="toggle-btn-div">
-                    <input type="radio" name="account" id="forgot_personnel" value="Personnel" class="toggle-btn"
+                    <input type="radio" name="account" id="forgot_personnel" value="personnel" class="toggle-btn"
                     onclick="Forgot_Personnel()"><label for="forgot_personnel" class="account-label"
                     id="forgot_personnel-label">Personnel</label>
                 </div>

@@ -215,7 +215,7 @@ $(document).ready(function () {
     //consult submit
     $('#consultation_form').on('submit', function (e) {
         complaint = $('#complaint').val()
-        var data = $('#consultation_form').val()
+        var data = $('#consultation_form').serialize()
         if (complaint == '') {
             $('#complaint_error').html('Please enter complaint')
             e.preventDefault();
