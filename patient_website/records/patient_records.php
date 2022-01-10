@@ -45,7 +45,7 @@ else{
     <div class="col">
 
          <!-- dropdown -->
-        <div class="row justify-content-center my-3">
+        <div class="row justify-content-center m-3">
           <div class="col-12 col-sm-5 text-center">
 
           <select class="form-select record_select" id="<?php echo$id ?>" aria-label=".form-select-sm example">
@@ -59,7 +59,7 @@ else{
          <div class="row">
            <div class="col">
                                         <!-- table row  -->
-                                        <div class="row justify-content-center my-3">
+                                        <div class="row justify-content-center m-3">
                                             <div class="col-md-10">
 
                                                 <table class="table">

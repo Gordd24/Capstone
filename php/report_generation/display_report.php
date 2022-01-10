@@ -119,7 +119,7 @@ $account_row = $account->fetch_assoc();
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);"><strong>Total Admission</strong></td>
-                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$admitted_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$admitted_result->num_rows.'</td>
             </tr>
 
             <tr>
@@ -129,31 +129,31 @@ $account_row = $account->fetch_assoc();
 
             <tr>
                 <td style="padding: 10px; text-align:left;">Discharge (Discharge)</td>
-                <td style="padding: 10px; text-align:left;">'.$discharge_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$discharge_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left;">Discharge (Transferred)</td>
-                <td style="padding: 10px; text-align:left;">'.$transferred_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$transferred_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left;">Discharge (HAMA)</td>
-                <td style="padding: 10px; text-align:left;">'.$hama_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$hama_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left;">Discharge (Absconded)</td>
-                <td style="padding: 10px; text-align:left;">'.$absconded_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$absconded_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left;"><strong>Discharges (Alive)</strong></td>
-                <td style="padding: 10px; text-align:left;">'.$alive_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$alive_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left;"><strong>Discharges (Deaths)</strong></td>
-                <td style="padding: 10px; text-align:left;">'.$died_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center;">'.$died_result->num_rows.'</td>
             </tr>
             <tr>
                 <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);"><strong>Total Discharges</strong></td>
-                <td style="padding: 10px; text-align:left; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$total_discharge_result->num_rows.'</td>
+                <td style="padding: 10px; text-align:center; font-weight: bolder; background-color: rgb(190, 233, 232);">'.$total_discharge_result->num_rows.'</td>
             </tr>
             
         </table>

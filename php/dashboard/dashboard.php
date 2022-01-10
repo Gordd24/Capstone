@@ -102,7 +102,7 @@ if (!isset($_SESSION)) {
     </div> -->
 
     <!--Container Main start-->
-    <div class="height-100 bg-light">
+    <div>
     <div class="container-lg align-items-center my-3 p-3">
         <h1>Dashboard</h1>
         <div class="row m-5">

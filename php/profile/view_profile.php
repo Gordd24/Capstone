@@ -124,7 +124,7 @@ if(isset($_POST['edit_username']))
 // }
 
 ?>
-<div class="height-100 bg-light">
+<div>
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
             <form method="POST">

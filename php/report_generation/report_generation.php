@@ -63,7 +63,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         $get_admitted_stmt->execute();
                                                                         $admitted_result = $get_admitted_stmt->get_result();
 
-                                                                        echo '<td scope="col">'.$admitted_result->num_rows.'</td>';
+                                                                        echo '<td scope="col" class="nums">'.$admitted_result->num_rows.'</td>';
 
                                                                     ?>
                                                                           
@@ -88,7 +88,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         $get_discharge_stmt->execute();
                                                                         $discharge_result = $get_discharge_stmt->get_result();
 
-                                                                        echo '<td scope="col">'.$discharge_result->num_rows.'</td>';
+                                                                        echo '<td scope="col" class="nums">'.$discharge_result->num_rows.'</td>';
 
                                                                     ?>
                                                                 </tr>
@@ -108,7 +108,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         $get_transferred_stmt->execute();
                                                                         $transferred_result = $get_transferred_stmt->get_result();
 
-                                                                        echo '<td scope="col">'.$transferred_result->num_rows.'</td>';
+                                                                        echo '<td scope="col" class="nums">'.$transferred_result->num_rows.'</td>';
 
                                                                     ?>
                                                                 </tr>
@@ -128,7 +128,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         $get_hama_stmt->execute();
                                                                         $hama_result = $get_hama_stmt->get_result();
 
-                                                                        echo '<td scope="col">'.$hama_result->num_rows.'</td>';
+                                                                        echo '<td scope="col" class="nums">'.$hama_result->num_rows.'</td>';
 
                                                                     ?>
                                                                 </tr>
@@ -148,7 +148,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         $get_absconded_stmt->execute();
                                                                         $absconded_result = $get_absconded_stmt->get_result();
 
-                                                                        echo '<td scope="col">'.$absconded_result->num_rows.'</td>';
+                                                                        echo '<td scope="col" class="nums">'.$absconded_result->num_rows.'</td>';
 
                                                                     ?>
                                                                 </tr>
@@ -169,7 +169,7 @@ date_default_timezone_set('Asia/Manila');
                                                                             $get_alive_stmt->execute();
                                                                             $alive_result = $get_alive_stmt->get_result();
 
-                                                                            echo '<td scope="col">'.$alive_result->num_rows.'</td>';
+                                                                            echo '<td scope="col" class="nums">'.$alive_result->num_rows.'</td>';
 
                                                                         ?>
                                                                     <!-- alive  end-->   
@@ -189,7 +189,7 @@ date_default_timezone_set('Asia/Manila');
                                                                             $get_died_stmt->execute();
                                                                             $died_result = $get_died_stmt->get_result();
 
-                                                                            echo '<td scope="col">'.$died_result->num_rows.'</td>';
+                                                                            echo '<td scope="col" class="nums">'.$died_result->num_rows.'</td>';
 
                                                                         ?>
                                                                     <!-- died  end-->      
@@ -209,7 +209,7 @@ date_default_timezone_set('Asia/Manila');
                                                                             $get_total_discharge_stmt->execute();
                                                                             $total_discharge_result = $get_total_discharge_stmt->get_result();
 
-                                                                            echo '<td scope="col">'.$total_discharge_result->num_rows.'</td>';
+                                                                            echo '<td scope="col" class="nums">'.$total_discharge_result->num_rows.'</td>';
 
                                                                         ?>
                                                                     <!-- died  end-->      

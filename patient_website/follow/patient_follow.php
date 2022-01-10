@@ -30,7 +30,7 @@ if(isset($_SESSION['ID'])){
 
   <?php include_once '../nav/patient_header.php' ?>
 
-  <div class="row justify-content-center my-3">
+  <div class="row justify-content-center m-4">
     <div class="col-12 col-sm-8 p-2">
 
         

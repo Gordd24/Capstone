@@ -20,7 +20,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-light sticky-top">
       <a class="nav-link text-white p-2 mx-2" id="records" href="../records/patient_records.php"><i class="bx bxs-folder-open"></i> Records</a>
       <a class="nav-link text-white p-2 mx-2" id="follow" href="../follow/patient_follow.php"><i class="bx bxs-message" ></i> Follow Up Results</a>
       <a class="nav-link text-white p-2 mx-2" id="response" href="../response/response.php"><i class="bx bxs-message-error"></i> Responses</a>
-      <a class="nav-link text-white p-2 mx-2" id="contact" href="../contact/patient_contact.php"><i class="bx bxs-phone"></i> Contact</a>
+      <a class="nav-link text-white p-2 mx-2" id="contact" href="../about/about.php"><i class="bx bx-info-circle"></i> About</a>
       
     </div>
   </div>

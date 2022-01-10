@@ -28,7 +28,7 @@ $id = $_GET['id'];
 ?>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 my-5">
             
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">

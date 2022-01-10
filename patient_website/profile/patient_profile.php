@@ -91,8 +91,8 @@ if(isset($_SESSION['ID'])){
   <main class="container justify-content-center">
 
         <!-- name row -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_name_div">
+        <div class="row m-4 justify-content-center">
+            <div class="col-12 col-sm-8 border rounded p-2" id="edit_name_div">
                 <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
                 <h3>Your Name</h3>
                     <div class="form-check my-3">
@@ -132,8 +132,8 @@ if(isset($_SESSION['ID'])){
         <!-- name row end -->
 
          <!-- password  -->
-         <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_password_div">
+         <div class="row m-4 justify-content-center">
+            <div class="col-12 col-sm-8 border rounded p-2" id="edit_password_div">
                 <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
                 <h3>Password</h3>
                     <div class="form-check my-3">
@@ -176,8 +176,8 @@ if(isset($_SESSION['ID'])){
         <!-- password end -->
 
         <!-- other -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_info_div">
+        <div class="row m-4 justify-content-center">
+            <div class="col-12 col-sm-8 border rounded p-2" id="edit_info_div">
                 <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
                 <h3>Other Information</h3>
                     <div class="form-check my-3">
@@ -230,8 +230,8 @@ if(isset($_SESSION['ID'])){
         <!-- other end -->
 
         <!-- optional -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_optional_div">
+        <div class="row m-4 justify-content-center">
+            <div class="col-12 col-sm-8 border rounded p-2" id="edit_optional_div">
                 <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
                 <h3>Other Information (Optional)</h3>
                     <div class="form-check my-3">
@@ -273,8 +273,8 @@ if(isset($_SESSION['ID'])){
         <!-- optional end -->
 
         <!-- email row  -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 border rounded my-5 p-2" id="edit_email_div">
+        <div class="row m-4 justify-content-center">
+            <div class="col-12 col-sm-8 border rounded p-2" id="edit_email_div">
                 <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
                 <h3>Email</h3>
                     <div class="form-check my-3">
