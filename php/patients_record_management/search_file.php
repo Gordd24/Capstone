@@ -15,7 +15,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $year = $_POST['year'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and YEAR(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and YEAR(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$year); // "is" means that $id is bound as an integer and $label as a string
@@ -39,7 +39,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $month = $_POST['month'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and MONTH(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and MONTH(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$month); // "is" means that $id is bound as an integer and $label as a string
@@ -64,7 +64,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $date = $_POST['date'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and date=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? and date=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$date); // "is" means that $id is bound as an integer and $label as a string
@@ -88,7 +88,7 @@ if(isset($_POST['type'])){
     
             $id = $_POST['patient'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? ORDER BY date DESC;");
 
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -118,7 +118,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $year = $_POST['year'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and YEAR(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and YEAR(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$year); // "is" means that $id is bound as an integer and $label as a string
@@ -142,7 +142,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $month = $_POST['month'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and MONTH(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and MONTH(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$month); // "is" means that $id is bound as an integer and $label as a string
@@ -167,7 +167,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $date = $_POST['date'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and date=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and date=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$date); // "is" means that $id is bound as an integer and $label as a string
@@ -191,7 +191,7 @@ if(isset($_POST['type'])){
     
             $id = $_POST['patient'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? ORDER BY date DESC;");
 
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -222,7 +222,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $year = $_POST['year'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and YEAR(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and YEAR(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$year); // "is" means that $id is bound as an integer and $label as a string
@@ -246,7 +246,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $month = $_POST['month'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and MONTH(date)=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and MONTH(date)=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$month); // "is" means that $id is bound as an integer and $label as a string
@@ -271,7 +271,7 @@ if(isset($_POST['type'])){
             $id = $_POST['patient'];
             $date = $_POST['date'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and date=? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? and date=? ORDER BY date DESC;");
     
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("ss", $id,$date); // "is" means that $id is bound as an integer and $label as a string
@@ -295,7 +295,7 @@ if(isset($_POST['type'])){
     
             $id = $_POST['patient'];
     
-            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY date ASC;");
+            $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY date DESC;");
 
             /* Prepared statement, stage 2: bind and execute */
             $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string

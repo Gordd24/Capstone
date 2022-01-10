@@ -9,7 +9,7 @@ include_once '../dbconn.php';
 
 
         /* Prepared statement, stage 1: prepare */
-        $get_patients_stmt = $connection->prepare("SELECT * FROM tbl_patients where concat(patient_id,' ',first_name,' ',middle_name,' ',last_name,' ',first_name,' ',last_name) LIKE ? ORDER BY date_added,time_added DESC");
+        $get_patients_stmt = $connection->prepare("SELECT * FROM tbl_patients where concat(patient_id,' ',first_name,' ',middle_name,' ',last_name,' ',first_name,' ',last_name) LIKE ? ORDER BY date_added DESC,time_added DESC");
 
         /* Prepared statement, stage 2: bind and execute */
         $get_patients_stmt->bind_param("s", $searched); // "is" means that $id is bound as an integer and $label as a string

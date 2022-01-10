@@ -14,7 +14,7 @@ if(isset($_POST['patient'])){
     if(isset($_POST['record'])){
         $id = $_POST['patient'];
         if($_POST['record']=="medical"){
-            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date ASC;");
+            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date DESC;");
 
             /* Prepared statement, stage 2: bind and execute */
             $get_record_stmt->bind_param("s", $id); 
@@ -32,7 +32,7 @@ if(isset($_POST['patient'])){
 
                }
         }else if($_POST['record']=="laboratory"){
-            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_lab_result  WHERE patient_id = ? ORDER BY date ASC;");
+            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_lab_result  WHERE patient_id = ? ORDER BY date DESC;");
 
             /* Prepared statement, stage 2: bind and execute */
             $get_record_stmt->bind_param("s", $id); 

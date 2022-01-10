@@ -74,7 +74,7 @@ else{
                                                             <?php
                                                             include_once '../dbconn.php';
                                                         
-                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date ASC;");
+                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_record_stmt->bind_param("s", $id); 

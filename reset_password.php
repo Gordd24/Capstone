@@ -43,30 +43,49 @@ include_once 'php/dbconn.php';
                             
                             if ($expDate >= $curDate) {
                                 ?> 
-                                <h2>Reset Password</h2>   
-                                <form method="post" id="reset_form" >
+                                <div class="row border rounded shadow-lg my-4 p-3">
+                                    <div class="col">
 
-                                    
-                                    <div class="form-group">
-                                        <label><strong>Enter New Password:</strong></label>
-                                        <input type="password"  id='new_password' name="new_password"  class="form-control"/>
-                                        <div class="error" id="password_error"></div>
+                                        <h2 class="text-center">Reset Password</h2>   
+                                        <form method="post" id="reset_form" >
+
+                                            <div class="row my-4">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Enter New Password:</strong></label>
+                                                        <input type="password"  id='new_password' name="new_password"  class="form-control"/>
+                                                        <div class="error" id="password_error"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row my-4">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Re-Enter New Password:</strong></label>
+                                                        <input type="password" id='confirm_password' name="confirm_password"  class="form-control"/>
+                                                        <div class="error" id="cpassword_error"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" name="email" value="<?php echo $email; ?>"/>
+                                            <input type="hidden" name="category" value="<?php echo $categ; ?>"/>
+
+                                            <div class="row justify-content-center">
+                                                <div class="col text-center">
+                                                    <div class="form-group">
+                                                        <input type="submit" id="reset" value="Reset Password" name='reset_submit'  class="btn text-white" style="background-color: rgb(27, 73, 101)"/>
+                                                        <input type="hidden" name="hidden_field_reset" id="hidden_field_reset" value="form_check">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                        </form>
+
                                     </div>
-
-                                    <div class="form-group">
-                                        <label><strong>Re-Enter New Password:</strong></label>
-                                        <input type="password" id='confirm_password' name="confirm_password"  class="form-control"/>
-                                        <div class="error" id="cpassword_error"></div>
-                                    </div>
-                                    <input type="hidden" name="email" value="<?php echo $email; ?>"/>
-                                    <input type="hidden" name="category" value="<?php echo $categ; ?>"/>
-                                    <div class="form-group">
-                                        <input type="submit" id="reset" value="Reset Password" name='reset_submit'  class="btn btn-primary"/>
-                                        <input type="hidden" name="hidden_field_reset" id="hidden_field_reset" value="form_check">
-
-                                    </div>
-
-                                </form>
+                                </div>
                                 <?php
                             } else {
                                 echo '<h2>Link Expired</h2>';
