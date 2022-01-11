@@ -127,9 +127,9 @@ $(document).ready(function () {
         })
     })
     //check if emp id exist
-    $('#emp_id').on('blur', function () {
+    $('#emp_id').on('input', function () {
         emp_id = $('#emp_id').val()
-       
+        
         $.ajax({
              type: "POST",
              url: "register_validation.php",
@@ -153,6 +153,34 @@ $(document).ready(function () {
              }
         });
    });
+   //check if email exist
+   email_state = false;
+   $('#email').on('blur', function () {
+    email = $('#email').val()
+   
+    $.ajax({
+         type: "POST",
+         url: "register_validation.php",
+         data: {
+              'email_check': 1,
+              'email': email,
+         },
+         success: function (response) {
+              if (response == 0) {
+                   email_state = false;
+                   console.log(response)
+              }
+              else if (response == 1) {
+                   email_state = true;
+                   console.log(response)
+              }
+              else {
+                   alert(response);
+                   console.log(response)
+              }
+         }
+    });
+});
     //account group
     $("#account_next_btn").click(function () {
         uname = $('#username').val()
@@ -161,20 +189,24 @@ $(document).ready(function () {
         cpword = $('#confirm_password').val()
         if (uname != '' && email != '' && pword != '' && cpword != '') {
             if(reg_uname_state){
-                
                 if (isEmail(email) == true) {
-                    if (pword == cpword) {
+                    if(email_state){
+                        if (pword == cpword) {
                         
-                        $("#account_group").removeClass("active_group");
-                        $("#personal_group").addClass("active_group");
-                        $(".progress-bar").css('width', '69%');
-                        //remove red texts if there is any
-                        $('#uname_error').html('')
-                        $('#email_error').html('')
-                        $('#pword_error').html('')
-                        $('#cpword_error').html('')   
-                    } else {
-                        Swal.fire('Error!', 'Password did not match.', 'error')
+                            $("#account_group").removeClass("active_group");
+                            $("#personal_group").addClass("active_group");
+                            $(".progress-bar").css('width', '69%');
+                            //remove red texts if there is any
+                            $('#uname_error').html('')
+                            $('#email_error').html('')
+                            $('#pword_error').html('')
+                            $('#cpword_error').html('')   
+                        } else {
+                            Swal.fire('Error!', 'Password did not match.', 'error')
+                        }
+                        }else {
+                            Swal.fire('Error!', 'This email is already registered', 'error')
+                            $('#email_error').html('This email is already registered')
                     }
                 } else {
                     Swal.fire('Error!', 'Please use a valid email', 'error')
@@ -249,7 +281,7 @@ $(document).ready(function () {
                           }).then((result) => {
                             // Reload the Page
                             $('#empid_error').html('')
-                            location.reload();
+                            location.href= 'account_management.php';
                           });
                     }
                 })

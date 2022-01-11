@@ -64,7 +64,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
                 <div class="row my-5">
                     <!-- form col container-->
                     <div class="col">
-                        <form method="POST" id='regform'>
+                        <form method="POST" id='regform' >
                             <!-- input group -->
                             <div class="row input_group active_group" id="account_group">
 

@@ -2,9 +2,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 include_once 'php/dbconn.php';
 
+
+
 if(isset($_POST['email_check'])){
     $email = $_POST['email'];
-
     //check if user exists
     $selectEmail = $connection->prepare("SELECT email FROM tbl_patients WHERE email = ?");
     $selectEmail->bind_param('s',$email);

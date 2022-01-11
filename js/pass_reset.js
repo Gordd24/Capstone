@@ -29,7 +29,7 @@ $(document).ready(function () {
                       console.log(response)
                  }
                  else {
-                      alert(response);
+                      console.log(response);
                  }
 
             }

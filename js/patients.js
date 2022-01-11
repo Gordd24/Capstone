@@ -39,6 +39,34 @@ $(document).ready(function () {
         }
     }
 
+    email_state = false;
+   $('#email').on('input', function () {
+    email = $('#email').val()
+   
+    $.ajax({
+         type: "POST",
+         url: "add_patient_validation.php",
+         data: {
+              'email_check': 1,
+              'email': email,
+         },
+         success: function (response) {
+              if (response == 0) {
+                   email_state = false;
+                   console.log(response)
+              }
+              else if (response == 1) {
+                   email_state = true;
+                   console.log(response)
+              }
+              else {
+                   alert(response);
+                   console.log(response)
+              }
+         }
+    });
+});
+
     //consultation personal group
     $("#patient1_next_btn").click(function () {
         fname = $('#first_name').val()
@@ -47,12 +75,19 @@ $(document).ready(function () {
         email = $('#email').val()
         if (fname != '' && lname != '' && email != '') {
             if (isEmail(email) == true) {
-                $("#patient1_group").removeClass("active_group");
-                $("#patient2_group").addClass("active_group");
-                $(".progress-bar").css('width', '66%');
-                $('#fname_error').html('')
-                $('#lname_error').html('')
-                $('#email_error').html('')
+                if(email_state){
+                    $("#patient1_group").removeClass("active_group");
+                    $("#patient2_group").addClass("active_group");
+                    $(".progress-bar").css('width', '66%');
+                    $('#fname_error').html('')
+                    $('#lname_error').html('')
+                    $('#email_error').html('')
+                }else{
+                    Swal.fire('Error!', 'This email is already registered', 'error')
+                    $('#email_error').html('This email is already registered')
+                }
+                
+                
             } else {
                 Swal.fire('Error!', 'Please enter a valid email', 'error')
                 $('#email_error').html('Please enter a valid email')
