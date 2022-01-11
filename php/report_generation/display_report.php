@@ -7,7 +7,9 @@ if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
 
-
+if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
+    header("Location: ../../index.php");
+}
 
 
 
