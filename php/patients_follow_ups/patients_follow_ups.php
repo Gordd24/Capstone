@@ -36,7 +36,11 @@ if(!isset($_SESSION['ID'])){
 
     <div class="row">
         <div class="col-12">
-
+                                    <div class="row justify-content-center">
+                                        <div class="col-10 mx-5 my-3">
+                                            <h2>Patients Follow Ups</h2>
+                                        </div>
+                                    </div>
                                                 <!-- search box -->
                                                 <div class="row justify-content-center my-5">
                                                     <div class="col-4">

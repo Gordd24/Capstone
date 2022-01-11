@@ -131,8 +131,15 @@ if(isset($_POST['edit_username']))
 
 ?>
 <div>
+    <div class="row justify-content-center">
+        <div class="col-10 mx-5 my-3">
+            <h2>My Profile</h2>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
+        
             <form method="POST">
             <h3>Personal Information</h3>
                 <div class="form-check my-3">

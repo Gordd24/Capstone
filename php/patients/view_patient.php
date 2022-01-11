@@ -81,10 +81,15 @@ if(!isset($_SESSION['ID'])){
     ?>
 
 <div>
-
+            <div class="row justify-content-center">
+                <div class="col-10 mx-5 my-3">
+                    <h2>Patient's Profile</h2>
+                </div>
+            </div>
     <!-- name row -->
     <div class="row">
         <div class="col-5 container-lg border my-5 p-2" id="edit_name_div">
+
             <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
             <h3>Patient's Name</h3>
                 <div class="form-check my-3">

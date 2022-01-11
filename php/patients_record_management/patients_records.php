@@ -60,6 +60,11 @@ if(!isset($_SESSION['ID'])){
 
                 <div class="row my-3">
                         <div class="col-12">
+                                        <div class="row justify-content-center">
+                                            <div class="col-10 mx-5 my-3">
+                                                <h2>Record Management</h2>
+                                            </div>
+                                        </div>
                                         <!-- search-box -->
                                         <div class="row my-4 justify-content-center">
                                             <div class="col-md-4">

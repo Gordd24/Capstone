@@ -2,7 +2,7 @@
 $dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName ="olmmgh_db15";
+$dbName ="olmmgh_db2";
 
 $conn = mysqli_connect($dbServerName,$dbUsername, $dbPassword, $dbName);
 
@@ -17,4 +17,5 @@ $connection = new mysqli($dbServerName,$dbUsername, $dbPassword, $dbName);
 // else{
 //     printf("Success");
 // }
+
 ?>

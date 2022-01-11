@@ -36,8 +36,13 @@ date_default_timezone_set('Asia/Manila');
 
     <div class="row">
         <div class="col-12">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-10 mx-5 my-3">
+                                                        <h2>Report Generation</h2>
+                                                    </div>
+                                                </div>
                                                 <!-- table row  -->
-                                                <div class="row justify-content-center my-5">
+                                                <div class="row justify-content-center my-3">
                                                     <div class="col-md-10">
 
 
