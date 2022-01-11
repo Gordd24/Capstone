@@ -32,7 +32,6 @@
   }
   
   body {
-    padding-top: 1rem;
     font-family: sans-serif;
   }
   
@@ -409,7 +408,6 @@ FOR TOGGLE */
     height: 100%;
     transition: .5 s;
     border-radius: 8%/20%;
-    
 }
 
 .error{
@@ -418,6 +416,13 @@ FOR TOGGLE */
   margin-left: 2%;
 }
 
+.index_header{
+  background-color: rgb(27, 73, 101);
+}
+
+#logo{
+  width: 4rem;
+}
 
 
 
