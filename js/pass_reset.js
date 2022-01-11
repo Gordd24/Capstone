@@ -8,38 +8,83 @@ $(document).ready(function () {
             return true;
         }
     }
+
+    radio ='patient';
+    console.log(radio)
+    //check valiue if patient or personnel
+    $('input[name="account"]').change(function() {
+        if (this.value == 'patient') {
+            radio = this.value   
+            // console.log(categ) 
+        }
+        else if (this.value == 'personnel') {
+            radio = this.value 
+            // console.log(categ)
+        }
+    });
+
     //check if email exist
     email_state = false;
     $('#forgetEmail').on('blur', function(){
         email = $('#forgetEmail').val()
-        $.ajax({
-            type: "POST",
-            url: "forgetProcess.php",
-            data: {
-                 'email_check': 1,
-                 'email': email,
-            },
-            success: function (response) {
-                 if (response == 0) {
-                      email_state = false;
-                      console.log(response)
-                 }
-                 else if (response == 1) {
-                      email_state = true;
-                      console.log(response)
-                 }
-                 else {
-                      console.log(response);
-                 }
-
-            }
-        })
+        console.log(radio);
+        if (radio == 'patient'){
+            $.ajax({
+                type: "POST",
+                url: "forgetProcess.php",
+                data: {
+                     'email_check': 1,
+                     'email': email,
+                     'radio': radio,
+                },
+                success: function (response) {
+                     if (response == 0) {
+                          email_state = false;
+                          console.log(response)
+                     }
+                     else if (response == 1) {
+                          email_state = true;
+                          console.log(response)
+                     }
+                     else {
+                          console.log(response);
+                     }
+    
+                }
+            })
+        }else if( radio == 'personnel'){
+            $.ajax({
+                type: "POST",
+                url: "forgetProcess2.php",
+                data: {
+                     'email_check': 1,
+                     'email': email,
+                     'radio': radio,
+                },
+                success: function (response) {
+                     if (response == 0) {
+                          email_state = false;
+                          console.log(response)
+                     }
+                     else if (response == 1) {
+                          email_state = true;
+                          console.log(response)
+                     }
+                     else {
+                          console.log(response);
+                     }
+    
+                }
+            })
+        }
+        
     })
+
+
 
     $('#frmForget').on('submit', function (e) {
         var data = $('#frmForget').serialize();
         email = $('#forgetEmail').val()
-        
         console.log(email)
         if(email==''){
             $('#email_error').html('Please enter email')

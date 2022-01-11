@@ -3,25 +3,32 @@ use PHPMailer\PHPMailer\PHPMailer;
 include_once 'php/dbconn.php';
 
 
-
+//for patient
 if(isset($_POST['email_check'])){
-    $email = $_POST['email'];
-    //check if user exists
-    $selectEmail = $connection->prepare("SELECT email FROM tbl_patients WHERE email = ?");
-    $selectEmail->bind_param('s',$email);
-    $selectEmail->execute();
-    $selectEmail->store_result();
+    
+        $email = $_POST['email'];
 
-    if($selectEmail->num_rows>0){
-        //user exist
-        echo "0";
-    }
-    else{
-        //user does not exist
-        echo "1";
-    }
-    $selectEmail->close();
+        //check if user exists
+        $selectEmail;
+        
+        $selectEmail = $connection->prepare("SELECT email FROM tbl_patients WHERE email = ?");
+        
+        $selectEmail->bind_param('s',$email);
+        $selectEmail->execute();
+        $selectEmail->store_result();
+
+        if($selectEmail->num_rows>0){
+            //user exist
+            echo "0";
+        }
+        else{
+            //user does not exist
+            echo "1";
+        }
+        $selectEmail->close();
 }
+
+
 
 if (isset($_POST['hidden_field_forget']) && $_POST['hidden_field_forget'] === 'form_check'){
 // if(isset($_POST['forgetSubmit'])){
