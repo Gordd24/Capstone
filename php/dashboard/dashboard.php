@@ -1,8 +1,8 @@
 <?php
-
-if (!isset($_SESSION)) {
-    session_start();
-  }
+session_start();
+if(!isset($_SESSION['ID'])){
+    header("Location: ../../index.php");
+}
     include_once '../dbconn.php';
     
     $sql1 = "SELECT * FROM tbl_patients";
