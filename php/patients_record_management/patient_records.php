@@ -150,7 +150,7 @@ $id = $_GET['id'];
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
                                                                    
-                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY date DESC;");
+                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY date DESC, record_admission_id DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -290,7 +290,7 @@ $id = $_GET['id'];
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
                                                                    
-                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? ORDER BY date DESC;");
+                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? ORDER BY date DESC, record_cons_id DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -310,7 +310,6 @@ $id = $_GET['id'];
                                                                     }
                                                                         
 
-                                                                        
                                                                     ?>
                                                             </tbody>
                                                         </table>
@@ -347,7 +346,6 @@ $id = $_GET['id'];
                                                         </div>
                                                     </div>            
 
-                                                    
                                                 </div>
                                                 <!-- SELECT ROW END -->
 
@@ -428,7 +426,7 @@ $id = $_GET['id'];
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
                                                                    
-                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? ORDER BY date DESC;");
+                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_med_cert WHERE patient_id = ? ORDER BY date DESC, record_med_cert_id DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -565,7 +563,7 @@ $id = $_GET['id'];
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
                                                                    
-                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_lab_result WHERE patient_id = ? ORDER BY date DESC;");
+                                                                    $get_med_stmt = $connection->prepare("SELECT * FROM tbl_lab_result WHERE patient_id = ? ORDER BY date DESC, lab_result_id DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_med_stmt->bind_param("s", $id); // "is" means that $id is bound as an integer and $label as a string

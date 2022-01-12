@@ -39,7 +39,7 @@ if(!isset($_SESSION['ID'])){
                             <p class="option_buttons" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
                             <p class="option_buttons" id="admission"><i class='bx bx-user-plus' ></i> Admission Record</p>
                             <p class="option_buttons" id="med_cert"><i class='bx bx-certification'></i> Medical Certificate</p>
-                            <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
+                            <p class="option_buttons" id="lab_res"><i class='bx bx-test-tube'></i> Laboratory Result</p>
                         </div>
                         </div>
                 <!-- modal end -->
@@ -53,7 +53,7 @@ if(!isset($_SESSION['ID'])){
                             <p class="option_buttons2" id="consultation"><i class='bx bx-notepad' ></i> Consultation Record</p>
                             <p class="option_buttons2" id="discharge"><i class='bx bx-user-minus' ></i> Discharge Record</p>
                             <p class="option_buttons2" id="med_cert"><i class='bx bx-certification'></i> Medical Certificate</p>
-                            <p class="option_buttons2" id="lab_res"><i class='bx bx-test-tube'></i> Lab Result</p>
+                            <p class="option_buttons2" id="lab_res"><i class='bx bx-test-tube'></i> Laboratory Result</p>
                         </div>
                         </div>
                 <!-- modal end -->

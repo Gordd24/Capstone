@@ -15,8 +15,8 @@ if (isset($_POST['hidden_field_consultation']) && $_POST['hidden_field_consultat
       make_consultation();
 }
 
-if (isset($_POST['hidden_field_medcert']) && $_POST['hidden_field_medcert'] === 'form_check'){
-  // if (isset($_POST['consultation'])){
+// if (isset($_POST['hidden_field_medcert']) && $_POST['hidden_field_medcert'] === 'form_check'){
+  if (isset($_POST['medcert'])){
       make_medcert();
 }
 
@@ -428,6 +428,36 @@ function make_medcert(){
     $patient_physician= $_POST['physician'];
     $patient_physician_license=$_POST['license'];
 
+
+
+    $signature_name =$_FILES['signature']['name'];
+    //$destination = 'patient/' . $pdfName;
+
+    $signature_path = "images/tmp/";
+    if (!is_dir( "../../".$signature_path ) ) {
+        mkdir( "../../".$signature_path );       
+    } 
+
+ 
+
+    //destination
+    $signature_file = $signature_path."/".$signature_name;
+
+    //$extension = pathinfo($pdfName, PATHINFO_EXTENSION);//check if the extension is correct
+    $tmp_file = $_FILES['signature']['tmp_name'];
+    //$size = $_FILES['patient_lab_res']['size'];//for size limit
+
+  
+        // move the uploaded (temporary) file to the specified destination
+        if (move_uploaded_file($tmp_file, "../../".$signature_file)) {
+
+                echo "File uploaded successfully";
+
+        } 
+        else {
+            echo "Failed to upload file.";
+        }
+
     $mpdf->WriteHTML(
         
       '<div  style="position:relative; text-align:center;">
@@ -443,6 +473,10 @@ function make_medcert(){
       <div style="text-align:right;">
           <p>'.$date_today.'</p>
       </div>
+
+       <div style="text-align:right;">
+          
+       </div>
       
       <div style="text-align:left;">
           <p>To whom it may concern:</p>
@@ -466,10 +500,14 @@ function make_medcert(){
       
       
       <div style="text-align:center; width:35%; float:right;">
-          <p>'.$patient_physician.'<br>Attending Physician<br>License Number: '.$patient_physician_license.'</p>
+        <p><img src="../../'.$signature_file.'" style="width:30mm; font-weight: bold;" /></p></br><p>'.$patient_physician.'<br>Attending Physician<br>License Number: '.$patient_physician_license.'</p>
       </div>
       '
       );
+
+ 
+      unlink("../../".$signature_file);
+      
       
       $path = "patient/".$patient_id;
       //uncomment once isasama na sa system
@@ -498,6 +536,9 @@ function make_medcert(){
       $stmt->bind_param("ssss", $patient_id,$file,$record_date,$file_name ); // "is" means that $id is bound as an integer and $label as a string
     
       $stmt->execute();
+
+
+     
         
       // header('Location: record_management.php');
   

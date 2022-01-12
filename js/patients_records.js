@@ -144,9 +144,9 @@ $(document).ready(function () {
             $('#contact_error').html('')
             $('age#_error').html('')
         } else {
-           if(address=='')$('#address_error').html('Please enter address') 
-           if(contact=='')$('#contact_error').html('Please enter contact') 
-           if(age=='')$('#age_error').html('Please enter age') 
+            if (address == '') $('#address_error').html('Please enter address')
+            if (contact == '') $('#contact_error').html('Please enter contact')
+            if (age == '') $('#age_error').html('Please enter age')
         }
     });
 
@@ -174,16 +174,16 @@ $(document).ready(function () {
                 $('#lmp_error').html('')
                 $('#aog_error').html('')
                 $('#edc_error').html('')
-            
+
             } else {
-                if(weight=='')$('#weight_error').html('Please enter weight')
-                if(bp=='')$('#bp_error').html('Please enter bp')
-                if(temp=='')$('#temp_error').html('Please enter temp')
-                if(rr=='')$('#rr_error').html('Please enter rr')
-                if(pr=='')$('#pr_error').html('Please enter pr')
-                if(lmp=='')$('#lmp_error').html('Please enter lmp')
-                if(aog=='')$('#aog_error').html('Please enter aog')
-                if(edc=='')$('#edc_error').html('Please enter edc')
+                if (weight == '') $('#weight_error').html('Please enter weight')
+                if (bp == '') $('#bp_error').html('Please enter bp')
+                if (temp == '') $('#temp_error').html('Please enter temp')
+                if (rr == '') $('#rr_error').html('Please enter rr')
+                if (pr == '') $('#pr_error').html('Please enter pr')
+                if (lmp == '') $('#lmp_error').html('Please enter lmp')
+                if (aog == '') $('#aog_error').html('Please enter aog')
+                if (edc == '') $('#edc_error').html('Please enter edc')
             }
         }
         else {
@@ -197,11 +197,11 @@ $(document).ready(function () {
                 $('#rr_error').html('')
                 $('#pr_error').html('')
             } else {
-                if(weight=='')$('#weight_error').html('Please enter weight')
-                if(bp=='')$('#bp_error').html('Please enter bp')
-                if(temp=='')$('#temp_error').html('Please enter temp')
-                if(rr=='')$('#rr_error').html('Please enter rr')
-                if(pr=='')$('#pr_error').html('Please enter pr')
+                if (weight == '') $('#weight_error').html('Please enter weight')
+                if (bp == '') $('#bp_error').html('Please enter bp')
+                if (temp == '') $('#temp_error').html('Please enter temp')
+                if (rr == '') $('#rr_error').html('Please enter rr')
+                if (pr == '') $('#pr_error').html('Please enter pr')
             }
         }
     });
@@ -219,20 +219,20 @@ $(document).ready(function () {
         if (complaint == '') {
             $('#complaint_error').html('Please enter complaint')
             e.preventDefault();
-        }else{
+        } else {
             e.preventDefault()
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
                 data: data,
-                success: function (response){        
+                success: function (response) {
                     Swal.fire({
-                    title: 'Success',
-                    text:'Admission Successful',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Admission Successful',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href='patients_records.php';
+                        location.href = 'patients_records.php';
                     });
                 }
             })
@@ -263,9 +263,9 @@ $(document).ready(function () {
             $('#contact_error').html('')
             $('#age_error').html('')
         } else {
-            if(address=='')$('#address_error').html('Please enter address')
-            if(contact=='')$('#contact_error').html('Please enter contact number')
-            if(age=='')$('#age_error').html('Please enter age')
+            if (address == '') $('#address_error').html('Please enter address')
+            if (contact == '') $('#contact_error').html('Please enter contact number')
+            if (age == '') $('#age_error').html('Please enter age')
         }
     });
 
@@ -302,12 +302,12 @@ $(document).ready(function () {
             $('#time_admit_error').html('')
             $('#admitby_error').html('')
         } else {
-            if(room_no=='')$('#room_error').html('Please enter room number')
-            if(case_no=='')$('#case_error').html('Please enter case number')
-            if(cs=='')$('#cs_error').html('Please enter cs')
-            if(date_admit=='')$('#date_admit_error').html('Please enter the date of admission')
-            if(time_admit=='')$('#time_admit_error').html('Please enter the time of admission')
-            if(admit_by=='')$('#admitby_error').html('Please enter who admitted the patient')
+            if (room_no == '') $('#room_error').html('Please enter room number')
+            if (case_no == '') $('#case_error').html('Please enter case number')
+            if (cs == '') $('#cs_error').html('Please enter cs')
+            if (date_admit == '') $('#date_admit_error').html('Please enter the date of admission')
+            if (time_admit == '') $('#time_admit_error').html('Please enter the time of admission')
+            if (admit_by == '') $('#admitby_error').html('Please enter who admitted the patient')
         }
     });
 
@@ -323,30 +323,30 @@ $(document).ready(function () {
         physician = $('#physician').val()
         diagnosis = $('#diagnosis').val()
         if (physician == '' || diagnosis == '') {
-            if(physician=='')$('#phys_error').html('Please enter physician name')
-            if(diagnosis=='')$('#diag_error').html('Please enter diagnosis')
+            if (physician == '') $('#phys_error').html('Please enter physician name')
+            if (diagnosis == '') $('#diag_error').html('Please enter diagnosis')
             e.preventDefault()
-        }else{
-            
+        } else {
+
             e.preventDefault()
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
                 data: data,
-                success: function (response){        
+                success: function (response) {
                     Swal.fire({
-                    title: 'Success',
-                    text:'Admission Successful',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Admission Successful',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href='patients_records.php';
+                        location.href = 'patients_records.php';
                     });
                 }
             })
             return false;
-            }
-        })
+        }
+    })
 
 
     $("#diagnosis_prev_btn").click(function () {
@@ -367,8 +367,8 @@ $(document).ready(function () {
             $('#address_error').html('')
             $('#age_error').html('')
         } else {
-            if(address=='')$('#address_error').html('Please enter address')
-            if(age=='')$('#age_error').html('Please enter age')
+            if (address == '') $('#address_error').html('Please enter address')
+            if (age == '') $('#age_error').html('Please enter age')
         }
     });
 
@@ -389,7 +389,7 @@ $(document).ready(function () {
             $(".progress-bar").css('width', '75%');
             $('#diag_error').html('')
         } else {
-            if(diagnosis=='')$('#diag_error').html('Please enter diagnosis')
+            if (diagnosis == '') $('#diag_error').html('Please enter diagnosis')
         }
     });
 
@@ -409,7 +409,7 @@ $(document).ready(function () {
             $(".progress-bar").css('width', '100%');
             $('#recom_error').html('')
         } else {
-            if(recommendation=='')$('#recom_error').html('Please enter recommendation')
+            if (recommendation == '') $('#recom_error').html('Please enter recommendation')
         }
     });
 
@@ -420,44 +420,44 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '75%');
     });
 
-    $('#medcert_form').on('submit', function (e) {
-        physician = $('#physician').val()
-        license = $('#license').val()
-        var data = $('#medcert_form').serialize()
-        if (physician == '' || license == '') {
-            if(physician=='')$('#phys_error').html('Please enter physician name')
-            if(physician=='')$('#phys_license_error').html('Please enter physician license')
-            e.preventDefault()
-        }else{
-            e.preventDefault()
-            $.ajax({
-                type: 'POST',
-                url: 'patient_records_process.php',
-                data: data,
-                success: function (response){        
-                    Swal.fire({
-                    title: 'Success',
-                    text:'Medical certificate created successfully',
-                    icon: 'success',
-                    }).then((result) => {
-                        // Reload the Page
-                        location.href='patients_records.php';
-                    });
-                }
-            })
-            return false;
-        }
-    })
+    // $('#medcert_form').on('submit', function (e) {
+    //     physician = $('#physician').val()
+    //     license = $('#license').val()
+    //     var data = $('#medcert_form').serialize()
+    //     if (physician == '' || license == '') {
+    //         if(physician=='')$('#phys_error').html('Please enter physician name')
+    //         if(physician=='')$('#phys_license_error').html('Please enter physician license')
+    //         e.preventDefault()
+    //     }else{
+    //         e.preventDefault()
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: 'patient_records_process.php',
+    //             data: data,
+    //             success: function (response){        
+    //                 Swal.fire({
+    //                 title: 'Success',
+    //                 text:'Medical certificate created successfully',
+    //                 icon: 'success',
+    //                 }).then((result) => {
+    //                     // Reload the Page
+    //                     location.href='patients_records.php';
+    //                 });
+    //             }
+    //         })
+    //         return false;
+    //     }
+    // })
 
     //laboratory validation
     $('#lab_form').on('submit', function (e) {
-        
+
         if ($('#patient_lab_res').get(0).files.length === 0) {
             Swal.fire('Error!', 'Please upload the laboratory result', 'error')
             e.preventDefault()
-        }else{
+        } else {
             e.preventDefault()
-            
+
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
@@ -465,15 +465,15 @@ $(document).ready(function () {
                 processData: false,
                 contentType: false,
                 cache: false,
-                success: function (data){      
-                    console.log(data)  
+                success: function (data) {
+                    console.log(data)
                     Swal.fire({
-                    title: 'Success',
-                    text:'Admission Successful',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Admission Successful',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href='patients_records.php';
+                        location.href = 'patients_records.php';
                     });
                 }
             })
@@ -788,23 +788,23 @@ $(document).ready(function () {
     });
 
     $("#discharging_next_btn").click(function () {
-        date_disch= $('#date_discharged').val()
-        time_disch= $('#time_discharged').val()
-        disch_by= $('#discharged_by')
+        date_disch = $('#date_discharged').val()
+        time_disch = $('#time_discharged').val()
+        disch_by = $('#discharged_by')
 
-        if(Date.parse(date_disch) && time_disch != '' && disch_by!=''){
+        if (Date.parse(date_disch) && time_disch != '' && disch_by != '') {
             $("#discharging_group").removeClass("active_group");
             $("#transfer_group").addClass("active_group");
             $(".progress-bar").css('width', '48%');
             $('#date_error').html('')
             $('#time_error').html('')
             $('#dischargeby_error').html('')
-        }else{
-            if(date_disch=='')$('#date_error').html('Please enter date discharged')
-            if(time_disch=='')$('#time_error').html('Please enter time discharged')
-            if(disch_by=='')$('#dischargeby_error').html('Please enter who discharge the patient')
+        } else {
+            if (date_disch == '') $('#date_error').html('Please enter date discharged')
+            if (time_disch == '') $('#time_error').html('Please enter time discharged')
+            if (disch_by == '') $('#dischargeby_error').html('Please enter who discharge the patient')
         }
-        
+
     });
 
 
@@ -830,13 +830,13 @@ $(document).ready(function () {
 
     $("#diagnosis_next_btn").click(function () {
         diagnosis = $('#diagnosis').val();
-        if(diagnosis !=''){
+        if (diagnosis != '') {
             $("#diagnosis_group").removeClass("active_group");
             $("#code_group").addClass("active_group");
             $(".progress-bar").css('width', '80%');
             $('#diag_error').html('')
         }
-        else{$('#diag_error').html('Please enter final diagnosis')}
+        else { $('#diag_error').html('Please enter final diagnosis') }
     });
 
     // code group
@@ -849,17 +849,17 @@ $(document).ready(function () {
     $("#code_next_btn").click(function () {
         icd = $('#icd').val()
         rvs = $('#rvs').val()
-        if(icd!='' && rvs != ''){
+        if (icd != '' && rvs != '') {
             $("#code_group").removeClass("active_group");
             $("#operation_group").addClass("active_group");
             $(".progress-bar").css('width', '100%');
             $('#icd_error').html('')
             $('#rvs_error').html('')
-        }else{
-            if(icd =='')$('#icd_error').html('Please enter icd code')
-            if(rvs== '')$('#rvs_error').html('Please enter rvs code')
+        } else {
+            if (icd == '') $('#icd_error').html('Please enter icd code')
+            if (rvs == '') $('#rvs_error').html('Please enter rvs code')
         }
-       
+
     });
 
     // operation group
@@ -869,29 +869,29 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '80%');
     });
 
-    $('#discharge_form').on('submit', function (e) {  
+    $('#discharge_form').on('submit', function (e) {
         operation = $('#operation').val()
         data = $('#discharge_form').serialize()
-        if(operation !=''){
+        if (operation != '') {
             e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
                 data: data,
-                success: function (response){        
+                success: function (response) {
                     Swal.fire({
-                    title: 'Success',
-                    text:'Discharge Successful',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Discharge Successful',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href='patients_records.php';
+                        location.href = 'patients_records.php';
                     });
                 }
             })
             return false;
         }
-        else{
+        else {
             $('#operation_error').html('Please enter operation/s')
             e.preventDefault()
         }
