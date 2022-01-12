@@ -114,7 +114,7 @@ if(!isset($_SESSION['ID'])){
                                 <div class="row my-5">
                                      <!-- form col container-->
                                     <div class="col">
-                                        <form method="POST" id ='medcert_form' action="patient_records_process.php"  enctype="multipart/form-data">
+                                        <form method="POST" id ='medcert_form' enctype="multipart/form-data">
 
                                              <!-- input group -->
                                             <div class="row input_group active_group" id="medical_personal_group">
@@ -294,6 +294,7 @@ if(!isset($_SESSION['ID'])){
                                                             <label for="license" class="form-label">Physician License</label>
                                                             <input type="text" class="form-control" id="license" name="license" autocomplete="off"> 
                                                             <div class="error" id="phys_license_error"></div>
+                                                            
                                                         </div>
                                                     </div>
 
@@ -301,6 +302,7 @@ if(!isset($_SESSION['ID'])){
                                                         <div class="col">                                               
                                                                 <label for="signature" class="form-label">Upload Signature</label>
                                                                 <input class="form-control file_upload" type="file" id="signature" name="signature">
+                                                                <div class="error" id="sign_error"></div>
                                                         </div>
                                                     </div>
 

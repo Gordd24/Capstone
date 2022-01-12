@@ -15,8 +15,8 @@ if (isset($_POST['hidden_field_consultation']) && $_POST['hidden_field_consultat
       make_consultation();
 }
 
-// if (isset($_POST['hidden_field_medcert']) && $_POST['hidden_field_medcert'] === 'form_check'){
-  if (isset($_POST['medcert'])){
+if (isset($_POST['hidden_field_medcert']) && $_POST['hidden_field_medcert'] === 'form_check'){
+  // if (isset($_POST['medcert'])){
       make_medcert();
 }
 

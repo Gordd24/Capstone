@@ -420,34 +420,39 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '75%');
     });
 
-    // $('#medcert_form').on('submit', function (e) {
-    //     physician = $('#physician').val()
-    //     license = $('#license').val()
-    //     var data = $('#medcert_form').serialize()
-    //     if (physician == '' || license == '') {
-    //         if(physician=='')$('#phys_error').html('Please enter physician name')
-    //         if(physician=='')$('#phys_license_error').html('Please enter physician license')
-    //         e.preventDefault()
-    //     }else{
-    //         e.preventDefault()
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: 'patient_records_process.php',
-    //             data: data,
-    //             success: function (response){        
-    //                 Swal.fire({
-    //                 title: 'Success',
-    //                 text:'Medical certificate created successfully',
-    //                 icon: 'success',
-    //                 }).then((result) => {
-    //                     // Reload the Page
-    //                     location.href='patients_records.php';
-    //                 });
-    //             }
-    //         })
-    //         return false;
-    //     }
-    // })
+    $('#medcert_form').on('submit', function (e) {
+        physician = $('#physician').val()
+        license = $('#license').val()
+        // var data = $('#medcert_form').serialize()
+        if (physician == '' || license == '' || $('#signature').get(0).files.length === 0) {
+            if(physician=='')$('#phys_error').html('Please enter physician name')
+            if(physician=='')$('#phys_license_error').html('Please enter physician license')
+            if($('#signature').get(0).files.length === 0)$('#sign_error').html('Please upload signature')
+            e.preventDefault()
+        }else{
+            e.preventDefault()
+            $.ajax({
+                type: 'POST',
+                url: 'patient_records_process.php',
+                
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response){        
+                    Swal.fire({
+                    title: 'Success',
+                    text:'Medical certificate created successfully',
+                    icon: 'success',
+                    }).then((result) => {
+                        // Reload the Page
+                        location.href='patients_records.php';
+                    });
+                }
+            })
+            return false;
+        }
+    })
 
     //laboratory validation
     $('#lab_form').on('submit', function (e) {
