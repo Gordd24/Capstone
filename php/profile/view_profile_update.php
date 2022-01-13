@@ -1,10 +1,10 @@
 <?php 
-
+session_start();
+if(!isset($_SESSION['ID'])){
+    header("Location: ../../index.php");
+}
 include_once '../dbconn.php';
 
-
-
-session_start();
 $stmt = $connection->prepare("SELECT * FROM tbl_accounts where acc_id = ?");
 $id = $_SESSION['ID'];
 $stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
@@ -18,7 +18,40 @@ if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
 
+if (isset($_POST['upd_uname_check'])){
+    $uname = $_POST['uname'];
 
+    $get_uname_stmt = $connection->prepare("SELECT username FROM tbl_accounts WHERE username = ?");
+    $get_uname_stmt -> bind_param("s",$uname);
+    $get_uname_stmt -> execute();
+    $result = $get_uname_stmt->get_result();
+
+    if($result->num_rows>0){
+        //username already used
+        echo '1';
+
+    }else{
+        //username available
+        echo '0';
+        
+    }
+
+}
+if (isset($_POST['hidden_field_username']) && $_POST['hidden_field_username'] === 'form_check'){
+// if(isset($_POST['edit_username'])){
+    $origUname = $_POST['orig_uname'];
+    $username = $_POST['username'];
+
+   
+         // prepare
+        $up_username_stmt = $connection->prepare("UPDATE tbl_accounts SET username = ? WHERE username = ?");
+
+        //execute
+        $up_username_stmt->bind_param("si", $username,$origUname); // "is" means that $id is bound as an integer and $label as a string
+        $up_username_stmt->execute();
+        
+    
+}
 
 
 if (isset($_POST['upd_password_check'])){
@@ -48,6 +81,7 @@ if (isset($_POST['upd_password_check'])){
             echo '0';
         }
 }
+
 if(isset($_POST['edit_profile_submit'])){
     $newPword = $_POST['newPword'];
     $currentPword = $_POST['currentPword'];

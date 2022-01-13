@@ -29,7 +29,20 @@ $(document).ready(function () {
                     location.href = "patient_records.php?id=" + $(this).attr('id');
                 });
                 $(".btn.archive").click(function () {
-                    location.href = "archive_folder.php?id=" + $(this).attr('id');
+
+                    Swal.fire({
+                        title: 'Confirmation',
+                        text: "Do you want to archive this record?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "archive_folder.php?id=" + $(this).attr('id');
+                        }
+                      })
                 });
             }
         });
@@ -45,7 +58,19 @@ $(document).ready(function () {
 
     // archive record
     $(".btn.archive").click(function () {
-        location.href = "archive_folder.php?id=" + $(this).attr('id');
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Do you want to archive this record?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "archive_folder.php?id=" + $(this).attr('id');
+            }
+          })
     });
 
     $(".btn.create_record").click(function () {
@@ -228,7 +253,7 @@ $(document).ready(function () {
                 success: function (response) {
                     Swal.fire({
                         title: 'Success',
-                        text: 'Admission Successful',
+                        text: 'Consultation Successful',
                         icon: 'success',
                     }).then((result) => {
                         // Reload the Page
@@ -457,8 +482,9 @@ $(document).ready(function () {
     //laboratory validation
     $('#lab_form').on('submit', function (e) {
 
-        if ($('#patient_lab_res').get(0).files.length === 0) {
-            Swal.fire('Error!', 'Please upload the laboratory result', 'error')
+        if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0) {
+            if($('#patient_lab_res').get(0).files.length === 0 )$('#radio_error').html('Please select laboratory result type')
+            if($('input[name="result"]:checked').length === 0 )$('#lab_res_error').html('Please upload laboratory result')
             e.preventDefault()
         } else {
             e.preventDefault()
@@ -474,7 +500,7 @@ $(document).ready(function () {
                     console.log(data)
                     Swal.fire({
                         title: 'Success',
-                        text: 'Admission Successful',
+                        text: 'Laboratory result uploaded successfully',
                         icon: 'success',
                     }).then((result) => {
                         // Reload the Page

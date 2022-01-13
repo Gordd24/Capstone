@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include_once '../dbconn.php';
 
@@ -10,6 +9,35 @@ if(isset($_SESSION['ID'])){
     header("Location: ../../index.php");
   }
 
+
+
+if (isset($_POST['password_check'])){
+    $username = $_POST['username'];
+    $currentPword = $_POST['currentPword'];
+
+    //echo $patient_id;
+    // $select = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$currentUname' AND password = '$currentPword'");
+    // $selectUname = mysqli_query($conn,"SELECT password FROM tbl_accounts WHERE username = '$currentUname'");
+
+    $get_password_stmt = $connection->prepare("SELECT password FROM tbl_patients where username = ?");
+    $get_password_stmt->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
+    $get_password_stmt->execute();
+    $pass_result = $get_password_stmt->get_result();
+
+    //$row = mysqli_fetch_array($selectUname);
+
+    if($pass_result->num_rows>0)
+        
+    $pass_row = $pass_result->fetch_assoc();
+        if(password_verify($currentPword,$pass_row['password'])){
+            //password correct
+            echo '1';
+        }
+        else{
+            //password not correct.
+            echo '0';
+        }
+}
 
 if(isset($_POST['edit_name'])){
     $id = $_GET['id'];
@@ -76,17 +104,16 @@ if(isset($_POST['edit_email'])){
 }
 
 
-
-if(isset($_POST['edit_password']))
-{
+if (isset($_POST['hidden_field_password']) && $_POST['hidden_field_password'] === 'form_check'){
+// if(isset($_POST['edit_password'])){
     $password = $_POST['password'];
     $new_password = $_POST['new_password'];
-    $id = $_GET['id'];
+    $username = $_POST['patient_uname'];
     //$confirm_password = $_POST['confirm_password'];
-    $get_password_stmt = $connection->prepare("SELECT password FROM tbl_patients where patient_id = ?");
+    $get_password_stmt = $connection->prepare("SELECT password FROM tbl_patients where username = ?");
 
     /* Prepared statement, stage 2: bind and execute */
-    $get_password_stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
+    $get_password_stmt->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
     $get_password_stmt->execute();
     $pass_result = $get_password_stmt->get_result();
 
@@ -97,25 +124,22 @@ if(isset($_POST['edit_password']))
         if(password_verify($password,$pass_row['password'])){
             //password correct.
            
-                // prepare
-                $up_password_stmt = $connection->prepare("UPDATE tbl_patients SET password = ? WHERE patient_id = ?");
+            // prepare
+            $up_password_stmt = $connection->prepare("UPDATE tbl_patients SET password = ? WHERE username = ?");
 
-                //execute
-                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                $up_password_stmt->bind_param("si", $hashed_password,$id); // "is" means that $id is bound as an integer and $label as a string
+            //execute
+            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+            $up_password_stmt->bind_param("ss", $hashed_password,$username); // "is" means that $id is bound as an integer and $label as a string
 
-                $up_password_stmt->execute();
-                header("Location: patient_profile.php");
-                    // echo '1';
+            $up_password_stmt->execute();
+            //header("Location: patient_profile.php");
+                echo '1';
         }
         else{
             echo '0';
         }
     }
     
-}
-else{
-    echo "wow";
 }
 
 

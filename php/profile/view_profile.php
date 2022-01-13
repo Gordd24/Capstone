@@ -55,31 +55,7 @@ if(isset($_POST['edit_info']))
 }
 
 
-if(isset($_POST['edit_username']))
-{
-    $username = $_POST['username'];
 
-    /* Prepared statement, stage 1: prepare */
-    $get_username_stmt = $connection->prepare("SELECT username FROM tbl_accounts where username = ?");
-
-    /* Prepared statement, stage 2: bind and execute */
-    $get_username_stmt->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
-    $get_username_stmt->execute();
-    $username_result = $get_username_stmt->get_result();
-
-    if(!$username_result->num_rows>0)
-    {
-         // prepare
-        $up_username_stmt = $connection->prepare("UPDATE tbl_accounts SET username = ? WHERE acc_id = ?");
-
-        //execute
-        $up_username_stmt->bind_param("si", $username,$id); // "is" means that $id is bound as an integer and $label as a string
-        $up_username_stmt->execute();
-        header("Location: view_profile.php");
-    }else{
-        echo "<script>alert('This Username is Already Exist');</script>";
-    }
-}
 
 
 // if(isset($_POST['edit_password']))
@@ -137,7 +113,7 @@ if(isset($_POST['edit_username']))
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
         
-            <form method="POST">
+            <form method="POST" id='form_name'>
             <h3>Personal Information</h3>
                 <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox" value="" id="edit_info">
@@ -156,7 +132,7 @@ if(isset($_POST['edit_username']))
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
                         <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control edit_info" id="middle_name" name="middle_name"  value="<?php echo $row['middle_name']; ?>"  required readonly>
+                        <input type="text" class="form-control edit_info" id="middle_name" name="middle_name"  value="<?php echo $row['middle_name']; ?>"  readonly>
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center">
@@ -176,7 +152,7 @@ if(isset($_POST['edit_username']))
 
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_username_div">
-            <form method="POST">
+            <form method="POST" id = 'form_username'>
             <h3>Update Username</h3>
                 <div class="form-check my-3">
                     <input class="form-check-input" type="checkbox" value="" id="edit_username">
@@ -188,12 +164,15 @@ if(isset($_POST['edit_username']))
                     <div class="col">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control edit_username" id="username" name="username" value="<?php echo $row['username']; ?>" required readonly>
+                        <input type="hidden" name="orig_uname" id="orig_uname" value="<?php echo $row['username']; ?>">
+                        <input type="hidden" name="hidden_field_username" id="hidden_field_username" value="form_check">
                     </div>
                 </div>
 
                 <div class="row mb-3  justify-content-center d-none" id="up_username_btn">
                     <div class="col">
                         <input type="submit" id="update_username_submit"  class="form-control btn apply_btn text-white" name="edit_username"  value="Apply Changes">
+                        
                     </div>
                 </div>
             </form>

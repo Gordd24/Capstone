@@ -41,35 +41,6 @@ if(isset($_POST['register']))
 
 
 
-$limit = 50;
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-$start = ($page - 1) * $limit;
-
-
-/* Prepared statement, stage 1: prepare */
-$get_accounts_stmt = $connection->prepare("SELECT * FROM tbl_accounts where acc_id != ? ORDER BY date_created DESC, time_created DESC LIMIT $start,$limit");
-
-/* Prepared statement, stage 2: bind and execute */
-$get_accounts_stmt->bind_param("s", $_SESSION['ID']); // "is" means that $id is bound as an integer and $label as a string
-$get_accounts_stmt->execute();
-$accounts_result = $get_accounts_stmt->get_result();
-
-$get_count_stmt = $connection->prepare("SELECT count(acc_id) as id FROM tbl_accounts where acc_id != ?;");
-/* Prepared statement, stage 2: bind and execute */ 
-$get_count_stmt->bind_param("s", $_SESSION['ID']); 
-$get_count_stmt->execute();
-$count_result = $get_count_stmt->get_result();
-$count_row = $count_result->fetch_array(MYSQLI_ASSOC);
-$total = $count_row['id']; 
-$pages =  ceil($total/$limit);   
-$Previous = $page - 1;
-$Next = $page + 1; 
-
-
-
-
-
-
 ?>
 
 
@@ -131,60 +102,15 @@ $Next = $page + 1;
 
                                 <!-- add button -->
                                 <div class="row my-2">
-                                    <div class="col-4 col-md-2">
+                                    <div class="col-md-4">
                                         <form>
                                             <a href="registration.php"> 
                                                 <div class="form-group btn add_patient text-white">
-                                                    Registration
+                                                    Create an Account
                                                 </div>
                                             </a>
                                         </form>
                                     </div>
-
-
-                                    <div class="col-8 col-md-10">
-
-                                                        <nav aria-label="Page navigation example">
-                                                            <ul class="pagination">
-                                                                
-                                                                <?php
-
-                                                                    if($Previous>0)
-                                                                    {
-                                                                       echo' <li class="page-item">
-                                                                            <a class="page-link" href="account_management.php?page='.$Previous.'">Previous</a>
-                                                                        </li>';
-                                                                    }else{
-                                                                        echo' <li class="page-item disabled">
-                                                                            <a class="page-link" href="#">Previous</a>
-                                                                        </li>';
-                                                                    }
-
-
-                                                                    for($i=1; $i<=$pages; $i++)
-                                                                    {
-                                                                        echo '<li class="page-item"><a class="page-link" href="account_management.php?page='.$i.'">'.$i.'</a></li>';
-                                                                    }
-
-                                                                    
-                                                                    if($Next<=$pages)
-                                                                    {
-                                                                       echo' <li class="page-item">
-                                                                            <a class="page-link" href="account_management.php?page='.$Next.'">Next</a>
-                                                                        </li>';
-                                                                    }else{
-                                                                        echo' <li class="page-item disabled">
-                                                                            <a class="page-link" href="#">Next</a>
-                                                                        </li>';
-                                                                    }
-
-                                                                ?>
-
-                                                            </ul>
-                                                        </nav>
-
-                                    </div>
-
                                 </div>
                                 <!-- add button end-->
 
@@ -202,7 +128,13 @@ $Next = $page + 1;
                                     <tbody>
                                             <?php
                                             include_once '../dbconn.php';
+                                             /* Prepared statement, stage 1: prepare */
+                                            $get_accounts_stmt = $connection->prepare("SELECT * FROM tbl_accounts where acc_id != ? ORDER BY date_created,time_created DESC");
 
+                                            /* Prepared statement, stage 2: bind and execute */
+                                            $get_accounts_stmt->bind_param("s", $_SESSION['ID']); // "is" means that $id is bound as an integer and $label as a string
+                                            $get_accounts_stmt->execute();
+                                            $accounts_result = $get_accounts_stmt->get_result();
                                             
 
 

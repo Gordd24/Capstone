@@ -18,7 +18,20 @@ $(document).ready(function () {
                 $('tbody').html(data);
                 // Restore record
                 $(".btn.restore").click(function () {
-                    location.href = "restore.php?id=" + $(this).attr('id');
+                    Swal.fire({
+                        title: 'Confirmation',
+                        text: "Do you want to restore this record?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "restore.php?id=" + $(this).attr('id');
+                        }
+                      })
+                    
                 });
 
             }
@@ -30,7 +43,19 @@ $(document).ready(function () {
 
     // Restore record
     $(".btn.restore").click(function () {
-        location.href = "restore.php?id=" + $(this).attr('id');
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Do you want to restore this record?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "restore.php?id=" + $(this).attr('id');
+            }
+          })
     });
 
 

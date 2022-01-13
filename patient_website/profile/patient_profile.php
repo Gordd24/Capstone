@@ -26,6 +26,7 @@ if(isset($_SESSION['ID'])){
 
   <!-- javascript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="patient_profile.js"></script>
 
    <!-- boxicons -->
@@ -52,9 +53,8 @@ if(isset($_SESSION['ID'])){
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-
         $sex_field = '';
-
+        
         if($row['sex']=='Male')
         {
             $sex_field .= '<div class="row">
@@ -134,13 +134,15 @@ if(isset($_SESSION['ID'])){
          <!-- password  -->
          <div class="row m-4 justify-content-center">
             <div class="col-12 col-sm-8 border rounded p-2" id="edit_password_div">
-                <form method="POST" action="update_patient.php?id=<?php echo $id; ?>">
+                <form method="POST" id = "form_password">
                 <h3>Password</h3>
                     <div class="form-check my-3">
                         <input class="form-check-input" type="checkbox" value="" id="edit_password">
                         <label class="form-check-label" for="edit_password">
                             Change Password
                         </label>
+                        
+                        <input type="hidden" name="patient_uname" id="patient_uname" value="<?php echo $row['username']; ?>">
                     </div>
 
                     <div class="row mb-3  justify-content-center">
@@ -161,6 +163,8 @@ if(isset($_SESSION['ID'])){
                         <div class="col">
                             <label for="confirm_password" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control edit_password" id="confirm_password" name="confirm_password" required readonly autocomplete="off">
+                            <input type="hidden" name="hidden_field_password" id="hidden_field_password" value="form_check">
+
                         </div>
                     </div>
 
