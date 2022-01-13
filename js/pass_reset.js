@@ -11,6 +11,7 @@ $(document).ready(function () {
 
     radio ='patient';
     console.log(radio)
+    email_state = false;
     //check valiue if patient or personnel
     $('input[name="account"]').change(function() {
         if (this.value == 'patient') {
@@ -24,7 +25,7 @@ $(document).ready(function () {
     });
 
     //check if email exist
-    email_state = false;
+   
     $('#forgetEmail').on('blur', function(){
         email = $('#forgetEmail').val()
         console.log(radio);

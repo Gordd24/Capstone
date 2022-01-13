@@ -50,7 +50,7 @@ $ID = $_SESSION['ID'];
                         <!-- <a href="#" class="nav_link"> <i class="bx bx-bar-chart-alt-2 nav_icon"></i> <span class="nav_name">Stats</span> </a> -->
                     </div>
                 </div> 
-                <a href="../logout.php" class="nav_link"> <i class="bx bx-log-out nav_icon"></i> <span class="nav_name">Log out</span> </a>
+                <a onclick="logout()" id="logout" class="nav_link"> <i class="bx bx-log-out nav_icon"></i> <span class="nav_name">Log out</span> </a>
             </nav>
         </div> ';
     }

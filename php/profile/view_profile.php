@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if(!isset($_SESSION['ID'])){
@@ -23,8 +22,6 @@ if(!isset($_SESSION['ID'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/view_profile.css">
-   
-
 </head>
 <body id="body-pd">
 <?php include_once '../admin_nav.php';?>
