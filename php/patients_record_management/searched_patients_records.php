@@ -10,7 +10,7 @@ include_once '../dbconn.php';
 
 
         /* Prepared statement, stage 1: prepare */
-        $get_patients_stmt = $connection->prepare("SELECT * FROM tbl_patients where concat(patient_id,' ',first_name,' ',middle_name,' ',last_name,' ',first_name,' ',last_name) LIKE ? ORDER BY date_added DESC,time_added DESC");
+        $get_patients_stmt = $connection->prepare("SELECT * FROM tbl_patients where concat(patient_id,' ',first_name,' ',middle_name,' ',last_name,' ',first_name,' ',last_name) LIKE ? and record_status = 'Active' ORDER BY date_added DESC,time_added DESC");
 
         /* Prepared statement, stage 2: bind and execute */
         $get_patients_stmt->bind_param("s", $searched); // "is" means that $id is bound as an integer and $label as a string
@@ -21,7 +21,6 @@ include_once '../dbconn.php';
         {
             while($row_patient = $patients_result -> fetch_assoc())
             {       
-                if($row_patient['record_status']=='Active'){
                     echo "
                     <tr>
                         <th scope='row'>".$row_patient["patient_id"]."</th>
@@ -40,8 +39,7 @@ include_once '../dbconn.php';
                             <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
                             <i class='bx bxs-archive mx-1 btn border archive' id='".$row_patient['patient_id']."' title='Archive'></i>
                         </td>
-                    </tr>";
-                }                          
+                    </tr>";                    
             }
         
         }

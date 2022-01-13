@@ -3,6 +3,33 @@ session_start();
 if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
+
+
+include_once '../dbconn.php';
+
+$limit = 50;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+
+
+
+$get_count_stmt = $connection->prepare("SELECT count(patient_id) as id FROM tbl_patients WHERE record_status = 'Archive';");
+/* Prepared statement, stage 2: bind and execute */ 
+$get_count_stmt->execute();
+$count_result = $get_count_stmt->get_result();
+$count_row = $count_result->fetch_array(MYSQLI_ASSOC);
+$total = $count_row['id']; 
+$pages =  ceil($total/$limit);   
+$Previous = $page - 1;
+$Next = $page + 1; 
+
+
+$connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Archive' ORDER BY date_added DESC, time_added DESC LIMIT $start,$limit");
+$patients_result = $connection->use_result();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +74,52 @@ if(!isset($_SESSION['ID'])){
                                                 </form>
                                             </div>
                                         </div>
-                            
+                                        <!-- page button -->
+                                        <div class="row justify-content-center">
+                                                    <div class="col-10">
+
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination">
+                                                                
+                                                                <?php
+
+                                                                    if($Previous>0)
+                                                                    {
+                                                                       echo' <li class="page-item">
+                                                                            <a class="page-link" href="patients_archive.php?page='.$Previous.'">Previous</a>
+                                                                        </li>';
+                                                                    }else{
+                                                                        echo' <li class="page-item disabled">
+                                                                            <a class="page-link" href="#">Previous</a>
+                                                                        </li>';
+                                                                    }
+
+
+                                                                    for($i=1; $i<=$pages; $i++)
+                                                                    {
+                                                                        echo '<li class="page-item"><a class="page-link" href="patients_archive.php?page='.$i.'">'.$i.'</a></li>';
+                                                                    }
+
+                                                                    
+                                                                    if($Next<=$pages)
+                                                                    {
+                                                                       echo' <li class="page-item">
+                                                                            <a class="page-link" href="patients_archive.php?page='.$Next.'">Next</a>
+                                                                        </li>';
+                                                                    }else{
+                                                                        echo' <li class="page-item disabled">
+                                                                            <a class="page-link" href="#">Next</a>
+                                                                        </li>';
+                                                                    }
+
+                                                                ?>
+
+                                                            </ul>
+                                                        </nav>
+
+                                                    </div>
+                                                </div>
+                                        <!-- page button end -->                            
                                         <!-- table row  -->
                                         <div class="row justify-content-center">
                                             <div class="col-md-10">
@@ -62,10 +134,7 @@ if(!isset($_SESSION['ID'])){
                                                     </thead>
                                                     <tbody>
                                                             <?php
-                                                            include_once '../dbconn.php';
 
-                                                            $connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Archive' ORDER BY date_added,time_added DESC");
-                                                            $patients_result = $connection->use_result();
                                                             foreach ($patients_result as $row_patient) {
                                                                         echo "
                                                                         <tr>

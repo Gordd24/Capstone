@@ -32,6 +32,27 @@ if(!isset($_SESSION['ID'])){
 
 <?php include_once '../admin_nav.php';
 
+$limit = 8;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+$get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests WHERE request_status = 'sent' ORDER BY request_date,request_time DESC LIMIT ?,?;");
+$get_request_stmt ->bind_param("is", $start, $limit);
+/* Prepared statement, stage 2: bind and execute */ 
+$get_request_stmt->execute();
+$request_result = $get_request_stmt->get_result();
+
+$get_count_stmt = $connection->prepare("SELECT count(request_id) as id FROM tbl_requests WHERE request_status = 'sent';");
+/* Prepared statement, stage 2: bind and execute */ 
+$get_count_stmt->execute();
+$count_result = $get_count_stmt->get_result();
+$count_row = $count_result->fetch_array(MYSQLI_ASSOC);
+$total = $count_row['id']; 
+$pages =  ceil($total/$limit);   
+$Previous = $page - 1;
+$Next = $page + 1; 
+
+
 ?>
 
     <div class="row">
@@ -42,7 +63,7 @@ if(!isset($_SESSION['ID'])){
                                         </div>
                                     </div>
                                                 <!-- search box -->
-                                                <div class="row justify-content-center my-5">
+                                                <div class="row justify-content-center my-3">
                                                     <div class="col-4">
 
                                                         <form>
@@ -54,6 +75,53 @@ if(!isset($_SESSION['ID'])){
                                                     </div>
                                                 </div>
                                                 <!-- search box end -->
+
+                                                <!-- page button -->
+                                                <div class="row justify-content-center">
+                                                    <div class="col-10">
+
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul class="pagination">
+                                                                
+                                                                <?php
+
+                                                                    if($Previous>0)
+                                                                    {
+                                                                       echo' <li class="page-item">
+                                                                            <a class="page-link" href="patients_follow_ups.php?page='.$Previous.'">Previous</a>
+                                                                        </li>';
+                                                                    }else{
+                                                                        echo' <li class="page-item disabled">
+                                                                            <a class="page-link" href="#">Previous</a>
+                                                                        </li>';
+                                                                    }
+
+
+                                                                    for($i=1; $i<=$pages; $i++)
+                                                                    {
+                                                                        echo '<li class="page-item"><a class="page-link" href="patients_follow_ups.php?page='.$i.'">'.$i.'</a></li>';
+                                                                    }
+
+                                                                    
+                                                                    if($Next<=$pages)
+                                                                    {
+                                                                       echo' <li class="page-item">
+                                                                            <a class="page-link" href="patients_follow_ups.php?page='.$Next.'">Next</a>
+                                                                        </li>';
+                                                                    }else{
+                                                                        echo' <li class="page-item disabled">
+                                                                            <a class="page-link" href="#">Next</a>
+                                                                        </li>';
+                                                                    }
+
+                                                                ?>
+
+                                                            </ul>
+                                                        </nav>
+
+                                                    </div>
+                                                </div>
+                                                <!-- page button end -->
 
                                                 <!-- table row  -->
                                                 <div class="row justify-content-center my-1">
@@ -72,15 +140,13 @@ if(!isset($_SESSION['ID'])){
                                                             <tbody id="laboratory">
                                                                 
                                                                     <?php
-
+                                                                    
                                                                     include_once '../dbconn.php';
                                                                     /* Prepared statement, stage 1: prepare */
-                                                                   
-                                                                    $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests WHERE request_status = 'sent' ORDER BY request_date,request_time DESC;");
+                                                                    
 
-                                                                    /* Prepared statement, stage 2: bind and execute */ 
-                                                                    $get_request_stmt->execute();
-                                                                    $request_result = $get_request_stmt->get_result();
+                                                                     
+
 
                                                                     while ($row = $request_result->fetch_array(MYSQLI_ASSOC)) {
                                                                         
