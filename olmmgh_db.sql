@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 01:49 PM
+-- Generation Time: Jan 14, 2022 at 09:23 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `olmmgh_db2`
+-- Database: `olmmgh_db`
 --
 
 -- --------------------------------------------------------
@@ -156,7 +156,10 @@ INSERT INTO `tbl_lab_result` (`lab_result_id`, `patient_id`, `pdf_path`, `date`,
 (20, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
 (21, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
 (22, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(23, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf');
+(23, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
+(24, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf'),
+(25, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf'),
+(26, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,27 @@ INSERT INTO `tbl_requests` (`request_id`, `patient_id`, `result_type`, `request_
 (81, 26, 'fecalysis', '2022-01-09', '15:07:54', 'responded'),
 (82, 26, 'cholesterol', '2022-01-09', '15:07:54', 'responded'),
 (83, 26, 'uric_acid', '2022-01-09', '15:07:54', 'responded'),
-(84, 26, 'urinalysis', '2022-01-09', '15:07:54', 'responded');
+(84, 26, 'urinalysis', '2022-01-09', '15:07:54', 'responded'),
+(85, 26, 'complete_blood_count', '2022-01-14', '14:40:08', 'responded'),
+(86, 26, 'platelet_count', '2022-01-14', '14:40:08', 'responded'),
+(87, 26, 'blood_typing', '2022-01-14', '14:40:08', 'responded'),
+(88, 26, 'complete_blood_count', '2022-01-14', '14:40:18', 'responded'),
+(89, 26, 'uric_acid', '2022-01-14', '14:40:26', 'responded'),
+(90, 26, 'cross_matching', '2022-01-14', '15:17:57', 'responded'),
+(91, 26, 'hepatitis_b', '2022-01-14', '15:17:58', 'responded'),
+(92, 26, 'fasting_blood_sugar', '2022-01-14', '15:17:58', 'responded'),
+(93, 26, 'cholesterol', '2022-01-14', '15:19:10', 'created'),
+(94, 26, 'platelet_count', '2022-01-14', '15:53:59', 'responded'),
+(95, 26, 'cross_matching', '2022-01-14', '15:57:33', 'responded'),
+(96, 26, 'hepatitis_b', '2022-01-14', '15:57:33', 'responded'),
+(97, 26, 'blood_urea_nitrogen', '2022-01-14', '15:57:33', 'responded'),
+(98, 26, 'fasting_blood_sugar', '2022-01-14', '15:57:33', 'responded'),
+(99, 26, 'fecalysis', '2022-01-14', '15:57:34', 'responded'),
+(100, 26, 'complete_blood_count', '2022-01-14', '16:05:34', 'responded'),
+(101, 26, 'cross_matching', '2022-01-14', '16:05:48', 'responded'),
+(102, 26, 'complete_blood_count', '2022-01-14', '16:17:23', 'responded'),
+(103, 26, 'complete_blood_count', '2022-01-14', '16:17:31', 'responded'),
+(104, 26, 'fasting_blood_sugar', '2022-01-14', '16:21:34', 'responded');
 
 -- --------------------------------------------------------
 
@@ -278,6 +301,7 @@ CREATE TABLE `tbl_responses` (
   `patient_id` int(11) NOT NULL,
   `request_id` int(11) NOT NULL,
   `response_status` varchar(60) NOT NULL,
+  `view_status` varchar(20) NOT NULL,
   `response_date` date NOT NULL,
   `response_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -286,25 +310,27 @@ CREATE TABLE `tbl_responses` (
 -- Dumping data for table `tbl_responses`
 --
 
-INSERT INTO `tbl_responses` (`response_id`, `patient_id`, `request_id`, `response_status`, `response_date`, `response_time`) VALUES
-(47, 26, 69, 'already available', '2022-01-09', '14:53:51'),
-(48, 26, 68, 'not available', '2022-01-09', '14:53:52'),
-(49, 26, 67, 'available', '2022-01-09', '14:54:06'),
-(50, 26, 70, 'available', '2022-01-09', '14:54:36'),
-(51, 26, 72, 'not available', '2022-01-09', '15:07:40'),
-(52, 26, 71, 'not available', '2022-01-09', '15:07:41'),
-(53, 26, 73, 'already available', '2022-01-09', '15:08:50'),
-(54, 26, 75, 'not available', '2022-01-09', '15:08:51'),
-(55, 26, 76, 'already available', '2022-01-09', '15:08:51'),
-(56, 26, 74, 'not available', '2022-01-09', '15:08:52'),
-(57, 26, 84, 'already available', '2022-01-09', '15:08:53'),
-(58, 26, 83, 'not available', '2022-01-09', '15:08:54'),
-(59, 26, 82, 'already available', '2022-01-09', '15:08:54'),
-(60, 26, 81, 'not available', '2022-01-09', '15:08:55'),
-(61, 26, 80, 'already available', '2022-01-09', '15:08:55'),
-(62, 26, 79, 'not available', '2022-01-09', '15:08:56'),
-(63, 26, 78, 'available', '2022-01-09', '15:09:04'),
-(64, 26, 77, 'available', '2022-01-09', '15:09:18');
+INSERT INTO `tbl_responses` (`response_id`, `patient_id`, `request_id`, `response_status`, `view_status`, `response_date`, `response_time`) VALUES
+(65, 26, 89, 'already available', 'viewed', '2022-01-14', '14:42:52'),
+(66, 26, 88, 'already available', 'viewed', '2022-01-14', '15:02:47'),
+(67, 26, 85, 'not available', 'viewed', '2022-01-14', '15:03:00'),
+(68, 26, 86, 'available', '', '2022-01-14', '15:03:22'),
+(69, 26, 87, 'already available', 'viewed', '2022-01-14', '15:03:44'),
+(70, 26, 91, 'already available', 'viewed', '2022-01-14', '15:18:29'),
+(71, 26, 92, 'available', 'viewed', '2022-01-14', '15:18:39'),
+(72, 26, 90, 'not available', 'viewed', '2022-01-14', '15:18:44'),
+(73, 26, 93, 'available', 'viewed', '2022-01-14', '15:19:10'),
+(74, 26, 94, 'not available', 'viewed', '2022-01-14', '15:54:07'),
+(75, 26, 99, 'already available', 'viewed', '2022-01-14', '15:57:47'),
+(76, 26, 96, 'already available', 'viewed', '2022-01-14', '15:57:49'),
+(77, 26, 95, 'already available', 'viewed', '2022-01-14', '15:57:50'),
+(78, 26, 97, 'not available', 'viewed', '2022-01-14', '16:01:45'),
+(79, 26, 98, 'already available', 'viewed', '2022-01-14', '16:02:14'),
+(80, 26, 104, 'not available', 'viewed', '2022-01-14', '16:22:00'),
+(81, 26, 103, 'already available', 'viewed', '2022-01-14', '16:22:06'),
+(82, 26, 101, 'already available', 'viewed', '2022-01-14', '16:22:17'),
+(83, 26, 102, 'already available', 'viewed', '2022-01-14', '16:22:19'),
+(84, 26, 100, 'already available', 'viewed', '2022-01-14', '16:22:23');
 
 --
 -- Indexes for dumped tables
@@ -404,7 +430,7 @@ ALTER TABLE `tbl_discharge`
 -- AUTO_INCREMENT for table `tbl_lab_result`
 --
 ALTER TABLE `tbl_lab_result`
-  MODIFY `lab_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `lab_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_med_cert`
@@ -422,13 +448,13 @@ ALTER TABLE `tbl_patients`
 -- AUTO_INCREMENT for table `tbl_requests`
 --
 ALTER TABLE `tbl_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `tbl_responses`
 --
 ALTER TABLE `tbl_responses`
-  MODIFY `response_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `response_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- Constraints for dumped tables
