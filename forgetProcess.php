@@ -1,12 +1,4 @@
 <?php
-session_start();
-if(isset($_SESSION["ID"])){
-    header("Location:php/dashboard/dashboard.php");
-}
-
-if(isset($_SESSION["PATIENT_ID"])){
-    header("Location:patient_website/profile/patient_profile.php");
-}
 use PHPMailer\PHPMailer\PHPMailer;
 include_once 'php/dbconn.php';
 
@@ -40,7 +32,7 @@ if(isset($_POST['email_check'])){
 
 if (isset($_POST['hidden_field_forget']) && $_POST['hidden_field_forget'] === 'form_check'){
     // if(isset($_POST['forgetSubmit'])){
-        if(isset($_POST['forgot_account'])&&$_POST['forgot_account']=='patient'){
+        if(isset($_POST['account'])&&$_POST['account']=='patient'){
             
             echo 'patient';
                 $categ = $_POST['account'];

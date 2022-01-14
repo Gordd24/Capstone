@@ -1,4 +1,6 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
 session_start();
 include_once 'php/dbconn.php';
 
@@ -12,75 +14,79 @@ if(isset($_SESSION["PATIENT_ID"])){
 
 
 
-// if(isset($_POST["signinSubmit"]))
-// {
-//    if(isset($_POST['account'])&&$_POST["account"]=="Patient")
-//    {
+if(isset($_POST["signinSubmit"]))
+{
+   if(isset($_POST['account'])&&$_POST["account"]=="Patient")
+   {
         
-//         $username =$_POST['username'];
-//         $password =$_POST['password'];
-//         $patient_id = '';
+        $username =$_POST['username'];
+        $password =$_POST['password'];
+        $patient_id = '';
 
-//         $get_patient_account = $connection->prepare("SELECT patient_id,username,password FROM tbl_patients WHERE username = ?");
+        $get_patient_account = $connection->prepare("SELECT patient_id,username,password FROM tbl_patients WHERE username = ?");
     
-//             /* Prepared statement, stage 2: bind and execute */
-//             $get_patient_account->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
-//             $get_patient_account->execute();
-//             $patient_account = $get_patient_account->get_result();
+            /* Prepared statement, stage 2: bind and execute */
+            $get_patient_account->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
+            $get_patient_account->execute();
+            $patient_account = $get_patient_account->get_result();
 
-//             if($patient_account->num_rows>0)
-//             {
-//                 while ($row = $patient_account->fetch_array(MYSQLI_ASSOC)) {
+            if($patient_account->num_rows>0)
+            {
+                while ($row = $patient_account->fetch_array(MYSQLI_ASSOC)) {
                     
-//                     $test_pass = $row['password'];
-//                     $patient_id = $row['patient_id'];
+                    $test_pass = $row['password'];
+                    $patient_id = $row['patient_id'];
         
-//                 }
+                }
 
-//                 if(password_verify($password, $test_pass)){
-//                     $_SESSION["PATIENT_ID"] = $patient_id;
-//                     header("Location:patient_website/profile/patient_profile.php");
-//                 }
-//                 else{
-//                     echo '<script type = "text/javascript">';
-//                     echo 'alert("Invalid Username or Password!");';
-//                     echo '</script>';
-//                 }
-//             }else{
-//                 echo '<script type = "text/javascript">';
-//                 echo 'alert("Account Does Not Exist");';
-//                 echo '</script>';
-//             }
-//    }
-//    if(isset($_POST['account'])&&$_POST["account"]=="Personnel")
-//    {
-//         $Username =$_POST['username'];
-//         $Password =$_POST['password'];
+                if(password_verify($password, $test_pass)){
+                    $_SESSION["PATIENT_ID"] = $patient_id;
+                    header("Location:patient_website/profile/patient_profile.php");
+                }
+                else{
+                    echo '<script type = "text/javascript">';
+                    echo 'alert("Invalid Username or Password!");';
+                    echo '</script>';
+                }
+            }else{
+                echo '<script type = "text/javascript">';
+                echo 'alert("Account Does Not Exist");';
+                echo '</script>';
+            }
+   }
+   if(isset($_POST['account'])&&$_POST["account"]=="Personnel")
+   {
+        $Username =$_POST['username'];
+        $Password =$_POST['password'];
 
-//         $select = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username' AND password = '$Password'");
-//         $selectUname = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username'");
-//         //$selectPos = mysqli_query($conn,"SELECT position FROM tbl_accounts WHERE username = '$Username'");
+        $select = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username' AND password = '$Password'");
+        $selectUname = mysqli_query($conn,"SELECT * FROM tbl_accounts WHERE username = '$Username'");
+        //$selectPos = mysqli_query($conn,"SELECT position FROM tbl_accounts WHERE username = '$Username'");
 
-//         $row = mysqli_fetch_array($selectUname);
+        $row = mysqli_fetch_array($selectUname);
         
-//         if(password_verify($Password, $row['password'])){
-//             $_SESSION["ID"] = $row['acc_id'];
-//             $_SESSION["position"] = $row['position'];
-//         }
-//         else{
-//             echo '<script type = "text/javascript">';
-//             echo 'alert("Invalid Username or Password!");';
-//             echo 'window.location.href = "index.php" ';
-//             echo '</script>';
-//         }
+        if(password_verify($Password, $row['password'])){
+            $_SESSION["ID"] = $row['acc_id'];
+            $_SESSION["position"] = $row['position'];
+        }
+        else{
+            echo '<script type = "text/javascript">';
+            echo 'alert("Invalid Username or Password!");';
+            echo 'window.location.href = "index.php" ';
+            echo '</script>';
+        }
 
-//         if(isset($_SESSION["ID"])){
-//             header("Location:php/dashboard/dashboard.php");
-//         }
-//    }
-// }
+        if(isset($_SESSION["ID"])){
+            header("Location:php/dashboard/dashboard.php");
+        }
+   }
+}
+
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,7 +150,6 @@ if(isset($_SESSION["PATIENT_ID"])){
                     placeholder="password">
                 <label class="asm-form__inputlabel" for="signinPassword">password</label>
             </div>
-            <input type="hidden" name="hidden_field_signin" id="hidden_field_signin" value="form_check">
             <div class="asm-form__leverbox">
                 <button type="button" class="asm-form__link" data-action="show-form" data-target="#frmForget">Forgot
                     password</button>
@@ -164,13 +169,13 @@ if(isset($_SESSION["PATIENT_ID"])){
         <div class="button-box">
                 <div id="forgot_btn"></div>
                 <div class="toggle-btn-div">
-                    <input type="radio" name="forgot_account" id="forgot_patient" value="patient" class="toggle-btn"
+                    <input type="radio" name="account" id="forgot_patient" value="patient" class="toggle-btn"
                     onclick="Forgot_Patient()" checked><label for="forgot_patient" class="account-label"
                     id="forgot_patient-label">Patient</label>
                 </div>
 
                 <div class="toggle-btn-div">
-                    <input type="radio" name="forgot_account" id="forgot_personnel" value="personnel" class="toggle-btn"
+                    <input type="radio" name="account" id="forgot_personnel" value="personnel" class="toggle-btn"
                     onclick="Forgot_Personnel()"><label for="forgot_personnel" class="account-label"
                     id="forgot_personnel-label">Personnel</label>
                 </div>
