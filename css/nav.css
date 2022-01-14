@@ -131,6 +131,9 @@ a {
     padding-left: calc(var(--nav-width) + 1rem)
 }
 
+#logout{
+    cursor: pointer;
+}
 /* 
 .active {
     color:  #F7F6FB;

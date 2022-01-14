@@ -21,10 +21,37 @@ $(document).ready(function () {
                     location.href = "../patients_record_management/laboratory.php?id=" + id + "&req_id=" + req_id;
                 });
                 $(".bx.not_avail").click(function () {
-                    location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
+                    Swal.fire({
+                        title: 'Confirmation',
+                        text: "Are you sure that the record is not available?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
+                        }
+                      })
+
+                    
                 });
                 $(".bx.avail").click(function () {
-                    location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
+                    Swal.fire({
+                        title: 'Confirmation',
+                        text: "Are you sure that the record is available?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
+                        }
+                      })
+                    
                     // console.log($(this).attr("id"));
                 });
 
@@ -44,12 +71,36 @@ $(document).ready(function () {
     });
 
     $(".bx.not_avail").click(function () {
-        location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Are you sure that the record is not available?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "../patients_follow_ups/response_fail.php?id=" + $(this).attr("id");
+            }
+          })
         // console.log($(this).attr("id"));
     });
 
     $(".bx.avail").click(function () {
-        location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Are you sure that the record is available?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = "../patients_follow_ups/response_success.php?id=" + $(this).attr("id");
+            }
+          })
         // console.log($(this).attr("id"));
     });
 

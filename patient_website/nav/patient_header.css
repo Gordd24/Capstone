@@ -3,8 +3,10 @@
 }
 #sign_out{
     font-weight: bolder;
+    cursor: pointer;
   }
 
 .logo{
     width: 5rem;
 }
+

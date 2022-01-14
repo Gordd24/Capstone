@@ -13,11 +13,11 @@ if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
   }
 
 
-
-if(isset($_POST['follow'])){
-
-    if( isset($_POST['results']) && is_array($_POST['results']) ) {
-        foreach($_POST['results'] as $results) {
+if (isset($_POST['hidden_field_follow']) && $_POST['hidden_field_follow'] === 'form_check'){
+// if(isset($_POST['follow'])){
+    if( isset($_POST['checked'])) {
+      echo '1';
+        foreach(json_decode(stripslashes($_POST['checked'])) as $results) {
             
             $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
     
@@ -32,11 +32,12 @@ if(isset($_POST['follow'])){
             
             $stmt->execute();     
 
-            header("Location: patient_follow.php");
+            //header("Location: patient_follow.php");
 
 
         }
-
+    }else{
+      echo '0';
     }
 
 }

@@ -23,7 +23,11 @@ if(isset($_SESSION['ID'])){
   <link rel="stylesheet" href="patient_follow.css">
   <link rel="stylesheet" href="../nav/patient_header.css">
    <!-- boxicons -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../nav/patient_header.js"></script>
+  <script src="patient_follow.js"></script>
 </head>
 
 <body>
@@ -40,7 +44,7 @@ if(isset($_SESSION['ID'])){
           </div>
         </div>
 
-        <form method="POST" action="follow_process.php?id=<?php echo $_SESSION['PATIENT_ID'] ?>">
+        <form method="POST" id = "form_follow">
             <!-- div for check results -->
             <div class="row border rounded m-2">
               <div class="col-12">
@@ -51,7 +55,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="complete_blood_count" value="complete_blood_count">
+                      <input type="hidden" name="patient_id" value="<?php echo $_SESSION['PATIENT_ID'] ?>"> 
+                      <input class="form-check-input" type="checkbox" name="results" id="complete_blood_count" value="complete_blood_count">
                       <label class="form-check-label" for="complete_blood_count">
                         Complete Blood Count (CBC)
                       </label>
@@ -62,7 +67,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="platelet_count" value="platelet_count">
+                      <input class="form-check-input" type="checkbox" name="results" id="platelet_count" value="platelet_count">
                       <label class="form-check-label" for="platelet_count">
                         Platelet Count
                       </label>
@@ -73,7 +78,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="blood_typing" value="blood_typing">
+                      <input class="form-check-input" type="checkbox" name="results" id="blood_typing" value="blood_typing">
                       <label class="form-check-label" for="blood_typing">
                         Blood Typing
                       </label>
@@ -90,7 +95,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="cross_matching" value="cross_matching">
+                      <input class="form-check-input" type="checkbox" name="results" id="cross_matching" value="cross_matching">
                       <label class="form-check-label" for="cross_matching">
                         Cross Matching
                       </label>
@@ -101,7 +106,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="hepatitis_b" value="hepatitis_b">
+                      <input class="form-check-input" type="checkbox" name="results" id="hepatitis_b" value="hepatitis_b">
                       <label class="form-check-label" for="hepatitis_b">
                         Hepatitis B
                       </label>
@@ -112,7 +117,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="blood_urea_nitrogen" value="blood_urea_nitrogen">
+                      <input class="form-check-input" type="checkbox" name="results" id="blood_urea_nitrogen" value="blood_urea_nitrogen">
                       <label class="form-check-label" for="blood_urea_nitrogen">
                         Blood Urea Nitrogen (BUN)
                       </label>
@@ -129,7 +134,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="creatinine" value="creatinine">
+                      <input class="form-check-input" type="checkbox" name="results" id="creatinine" value="creatinine">
                       <label class="form-check-label" for="creatinine">
                         Creatinine
                       </label>
@@ -140,7 +145,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="fasting_blood_sugar" value="fasting_blood_sugar">
+                      <input class="form-check-input" type="checkbox" name="results" id="fasting_blood_sugar" value="fasting_blood_sugar">
                       <label class="form-check-label" for="fasting_blood_sugar">
                         Fasting Blood Sugar (FBS)
                       </label>
@@ -151,7 +156,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="fecalysis" value="fecalysis">
+                      <input class="form-check-input" type="checkbox" name="results" id="fecalysis" value="fecalysis">
                       <label class="form-check-label" for="fecalysis">
                         Fecalysis
                       </label>
@@ -168,7 +173,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="cholesterol" value="cholesterol">
+                      <input class="form-check-input" type="checkbox" name="results" id="cholesterol" value="cholesterol">
                       <label class="form-check-label" for="cholesterol">
                         Cholesterol
                       </label>
@@ -179,7 +184,7 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="uric_acid" value="uric_acid">
+                      <input class="form-check-input" type="checkbox" name="results" id="uric_acid" value="uric_acid">
                       <label class="form-check-label" for="uric_acid">
                         Uric Acid
                       </label>
@@ -190,7 +195,8 @@ if(isset($_SESSION['ID'])){
                   <div class="col-12 col-sm-4 p-2">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="results[]" id="urinalysis" value="urinalysis">
+                      <input class="form-check-input" type="checkbox" name="results" id="urinalysis" value="urinalysis">
+                      <input type="hidden" name="hidden_field_follow" id="hidden_field_follow" value="form_check">
                       <label class="form-check-label" for="urinalysis">
                         Urinalysis
                       </label>

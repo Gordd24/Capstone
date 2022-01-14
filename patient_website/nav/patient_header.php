@@ -21,7 +21,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-light sticky-top">
       <a class="nav-link text-white p-2 mx-2" id="follow" href="../follow/patient_follow.php"><i class="bx bxs-message" ></i> Follow Up Results</a>
       <a class="nav-link text-white p-2 mx-2" id="response" href="../response/response.php"><i class="bx bxs-message-error"></i> Responses</a>
       <a class="nav-link text-white p-2 mx-2" id="contact" href="../about/about.php"><i class="bx bx-info-circle"></i> About</a>
-      <a class="nav-link p-2 mx-2 text-white" id="sign_out" href="../sign_out/sign_out.php"><i class="bx bx-power-off"></i> Sign Out</a>
+      <a onclick = "logout()" class="nav-link p-2 mx-2 text-white" id="sign_out"><i class="bx bx-power-off"></i> Sign Out</a>
       
     </div>
   </div>

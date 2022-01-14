@@ -26,6 +26,8 @@ if(isset($_SESSION['ID'])){
   <link rel="stylesheet" href="../nav/patient_header.css">
    <!-- boxicons -->
    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../nav/patient_header.js"></script>
 </head>
 
 <body>

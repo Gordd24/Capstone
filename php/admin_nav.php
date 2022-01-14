@@ -6,8 +6,6 @@ if(!isset($_SESSION['ID'])){
 
 include_once '../dbconn.php';
 
- 
-
 $ID = $_SESSION['ID'];
  
  $sql = "SELECT * FROM tbl_accounts where acc_id = '$ID'";
