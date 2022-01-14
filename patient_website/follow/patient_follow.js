@@ -24,7 +24,15 @@ $(document).ready(function () {
                
                 success: function (response) {
                     if(response == '1'){
-                        Swal.fire('Success','Success','success')
+                        
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Follow up Success',
+                            icon: 'success',
+                        }).then((result) => {
+                            // Reload the Page
+                            location.reload()
+                        });
                         location.reload()
                     }else if (response==0){
                         console.log('dipumasok')
