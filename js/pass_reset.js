@@ -10,25 +10,13 @@ $(document).ready(function () {
     }
 
     radio ='patient';
-    console.log(radio)
     email_state = false;
     //check valiue if patient or personnel
     $('input[name="account"]').change(function() {
-        if (this.value == 'patient') {
-            radio = this.value   
-            // console.log(categ) 
-        }
-        else if (this.value == 'personnel') {
-            radio = this.value 
-            // console.log(categ)
-        }
-    });
-
-    //check if email exist
-   
-    $('#forgetEmail').on('blur', function(){
         email = $('#forgetEmail').val()
-        console.log(radio);
+        if (this.value == 'patient') {
+            radio = this.value 
+            console.log(radio)
         if (radio == 'patient'){
             $.ajax({
                 type: "POST",
@@ -53,36 +41,39 @@ $(document).ready(function () {
     
                 }
             })
-        }else if( radio == 'personnel'){
-            $.ajax({
-                type: "POST",
-                url: "forgetProcess2.php",
-                data: {
-                     'email_check': 1,
-                     'email': email,
-                     'radio': radio,
-                },
-                success: function (response) {
-                     if (response == 0) {
-                          email_state = false;
-                          console.log(response)
-                     }
-                     else if (response == 1) {
-                          email_state = true;
-                          console.log(response)
-                     }
-                     else {
-                          console.log(response);
-                     }
-    
-                }
-            })
         }
+        }
+        else if (this.value == 'personnel') {
+            radio = this.value 
+            console.log(radio)
+
+            if( radio == 'personnel'){
+                $.ajax({
+                    type: "POST",
+                    url: "forgetProcess2.php",
+                    data: {
+                         'email_check': 1,
+                         'email': email,
+                         'radio': radio,
+                    },
+                    success: function (response) {
+                         if (response == 0) {
+                              email_state = false;
+                              console.log(response)
+                         }
+                         else if (response == 1) {
+                              email_state = true;
+                              console.log(response)
+                         }
+                         else {
+                              console.log(response);
+                         }
         
-    })
-
-
-
+                    }
+                })
+            }
+        }
+    });
     $('#frmForget').on('submit', function (e) {
         var data = $('#frmForget').serialize();
         email = $('#forgetEmail').val()
