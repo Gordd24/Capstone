@@ -12,42 +12,40 @@ $(document).ready(function () {
     radio ='patient';
     email_state = false;
     //check valiue if patient or personnel
-    $('input[name="account"]').change(function() {
+    $('input[name="forgot_account"]').change(function() {
         email = $('#forgetEmail').val()
         if (this.value == 'patient') {
             radio = this.value 
             console.log(radio)
-        if (radio == 'patient'){
-            $.ajax({
-                type: "POST",
-                url: "forgetProcess.php",
-                data: {
-                     'email_check': 1,
-                     'email': email,
-                     'radio': radio,
-                },
-                success: function (response) {
-                     if (response == 0) {
-                          email_state = false;
-                          console.log(response)
-                     }
-                     else if (response == 1) {
-                          email_state = true;
-                          console.log(response)
-                     }
-                     else {
-                          console.log(response);
-                     }
-    
-                }
-            })
-        }
+            
+                $.ajax({
+                    type: "POST",
+                    url: "forgetProcess.php",
+                    data: {
+                        'email_check': 1,
+                        'email': email,
+                        'radio': radio,
+                    },
+                    success: function (response) {
+                        if (response == 0) {
+                            email_state = false;
+                            console.log(response)
+                        }
+                        else if (response == 1) {
+                            email_state = true;
+                            console.log(response)
+                        }
+                        else {
+                            console.log(response);
+                        }
+        
+                    }
+                })
+            
         }
         else if (this.value == 'personnel') {
             radio = this.value 
             console.log(radio)
-
-            if( radio == 'personnel'){
                 $.ajax({
                     type: "POST",
                     url: "forgetProcess2.php",
@@ -71,7 +69,7 @@ $(document).ready(function () {
         
                     }
                 })
-            }
+            
         }
     });
     $('#frmForget').on('submit', function (e) {
