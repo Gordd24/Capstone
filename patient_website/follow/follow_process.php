@@ -19,7 +19,7 @@ if (isset($_POST['hidden_field_follow']) && $_POST['hidden_field_follow'] === 'f
       echo '1';
         foreach(json_decode(stripslashes($_POST['checked'])) as $results) {
             
-            $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status, view_status) VALUES (?, ?, ?, ?, ?, ?)");
     
             /* Prepared statement, stage 2: bind and execute */
 
@@ -28,7 +28,8 @@ if (isset($_POST['hidden_field_follow']) && $_POST['hidden_field_follow'] === 'f
             $today = date("Y-m-d"); 
             $time = date("H:i:s");
             $request_status = 'sent';
-            $stmt->bind_param("issss", $id, $result_type, $today, $time, $request_status); 
+            $view_status = 'sent';
+            $stmt->bind_param("isssss", $id, $result_type, $today, $time, $request_status, $view_status); 
             
             $stmt->execute();     
 

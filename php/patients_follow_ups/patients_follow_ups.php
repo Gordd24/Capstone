@@ -4,6 +4,8 @@ if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +33,9 @@ if(!isset($_SESSION['ID'])){
 <body id="body-pd">
 
 <?php include_once '../admin_nav.php';
+
+$stmt = $connection->prepare("UPDATE tbl_requests SET view_status = 'viewed' WHERE view_status='sent'; ");
+$stmt->execute();
 
 $limit = 8;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;

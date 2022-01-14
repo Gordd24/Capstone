@@ -17,4 +17,5 @@ $connection = new mysqli($dbServerName,$dbUsername, $dbPassword, $dbName);
 // else{
 //     printf("Success");
 // }
+
 ?>

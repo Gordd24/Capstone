@@ -6,12 +6,13 @@ if(!isset($_SESSION['ID'])){
 
 include_once '../dbconn.php';
 
-$ID = $_SESSION['ID'];
- 
+$ID = $_SESSION['ID']; 
+ echo"<script src='../../js/notification_personnel.js'></script>"; 
  $sql = "SELECT * FROM tbl_accounts where acc_id = '$ID'";
  $result = $conn -> query($sql);
  $active_account_name = "";
-  
+
+
  if($result->num_rows>0)
  {
     while($row = $result -> fetch_assoc())
@@ -35,7 +36,7 @@ $ID = $_SESSION['ID'];
                         <a href="../dashboard/dashboard.php" class="nav_link" id="dashboard_link"> <i class="bx bxs-dashboard nav_icon"></i> <span class="nav_name">Dashboard</span> </a> 
                         <a href="../patients_record_management/patients_records.php" class="nav_link" id="record_management_link"> <i class="bx bx-library nav_icon"></i> <span class="nav_name">Patients Records</span> </a> 
                         <a href="../patients_record_archive/patients_archive.php" class="nav_link" id="archive_link"> <i class="bx bxs-archive"></i> <span class="nav_name">Patients Record Archive</span> </a>
-                        <a href="../patients_follow_ups/patients_follow_ups.php" class="nav_link" id="followup_link"> <i class="bx bxs-message-dots"></i> <span class="nav_name">Patients Follow Ups</span> </a>
+                        <a href="../patients_follow_ups/patients_follow_ups.php" class="nav_link" id="followup_link"><i class="bx bxs-message-dots"></i> <span class="nav_name"> Patients Follow Ups <sup></sup></span></a>
                         <a href="../patients/patients.php" class="nav_link" id ="patients_link"> <i class="bx bxs-user-badge nav_icon"></i> <span class="nav_name">Patients</span> </a>
                         
                         ';

@@ -4,16 +4,17 @@ $(document).ready(function () {
     setInterval(function () {
 
         $.ajax({
-            url: "../notification.php",
+            url: "../../php/notification.php",
             method: "post",
             data: { data: "text" },
             dataType: "text",
             success: function (data) {
-                $('#response').html(data);
+                $('#followup_link').html(data);
 
 
             }
         });
+
 
     }, 4000
 

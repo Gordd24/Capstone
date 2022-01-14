@@ -202,3 +202,11 @@ a {
     padding-top: 5%;
     display: flex;
  }
+
+
+
+ #followup_link .active_notif
+{
+    color: rgb(254, 109, 115);
+    font-weight: bolder;
+}
