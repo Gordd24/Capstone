@@ -10,3 +10,12 @@
     width: 5rem;
 }
 
+#profile,#records,#follow,#response,#about,#sign_out{
+    color: white;
+}
+
+.active_notif
+{
+    color: rgb(254, 109, 115);
+    font-weight: bolder;
+}

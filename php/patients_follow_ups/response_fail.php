@@ -19,11 +19,12 @@ $response_status = 'not available';
 $today = date("Y-m-d"); 
 $time = date("H:i:s");
 $request_status = "responded";
+$view_status = "sent";
 
-$stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, response_date, response_time) VALUES (?, ?, ?, ?, ?)");
+$stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, view_status, response_date, response_time) VALUES (?, ?, ?, ?, ?, ?)");
 
 /* Prepared statement, stage 2: bind and execute */
-$stmt->bind_param("sssss",$patient_id, $request_id, $response_status, $today, $time);
+$stmt->bind_param("ssssss",$patient_id, $request_id, $response_status, $view_status, $today, $time);
 $stmt->execute();
 
 /* Prepared statement, stage 1: prepare */

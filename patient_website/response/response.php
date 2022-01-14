@@ -9,6 +9,10 @@ if(isset($_SESSION['ID'])){
   header("Location: ../../index.php");
 }
 
+include_once '../dbconn.php';
+
+$stmt = $connection->prepare("UPDATE tbl_responses SET view_status = 'viewed' WHERE view_status='sent'; ");
+$stmt->execute();
 
 
 ?>
@@ -22,12 +26,16 @@ if(isset($_SESSION['ID'])){
   <title>Responses</title>
  <!-- bootstrap -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="response.css">
   <link rel="stylesheet" href="../nav/patient_header.css">
+  <link rel="stylesheet" href="response.css">
    <!-- boxicons -->
    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../nav/patient_header.js"></script>
+
+  <!-- javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../../js/notification.js"></script>
 </head>
 
 <body>
@@ -48,7 +56,7 @@ if(isset($_SESSION['ID'])){
                                                 <ul class="list-group">
                                                   <li class="list-group-item head_list" aria-current="true">Responses</li>
                                                     <?php 
-                                                      include_once '../dbconn.php';
+                                                    
                                                         
                                                       $get_response_stmt = $connection->prepare("SELECT * FROM tbl_responses  WHERE patient_id = ? ORDER BY response_date DESC,response_time DESC;");
 
