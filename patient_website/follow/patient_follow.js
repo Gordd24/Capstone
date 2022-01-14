@@ -21,7 +21,6 @@ $(document).ready(function () {
                     'checked': checked
                 },
                 cache: false,
-               
                 success: function (response) {
                     if(response == '1'){
                         
@@ -33,7 +32,6 @@ $(document).ready(function () {
                             // Reload the Page
                             location.reload()
                         });
-                        location.reload()
                     }else if (response==0){
                         console.log('dipumasok')
                     }else{
