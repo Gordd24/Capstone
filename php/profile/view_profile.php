@@ -54,54 +54,6 @@ if(isset($_POST['edit_info']))
     header("Location: view_profile.php");
 }
 
-
-
-
-
-// if(isset($_POST['edit_password']))
-// {
-//     $password = $_POST['password'];
-//     $new_password = $_POST['new_password'];
-//     $confirm_password = $_POST['confirm_password'];
-
-//     $get_password_stmt = $connection->prepare("SELECT password FROM tbl_accounts where acc_id = ?");
-
-//     /* Prepared statement, stage 2: bind and execute */
-//     $get_password_stmt->bind_param("i", $id); // "is" means that $id is bound as an integer and $label as a string
-//     $get_password_stmt->execute();
-//     $pass_result = $get_password_stmt->get_result();
-   
-//     if($pass_result->num_rows>0)
-//     {
-//         $pass_row = $pass_result->fetch_assoc();
-//         if(password_verify($password,$pass_row['password'])){
-//             //password correct.
-//             if($new_password==$confirm_password){
-//                 //password match.
-
-//                 // prepare
-//                 $up_password_stmt = $connection->prepare("UPDATE tbl_accounts SET password = ? WHERE acc_id = ?");
-
-//                 //execute
-//                 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-//                 $up_password_stmt->bind_param("si", $hashed_password,$id); // "is" means that $id is bound as an integer and $label as a string
-//                 $up_password_stmt->execute();
-//                 echo "<script>alert('Successfully updated the Password');</script>";
-//                 header("Location: view_profile.php");
-
-//             }else{
-//                  //password not match.
-//                 echo "<script>alert('Confirm Your Password');</script>";
-//             }
-//         }else{
-//             //password not correct.
-//             echo "<script>alert('Wrong Password');</script>";
-//         }
-//     }
-
-   
-// }
-
 ?>
 <div>
     <div class="row justify-content-center">
@@ -194,6 +146,7 @@ if(isset($_POST['edit_info']))
                     <div class="col">
                         <label for="password" class="form-label">Current Password</label>
                         <input type="password" class="form-control edit_password" id="password" name="password" required readonly>
+                        <div class="error" id="password_error"></div>
                     </div>
                 </div>
 
@@ -201,12 +154,14 @@ if(isset($_POST['edit_info']))
                     <div class="col">
                         <label for="new_password" class="form-label">New Password</label>
                         <input type="password" class="form-control edit_password" id="new_password" name="new_password" required readonly>
+                        <div class="error" id="new_password_error"></div>
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center">
                     <div class="col">
                         <label for="confirm_password" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control edit_password" id="confirm_password" name="confirm_password" required readonly>
+                        <div class="error" id="confirm_password_error"></div>
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_password_btn">

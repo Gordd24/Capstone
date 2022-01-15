@@ -151,6 +151,7 @@ if(isset($_SESSION['ID'])){
                         <div class="col">
                             <label for="password" class="form-label">Current Password</label>
                             <input type="password" class="form-control edit_password" id="password" name="password" required readonly autocomplete="off">
+                            <div class="error" id="password_error"></div>
                         </div>
                     </div>
 
@@ -158,6 +159,7 @@ if(isset($_SESSION['ID'])){
                         <div class="col">
                             <label for="new_password" class="form-label">New Password</label>
                             <input type="password" class="form-control edit_password" id="new_password" name="new_password" required readonly autocomplete="off">
+                            <div class="error" id="new_password_error"></div>
                         </div>
                     </div>
 
@@ -165,6 +167,7 @@ if(isset($_SESSION['ID'])){
                         <div class="col">
                             <label for="confirm_password" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control edit_password" id="confirm_password" name="confirm_password" required readonly autocomplete="off">
+                            <div class="error" id="confirm_password_error"></div>
                             <input type="hidden" name="hidden_field_password" id="hidden_field_password" value="form_check">
 
                         </div>
@@ -173,6 +176,7 @@ if(isset($_SESSION['ID'])){
                     <div class="row mb-3  justify-content-center d-none" id="up_password_btn">
                         <div class="col">
                             <input type="submit" id="update_password_submit"  class="form-control btn apply_btn text-white" name="edit_password"  value="Apply Changes">
+                        
                         </div>
                     </div>
                 </form>

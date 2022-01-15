@@ -220,9 +220,20 @@ $(document).ready(function () {
     $("#form_password").on("submit", function (e) {  
         e.preventDefault();
         var data = $('#form_password').serialize();
-        if (current_pword_state == false) {
-            Swal.fire('Error!', 'Current password is wrong.', 'error')
-        } else if ($("#new_password").val() !== $("#confirm_password").val()) {
+        if (current_pword_state == false ) {
+            $('#password_error').html('Current password is wrong')
+            $('#new_password_error').html('')
+            $('#confirm_password_error').html('')
+        }
+        else if($('#new_password').val().length <= 8){
+            $('#password_error').html('')
+            $('#new_password_error').html('Password must atleast have 8 characters')
+            $('#confirm_password_error').html('')
+        }
+        else if ($("#new_password").val() !== $("#confirm_password").val()) {
+            $('#password_error').html('')
+            $('#new_password_error').html('Password did not match')
+            $('#confirm_password_error').html('Password did not match')
             Swal.fire('Error!', 'Password did not match.', 'error')
         } else {
             Swal.fire({
@@ -252,7 +263,7 @@ $(document).ready(function () {
                                 });
                             }
                             else {
-                                alert(response);
+                                
                                 console.log(response)
                             }
                         }
@@ -301,6 +312,9 @@ $(document).ready(function () {
                                 $(".edit_password").attr("readonly", false);
                             }
                             $("#edit_password_div").removeClass("editing")
+                                $('#password_error').html('')
+                                $('#new_password_error').html('')
+                                $('#confirm_password_error').html('')
                         }
                     }else{
                         $("#edit_password").prop("checked", true);

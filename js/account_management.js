@@ -182,6 +182,7 @@ $(document).ready(function () {
     });
 });
     //account group
+    
     $("#account_next_btn").click(function () {
         uname = $('#username').val()
         email = $('#email').val()
@@ -191,19 +192,23 @@ $(document).ready(function () {
             if(reg_uname_state){
                 if (isEmail(email) == true) {
                     if(email_state){
-                        if (pword == cpword) {
-                        
-                            $("#account_group").removeClass("active_group");
-                            $("#personal_group").addClass("active_group");
-                            $(".progress-bar").css('width', '69%');
-                            //remove red texts if there is any
-                            $('#uname_error').html('')
-                            $('#email_error').html('')
-                            $('#pword_error').html('')
-                            $('#cpword_error').html('')   
-                        } else {
-                            Swal.fire('Error!', 'Password did not match.', 'error')
+                        if (pword.length>=8){
+                            if (pword == cpword) {
+                                $("#account_group").removeClass("active_group");
+                                $("#personal_group").addClass("active_group");
+                                $(".progress-bar").css('width', '69%');
+                                //remove red texts if there is any
+                                $('#uname_error').html('')
+                                $('#email_error').html('')
+                                $('#pword_error').html('')
+                                $('#cpword_error').html('')   
+                            } else {
+                                Swal.fire('Error!', 'Password did not match.', 'error')
+                            }
+                        }else{
+                            $('#pword_error').html('Password too short. Please enter atleast 8 characters.')
                         }
+                        
                         }else {
                             Swal.fire('Error!', 'This email is already registered', 'error')
                             $('#email_error').html('This email is already registered')

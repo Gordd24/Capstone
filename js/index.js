@@ -140,11 +140,9 @@ $(document).ready(function () {
                                 // Reload the Page
                                 location.href = 'patient_website/profile/patient_profile.php'
                             });  
-                        }else if (response == '0'){
+                        }else {
                             console.log(response)
-                            Swal.fire('Error','Username or asdwe is wrong','error')
-                        }else{
-                            console.log(response)
+                            Swal.fire('Error','Username or password is wrong','error')
                         }
                     }
                 });
@@ -162,90 +160,21 @@ $(document).ready(function () {
                                 icon: 'success',
                                 title: 'Login Successful',
                                 showConfirmButton: false,
-                                timer: 1500,
+                                timer: 1000,
                             }).then((result) => {
                                 // Reload the Page
                                 // Reload the Page
                                 location.href = 'php/dashboard/dashboard.php'
                             });  
                               
-                        }else if (response == '0'){
+                        }else {
                             console.log(response)
-                            Swal.fire('Error','Username or asdwe is wrong','error')
+                            Swal.fire('Error','Username or password is wrong','error')
 
-                        }else{
-                            console.log(response)
                         }
                     }
                 });
-            }        
-
-    })
-
-    $('#frmSignIn').on('submit', function(e){
-        e.preventDefault()
-        radio = $('input[name="account"]:checked').val()
-        console.log(radio)
-        // username = $('#signinUsername').val();
-        // password = $('#signinPassword').val();
-        data = $('#frmSignIn').serialize();
-        if(radio == 'Patient'){
-            if(username_state){
-                $.ajax({
-                    type: "POST",
-                    url: "loginProcess.php",
-                    data: data,
-                    success: function (response) {
-                        if(response == '1'){
-                            console.log(response)
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Login Successful',
-                                showConfirmButton: false,
-                                timer: 1500
-                              })
-                            location.href = 'patient_website/profile/patient_profile.php'
-                        }else if (response == '0'){
-                            console.log(response)
-                            Swal.fire('Error','Username or asdwe is wrong','error')
-                        }else{
-                            console.log(response)
-                        }
-                    }
-                });
-            }else{
-                Swal.fire('Error','Username or password is wrong','error')
-            }
-        }else if(radio =='Personnel'){
-            if(username_state){
-                $.ajax({
-                    type: "POST",
-                    url: "loginProcess2.php",
-                    data: data,
-                    success: function (response) {
-                        if(response == '1'){
-                            console.log(response)
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Login Successful',
-                                showConfirmButton: false,
-                                timer: 1500
-                              })
-                              location.href = 'php/dashboard/dashboard.php'
-                        }else if (response == '0'){
-                            console.log(response)
-                            Swal.fire('Error','Username or asdwe is wrong','error')
-
-                        }else{
-                            console.log(response)
-                        }
-                    }
-                });
-            }else{
-                Swal.fire('Error','Username or password is wrong','error')
-            }
         }
-        
     })
 
 })
