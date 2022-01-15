@@ -3,7 +3,7 @@
 }
 
 .head_list{
-    background-color: rgb(95, 168, 211);
+    background-color: rgb(27, 73, 101);
     color: white;
     font-weight: bolder;
 }
@@ -25,3 +25,12 @@
     font-weight: bolder;
 }
 
+.btn.clear{
+    background-color: rgb(254, 109, 115);
+    font-weight: bolder;
+}
+
+.btn.clear:hover{
+    background-color: rgb(182, 75, 79);
+    font-weight: bolder;
+}
