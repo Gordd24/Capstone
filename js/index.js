@@ -58,7 +58,7 @@ $(document).ready(function () {
         password = $('#signinPassword').val();
         if (this.value == 'Patient') {
             radio = this.value 
-            console.log(radio)
+            //console.log(radio)
                 $.ajax({
                     type: "POST",
                     url: "loginProcess.php",
@@ -87,7 +87,7 @@ $(document).ready(function () {
             
         }else if (this.value == 'Personnel') {
             radio = this.value 
-            console.log(radio)
+            //console.log(radio)
                 $.ajax({
                     type: "POST",
                     url: "loginProcess2.php",

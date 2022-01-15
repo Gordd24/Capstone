@@ -73,7 +73,6 @@ $(document).ready(function () {
                 } else {
                     $(".edit_optional").attr("readonly", false);
                 }
-
             }
             else {
                 Swal.fire('Error', 'You need to complete the ongoing update first.', 'error')

@@ -20,6 +20,7 @@ if(!isset($_SESSION['ID'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/patients.js"></script>
     <script src="../../js/nav.js"></script>
+    
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- css -->
@@ -242,7 +243,6 @@ if(!isset($_SESSION['ID'])){
                         <input type="text" class="form-control edit_email" id="email" name="email" value="<?php echo $row['email']; ?>" required readonly autocomplete="off">
                     </div>
                 </div>
-
                 <div class="row mb-3  justify-content-center d-none" id="up_email_btn">
                     <div class="col">
                         <input type="submit" id="update_email_submit"  class="form-control btn apply_btn text-white" name="edit_email"  value="Apply Changes">
@@ -253,16 +253,7 @@ if(!isset($_SESSION['ID'])){
         </div>
     </div>
     <!-- email row end -->
-
-
-  
-    
 </div>
-
-
-
-
-    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
