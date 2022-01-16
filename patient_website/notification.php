@@ -12,11 +12,13 @@ include_once 'dbconn.php';
 
 if(isset($_POST['data'])){
 
-    $get_response_stmt = $connection->prepare("SELECT count(patient_id) as cnt FROM tbl_responses WHERE view_status = 'sent';");
+    $get_response_stmt = $connection->prepare("SELECT count(patient_id) as cnt FROM tbl_responses WHERE patient_id = ? and view_status = 'sent';");
 
         $id = $_SESSION['PATIENT_ID'];
         /* Prepared statement, stage 2: bind and execute */
+        $get_response_stmt->bind_param("s", $id);
         $get_response_stmt->execute();
+        
         $response_result = $get_response_stmt->get_result();
 
         while ($response_row = $response_result->fetch_array(MYSQLI_ASSOC)) {
