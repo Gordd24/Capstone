@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         }
     });
-    
+    orig_uname = $('#username').val();
     $("#edit_username").change(function () {
         if (!$("#edit_username_div").hasClass("editing")) {
             //check if there is ongoing update, 1 update at a time.
@@ -86,7 +86,7 @@ $(document).ready(function () {
                   }).then((result) => {
                     if (result.isConfirmed) {
                         $("#edit_username").prop("checked", false);
-                        $('#username').val(username);
+                        $('#username').val(orig_uname);
                         if ($("#up_info_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
                             $("#up_username_btn").toggleClass("d-none");
                             if ($("#up_username_btn").hasClass("d-none")) {
@@ -106,7 +106,7 @@ $(document).ready(function () {
 
     });
     var uname_state = 'orig';
-    orig_uname = $('#username').val();
+    
     $('#username').on('input', function () {
         var uname = $('#username').val()
         if (uname == orig_uname) {

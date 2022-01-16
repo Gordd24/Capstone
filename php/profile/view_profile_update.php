@@ -37,20 +37,34 @@ if (isset($_POST['upd_uname_check'])){
     }
 
 }
+
+if(isset($_POST['edit_info']))
+    {
+        $fname = $_POST['first_name'];
+        $mname = $_POST['middle_name'];
+        $lname = $_POST['last_name'];
+        $id = $_GET['id'];
+        echo $fname . $mname . $lname;
+        // prepare
+        $stmt = $connection->prepare("UPDATE tbl_accounts
+        SET  first_name = ?, middle_name = ?, last_name = ? WHERE acc_id = ?");
+        //execute
+        $stmt->bind_param("sssi", $fname,$mname,$lname,$id); // "is" means that $id is bound as an integer and $label as a string
+        $stmt->execute();
+       header("Location: view_profile.php");
+    }
 if (isset($_POST['hidden_field_username']) && $_POST['hidden_field_username'] === 'form_check'){
 // if(isset($_POST['edit_username'])){
     $origUname = $_POST['orig_uname'];
     $username = $_POST['username'];
 
-   
          // prepare
         $up_username_stmt = $connection->prepare("UPDATE tbl_accounts SET username = ? WHERE username = ?");
 
         //execute
-        $up_username_stmt->bind_param("si", $username,$origUname); // "is" means that $id is bound as an integer and $label as a string
+        $up_username_stmt->bind_param("ss", $username,$origUname); // "is" means that $id is bound as an integer and $label as a string
         $up_username_stmt->execute();
         
-    
 }
 
 

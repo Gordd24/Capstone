@@ -84,7 +84,7 @@ $(document).ready(function () {
                                     console.log(response)
                                     Swal.fire('Error!', 'Email does not exist', 'error')
                                 }else{
-                                    console.log('There is an error')
+                                    console.log(response)
                                 }  
                                 
                             }

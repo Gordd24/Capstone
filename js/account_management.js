@@ -42,9 +42,7 @@ $(document).ready(function () {
                             )
                         }
                     });
-
                 });
-
             }
         });
         //somehow return false stops keyup functioning twice

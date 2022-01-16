@@ -38,22 +38,7 @@ if(!isset($_SESSION['ID'])){
  $result = $stmt->get_result();
  $row = $result->fetch_assoc();
 
-if(isset($_POST['edit_info']))
-{
-    $fname = $_POST['first_name'];
-    $mname = $_POST['middle_name'];
-    $lname = $_POST['last_name'];
 
-    // prepare
-    $stmt = $connection->prepare("UPDATE tbl_accounts
-    SET  first_name = ?, middle_name = ?, last_name = ? WHERE acc_id = ?");
-
-
-    //execute
-    $stmt->bind_param("sssi", $fname,$mname,$lname,$id); // "is" means that $id is bound as an integer and $label as a string
-    $stmt->execute();
-    header("Location: view_profile.php");
-}
 
 ?>
 <div>
@@ -65,8 +50,8 @@ if(isset($_POST['edit_info']))
 
     <div class="row">
         <div class="col-5 container-lg border rounded my-5 p-2" id="edit_info_div">
-        
-            <form method="POST" id='form_name'>
+        <form method="POST" id='form_name' action="view_profile_update.php?id=<?php echo $id; ?>">
+            
             <h3>Personal Information</h3>
                 <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox" value="" id="edit_info">
