@@ -4,7 +4,7 @@ include_once 'php/dbconn.php';
 if (isset($_POST['hidden_field_reset']) && $_POST['hidden_field_reset'] === 'form_check'){
 // if (isset($_POST['reset_submit'])) {
     if(isset($_POST['category']) && $_POST['category']=='patient'){
-        echo 'patient';
+        //echo 'patient';
         $email = $_POST["email"];
         $password = $_POST['new_password'];
         $confirm_password = $_POST['confirm_password'];
@@ -41,8 +41,6 @@ if (isset($_POST['hidden_field_reset']) && $_POST['hidden_field_reset'] === 'for
         $del_stmt -> execute();
         $del_stmt -> close();
     }
-    
-        
-    
+
 }
 ?>

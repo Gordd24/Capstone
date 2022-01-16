@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
@@ -37,6 +36,7 @@ $stmt->execute();
   <!-- javascript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../../js/notification.js"></script>
+  <script src="response.js"></script>
 </head>
 
 <body>
@@ -50,7 +50,7 @@ $stmt->execute();
                                         <div class="row my-3 justify-content-center">
                                           <div class="col-2">
                                                 <form>
-                                                    <a href="clear_response.php"> 
+                                                    <a onclick="clear_response()" id='clear_response'> 
                                                         <div class="form-group form-control btn clear text-white">
                                                               Clear Responses
                                                         </div>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
@@ -15,6 +14,6 @@ $stmt = $connection->prepare("DELETE FROM tbl_responses WHERE patient_id = ? and
 $stmt->bind_param("s", $_SESSION['PATIENT_ID']);
 $stmt->execute();
 
-header("Location: response.php");
+//header("Location: response.php");
 
 ?>

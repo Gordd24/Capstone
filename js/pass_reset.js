@@ -10,108 +10,97 @@ $(document).ready(function () {
     }
 
     radio ='patient';
-    email_state = false;
-    //check valiue if patient or personnel
-    $('input[name="forgot_account"]').change(function() {
-        email = $('#forgetEmail').val()
-        if (this.value == 'patient') {
-            radio = this.value 
-            console.log(radio)
-            
-                $.ajax({
-                    type: "POST",
-                    url: "forgetProcess.php",
-                    data: {
-                        'email_check': 1,
-                        'email': email,
-                        'radio': radio,
-                    },
-                    success: function (response) {
-                        if (response == 0) {
-                            email_state = false;
-                            console.log(response)
-                        }
-                        else if (response == 1) {
-                            email_state = true;
-                            console.log(response)
-                        }
-                        else {
-                            console.log(response);
-                        }
-        
-                    }
-                })
-            
-        }
-        else if (this.value == 'personnel') {
-            radio = this.value 
-            console.log(radio)
-                $.ajax({
-                    type: "POST",
-                    url: "forgetProcess2.php",
-                    data: {
-                         'email_check': 1,
-                         'email': email,
-                         'radio': radio,
-                    },
-                    success: function (response) {
-                         if (response == 0) {
-                              email_state = false;
-                              console.log(response)
-                         }
-                         else if (response == 1) {
-                              email_state = true;
-                              console.log(response)
-                         }
-                         else {
-                              console.log(response);
-                         }
-        
-                    }
-                })
-            
-        }
-    });
     $('#frmForget').on('submit', function (e) {
         var data = $('#frmForget').serialize();
         email = $('#forgetEmail').val()
-        console.log(email)
-        if(email==''){
-            $('#email_error').html('Please enter email')
-            e.preventDefault()
-        }
-        else{
-            e.preventDefault();
-            if(isEmail(email) == true){
-                if(email_state==false){
-                    $.ajax({
-                        type: 'POST',
-                        url: 'forgetProcess.php',
-                        data: data,
-                        success: function (response){        
-                            Swal.fire({
-                               title: 'Success',
-                               text:'Check email for reset password link',
-                               icon: 'success',
-                              }).then((result) => {
-                                // Reload the Page
-                                $('#email_error').html('')
-                                location.reload();
-                              });
-                        }
-                    })
-                    return false;
+        categ = $('input[name="forgot_account"]:checked').val()
 
+        console.log(categ)
+        if (categ == 'patient'){
+            if(email==''){
+                $('#email_error').html('Please enter email')
+                e.preventDefault()
+            }
+            else{
+                e.preventDefault();
+                if(isEmail(email) == true){
+                    
+                        $.ajax({
+                            type: 'POST',
+                            url: 'forgetProcess.php',
+                            data: data,
+                            success: function (response){        
+                                if (response == '1'){
+                                    Swal.fire({
+                                        title: 'Success',
+                                        text:'Check email for reset password link',
+                                        icon: 'success',
+                                       }).then((result) => {
+                                         // Reload the Page
+                                         $('#email_error').html('')
+                                         location.reload();
+                                       });
+                                }else if (response == '0'){
+                                    Swal.fire('Error!', 'Email does not exist', 'error')
+                                }else{
+                                    console.log('There is a website error')
+                                }
+                                
+                            }
+                        })
+                        return false;
                 }else{
-                    Swal.fire('Error!', 'Email does not exist', 'error')
+                    
+                    Swal.fire('Error!', 'Please use a valid email', 'error')
+                    $('#email_error').html('Please enter a valid email')
                 }
-               
-            }else{
-                
-                Swal.fire('Error!', 'Please use a valid email', 'error')
-                $('#email_error').html('Please enter a valid email')
             }
         }
+        else if (categ == 'personnel'){
+            if(email==''){
+                $('#email_error').html('Please enter email')
+                e.preventDefault()
+            }
+            else{
+                e.preventDefault();
+                if(isEmail(email) == true){
+                        $.ajax({
+                            type: 'POST',
+                            url: 'forgetProcess2.php',
+                            data: data,
+                            success: function (response){      
+                                if(response == '1'){
+                                    console.log(response)
+                                    Swal.fire({
+                                        title: 'Success',
+                                        text:'Check email for reset password link',
+                                        icon: 'success',
+                                       }).then((result) => {
+                                         // Reload the Page
+                                         $('#email_error').html('')
+                                         location.reload();
+                                       });
+                                }else if (response == '0'){
+                                    console.log(response)
+                                    Swal.fire('Error!', 'Email does not exist', 'error')
+                                }else{
+                                    console.log('There is an error')
+                                }  
+                                
+                            }
+                        })
+                        return false;
+    
+                    }
+                   
+                else{
+                    
+                    Swal.fire('Error!', 'Please use a valid email', 'error')
+                    $('#email_error').html('Please enter a valid email')
+                }
+            }
+        }
+        
     })
 
     $('#reset_form').on('submit', function(e){
@@ -126,17 +115,18 @@ $(document).ready(function () {
                     type: 'POST',
                     url: 'reset_process.php',
                     data: data,
-                    success: function (response){        
-                        Swal.fire({
-                           title: 'Success',
-                           text:'Password updated successfully',
-                           icon: 'success',
-                          }).then((result) => {
-                            // Reload the Page
-                            $('#password_error').html('')
-                            $('#cpassword_error').html('')
-                            location.href= 'index.php';
-                          });
+                    success: function (response){   
+                            console.log(response)  
+                            Swal.fire({
+                                title: 'Success',
+                                text:'Password updated successfully',
+                                icon: 'success',
+                               }).then((result) => {
+                                 // Reload the Page
+                                 $('#password_error').html('')
+                                 $('#cpassword_error').html('')
+                                 location.href= 'index.php';
+                               });
                     }
                 })
                 return false;
@@ -149,7 +139,6 @@ $(document).ready(function () {
             $('#password_error').html('Please enter password')
             $('#cpassword_error').html('Please enter confirm password')
             e.preventDefault();
-        }
-        
+        }  
     })
 })
