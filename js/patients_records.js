@@ -38,11 +38,11 @@ $(document).ready(function () {
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes'
-                      }).then((result) => {
+                    }).then((result) => {
                         if (result.isConfirmed) {
                             location.href = "archive_folder.php?id=" + $(this).attr('id');
                         }
-                      })
+                    })
                 });
             }
         });
@@ -66,11 +66,11 @@ $(document).ready(function () {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 location.href = "archive_folder.php?id=" + $(this).attr('id');
             }
-          })
+        })
     });
 
     $(".btn.create_record").click(function () {
@@ -450,28 +450,28 @@ $(document).ready(function () {
         license = $('#license').val()
         // var data = $('#medcert_form').serialize()
         if (physician == '' || license == '' || $('#signature').get(0).files.length === 0) {
-            if(physician=='')$('#phys_error').html('Please enter physician name')
-            if(physician=='')$('#phys_license_error').html('Please enter physician license')
-            if($('#signature').get(0).files.length === 0)$('#sign_error').html('Please upload signature')
+            if (physician == '') $('#phys_error').html('Please enter physician name')
+            if (physician == '') $('#phys_license_error').html('Please enter physician license')
+            if ($('#signature').get(0).files.length === 0) $('#sign_error').html('Please upload signature')
             e.preventDefault()
-        }else{
+        } else {
             e.preventDefault()
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
-                
+
                 data: new FormData(this),
                 processData: false,
                 contentType: false,
                 cache: false,
-                success: function (response){        
+                success: function (response) {
                     Swal.fire({
-                    title: 'Success',
-                    text:'Medical certificate created successfully',
-                    icon: 'success',
+                        title: 'Success',
+                        text: 'Medical certificate created successfully',
+                        icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href='patients_records.php';
+                        location.href = 'patients_records.php';
                     });
                 }
             })
@@ -483,8 +483,8 @@ $(document).ready(function () {
     $('#lab_form').on('submit', function (e) {
 
         if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0) {
-            if($('#patient_lab_res').get(0).files.length === 0 )$('#radio_error').html('Please select laboratory result type')
-            if($('input[name="result"]:checked').length === 0 )$('#lab_res_error').html('Please upload laboratory result')
+            if ($('#patient_lab_res').get(0).files.length === 0) $('#radio_error').html('Please select laboratory result type')
+            if ($('input[name="result"]:checked').length === 0) $('#lab_res_error').html('Please upload laboratory result')
             e.preventDefault()
         } else {
             e.preventDefault()
@@ -504,7 +504,12 @@ $(document).ready(function () {
                         icon: 'success',
                     }).then((result) => {
                         // Reload the Page
-                        location.href = 'patients_records.php';
+                        if (data == 0) {
+                            location.href = '../patients_follow_ups/patients_follow_ups.php';
+                        } else {
+                            location.href = 'patients_records.php';
+                        }
+
                     });
                 }
             })

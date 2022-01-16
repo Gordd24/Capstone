@@ -10,7 +10,9 @@ if(isset($_SESSION['ID'])){
 
 include_once '../dbconn.php';
 
-$stmt = $connection->prepare("UPDATE tbl_responses SET view_status = 'viewed' WHERE view_status='sent'; ");
+$stmt = $connection->prepare("UPDATE tbl_responses SET view_status = 'viewed' WHERE patient_id = ? and view_status='sent'; ");
+$patient_id = $_SESSION['PATIENT_ID'];
+$stmt->bind_param("s", $patient_id);
 $stmt->execute();
 
 
