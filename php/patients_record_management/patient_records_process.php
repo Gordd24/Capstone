@@ -605,6 +605,8 @@ function make_lab_res() {
                     $request_stmt->bind_param("ss",$request_status, $request_id);
                     $request_stmt->execute();
 
+                    echo "0";
+
                   }else{
 
                   $stmt = $connection->prepare("INSERT INTO tbl_requests(patient_id, result_type, request_date, request_time, request_status) VALUES (?, ?, ?, ?, ?)");
@@ -632,7 +634,7 @@ function make_lab_res() {
                   $stmt->bind_param("ssssss",$patient_id, $request_id, $response_status, $view_status, $today, $time);
                   $stmt->execute();
 
-                  echo "File uploaded successfully";
+                  echo "1";
                   // header('Location: record_management.php');
 
                   }
