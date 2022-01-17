@@ -81,10 +81,9 @@ if (isset($_POST['hidden_field']) && $_POST['hidden_field'] === 'form_check'){
         {
             while($row_patient = $patient_result -> fetch_assoc())
             {       
-                    $username = $row_patient['patient_id'].str_replace('-','',$row_patient['birthdate']);
-                    $password = $row_patient['patient_id'].str_replace('-','',$row_patient['birthdate']);                  
+                    $username = $row_patient['patient_id'].strtolower(str_replace(' ','',$row_patient['last_name']));
+                    $password = $row_patient['patient_id'].strtolower(str_replace(' ','',$row_patient['last_name']));                  
             }
-
         }
 
         $hashedP = password_hash($password, PASSWORD_DEFAULT);
