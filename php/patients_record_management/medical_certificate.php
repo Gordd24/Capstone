@@ -58,7 +58,7 @@ if(!isset($_SESSION['ID'])){
                                     <label class="form-check-label" for="male">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Femaled">
+                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Female">
                                     <label class="form-check-label" for="female">Female</label>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@ if(!isset($_SESSION['ID'])){
                                     <label class="form-check-label" for="male">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Femaled" checked>
+                                    <input class="form-check-input" type="radio" name="sex" id="female" value="Female" checked>
                                     <label class="form-check-label" for="female">Female</label>
                                 </div>
                             </div>

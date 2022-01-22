@@ -22,7 +22,7 @@ $pages =  ceil($total/$limit);
 $Previous = $page - 1;
 $Next = $page + 1; 
 
-$connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Active' ORDER BY date_added,time_added DESC LIMIT $start,$limit");
+$connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Active' ORDER BY date_added DESC,time_added DESC LIMIT $start,$limit");
 $patients_result = $connection->use_result();
 
 

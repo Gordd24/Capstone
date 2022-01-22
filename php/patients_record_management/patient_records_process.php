@@ -29,10 +29,13 @@ if (isset($_POST['hidden_field_discharge']) && $_POST['hidden_field_discharge'] 
       discharge_patient();
 }
 
+
 function make_consultation() {
   include_once '../dbconn.php';
   require_once __DIR__ . '../../../vendor/autoload.php';
   $mpdf = new \Mpdf\Mpdf();
+
+  $mpdf->SetProtection(array('copy','print-highres'));
   date_default_timezone_set('Asia/Manila');
   $patient_id = $_POST['patient_id'];
   $patient_lname = strtolower($_POST['last_name']);
@@ -174,9 +177,9 @@ function make_consultation() {
 function make_admission(){
     include_once '../dbconn.php';
     require_once __DIR__ . '../../../vendor/autoload.php';
+
     
       $mpdf = new \Mpdf\Mpdf();
-         //UNCOMMENT WHEN ISASAMA NA
         date_default_timezone_set('Asia/Manila');
     
         $patient_id = $_POST['patient_id'];
@@ -410,6 +413,7 @@ function make_medcert(){
     require_once __DIR__ . '../../../vendor/autoload.php';
     
       $mpdf = new \Mpdf\Mpdf();
+      $mpdf->SetProtection(array('copy','print-highres'));
 
       //POST INPUTS
     date_default_timezone_set('Asia/Manila');
@@ -653,8 +657,7 @@ function discharge_patient() {
     require_once __DIR__ . '../../../vendor/autoload.php';
 
     $mpdf = new \Mpdf\Mpdf();
-
-        $mpdf->percentSubset = 0;
+    $mpdf->percentSubset = 0;
 
         // COMMENTED, POST INPUTS
         $patient_id = $_POST['patient_id'];
