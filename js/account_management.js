@@ -180,7 +180,6 @@ $(document).ready(function () {
     });
 });
     //account group
-    
     $("#account_next_btn").click(function () {
         uname = $('#username').val()
         email = $('#email').val()
@@ -263,7 +262,7 @@ $(document).ready(function () {
     //employee group
     $("#regform").on("submit",function (e) {   
         var data = $('#regform').serialize();
-        emp_id = $('#empi_id').val()
+        emp_id = $('#emp_id').val()
         if(emp_id==''){
             $('#empid_error').html('Please enter employee id')
             e.preventDefault()

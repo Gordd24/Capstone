@@ -12,7 +12,9 @@ if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
 else{
   $id = $_SESSION['PATIENT_ID'];
 }
-
+if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
+  header("Location: ../../patient_website/change_patient_pass.php");
+}
 
 ?>
 <!DOCTYPE html>

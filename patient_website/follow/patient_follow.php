@@ -9,6 +9,9 @@ if(isset($_SESSION['ID'])){
 
   header("Location: ../../index.php");
 }
+if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
+  header("Location: ../../patient_website/change_patient_pass.php");
+}
 ?>
 
 <!DOCTYPE html>

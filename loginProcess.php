@@ -40,7 +40,7 @@ if (isset($_POST['hidden_field_signin']) && $_POST['hidden_field_signin'] === 'f
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $get_patient_account = $connection->prepare("SELECT patient_id, username,password FROM tbl_patients WHERE username = ?");
+        $get_patient_account = $connection->prepare("SELECT patient_id, username,password, pass_status FROM tbl_patients WHERE username = ?");
         $get_patient_account->bind_param("s", $username); // "is" means that $id is bound as an integer and $label as a string
         $get_patient_account->execute();
         $patient_account = $get_patient_account->get_result();
@@ -50,10 +50,12 @@ if (isset($_POST['hidden_field_signin']) && $_POST['hidden_field_signin'] === 'f
             while ($row = $patient_account->fetch_array(MYSQLI_ASSOC)) {
                 $test_pass = $row['password'];
                 $patient_id = $row['patient_id'];
+                $pass_status = $row['pass_status'];
             }
 
             if(password_verify($password, $test_pass)){
                 $_SESSION["PATIENT_ID"] = $patient_id;
+                $_SESSION["PASS_STATUS"] = $pass_status;
                 echo '1';
             }
             else{

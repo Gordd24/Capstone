@@ -35,7 +35,6 @@ if (isset($_POST['upd_uname_check'])){
         echo '0';
         
     }
-
 }
 
 if(isset($_POST['edit_info']))

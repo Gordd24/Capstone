@@ -8,6 +8,9 @@ if(isset($_SESSION['ID'])){
   header("Location: ../../index.php");
 }
 
+if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
+  header("Location: ../../patient_website/change_patient_pass.php");
+}
 include_once '../dbconn.php';
 
 $stmt = $connection->prepare("UPDATE tbl_responses SET view_status = 'viewed' WHERE patient_id = ? and view_status='sent'; ");
