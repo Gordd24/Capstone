@@ -33,7 +33,6 @@ if(isset($_POST['email_check'])){
 }
 
 if (isset($_POST['hidden_field']) && $_POST['hidden_field'] === 'form_check'){
-    echo 'pasok';
         //  post INPUTS FROM FORM FIELDS
     $username = 'default';
     $password = 'default';
@@ -95,6 +94,7 @@ if (isset($_POST['hidden_field']) && $_POST['hidden_field'] === 'form_check'){
         $stmt->bind_param("sss", $username, $hashedP, $patient_id); // "is" means that $id is bound as an integer and $label as a string
 
         $stmt->execute();
+        echo $patient_id;
     }else{
 
         $error = $connection->errno . ' ' . $connection->error;
