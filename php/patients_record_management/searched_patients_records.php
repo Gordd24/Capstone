@@ -32,8 +32,7 @@ include_once '../dbconn.php';
                             }else{
                                 echo "<i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>";
                             }                 
-                        
-
+                    
 
                             echo"
                             <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
