@@ -180,6 +180,8 @@ function make_admission(){
 
     
       $mpdf = new \Mpdf\Mpdf();
+      $mpdf->SetProtection(array(), '', 'bread'); 
+     
         date_default_timezone_set('Asia/Manila');
     
         $patient_id = $_POST['patient_id'];
@@ -389,6 +391,13 @@ function make_admission(){
           
               //uncomment
               $mpdf->Output("../../".$file,"F");
+              // $uid = $mpdf->uniqid;
+              // $oval = $mpdf->Ovalue;
+              // $encKey = $mpdf->encryption_key;
+              // $uval = $mpdf->Uvalue;
+              // $pval = $mpdf->Pvalue;
+              // $RC128 = $mpdf->useRC128encryption;
+              // unset($mpdf);
           
               /* Prepared statement, stage 1: prepare */
               $stmt = $connection->prepare("INSERT INTO tbl_admission(patient_id,pdf_path,date,file_name) VALUES (?,?,?,?);");

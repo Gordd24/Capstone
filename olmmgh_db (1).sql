@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2022 at 08:48 PM
+-- Generation Time: Jan 24, 2022 at 07:12 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -87,7 +87,9 @@ INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `d
 (24, 26, 'patient/26/admission/20220123124936-balot.pdf', '2022-01-23', '20220123124936-balot.pdf'),
 (25, 26, 'patient/26/admission/20220123125112-balot.pdf', '2022-01-23', '20220123125112-balot.pdf'),
 (26, 26, 'patient/26/admission/20220123125604-balot.pdf', '2022-01-23', '20220123125604-balot.pdf'),
-(27, 24, 'patient/24/admission/2022012310104-mendoza.pdf', '2022-01-23', '2022012310104-mendoza.pdf');
+(27, 24, 'patient/24/admission/2022012310104-mendoza.pdf', '2022-01-23', '2022012310104-mendoza.pdf'),
+(28, 27, 'patient/27/admission/20220124122904-capule.pdf', '2022-01-24', '20220124122904-capule.pdf'),
+(29, 26, 'patient/26/admission/20220124123643-balot.pdf', '2022-01-24', '20220124123643-balot.pdf');
 
 -- --------------------------------------------------------
 
@@ -178,16 +180,17 @@ CREATE TABLE `tbl_med_cert` (
   `patient_id` int(20) NOT NULL,
   `pdf_path` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL,
-  `enc_key` varchar(255) NOT NULL
+  `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_med_cert`
 --
 
-INSERT INTO `tbl_med_cert` (`record_med_cert_id`, `patient_id`, `pdf_path`, `date`, `file_name`, `enc_key`) VALUES
-(12, 24, 'patient/24/medical certificate/2022012310831-mendoza.pdf', '2022-01-23', '2022012310831-mendoza.pdf', '');
+INSERT INTO `tbl_med_cert` (`record_med_cert_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
+(12, 24, 'patient/24/medical certificate/2022012310831-mendoza.pdf', '2022-01-23', '2022012310831-mendoza.pdf'),
+(13, 26, 'patient/26/medical certificate/20220124125827-balot.pdf', '2022-01-24', '20220124125827-balot.pdf'),
+(14, 28, 'patient/28/medical certificate/2022012420102-de jesus.pdf', '2022-01-24', '2022012420102-de jesus.pdf');
 
 -- --------------------------------------------------------
 
@@ -237,8 +240,9 @@ INSERT INTO `tbl_patients` (`patient_id`, `username`, `password`, `first_name`, 
 (15, '', '', 'Machi', '', 'Macchiato', '', NULL, 'Female', '', 'Malolos, Bulacan', '2021-12-03', '', 'Not Admitted', 'Active', '2021-12-03', '15:34:54', 'default'),
 (24, '2420211201', '$2y$10$U7R5RthTEiaGvcJtsH06/.dCKtLUdWoWMKW0Ew9ImrQjBHF1n4Qhu', 'Jasper', 'Alvaro', 'Mendoza', '0989786731', 'jas@gmail.com', 'Male', 'Roman Catholic', 'Maunlad Homes', '2021-12-01', 'Rapper', 'Not Admitted', 'Active', '2021-12-30', '12:20:34', 'default'),
 (25, '2520220106', '$2y$10$9CfN9vbVSmOHgv6JGp/GMONssphbbMCcENTSf29h/ZbaCPaT1Tzzy', 'Lady Jobel', 'Ignacio', 'Legaspi', '', 'ladyboj@gmail.com', 'Female', '', 'Batia, Bocaue', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '14:00:00', 'default'),
-(26, '2620220106', '$2y$10$jtvs7h/aA5zTy7UlIiiLYe9EL5.fOZqS0yfdxqDR2FzvUdm5PUA6e', 'Dexter', '', 'Balot', '', 'dex@gmail.com', 'Male', '', 'dex residence', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '15:21:36', 'default'),
-(27, '27capule', '$2y$10$wXtTHDMMlRaWDcdx/d7RG.2/PhxUjstpZTg6gawoAQcE287l.Q/a.', 'Camila Marie', '', 'Capule', '', 'cmcpl17@gmail.com', 'Female', '', 'Malolos, Bulacan', '2022-01-23', '', 'Not Admitted', 'Active', '2022-01-23', '03:43:37', 'default');
+(26, '2620220106', '$2y$10$PpRhosV.R7GXF8K2zRnMx.B6liPFH.oiuJ/2moPLmma96U23.euiO', 'Dexter', '', 'Balot', '', 'dex@gmail.com', 'Male', '', 'dex residence', '2022-01-06', '', 'Admitted', 'Active', '2022-01-06', '15:21:36', 'changed'),
+(27, '27capule', '$2y$10$wXtTHDMMlRaWDcdx/d7RG.2/PhxUjstpZTg6gawoAQcE287l.Q/a.', 'Camila Marie', '', 'Capule', '', 'cmcpl17@gmail.com', 'Female', '', 'Malolos, Bulacan', '2022-01-23', '', 'Admitted', 'Active', '2022-01-23', '03:43:37', 'default'),
+(28, '28dejesus', '$2y$10$UPBEj23K9YGI/DGYeoy1RuzIxA0bq2rLOogQE5vm0oiTlvD0qvUvC', 'Dindy', '', 'de Jesus', '', 'duwin@gmail.com', 'Female', '', 'Malolos, Bulacan', '1999-09-15', '', 'Not Admitted', 'Active', '2022-01-24', '00:01:00', 'changed');
 
 -- --------------------------------------------------------
 
@@ -421,7 +425,7 @@ ALTER TABLE `tbl_accounts`
 -- AUTO_INCREMENT for table `tbl_admission`
 --
 ALTER TABLE `tbl_admission`
-  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_consult`
@@ -445,13 +449,13 @@ ALTER TABLE `tbl_lab_result`
 -- AUTO_INCREMENT for table `tbl_med_cert`
 --
 ALTER TABLE `tbl_med_cert`
-  MODIFY `record_med_cert_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `record_med_cert_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_patients`
 --
 ALTER TABLE `tbl_patients`
-  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_requests`

@@ -33,7 +33,7 @@ if(isset($_SESSION["PATIENT_ID"]) && isset($_SESSION["PASS_STATUS"]) && $_SESSIO
 </head>
 
 <nav class="nav index_header p-2 text-white align-items-center">
-    <img class="logo" id="logo" src="../../images/ofelia_logo.png" alt="Logo">
+    <img class="logo d-none d-md-block" id="logo" src="../../images/ofelia_logo.png" alt="Logo">
     <div class="fs-5 mx-3"> Ofelia L. Mendoza Maternity and General Hospital </div>
 </nav>
 

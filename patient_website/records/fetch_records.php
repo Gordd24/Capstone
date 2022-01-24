@@ -27,7 +27,7 @@ if(isset($_POST['patient'])){
                         <td>".$row['file_name']."</td>
                         <td>".$row['date']."</td>
                         <td class='text-center'>
-                        <i class='bx bxs-book-open mx-1 btn border open_file medical' id=".$row['file_name']." title='Open File'></i>                                                                        </td>
+                        <i class='bx bxs-book-open mx-1 btn border open_file medical' id='".$row['file_name']."' title='Open File'></i>                                                                        </td>
                       </tr>";
 
                }
@@ -45,7 +45,7 @@ if(isset($_POST['patient'])){
                     <td>".$row['file_name']."</td>
                     <td>".$row['date']."</td>
                     <td class='text-center'>
-                    <i class='bx bxs-book-open mx-1 btn border open_file laboratory' id=".$row['file_name']." title='Open File'></i>                                                                        </td>
+                    <i class='bx bxs-book-open mx-1 btn border open_file laboratory' id='".$row['file_name']."' title='Open File'></i>                                                                        </td>
                 </tr>";
 
                }
