@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2022 at 07:12 AM
+-- Generation Time: Jan 24, 2022 at 08:49 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -59,37 +59,63 @@ INSERT INTO `tbl_accounts` (`acc_id`, `auto_id`, `username`, `password`, `first_
 CREATE TABLE `tbl_admission` (
   `record_admission_id` int(20) NOT NULL,
   `patient_id` int(20) NOT NULL,
-  `pdf_path` varchar(255) NOT NULL,
+  `pdf_path` varchar(255) DEFAULT 'ongoing',
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL
+  `file_name` varchar(255) DEFAULT 'ongoing',
+  `address` varchar(50) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` varchar(10) DEFAULT NULL,
+  `religion` varchar(50) DEFAULT NULL,
+  `phil_health` varchar(50) DEFAULT NULL,
+  `father` varchar(60) DEFAULT NULL,
+  `mother` varchar(60) DEFAULT NULL,
+  `spouse` varchar(60) DEFAULT NULL,
+  `date_marriage` date DEFAULT NULL,
+  `place_marriage` varchar(50) DEFAULT NULL,
+  `room_no` int(11) DEFAULT NULL,
+  `case_no` int(11) DEFAULT NULL,
+  `cs` varchar(50) DEFAULT NULL,
+  `date_admitted` date DEFAULT NULL,
+  `time_admitted` time DEFAULT NULL,
+  `physician` varchar(60) DEFAULT NULL,
+  `diagnosis` varchar(255) DEFAULT NULL,
+  `occupation` varchar(100) DEFAULT NULL,
+  `admitted_by` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_admission`
 --
 
-INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(8, 14, 'patient/14/admission/2021123050126-test.pdf', '2021-12-30', '2021123050126-test.pdf'),
-(9, 15, 'patient/15/admission/2021123182815-macchiato.pdf', '2021-12-31', '2021123182815-macchiato.pdf'),
-(10, 24, 'patient/24/admission/2022010615835-mendoza.pdf', '2022-01-06', '2022010615835-mendoza.pdf'),
-(11, 24, 'patient/24/admission/2022010615837-mendoza.pdf', '2022-01-06', '2022010615837-mendoza.pdf'),
-(12, 25, 'patient/25/admission/2022010620121-legaspi.pdf', '2022-01-06', '2022010620121-legaspi.pdf'),
-(14, 15, 'patient/15/admission/20220109102049-macchiato.pdf', '2022-01-09', '20220109102049-macchiato.pdf'),
-(15, 15, 'patient/15/admission/20220109102052-macchiato.pdf', '2022-01-09', '20220109102052-macchiato.pdf'),
-(16, 25, 'patient/25/admission/20220123122112-legaspi.pdf', '2022-01-23', '20220123122112-legaspi.pdf'),
-(17, 25, 'patient/25/admission/20220123122115-legaspi.pdf', '2022-01-23', '20220123122115-legaspi.pdf'),
-(18, 24, 'patient/24/admission/20220123122348-mendoza.pdf', '2022-01-23', '20220123122348-mendoza.pdf'),
-(19, 24, 'patient/24/admission/20220123122510-mendoza.pdf', '2022-01-23', '20220123122510-mendoza.pdf'),
-(20, 14, 'patient/14/admission/20220123122727-doe.pdf', '2022-01-23', '20220123122727-doe.pdf'),
-(21, 14, 'patient/14/admission/20220123122957-doe.pdf', '2022-01-23', '20220123122957-doe.pdf'),
-(22, 14, 'patient/14/admission/20220123123637-doe.pdf', '2022-01-23', '20220123123637-doe.pdf'),
-(23, 26, 'patient/26/admission/20220123124644-balot.pdf', '2022-01-23', '20220123124644-balot.pdf'),
-(24, 26, 'patient/26/admission/20220123124936-balot.pdf', '2022-01-23', '20220123124936-balot.pdf'),
-(25, 26, 'patient/26/admission/20220123125112-balot.pdf', '2022-01-23', '20220123125112-balot.pdf'),
-(26, 26, 'patient/26/admission/20220123125604-balot.pdf', '2022-01-23', '20220123125604-balot.pdf'),
-(27, 24, 'patient/24/admission/2022012310104-mendoza.pdf', '2022-01-23', '2022012310104-mendoza.pdf'),
-(28, 27, 'patient/27/admission/20220124122904-capule.pdf', '2022-01-24', '20220124122904-capule.pdf'),
-(29, 26, 'patient/26/admission/20220124123643-balot.pdf', '2022-01-24', '20220124123643-balot.pdf');
+INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `date`, `file_name`, `address`, `contact`, `age`, `sex`, `religion`, `phil_health`, `father`, `mother`, `spouse`, `date_marriage`, `place_marriage`, `room_no`, `case_no`, `cs`, `date_admitted`, `time_admitted`, `physician`, `diagnosis`, `occupation`, `admitted_by`) VALUES
+(8, 14, 'patient/14/admission/2021123050126-test.pdf', '2021-12-30', '2021123050126-test.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 15, 'patient/15/admission/2021123182815-macchiato.pdf', '2021-12-31', '2021123182815-macchiato.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 24, 'patient/24/admission/2022010615835-mendoza.pdf', '2022-01-06', '2022010615835-mendoza.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 24, 'patient/24/admission/2022010615837-mendoza.pdf', '2022-01-06', '2022010615837-mendoza.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 25, 'patient/25/admission/2022010620121-legaspi.pdf', '2022-01-06', '2022010620121-legaspi.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 15, 'patient/15/admission/20220109102049-macchiato.pdf', '2022-01-09', '20220109102049-macchiato.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 15, 'patient/15/admission/20220109102052-macchiato.pdf', '2022-01-09', '20220109102052-macchiato.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 25, 'patient/25/admission/20220123122112-legaspi.pdf', '2022-01-23', '20220123122112-legaspi.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 25, 'patient/25/admission/20220123122115-legaspi.pdf', '2022-01-23', '20220123122115-legaspi.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 24, 'patient/24/admission/20220123122348-mendoza.pdf', '2022-01-23', '20220123122348-mendoza.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 24, 'patient/24/admission/20220123122510-mendoza.pdf', '2022-01-23', '20220123122510-mendoza.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 14, 'patient/14/admission/20220123122727-doe.pdf', '2022-01-23', '20220123122727-doe.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 14, 'patient/14/admission/20220123122957-doe.pdf', '2022-01-23', '20220123122957-doe.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 14, 'patient/14/admission/20220123123637-doe.pdf', '2022-01-23', '20220123123637-doe.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 26, 'patient/26/admission/20220123124644-balot.pdf', '2022-01-23', '20220123124644-balot.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 26, 'patient/26/admission/20220123124936-balot.pdf', '2022-01-23', '20220123124936-balot.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 26, 'patient/26/admission/20220123125112-balot.pdf', '2022-01-23', '20220123125112-balot.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 26, 'patient/26/admission/20220123125604-balot.pdf', '2022-01-23', '20220123125604-balot.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 24, 'patient/24/admission/2022012310104-mendoza.pdf', '2022-01-23', '2022012310104-mendoza.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 27, 'patient/27/admission/20220124122904-capule.pdf', '2022-01-24', '20220124122904-capule.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 26, 'patient/26/admission/20220124123643-balot.pdf', '2022-01-24', '20220124123643-balot.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 28, 'patient/28/admission/2022012424226-de jesus.pdf', '2022-01-24', '2022012424226-de jesus.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 25, 'patient/25/admission/2022012424653-legaspi.pdf', '2022-01-24', '2022012424653-legaspi.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 24, 'patient/24/admission/2022012432037-mendoza.pdf', '2022-01-24', '2022012432037-mendoza.pdf', 'Maunlad Homes', '0989786731', 45, 'Male', 'Roman Catholic', '990', 'jj', 'mm', 'xx', '2022-01-24', 'jk', 0, 0, 'g', '2022-01-24', '15:20:00', 'ghjh', 'gfd', 'Rapper', 'kkjhg'),
+(33, 14, 'patient/14/admission/2022012432816-doe.pdf', '2022-01-24', '2022012432816-doe.pdf', 'Seoul, Korea', '09089899291', 22, 'Female', 'Roman Catholic', '123', 'Pog', 'Lorac', 'test', '2022-01-24', 'test place', 22, 34, '56', '2022-01-24', '15:27:00', 'Jordan', 'Painn alot pain', 'Streamer', 'Jardon'),
+(34, 28, 'ongoing', '2022-01-24', 'ongoing', 'Malolos, Bulacan', '123', 123, 'Female', '333', '33', '33', '33', '333', '2022-01-24', '3334', 21415, 12351, '21425', '2022-01-24', '15:41:00', '12415', '14251', '33', '32415'),
+(35, 27, 'ongoing', '2022-01-24', 'ongoing', 'Malolos, Bulacan', '123123', 12312, 'Female', '2222', '44444', '555', '666', '2324', '2022-01-24', '12312', 22223, 5435, '12351', '2022-01-24', '15:43:00', '12314', '1212451', '33333', '324151');
 
 -- --------------------------------------------------------
 
@@ -142,7 +168,8 @@ INSERT INTO `tbl_discharge` (`discharge_id`, `patient_id`, `date`, `disposition`
 (9, 26, '2022-01-23', 'absconded'),
 (10, 26, '2022-01-23', 'discharged'),
 (11, 26, '2022-01-23', 'absconded'),
-(12, 24, '2022-01-23', 'hama');
+(12, 24, '2022-01-23', 'hama'),
+(13, 25, '2022-01-24', 'discharged');
 
 -- --------------------------------------------------------
 
@@ -240,9 +267,9 @@ INSERT INTO `tbl_patients` (`patient_id`, `username`, `password`, `first_name`, 
 (15, '', '', 'Machi', '', 'Macchiato', '', NULL, 'Female', '', 'Malolos, Bulacan', '2021-12-03', '', 'Not Admitted', 'Active', '2021-12-03', '15:34:54', 'default'),
 (24, '2420211201', '$2y$10$U7R5RthTEiaGvcJtsH06/.dCKtLUdWoWMKW0Ew9ImrQjBHF1n4Qhu', 'Jasper', 'Alvaro', 'Mendoza', '0989786731', 'jas@gmail.com', 'Male', 'Roman Catholic', 'Maunlad Homes', '2021-12-01', 'Rapper', 'Not Admitted', 'Active', '2021-12-30', '12:20:34', 'default'),
 (25, '2520220106', '$2y$10$9CfN9vbVSmOHgv6JGp/GMONssphbbMCcENTSf29h/ZbaCPaT1Tzzy', 'Lady Jobel', 'Ignacio', 'Legaspi', '', 'ladyboj@gmail.com', 'Female', '', 'Batia, Bocaue', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '14:00:00', 'default'),
-(26, '2620220106', '$2y$10$PpRhosV.R7GXF8K2zRnMx.B6liPFH.oiuJ/2moPLmma96U23.euiO', 'Dexter', '', 'Balot', '', 'dex@gmail.com', 'Male', '', 'dex residence', '2022-01-06', '', 'Admitted', 'Active', '2022-01-06', '15:21:36', 'changed'),
+(26, '2620220106', '$2y$10$PpRhosV.R7GXF8K2zRnMx.B6liPFH.oiuJ/2moPLmma96U23.euiO', 'Dexter', '', 'Balot', '', 'dex@gmail.com', 'Male', '', 'dex residence', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '15:21:36', 'changed'),
 (27, '27capule', '$2y$10$wXtTHDMMlRaWDcdx/d7RG.2/PhxUjstpZTg6gawoAQcE287l.Q/a.', 'Camila Marie', '', 'Capule', '', 'cmcpl17@gmail.com', 'Female', '', 'Malolos, Bulacan', '2022-01-23', '', 'Admitted', 'Active', '2022-01-23', '03:43:37', 'default'),
-(28, '28dejesus', '$2y$10$UPBEj23K9YGI/DGYeoy1RuzIxA0bq2rLOogQE5vm0oiTlvD0qvUvC', 'Dindy', '', 'de Jesus', '', 'duwin@gmail.com', 'Female', '', 'Malolos, Bulacan', '1999-09-15', '', 'Not Admitted', 'Active', '2022-01-24', '00:01:00', 'changed');
+(28, '28dejesus', '$2y$10$UPBEj23K9YGI/DGYeoy1RuzIxA0bq2rLOogQE5vm0oiTlvD0qvUvC', 'Dindy', '', 'de Jesus', '', 'duwin@gmail.com', 'Female', '', 'Malolos, Bulacan', '1999-09-15', '', 'Admitted', 'Active', '2022-01-24', '00:01:00', 'changed');
 
 -- --------------------------------------------------------
 
@@ -425,7 +452,7 @@ ALTER TABLE `tbl_accounts`
 -- AUTO_INCREMENT for table `tbl_admission`
 --
 ALTER TABLE `tbl_admission`
-  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_consult`
@@ -437,7 +464,7 @@ ALTER TABLE `tbl_consult`
 -- AUTO_INCREMENT for table `tbl_discharge`
 --
 ALTER TABLE `tbl_discharge`
-  MODIFY `discharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `discharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_lab_result`
