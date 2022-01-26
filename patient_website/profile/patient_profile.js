@@ -12,7 +12,7 @@ $(document).ready(function () {
     religion = $('#religion').val();
     occupation = $('#occupation').val();
     //email 
-    email = $('#email').val();
+    orig_email = $('#email').val();
 
 
     $("#edit_name").change(function () {
@@ -113,6 +113,90 @@ $(document).ready(function () {
         }
     });
 
+    email_state = 'orig';
+    $('#email').on('input', function () {
+        var email = $('#email').val()
+        if (email == orig_email) {
+            email_state = 'orig';
+            console.log('this is your original username')
+            console.log(email_state)
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "update_patient.php",
+                data: {
+                    'upd_email_check': 1,
+                    'email': email,
+                },
+                success: function (response) {
+
+                    if (response == 0) {
+                        email_state = 'available'
+                        console.log('email available')
+                        console.log(email_state)
+                    }
+                    else if (response == 1) {
+                        email_state = 'not available'
+                        console.log('email already used')
+                        console.log(email_state)
+                    }
+                    else {
+                        alert(response);
+                        console.log(response)
+                    }
+
+                }
+            });
+        }
+    })
+
+    $('#form_email').on('submit', function(e){
+        e.preventDefault();
+        var data = $('#form_email').serialize()
+        console.log(data)
+        if (email_state === 'orig') {
+            Swal.fire('Error', 'This is your original email', 'error')
+        } else if (email_state === 'not available') {
+            Swal.fire('Error', 'This username is already used', 'error')
+        } else if (email_state === 'available') {
+            Swal.fire({
+                title: 'Confirmation',
+                text: "Do you want to update your email?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "update_patient.php",
+                        data: data,
+                        success: function (response) {
+                            if(response == 1){
+                                Swal.fire({
+                                    title: 'Success',
+                                    text: 'Email updated successfully',
+                                    icon: 'success',
+                                }).then((result) => {
+                                    // Reload the Page
+                                    location.reload();
+                                });
+                            }
+                            else{
+                                console.log(response)
+                            }
+                            
+                        }
+                    })
+                }
+            })
+            return false;
+        }
+    })
+
+
     $("#edit_email").change(function () {
         if (!$("#edit_email_div").hasClass("editing")) {
             if ($("#up_optional_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
@@ -141,7 +225,7 @@ $(document).ready(function () {
                   }).then((result) => {
                     if (result.isConfirmed) {
                         $("#edit_email").prop("checked", false);
-                        $("#email").val(email);
+                        $("#email").val(orig_email);
 
                         if ($("#up_optional_btn").hasClass("d-none") && $("#up_info_btn").hasClass("d-none") && $("#up_name_btn").hasClass("d-none") && $("#up_password_btn").hasClass("d-none")) {
                             $("#up_email_btn").toggleClass("d-none");
