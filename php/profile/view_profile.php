@@ -159,6 +159,33 @@ if(!isset($_SESSION['ID'])){
             </form>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-5 container-lg border rounded my-5 p-2" id="edit_email_div">
+            <form method="POST" id="form_email">
+                <h3>Email</h3>
+                <div class="form-check my-3">
+                    <input class="form-check-input" type="checkbox" value="" id="edit_email">
+                    <label class="form-check-label" for="edit_email">
+                        Update Email
+                    </label>
+                </div>
+                <div class="row mb-3 justify-content-center">
+                    <div class="col">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control edit_info" id="email" name="email"  value="<?php echo $row['email']; ?>" required readonly>
+                    </div>
+                </div>
+                <div class="row mb-3  justify-content-center d-none" id="up_email_btn">
+                    <div class="col">
+                        <input type="submit" class="form-control btn apply_btn text-white" id="email_submit" name="edit_email"  value="Apply Changes">
+                        <input type="hidden" name="edit_email" value = "1">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 
 
