@@ -1,0 +1,36 @@
+/* body{
+    background: url(../images/back_4.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} */
+
+#profile_link{
+    color:  #F7F6FB;
+}
+
+#profile_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color:#F7F6FB;
+}
+/* Hanggang dito nlng ata ang nagamit */
+
+.btn.apply_btn{
+    background-color: rgb(27, 73, 101);
+}
+
+.error{
+    color:red;
+    font-size: 13px;
+}
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+#profile{
+    font-weight: bolder;
+  }
+.btn.apply_btn{
+    background-color: rgb(27, 73, 101);
+}
+.error{
+  color:red;
+  font-size: 13px;
+}

@@ -1,0 +1,26 @@
+thead{
+    background-color: rgb(27, 73, 101);
+}
+
+#archive_link{
+    color:  #F7F6FB;
+}
+#archive_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color:#F7F6FB;
+}
+
+.btn.restore{
+    background-color: white;
+    color: rgb(23, 195, 178);
+}
+
+
+.btn.restore:hover{
+    background-color: rgb(23, 195, 178);
+    color: white;
+}
