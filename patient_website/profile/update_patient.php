@@ -88,54 +88,20 @@ if(isset($_POST['edit_optional'])){
     header('Location: patient_profile.php');
 }
 
-if (isset($_POST['upd_email_check'])){
+// EMAIL
+if(isset($_POST['edit_email'])){
+    $id = $_GET['id'];
     $email = $_POST['email'];
 
-    $get_email_stmt = $connection->prepare("SELECT username FROM tbl_accounts WHERE username = ?");
-    $get_email_stmt -> bind_param("s",$email);
-    $get_email_stmt -> execute();
-    $result = $get_email_stmt->get_result();
+    /* Prepared statement, stage 1: prepare */
+    $stmt = $connection->prepare("UPDATE tbl_patients SET email = ? WHERE patient_id = ?");
 
-    if($result->num_rows>0){
-        //username already used
-        echo '1';
+    /* Prepared statement, stage 2: bind and execute */
+    $stmt->bind_param("ss", $email,$id); // "is" means that $id is bound as an integer and $label as a string
 
-    }else{
-        //username available
-        echo '0';
-        
-    }
+    $stmt->execute();
+    header('Location: patient_profile.php');
 }
-
-// EMAIL
-// if(isset($_POST['edit_email'])){
-//     $id = $_GET['id'];
-//     $email = $_POST['email'];
-
-//     /* Prepared statement, stage 1: prepare */
-//     $stmt = $connection->prepare("UPDATE tbl_patients SET email = ? WHERE patient_id = ?");
-
-//     /* Prepared statement, stage 2: bind and execute */
-//     $stmt->bind_param("ss", $email,$id); // "is" means that $id is bound as an integer and $label as a string
-
-//     $stmt->execute();
-//     header('Location: patient_profile.php');
-// }
-
-if (isset($_POST['hidden_field_email']) && $_POST['hidden_field_email'] === 'form_check')
-    {
-        // if(isset($_POST['edit_username'])){
-        $origEmail = $_POST['orig_email'];
-        $email = $_POST['email'];
-
-            // prepare
-            $up_email_stmt = $connection->prepare("UPDATE tbl_patients SET email = ? WHERE email = ?");
-
-            //execute
-            $up_email_stmt->bind_param("ss", $email,$origEmail); // "is" means that $id is bound as an integer and $label as a string
-            $up_email_stmt->execute();
-            echo '1';
-    }
 
 
 if (isset($_POST['hidden_field_password']) && $_POST['hidden_field_password'] === 'form_check'){

@@ -480,70 +480,7 @@ function discharge_patient() {
     require_once __DIR__ . '../../../vendor/autoload.php';
 
     $mpdf = new \Mpdf\Mpdf();
-<<<<<<< HEAD
     $mpdf->percentSubset = 0;
-=======
-
-    $mpdf->SetProtection(array('copy','print-highres'));
-    date_default_timezone_set('Asia/Manila');
-    $patient_id = $_POST['patient_id'];
-    $select_all = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY record_admission_id DESC;");
-    $select_all->bind_param("s", $patient_id); // "is" means that $id is bound as an integer and $label as a string
-    $select_all->execute();
-    $result = $select_all->get_result();
-
-      $pdf_path= '';
-      $record_admission_id ='';
-      $address = '';
-      $contact = '';  
-      $age = '';
-      $sex = '';
-      $religion = '';
-      $philhealth = '';
-      $father = '';
-      $mother = '';
-      $spouse = '';
-      $date_marriage = '';
-      $place_marriage = '';
-      $room_no = '';
-      $case_no = '';
-      $cs = '';
-      $date_addmitted = '';
-      $time_admitted = '';
-      $physician = '';
-      $diagnosis = '';
-      $occupation = ''; 
-      $admitted_by = '';  
-
-    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-      
-      $record_admission_id=$row['record_admission_id'];
-      //$pdf_path=$row['pdf_path'];
-      $address = $row['address'];
-      $contact = $row['contact'];      
-      $age = $row['age'];
-      $sex = $row['sex'];
-      $religion = $row['religion'];
-      $philhealth = $row['phil_health'];
-      $father = $row['father'];
-      $mother = $row['mother'];
-      $spouse = $row['spouse'];
-      $date_marriage = $row['date_marriage'];
-      $place_marriage = $row['place_marriage'];
-      $room_no = $row['room_no'];
-      $case_no = $row['case_no'];
-      $cs = $row['cs'];
-      $date_addmitted = $row['date_admitted'];
-      $time_admitted = $row['time_admitted'];
-      $physician = $row['physician'];
-      $diagnosis = $row['diagnosis'];
-      $occupation = $row['occupation'];    
-      $admitted_by = $row['admitted_by'];     
-      break;
-    }
-    echo  $patient_id . $record_admission_id . ' + '.$address;
-        // COMMENTED, POST INPUTS
->>>>>>> 417d8d2dbe3bf41a1cdab844eed66698c0773f79
 
         // COMMENTED, POST INPUTS
         $patient_id = $_POST['patient_id'];

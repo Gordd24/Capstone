@@ -99,7 +99,7 @@ $(document).ready(function () {
     var reg_uname_state = false;
     var reg_empid_state = false;
     //check if uname exist
-    $('#username').on('input', function(){
+    $('#username').on('blur', function(){
         uname = $('#username').val()
         $.ajax({
             type: "POST",
@@ -153,7 +153,7 @@ $(document).ready(function () {
    });
    //check if email exist
    email_state = false;
-   $('#email').on('input', function () {
+   $('#email').on('blur', function () {
     email = $('#email').val()
    
     $.ajax({

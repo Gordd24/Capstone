@@ -173,15 +173,13 @@ if(!isset($_SESSION['ID'])){
                 <div class="row mb-3 justify-content-center">
                     <div class="col">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control edit_email" id="email" name="email"  value="<?php echo $row['email']; ?>" required readonly>
-                        <input type="hidden" name="orig_email" id="orig_email" value="<?php echo $row['email']; ?>">
-                        <div class="error" id="email_error"></div>
+                        <input type="text" class="form-control edit_info" id="email" name="email"  value="<?php echo $row['email']; ?>" required readonly>
                     </div>
                 </div>
                 <div class="row mb-3  justify-content-center d-none" id="up_email_btn">
                     <div class="col">
                         <input type="submit" class="form-control btn apply_btn text-white" id="email_submit" name="edit_email"  value="Apply Changes">
-                        <input type="hidden" name="hidden_field_email" id="hidden_field_email" value="form_check">
+                        <input type="hidden" name="edit_email" value = "1">
                     </div>
                 </div>
             </form>

@@ -32,7 +32,7 @@ $admitted_result = $get_admitted_stmt->get_result();
 
 
 
-$get_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'discharged';");
+$get_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'discharge';");
 
 /* Prepared statement, stage 2: bind and execute */
 $get_discharge_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
