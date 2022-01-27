@@ -476,6 +476,8 @@ function discharge_patient() {
     require_once __DIR__ . '../../../vendor/autoload.php';
 
     $mpdf = new \Mpdf\Mpdf();
+
+    $mpdf->SetProtection(array('copy','print-highres'));
     date_default_timezone_set('Asia/Manila');
     $patient_id = $_POST['patient_id'];
     $select_all = $connection->prepare("SELECT * FROM tbl_admission WHERE patient_id = ? ORDER BY record_admission_id DESC;");
