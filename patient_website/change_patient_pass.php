@@ -82,8 +82,7 @@ $patient_id = $_SESSION['PATIENT_ID'];
                 </div>
             </div>
         </div>
-
-
+       
     </body>
 
 

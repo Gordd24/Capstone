@@ -99,7 +99,6 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                        <input type="hidden" name="birthday" value="<?php echo $row['birthdate']; ?>">
                                                             <label for="patient_id" class="form-label">Patient ID</label>
                                                             <input type="text" class="form-control" id="patient_id" name="patient_id" value="<?php echo $row['patient_id']; ?>"  required autocomplete="off" readonly> 
                                                         </div>
