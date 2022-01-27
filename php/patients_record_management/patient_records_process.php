@@ -561,7 +561,7 @@ function discharge_patient() {
         
         if(isset($_POST['disposition']))
         {
-          if($_POST['disposition']=="discharge")
+          if($_POST['disposition']=='discharged')
           {
             $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{/} Discharged</td>
             <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } Transferred</td>

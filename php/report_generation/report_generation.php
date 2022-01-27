@@ -95,7 +95,7 @@ date_default_timezone_set('Asia/Manila');
                                                                         /* Prepared statement, stage 1: prepare */
                                                                         $today = date("Y-m-d"); 
 
-                                                                        $get_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'discharge';");
+                                                                        $get_discharge_stmt = $connection->prepare("SELECT * FROM tbl_discharge where date = ? and disposition = 'discharged';");
 
                                                                         /* Prepared statement, stage 2: bind and execute */
                                                                         $get_discharge_stmt->bind_param("s", $today); // "is" means that $id is bound as an integer and $label as a string
