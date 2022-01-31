@@ -260,10 +260,10 @@ if(!isset($_SESSION['ID'])){
                                                                         </label>
                                                                     </div>
                                                                 </div>
-
+                                                                
                                                             </div>
                                                             <!-- group 3 end -->
-
+                                                            <div class="error" id="radio_error"></div>
 
                                                         </div>
                                                     </div>
@@ -274,6 +274,7 @@ if(!isset($_SESSION['ID'])){
                                                         <div class="col">                                               
                                                                 <label for="lab_res" class="form-label"><i class='bx bx-test-tube'></i> Upload Laboratory Result</label>
                                                                 <input class="form-control file_upload" type="file" id="patient_lab_res" name="patient_lab_res">
+                                                                <div class="error" id="lab_res_error"></div>
                                                                 <input type="hidden" name="hidden_field_labres" id="hidden_field_labres" value="form_check">
                                                         </div>
                                                     </div>

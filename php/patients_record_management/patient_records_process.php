@@ -252,7 +252,6 @@ function make_medcert(){
     $patient_physician_license=$_POST['license'];
 
 
-
     $signature_name =$_FILES['signature']['name'];
     //$destination = 'patient/' . $pdfName;
 
@@ -261,25 +260,28 @@ function make_medcert(){
         mkdir( "../../".$signature_path );       
     } 
 
- 
 
     //destination
     $signature_file = $signature_path."/".$signature_name;
 
-    //$extension = pathinfo($pdfName, PATHINFO_EXTENSION);//check if the extension is correct
+    $extension = pathinfo($signature_name, PATHINFO_EXTENSION);//check if the extension is correct
     $tmp_file = $_FILES['signature']['tmp_name'];
     //$size = $_FILES['patient_lab_res']['size'];//for size limit
 
   
         // move the uploaded (temporary) file to the specified destination
-        if (move_uploaded_file($tmp_file, "../../".$signature_file)) {
-
-                echo "File uploaded successfully";
-
-        } 
-        else {
-            echo "Failed to upload file.";
+        if(!in_array($extension,['png','jpg'])){
+          echo 'Please upload a png or jpg file only.';
         }
+        else{
+          if (move_uploaded_file($tmp_file, "../../".$signature_file)) {
+            echo "1";
+          } 
+          else {
+            echo "Failed to upload file.";
+          }
+        }
+        
 
     $mpdf->WriteHTML(
         
@@ -380,7 +382,7 @@ function make_lab_res() {
 
   // $patient_name = $_POST['patient_fname']." ".$_POST['patient_mname']." ".$_POST['patient_lname'];
 
-      $pdfName =$_FILES['patient_lab_res']['name'];
+      $pdfName =$path_date.$_FILES['patient_lab_res']['name'];
       //$destination = 'patient/' . $pdfName;
 
       $path = "patient/".$patient_id;
@@ -396,13 +398,16 @@ function make_lab_res() {
       //destination
       $file = $path_type."/".$pdfName;
 
-      //$extension = pathinfo($pdfName, PATHINFO_EXTENSION);//check if the extension is correct
+      $extension = pathinfo($pdfName, PATHINFO_EXTENSION);//check if the extension is correct
       $tmp_file = $_FILES['patient_lab_res']['tmp_name'];
-      //$size = $_FILES['patient_lab_res']['size'];//for size limit
+      // $size = $_FILES['patient_lab_res']['size'];//for size limit
 
     
           // move the uploaded (temporary) file to the specified destination
-          if (move_uploaded_file($tmp_file, "../../".$file)) {
+          if(!in_array($extension,['pdf'])){
+            echo 'Please upload a pdf file.';
+          }else{
+            if (move_uploaded_file($tmp_file, "../../".$file)) {
               $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name) VALUES ('$patient_id','$file','$record_date','$pdfName');";
                 if (mysqli_query($conn, $insertSql)) {
 
@@ -469,6 +474,8 @@ function make_lab_res() {
               echo "Failed to upload file.";
               echo mysqli_error($conn);
           }
+          }
+          
 }
 
 function discharge_patient() {
@@ -561,7 +568,7 @@ function discharge_patient() {
         
         if(isset($_POST['disposition']))
         {
-          if($_POST['disposition']=='discharged')
+          if($_POST['disposition']=="discharge")
           {
             $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{/} Discharged</td>
             <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } Transferred</td>

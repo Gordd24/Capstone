@@ -28,7 +28,7 @@ $ID = $_SESSION['ID'];
             <nav class="nav nav_class"> 
                 <div> 
                     <div class="title_logo">
-                        <img class="logo" src="../images/ofelia_logo.png" alt="Logo">
+                        <img class="logo" src="../../images/ofelia_logo.png" alt="Logo">
                     </div>
                     <!-- <a href="#" class="nav_logo"> <i class="bx bx-layer nav_logo-icon"></i> <span class="nav_logo-name">OLMMGH</span> </a> -->
                     <div class="nav_list"> 

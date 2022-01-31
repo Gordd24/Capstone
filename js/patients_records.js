@@ -446,6 +446,7 @@ $(document).ready(function () {
     });
 
     $('#medcert_form').on('submit', function (e) {
+        e.preventDefault()
         physician = $('#physician').val()
         license = $('#license').val()
         // var data = $('#medcert_form').serialize()
@@ -453,9 +454,8 @@ $(document).ready(function () {
             if (physician == '') $('#phys_error').html('Please enter physician name')
             if (physician == '') $('#phys_license_error').html('Please enter physician license')
             if ($('#signature').get(0).files.length === 0) $('#sign_error').html('Please upload signature')
-            e.preventDefault()
+            
         } else {
-            e.preventDefault()
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
@@ -465,14 +465,21 @@ $(document).ready(function () {
                 contentType: false,
                 cache: false,
                 success: function (response) {
-                    Swal.fire({
-                        title: 'Success',
-                        text: 'Medical certificate created successfully',
-                        icon: 'success',
-                    }).then((result) => {
-                        // Reload the Page
-                        location.href = 'patients_records.php';
-                    });
+                    if (response == '1'){
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Medical certificate created successfully',
+                            icon: 'success',
+                        }).then((result) => {
+                            // Reload the Page
+                            location.href = 'patients_records.php';
+                        });
+                    }else{
+                        Swal.fire('Error','Please upload a png or jpg file. ','error')
+                        $('#sign_error').html('Please upload signature file in png or jpg format')
+                        $('#phys_license_error').html('')
+                        $('#phys_error').html('')
+                    }
                 }
             })
             return false;
@@ -481,13 +488,13 @@ $(document).ready(function () {
 
     //laboratory validation
     $('#lab_form').on('submit', function (e) {
-
+        e.preventDefault()
         if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0) {
-            if ($('#patient_lab_res').get(0).files.length === 0) $('#radio_error').html('Please select laboratory result type')
-            if ($('input[name="result"]:checked').length === 0) $('#lab_res_error').html('Please upload laboratory result')
-            e.preventDefault()
+            if ($('#patient_lab_res').get(0).files.length === 0) $('#lab_res_error').html('Please upload laboratory result')
+            if ($('input[name="result"]:checked').length === 0) $('#radio_error').html('Please select laboratory result type')
+            
         } else {
-            e.preventDefault()
+            
 
             $.ajax({
                 type: 'POST',
@@ -498,19 +505,27 @@ $(document).ready(function () {
                 cache: false,
                 success: function (data) {
                     console.log(data)
-                    Swal.fire({
-                        title: 'Success',
-                        text: 'Laboratory result uploaded successfully',
-                        icon: 'success',
-                    }).then((result) => {
-                        // Reload the Page
-                        if (data == 0) {
-                            location.href = '../patients_follow_ups/patients_follow_ups.php';
-                        } else {
-                            location.href = 'patients_records.php';
-                        }
-
-                    });
+                    if (data == '1'){
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Laboratory result uploaded successfully',
+                            icon: 'success',
+                        }).then((result) => {
+                            // Reload the Page
+                            if (data == 0) {
+                                location.href = '../patients_follow_ups/patients_follow_ups.php';
+                            } else {
+                                location.href = 'patients_records.php';
+                            }
+    
+                        });
+                    }
+                    else{
+                        Swal.fire('Error',data,'error')
+                        $('#lab_res_error').html('Please upload laboratory result in pdf format')
+                        $('#radio_error').html('')
+                    }
+                    
                 }
             })
             return false;
