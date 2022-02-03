@@ -198,7 +198,12 @@ function make_admission(){
         $patient_father_name = $_POST['father'];
         $patient_mother_name = $_POST['mother'];
         $patient_spouse_name = $_POST['spouse'];
-        $patient_date_of_marriage = $_POST['date_of_marriage'];
+        if(strtotime($_POST['date_of_marriage']) == NULL ){
+          $patient_date_of_marriage = NULL;
+        }else{
+            $patient_date_of_marriage = $_POST['date_of_marriage'];
+        }
+      
         $patient_place_of_marriage = $_POST['place_of_marriage'];
         $patient_date_admitted = $_POST['date_admitted'];
         $patient_time_admitted = $_POST['time_admitted'];
@@ -207,24 +212,23 @@ function make_admission(){
         $patient_admitting_diagnosis = $_POST['diagnosis'];
 
           
-              /* Prepared statement, stage 1: prepare */
-              $stmt = $connection->prepare("INSERT INTO tbl_admission(patient_id,date,address,contact,age,sex,religion,phil_health,father,mother,spouse,date_marriage,place_marriage,
-              room_no,case_no,cs,date_admitted,time_admitted,physician,diagnosis,occupation,admitted_by) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-          
-              /* Prepared statement, stage 2: bind and execute */
-              $stmt->bind_param("ssssssssssssssssssssss", $patient_id,$record_date,$patient_address,$patient_contact_no,$patient_age,$patient_sex,$patient_religion,$patient_philhealth_no,$patient_father_name
-              ,$patient_mother_name,$patient_spouse_name,$patient_date_of_marriage,$patient_place_of_marriage,$patient_room_no,$patient_case_no,$patient_cs,$patient_date_admitted,$patient_time_admitted,$patient_physician,$patient_admitting_diagnosis,
-              $patient_occupation,$patient_admitted_by); // "is" means that $id is bound as an integer and $label as a string
-          
-              $stmt->execute();
-          
-              /* Prepared statement, stage 1: prepare */
-              $stmt = $connection->prepare("UPDATE tbl_patients SET status = 'Admitted' WHERE patient_id = ?;");
-          
-              /* Prepared statement, stage 2: bind and execute */
-              $stmt->bind_param("s", $patient_id); // "is" means that $id is bound as an integer and $label as a string
-          
-              $stmt->execute();
+        /* Prepared statement, stage 1: prepare */
+        $stmt = $connection->prepare("INSERT INTO tbl_admission(patient_id,date,address,contact,age,sex,religion,phil_health,father,mother,spouse,date_marriage,place_marriage,
+        room_no,case_no,cs,date_admitted,time_admitted,physician,diagnosis,occupation,admitted_by) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+    
+        /* Prepared statement, stage 2: bind and execute */
+        $stmt->bind_param("ssssssssssssssssssssss", $patient_id,$record_date,$patient_address,$patient_contact_no,$patient_age,$patient_sex,$patient_religion,$patient_philhealth_no,$patient_father_name
+        ,$patient_mother_name,$patient_spouse_name,$patient_date_of_marriage,$patient_place_of_marriage,$patient_room_no,$patient_case_no,$patient_cs,$patient_date_admitted,$patient_time_admitted,$patient_physician,$patient_admitting_diagnosis,
+        $patient_occupation,$patient_admitted_by); // "is" means that $id is bound as an integer and $label as a string
+    
+        $stmt->execute();
+        /* Prepared statement, stage 1: prepare */
+        $stmt = $connection->prepare("UPDATE tbl_patients SET status = 'Admitted' WHERE patient_id = ?;");
+    
+        /* Prepared statement, stage 2: bind and execute */
+        $stmt->bind_param("s", $patient_id); // "is" means that $id is bound as an integer and $label as a string
+    
+        $stmt->execute();
 
 }
 function make_medcert(){
@@ -252,6 +256,7 @@ function make_medcert(){
     $patient_physician_license=$_POST['license'];
 
 
+
     $signature_name =$_FILES['signature']['name'];
     //$destination = 'patient/' . $pdfName;
 
@@ -260,6 +265,7 @@ function make_medcert(){
         mkdir( "../../".$signature_path );       
     } 
 
+ 
 
     //destination
     $signature_file = $signature_path."/".$signature_name;
@@ -281,8 +287,6 @@ function make_medcert(){
             echo "Failed to upload file.";
           }
         }
-        
-
     $mpdf->WriteHTML(
         
       '<div  style="position:relative; text-align:center;">
@@ -433,7 +437,7 @@ function make_lab_res() {
                     $request_stmt->bind_param("ss",$request_status, $request_id);
                     $request_stmt->execute();
 
-                    echo "0";
+                    echo "1";
 
                   }else{
 
@@ -475,7 +479,6 @@ function make_lab_res() {
               echo mysqli_error($conn);
           }
           }
-          
 }
 
 function discharge_patient() {
@@ -568,7 +571,7 @@ function discharge_patient() {
         
         if(isset($_POST['disposition']))
         {
-          if($_POST['disposition']=="discharge")
+          if($_POST['disposition']=='discharged')
           {
             $patient_disposition = '<td colspan="2" style="border-top: none; border-right: none;">{/} Discharged</td>
             <td colspan="2" style="border-top: none; border-right: none;  border-left: none; text-align:center;">{ } Transferred</td>

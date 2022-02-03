@@ -69,6 +69,7 @@ $(document).ready(function () {
                             url: 'forgetProcess2.php',
                             data: data,
                             success: function (response){      
+                                
                                 if(response == '1'){
                                     console.log(response)
                                     Swal.fire({
@@ -83,11 +84,13 @@ $(document).ready(function () {
                                 }else if (response == '0'){
                                     console.log(response)
                                     Swal.fire('Error!', 'Email does not exist', 'error')
-                                }else{
-                                    console.log(response)
+                                }
+                                else{
+                                    alert(response)
                                 }  
                                 
-                            }
+                            },
+                            
                         })
                         return false;
     

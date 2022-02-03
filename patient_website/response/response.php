@@ -53,7 +53,7 @@ $stmt->execute();
 
                                        
                                         <div class="row my-3 justify-content-center">
-                                          <div class="col-2">
+                                          <div class="col-6 col-sm-2">
                                                 <form>
                                                     <a onclick="clear_response()" id='clear_response'> 
                                                         <div class="form-group form-control btn clear text-white">

@@ -178,7 +178,7 @@ if(!isset($_SESSION['ID'])){
                                                     
                                                         <div class="col-2">
                                                             <label for="age" class="form-label">Age</label>
-                                                            <input type="text" class="form-control" id="age" name="age" required autocomplete="off">
+                                                            <input type="number" min='0' class="form-control" id="age" name="age" required autocomplete="off">
                                                             <div class="error" id="age_error"></div>
                                                         </div>
 

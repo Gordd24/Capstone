@@ -358,8 +358,8 @@ $(document).ready(function () {
                 type: 'POST',
                 url: 'patient_records_process.php',
                 data: data,
-                success: function (response) {
-                    Swal.fire({
+                success: function (response){
+                        Swal.fire({
                         title: 'Success',
                         text: 'Admission Successful',
                         icon: 'success',
@@ -367,6 +367,7 @@ $(document).ready(function () {
                         // Reload the Page
                         location.href = 'patients_records.php';
                     });
+
                 }
             })
             return false;
@@ -445,7 +446,7 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '75%');
     });
 
-    $('#medcert_form').on('submit', function (e) {
+   $('#medcert_form').on('submit', function (e) {
         e.preventDefault()
         physician = $('#physician').val()
         license = $('#license').val()

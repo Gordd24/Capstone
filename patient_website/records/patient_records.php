@@ -1,20 +1,32 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['ID'])){
-  header("Location: ../../index.php");
-}
+// if(isset($_SESSION['ID'])){
+//   header("Location: ../../index.php");
+// }
+
+// if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+//   echo "error";
+//   echo "session". $_SESSION['PATIENT_ID'];
+//   header("Location: ../../index.php");
+// }else{
+//   $id = $_SESSION['PATIENT_ID'];
+// }
 
 if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
-  echo "error";
-  header("Location: ../../index.php");
-}
-else{
+    header("Location: ../../index.php");
+}else{
   $id = $_SESSION['PATIENT_ID'];
 }
+
+if(isset($_SESSION['ID'])){
+    header("Location: ../../index.php");
+}
+
 if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
   header("Location: ../../patient_website/change_patient_pass.php");
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +36,7 @@ if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="../../images/favicon.ico" />
-  <title>Home</title>
+  <title>Patient Records</title>
  <!-- bootstrap -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="patient_records.css">
@@ -81,7 +93,7 @@ if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
                                                             <?php
                                                             include_once '../dbconn.php';
                                                         
-                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date DESC;");
+                                                            $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date DESC, record_med_cert_id DESC;");
 
                                                                     /* Prepared statement, stage 2: bind and execute */
                                                                     $get_record_stmt->bind_param("s", $id); 

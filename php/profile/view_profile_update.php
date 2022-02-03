@@ -37,34 +37,73 @@ if (isset($_POST['upd_uname_check'])){
     }
 }
 
+if (isset($_POST['upd_email_check'])){
+    $email = $_POST['email'];
+
+    $get_email_stmt = $connection->prepare("SELECT username FROM tbl_accounts WHERE username = ?");
+    $get_email_stmt -> bind_param("s",$email);
+    $get_email_stmt -> execute();
+    $result = $get_email_stmt->get_result();
+
+    if($result->num_rows>0){
+        //username already used
+        echo '1';
+
+    }else{
+        //username available
+        echo '0';
+        
+    }
+}
+
 if(isset($_POST['edit_info']))
     {
         $fname = $_POST['first_name'];
         $mname = $_POST['middle_name'];
         $lname = $_POST['last_name'];
         $id = $_GET['id'];
-        echo $fname . $mname . $lname;
+        //echo $fname . $mname . $lname;
         // prepare
         $stmt = $connection->prepare("UPDATE tbl_accounts
         SET  first_name = ?, middle_name = ?, last_name = ? WHERE acc_id = ?");
         //execute
         $stmt->bind_param("sssi", $fname,$mname,$lname,$id); // "is" means that $id is bound as an integer and $label as a string
         $stmt->execute();
-       header("Location: view_profile.php");
+        // header("Location: view_profile.php");
+        header('Location: view_profile.php');
     }
-if (isset($_POST['hidden_field_username']) && $_POST['hidden_field_username'] === 'form_check'){
-// if(isset($_POST['edit_username'])){
-    $origUname = $_POST['orig_uname'];
-    $username = $_POST['username'];
+if (isset($_POST['hidden_field_username']) && $_POST['hidden_field_username'] === 'form_check')
+    {
+    // if(isset($_POST['edit_username'])){
+        $origUname = $_POST['orig_uname'];
+        $username = $_POST['username'];
 
-         // prepare
-        $up_username_stmt = $connection->prepare("UPDATE tbl_accounts SET username = ? WHERE username = ?");
+            // prepare
+            $up_username_stmt = $connection->prepare("UPDATE tbl_accounts SET username = ? WHERE username = ?");
 
-        //execute
-        $up_username_stmt->bind_param("ss", $username,$origUname); // "is" means that $id is bound as an integer and $label as a string
-        $up_username_stmt->execute();
+            //execute
+            $up_username_stmt->bind_param("ss", $username,$origUname); // "is" means that $id is bound as an integer and $label as a string
+            $up_username_stmt->execute();
         
-}
+    }
+
+    if (isset($_POST['hidden_field_email']) && $_POST['hidden_field_email'] === 'form_check')
+    {
+        // if(isset($_POST['edit_username'])){
+        $origEmail = $_POST['orig_email'];
+        $email = $_POST['email'];
+
+            // prepare
+            $up_email_stmt = $connection->prepare("UPDATE tbl_accounts SET email = ? WHERE email = ?");
+
+            //execute
+            $up_email_stmt->bind_param("ss", $email,$origEmail); // "is" means that $id is bound as an integer and $label as a string
+            $up_email_stmt->execute();
+            echo '1';
+    }
+
+
+
 
 
 if (isset($_POST['upd_password_check'])){
@@ -117,8 +156,7 @@ if(isset($_POST['edit_profile_submit'])){
 }
 
 if(isset($_POST['edit_password']))
-{
-    
+{   
     $password = $_POST['password'];
     $new_password = $_POST['new_password'];
     //$confirm_password = $_POST['confirm_password'];

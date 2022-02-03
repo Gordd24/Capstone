@@ -196,6 +196,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
                                                 <option value="Administrator">Administrator</option>
                                                 <option value="Doctor">Doctor</option>
                                                 <option value="Nurse">Nurse</option>
+                                                <option value="Medical Technologist">Medical Technologist</option>
                                             </select>
                                         </div>
                                     </div>

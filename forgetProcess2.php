@@ -34,7 +34,7 @@ if(isset($_POST['email_check'])){
 if (isset($_POST['hidden_field_forget']) && $_POST['hidden_field_forget'] === 'form_check'){
     // if(isset($_POST['forgetSubmit'])){
         if(isset($_POST['forgot_account'])&&$_POST['forgot_account']=='personnel'){
-            echo 'personnel';
+            //echo 'personnel';
                 $categ = $_POST['forgot_account'];
                 $email = $_POST['email'];
                 $stmt = $connection->prepare('SELECT email from tbl_accounts WHERE email=?');

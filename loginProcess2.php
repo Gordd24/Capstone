@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once 'php/dbconn.php';
+
 if(isset($_SESSION["ID"])){
     header("Location:php/dashboard/dashboard.php");
 }
@@ -7,8 +9,6 @@ if(isset($_SESSION["ID"])){
 if(isset($_SESSION["PATIENT_ID"])){
     header("Location:patient_website/profile/patient_profile.php");
 }
-include_once 'php/dbconn.php';
-
 if(isset($_POST['username_check'])){
     
     $username = $_POST['username'];

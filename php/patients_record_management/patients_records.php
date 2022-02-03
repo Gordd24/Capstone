@@ -22,7 +22,7 @@ $pages =  ceil($total/$limit);
 $Previous = $page - 1;
 $Next = $page + 1; 
 
-$connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Active' ORDER BY date_added DESC,time_added DESC LIMIT $start,$limit");
+$connection->real_query("SELECT * FROM tbl_patients WHERE record_status = 'Active' ORDER BY date_added,time_added DESC LIMIT $start,$limit");
 $patients_result = $connection->use_result();
 
 
@@ -37,7 +37,7 @@ $patients_result = $connection->use_result();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../images/favicon.ico" />
-    <title>Account Management</title>
+    <title>Patients Records</title>
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- boxicons -->

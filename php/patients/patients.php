@@ -6,7 +6,7 @@ if(!isset($_SESSION['ID'])){
 
 include_once '../dbconn.php';
 
-$limit = 50;
+$limit = 8;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
