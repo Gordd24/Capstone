@@ -44,6 +44,11 @@ $(document).ready(function () {
                         }
                     })
                 });
+
+                //history
+                $(".btn.history").click(function () {
+                    location.href = "patient_history.php?id=" + $(this).attr('id');
+                });
             }
         });
         //somehow return false stops keyup functioning twice
@@ -54,6 +59,11 @@ $(document).ready(function () {
     // view folder / view record
     $(".btn.view_records").click(function () {
         location.href = "patient_records.php?id=" + $(this).attr('id');
+    });
+
+    // archive record
+    $(".btn.history").click(function () {
+        location.href = "patient_history.php?id=" + $(this).attr('id');
     });
 
     // archive record
@@ -358,8 +368,8 @@ $(document).ready(function () {
                 type: 'POST',
                 url: 'patient_records_process.php',
                 data: data,
-                success: function (response){
-                        Swal.fire({
+                success: function (response) {
+                    Swal.fire({
                         title: 'Success',
                         text: 'Admission Successful',
                         icon: 'success',
@@ -446,7 +456,7 @@ $(document).ready(function () {
         $(".progress-bar").css('width', '75%');
     });
 
-   $('#medcert_form').on('submit', function (e) {
+    $('#medcert_form').on('submit', function (e) {
         e.preventDefault()
         physician = $('#physician').val()
         license = $('#license').val()
@@ -455,7 +465,7 @@ $(document).ready(function () {
             if (physician == '') $('#phys_error').html('Please enter physician name')
             if (physician == '') $('#phys_license_error').html('Please enter physician license')
             if ($('#signature').get(0).files.length === 0) $('#sign_error').html('Please upload signature')
-            
+
         } else {
             $.ajax({
                 type: 'POST',
@@ -466,7 +476,7 @@ $(document).ready(function () {
                 contentType: false,
                 cache: false,
                 success: function (response) {
-                    if (response == '1'){
+                    if (response == '1') {
                         Swal.fire({
                             title: 'Success',
                             text: 'Medical certificate created successfully',
@@ -475,8 +485,8 @@ $(document).ready(function () {
                             // Reload the Page
                             location.href = 'patients_records.php';
                         });
-                    }else{
-                        Swal.fire('Error','Please upload a png or jpg file. ','error')
+                    } else {
+                        Swal.fire('Error', 'Please upload a png or jpg file. ', 'error')
                         $('#sign_error').html('Please upload signature file in png or jpg format')
                         $('#phys_license_error').html('')
                         $('#phys_error').html('')
@@ -493,9 +503,9 @@ $(document).ready(function () {
         if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0) {
             if ($('#patient_lab_res').get(0).files.length === 0) $('#lab_res_error').html('Please upload laboratory result')
             if ($('input[name="result"]:checked').length === 0) $('#radio_error').html('Please select laboratory result type')
-            
+
         } else {
-            
+
 
             $.ajax({
                 type: 'POST',
@@ -506,7 +516,7 @@ $(document).ready(function () {
                 cache: false,
                 success: function (data) {
                     console.log(data)
-                    if (data == '1'){
+                    if (data == '1') {
                         Swal.fire({
                             title: 'Success',
                             text: 'Laboratory result uploaded successfully',
@@ -518,15 +528,15 @@ $(document).ready(function () {
                             } else {
                                 location.href = 'patients_records.php';
                             }
-    
+
                         });
                     }
-                    else{
-                        Swal.fire('Error',data,'error')
+                    else {
+                        Swal.fire('Error', data, 'error')
                         $('#lab_res_error').html('Please upload laboratory result in pdf format')
                         $('#radio_error').html('')
                     }
-                    
+
                 }
             })
             return false;

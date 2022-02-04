@@ -27,6 +27,7 @@ if(!isset($_SESSION['ID'])){
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
 <body id="body-pd">
 
 <?php include_once '../admin_nav.php';?>
@@ -230,7 +231,7 @@ if(!isset($_SESSION['ID'])){
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    
                                                 </div>
                                                 
                                             </div>

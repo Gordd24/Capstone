@@ -56,6 +56,16 @@ thead{
     color: white;
 }
 
+.btn.history{
+    background-color: white;
+    color: rgb(27, 73, 101);
+}
+
+.btn.history:hover{
+    background-color:rgb(27, 73, 101);
+    color: white;
+}
+
 
 /* modal */
 .option_modal_div{

@@ -32,10 +32,9 @@ include_once '../dbconn.php';
                             }else{
                                 echo "<i class='bx bxs-file-plus mx-1 btn border create_record' id='".$row_patient['patient_id']."' title='Create Record'></i>";
                             }                 
-                    
-
                             echo"
                             <i class='bx bxs-folder-open mx-1 btn border view_records' id='".$row_patient['patient_id']."' title='View Records'></i>
+                            <i class='bx bx-history mx-1 btn border history' id='".$row_patient['patient_id']."' title='History'></i>
                             <i class='bx bxs-archive mx-1 btn border archive' id='".$row_patient['patient_id']."' title='Archive'></i>
                         </td>
                     </tr>";                    
