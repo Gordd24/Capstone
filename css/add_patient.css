@@ -153,4 +153,9 @@ body{
     align-items: center;
     border-bottom: 0.1vw solid rgb(220, 218, 218);
 }
+.required:after {
+    content:" *";
+    color: red;
+}
+
 
