@@ -150,12 +150,12 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="date_discharged" class="form-label">Date Discharged</label>
+                                                            <label for="date_discharged" class="form-label required">Date Discharged</label>
                                                             <input type="date" class="form-control" id="date_discharged" name="date_discharged" autocomplete="off"> 
                                                             <div class="error" id="date_error"></div>
                                                         </div>
                                                         <div class="col">
-                                                            <label for="time_discharged" class="form-label">Time Discharged</label>
+                                                            <label for="time_discharged" class="form-label required">Time Discharged</label>
                                                             <input type="time" class="form-control" id="time_discharged" name="time_discharged" autocomplete="off"> 
                                                             <div class="error" id="time_error"></div>
                                                         </div>
@@ -163,7 +163,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="discharged_by" class="form-label">Discharged By</label>
+                                                            <label for="discharged_by" class="form-label required">Discharged By</label>
                                                             <input type="text" class="form-control" id="discharged_by" name="discharged_by" autocomplete="off"> 
                                                             <div class="error" id="dischargeby_error"></div>
                                                         </div>
@@ -200,14 +200,14 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="transfer_room" class="form-label">Transfer To Room</label>
+                                                            <label for="transfer_room" class="form-label ">Transfer To Room</label>
                                                             <input type="text" class="form-control" id="transfer_room" name="transfer_room"> 
                                                             <div class="error" id="trans_error"></div>
                                                         </div>
                                                     </div>
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="transfer_date" class="form-label">Date</label>
+                                                            <label for="transfer_date" class="form-label ">Date</label>
                                                             <input type="date" class="form-control" id="transfer_date" name="transfer_date"> 
                                                             <div class="error" id="trans_date_error"></div>
                                                         </div>
@@ -215,7 +215,7 @@ if(!isset($_SESSION['ID'])){
                                                     </div>
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="transfer_time" class="form-label">Time</label>
+                                                            <label for="transfer_time" class="form-label ">Time</label>
                                                             <input type="time" class="form-control" id="transfer_time" name="transfer_time"> 
                                                             <div class="error" id="trans_time_error"></div>
                                                         </div>
@@ -246,14 +246,14 @@ if(!isset($_SESSION['ID'])){
                                                 <div class="col">
                                                     <div class="row my-3">
                                                             <div class="col">
-                                                                <h5>Final Diagnosis</h5>
+                                                                <h5 class='required'>Final Diagnosis</h5>
                                                             </div>
                                                     </div>    
 
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <textarea class="form-control" id="diagnosis" name="diagnosis" rows="8"></textarea>
+                                                                <textarea class="form-control required" id="diagnosis" name="diagnosis" rows="8"></textarea>
                                                                 <div class="error" id="diag_error"></div>
                                                             </div>
                                                         </div>
@@ -291,7 +291,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="icd" class="form-label">ICD 10 CODE</label>
+                                                            <label for="icd" class="form-label required">ICD 10 CODE</label>
                                                             <input type="text" class="form-control" id="icd" name="icd" autocomplete="off"> 
                                                             <div class="error" id="icd_error"></div>
                                                         </div>
@@ -299,7 +299,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="rvs" class="form-label">RVS CODE</label>
+                                                            <label for="rvs" class="form-label required">RVS CODE</label>
                                                             <input type="text" class="form-control" id="rvs" name="rvs" autocomplete="off"> 
                                                             <div class="error" id="rvs_error"></div>
                                                         </div>
@@ -328,7 +328,7 @@ if(!isset($_SESSION['ID'])){
                                                 <div class="col">
                                                     <div class="row my-3">
                                                             <div class="col">
-                                                                <h5>Operation/s</h5>
+                                                                <h5 class='required'>Operation/s</h5>
                                                             </div>
                                                     </div>    
 
@@ -337,7 +337,7 @@ if(!isset($_SESSION['ID'])){
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <textarea class="form-control" id="operation" name="operation" rows="8"></textarea>
+                                                                <textarea class="form-control required" id="operation" name="operation" rows="8"></textarea>
                                                                 <div class="error" id="operation_error"></div>
                                                             </div>
                                                         </div>
@@ -345,12 +345,12 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                                 <div class="col">
-                                                                    <h5>Disposition</h5>
+                                                                    <h5 class='required'>Disposition</h5>
                                                                 </div>
                                                         </div>   
                                                         
                                                         <div class="row ">
-                                                            <div class="col text-center">
+                                                            <div class="col text-center required">
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input" type="radio" name="disposition" id="discharged" value="discharged" checked>
                                                                     <label class="form-check-label" for="discharged">Discharged</label>

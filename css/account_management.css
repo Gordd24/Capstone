@@ -73,3 +73,10 @@ thead{
 .progress-bar{
     background-color: rgb(27, 73, 101);
 }
+.required:after {
+    content:" *";
+    color: red;
+}
+.asterisk{
+    color: red;
+}

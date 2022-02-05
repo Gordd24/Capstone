@@ -150,7 +150,7 @@ $(document).ready(function () {
                         });
                     } else {
                         console.log(response)
-                        Swal.fire('Error', 'Username or password is wrong', 'error')
+                        Swal.fire('Error', 'Username or password is incorrect', 'error')
                     }
                 }
             });
@@ -177,7 +177,7 @@ $(document).ready(function () {
 
                     } else {
                         console.log(response)
-                        Swal.fire('Error', 'Username or password is wrong', 'error')
+                        Swal.fire('Error', 'Username or password is incorrect', 'error')
 
                     }
                 }

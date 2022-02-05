@@ -79,7 +79,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="username" class="form-label">Username</label>
+                                            <label for="username" class="form-label required">Username</label>
                                             <input type="text" class="form-control account-inputs" id="username" name="username" required autocomplete="off">
                                             <div class="error" id="uname_error"></div>
                                         </div>
@@ -87,7 +87,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="email" class="form-label">Email</label>
+                                            <label for="email" class="form-label required">Email</label>
                                             <input type="email" class="form-control account-inputs" id="email" name="email" required autocomplete="off">
                                             <div class="error" id="email_error"></div>
                                         </div>
@@ -95,7 +95,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label required">Password</label>
                                             <input type="password" class="form-control account-inputs" id="password" name="password" required autocomplete="off" >
                                             <div class="error" id="pword_error"></div>
                                         </div>
@@ -103,7 +103,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                                            <label for="confirm_password" class="form-label required">Confirm Password</label>
                                             <input type="password" class="form-control account-inputs" id="confirm_password" name="confirm_password" required autocomplete="off" >
                                             <div class="error" id="cpword_error"></div>
                                         </div>
@@ -138,7 +138,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="first_name" class="form-label">First Name *</label>
+                                            <label for="first_name" class="form-label required">First Name</label>
                                             <input type="text" class="form-control personal-inputs" id="first_name" name="first_name" required autocomplete="off" > 
                                             <div class="error" id="fname_error"></div>
                                         </div>
@@ -154,7 +154,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="last_name" class="form-label">Last Name *</label>
+                                            <label for="last_name" class="form-label required">Last Name</label>
                                             <input type="text" class="form-control personal-inputs" id="last_name" name="last_name" required autocomplete="off" >
                                             <div class="error" id="lname_error"></div>
                                         </div>
@@ -191,7 +191,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="position" class="form-label">Position</label>
+                                            <label for="position" class="form-label required">Position</label>
                                             <select class="form-select" id="position" name="position" aria-label="Default select example">
                                                 <option value="Administrator">Administrator</option>
                                                 <option value="Doctor">Doctor</option>
@@ -203,7 +203,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 
                                     <div class="row my-1 my-2">
                                         <div class="col">
-                                            <label for="emp_id" class="form-label">Employee ID</label>
+                                            <label for="emp_id" class="form-label required">Employee ID</label>
                                             <input type="text" class="form-control emp-inputs" id="emp_id" name="emp_id" required autocomplete="off">
                                             <div class="error" id="empid_error"></div>
                                             <input type="hidden" name="hidden_field" id="hidden_field" value="form_check">
@@ -224,27 +224,21 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                             <!-- input group end -->
-
-
-                            
                         </form>
                     </div>
+                    <div class="legend">Fields that have (<span class='required'></span> ) are required. </span></div>
                     <!-- form col container end -->
                 </div>
                 <!-- form row container end -->
-
+                
             </div>
             <!-- container column end -->
 
             </div>
             <!-- container row end -->
-    
-
         </div>
     </div>
 

@@ -134,7 +134,7 @@ if(!isset($_SESSION['ID'])){
 
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <label>Laboratory Result Type</label>
+                                                                    <label class='required'>Laboratory Result Type</label>
                                                                 </div>
                                                             </div>
 
@@ -272,7 +272,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-5">
                                                         <div class="col">                                               
-                                                                <label for="lab_res" class="form-label"><i class='bx bx-test-tube'></i> Upload Laboratory Result</label>
+                                                                <label for="lab_res" class="form-label required"><i class='bx bx-test-tube'></i> Upload Laboratory Result</label>
                                                                 <input class="form-control file_upload" type="file" id="patient_lab_res" name="patient_lab_res">
                                                                 <div class="error" id="lab_res_error"></div>
                                                                 <input type="hidden" name="hidden_field_labres" id="hidden_field_labres" value="form_check">
@@ -296,6 +296,7 @@ if(!isset($_SESSION['ID'])){
                                             
                                         </form>
                                     </div>
+                                    <div class="legend">Fields that have (<span class='required'></span> ) are required. </span></div>
                                     <!-- form col container end -->
                                 </div>
                                 <!-- form row container end -->

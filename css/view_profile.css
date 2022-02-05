@@ -29,6 +29,12 @@
     font-size: 13px;
 }
 
+.required:after {
+    content:" *";
+    color: red;
+}
+
+
 
 
 

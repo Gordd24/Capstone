@@ -160,7 +160,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="address" class="form-label">Address</label>
+                                                            <label for="address" class="form-label required">Address</label>
                                                             <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>" required autocomplete="off">
                                                             <div class="error" id="address_error"></div>
                                                         </div>
@@ -169,14 +169,14 @@ if(!isset($_SESSION['ID'])){
                                                     <div class="row my-3">
 
                                                         <div class="col-6">
-                                                            <label for="contact_no" class="form-label">Contact No.</label>
+                                                            <label for="contact_no" class="form-label required">Contact No.</label>
                                                             <input type="text" class="form-control" id="contact_no" name="contact_no" value="<?php echo $row['contact_no']; ?>" required autocomplete="off">
                                                             <div class="error" id="contact_error"></div>
                                                         </div>
 
                                                     
                                                         <div class="col-2">
-                                                            <label for="age" class="form-label">Age</label>
+                                                            <label for="age" class="form-label required">Age</label>
                                                             <input type="number" min='0' class="form-control" id="age" name="age" required autocomplete="off">
                                                             <div class="error" id="age_error"></div>
                                                         </div>
@@ -186,7 +186,7 @@ if(!isset($_SESSION['ID'])){
 
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <label class="form-label">Sex</label>
+                                                                    <label class="form-label required">Sex</label>
                                                                 </div>
                                                             </div>
 
@@ -228,7 +228,7 @@ if(!isset($_SESSION['ID'])){
 
                                                      <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="weight" class="form-label">Weight</label>
+                                                            <label for="weight" class="form-label required">Weight</label>
                                                             <input type="text" class="form-control" id="weight" name="weight" required autocomplete="off">
                                                             <div class="error" id="weight_error"></div>
                                                         </div>
@@ -236,12 +236,12 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="bp" class="form-label">BP</label>
+                                                            <label for="bp" class="form-label required">BP</label>
                                                             <input type="text" class="form-control" id="bp" name="bp" required autocomplete="off">
                                                             <div class="error" id="bp_error"></div>
                                                         </div>
                                                         <div class="col">
-                                                            <label for="temp" class="form-label">Temperature</label>
+                                                            <label for="temp" class="form-label required">Temperature</label>
                                                             <input type="text" class="form-control" id="temp" name="temp" required autocomplete="off">
                                                             <div class="error" id="temp_error"></div>
                                                         </div>
@@ -249,12 +249,12 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="rr" class="form-label">RR</label>
+                                                            <label for="rr" class="form-label required">RR</label>
                                                             <input type="text" class="form-control" id="rr" name="rr" required autocomplete="off">
                                                             <div class="error" id="rr_error"></div>
                                                         </div>
                                                         <div class="col">
-                                                            <label for="pr" class="form-label">PR</label>
+                                                            <label for="pr" class="form-label required">PR</label>
                                                             <input type="text" class="form-control" id="pr" name="pr" required autocomplete="off">
                                                             <div class="error" id="pr_error"></div>
                                                         </div>
@@ -274,7 +274,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="lmp" class="form-label">LMP</label>
+                                                            <label for="lmp" class="form-label required">LMP</label>
                                                             <input type="text" class="form-control ob" id="lmp" name="lmp" autocomplete="off">
                                                             <div class="error" id="lmp_error"></div>
                                                         </div>
@@ -282,7 +282,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="aog" class="form-label">AOG</label>
+                                                            <label for="aog" class="form-label required">AOG</label>
                                                             <input type="text" class="form-control ob" id="aog" name="aog"  autocomplete="off">
                                                             <div class="error" id="aog_error"></div>
                                                         </div>
@@ -290,7 +290,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="edc" class="form-label">EDC</label>
+                                                            <label for="edc" class="form-label required">EDC</label>
                                                             <input type="text" class="form-control ob" id="edc" name="edc"  autocomplete="off">
                                                             <div class="error" id="edc_error"></div>
                                                         </div>
@@ -324,14 +324,14 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-1">
                                                         <div class="col">
-                                                            <h5>Chief Complaint</h5>
+                                                            <h5 class='required'>Chief Complaint</h5>
                                                         </div>
                                                      </div>
 
                                                     <div class="row my-2">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <textarea class="form-control" id="complaint" name="complaint" rows="8"></textarea>
+                                                                <textarea class="form-control required" id="complaint" name="complaint" rows="8"></textarea>
                                                                 <div class="error" id="complaint_error"></div>
                                                             </div>
                                                         </div>
@@ -360,6 +360,7 @@ if(!isset($_SESSION['ID'])){
                                             
                                         </form>
                                     </div>
+                                    <div class="legend">Fields that have (<span class='required'></span> ) are required. </span></div>
                                     <!-- form col container end -->
                                 </div>
                                 <!-- form row container end -->
