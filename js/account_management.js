@@ -280,6 +280,8 @@ $(document).ready(function () {
                            title: 'Success',
                            text:'Registration Successful',
                            icon: 'success',
+                           showConfirmButton: false,
+                            timer: 1000,
                           }).then((result) => {
                             // Reload the Page
                             $('#empid_error').html('')

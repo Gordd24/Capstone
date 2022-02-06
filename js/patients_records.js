@@ -265,6 +265,8 @@ $(document).ready(function () {
                         title: 'Success',
                         text: 'Consultation Successful',
                         icon: 'success',
+                        showConfirmButton: false,
+                            timer: 1000,
                     }).then((result) => {
                         // Reload the Page
                         location.href = 'patients_records.php';
@@ -373,6 +375,8 @@ $(document).ready(function () {
                         title: 'Success',
                         text: 'Admission Successful',
                         icon: 'success',
+                        showConfirmButton: false,
+                            timer: 1000,
                     }).then((result) => {
                         // Reload the Page
                         location.href = 'patients_records.php';
@@ -481,6 +485,8 @@ $(document).ready(function () {
                             title: 'Success',
                             text: 'Medical certificate created successfully',
                             icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
                         }).then((result) => {
                             // Reload the Page
                             location.href = 'patients_records.php';
@@ -521,6 +527,8 @@ $(document).ready(function () {
                             title: 'Success',
                             text: 'Laboratory result uploaded successfully',
                             icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
                         }).then((result) => {
                             // Reload the Page
                             if (data == 0) {
@@ -945,6 +953,8 @@ $(document).ready(function () {
                         title: 'Success',
                         text: 'Discharge Successful',
                         icon: 'success',
+                        showConfirmButton: false,
+                            timer: 1000,
                     }).then((result) => {
                         // Reload the Page
                         location.href = 'patients_records.php';
