@@ -28,6 +28,8 @@ $(document).ready(function () {
                             title: 'Success',
                             text: 'Follow up Success',
                             icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
                         }).then((result) => {
                             // Reload the Page
                             location.reload()
