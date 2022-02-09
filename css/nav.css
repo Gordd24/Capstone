@@ -123,7 +123,7 @@ a {
     font-size: 1.25rem
 }
 
-.show {
+.show-nav {
     left: 0
 }
 
@@ -177,7 +177,7 @@ a {
         padding: 1rem 1rem 0 0
     }
 
-    .show {
+    .show_nav {
         width: calc(var(--nav-width) + 183px)
     }
 

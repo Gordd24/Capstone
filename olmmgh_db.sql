@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 05:10 PM
+-- Generation Time: Feb 09, 2022 at 05:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,16 +42,6 @@ CREATE TABLE `tbl_accounts` (
   `time_created` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_accounts`
---
-
-INSERT INTO `tbl_accounts` (`acc_id`, `auto_id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `email`, `emp_id`, `position`, `date_created`, `time_created`) VALUES
-(53, '', 'jasper', '$2y$10$3HENUn.l5XDj4WIxzx7mMuR.eJYqupbE1LNkUtlvR/y3JsTbL94ta', 'Jasper Jake', 'Alvaro', 'Mendoza', 'jaspercake@gmail.com', '5634', 'Administrator', '2021-12-14', '13:52:31'),
-(55, '', 'admin01', '$2y$10$i2/zlpvWv54lapOe.tXhae8MOyiJX53Dt54becIRbJWC0ryb9ssC.', 'din', 's', 'doughs', 'dindough@gmail.com', '7846', 'Administrator', '2021-12-28', '14:35:17'),
-(65, 'EMP_65', 'admin06', '$2y$10$E50n.pLUVzJ1S.5QcbKK9uMzLQNnP0PtKW7v7agQwAko18g8t7iBC', 'Jake', '', 'Peralta', 'admin06@gmail.com', '7856', 'Administrator', '2022-01-04', '16:00:27'),
-(66, 'EMP_66', 'administrator4n', '$2y$10$BzUvAI3EjNWuoxS2mMIXC.dshzc0XdQuLmjFCM/7Meq5j3Q5zVBqy', 'Administrator', '', 'Administrator', 'administrator4n2022@gmail.com', '00001', 'Administrator', '2022-01-09', '08:51:07');
-
 -- --------------------------------------------------------
 
 --
@@ -61,24 +51,30 @@ INSERT INTO `tbl_accounts` (`acc_id`, `auto_id`, `username`, `password`, `first_
 CREATE TABLE `tbl_admission` (
   `record_admission_id` int(20) NOT NULL,
   `patient_id` int(20) NOT NULL,
-  `pdf_path` varchar(255) NOT NULL,
+  `pdf_path` varchar(255) DEFAULT 'ongoing',
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL
+  `file_name` varchar(255) DEFAULT 'ongoing',
+  `address` varchar(50) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` varchar(10) DEFAULT NULL,
+  `religion` varchar(50) DEFAULT NULL,
+  `phil_health` varchar(50) DEFAULT NULL,
+  `father` varchar(60) DEFAULT NULL,
+  `mother` varchar(60) DEFAULT NULL,
+  `spouse` varchar(60) DEFAULT NULL,
+  `date_marriage` date DEFAULT NULL,
+  `place_marriage` varchar(50) DEFAULT NULL,
+  `room_no` int(11) DEFAULT NULL,
+  `case_no` int(11) DEFAULT NULL,
+  `cs` varchar(50) DEFAULT NULL,
+  `date_admitted` date DEFAULT NULL,
+  `time_admitted` time DEFAULT NULL,
+  `physician` varchar(60) DEFAULT NULL,
+  `diagnosis` varchar(535) DEFAULT NULL,
+  `occupation` varchar(100) DEFAULT NULL,
+  `admitted_by` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_admission`
---
-
-INSERT INTO `tbl_admission` (`record_admission_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(8, 14, 'patient/14/admission/2021123050126-test.pdf', '2021-12-30', '2021123050126-test.pdf'),
-(9, 15, 'patient/15/admission/2021123182815-macchiato.pdf', '2021-12-31', '2021123182815-macchiato.pdf'),
-(10, 24, 'patient/24/admission/2022010615835-mendoza.pdf', '2022-01-06', '2022010615835-mendoza.pdf'),
-(11, 24, 'patient/24/admission/2022010615837-mendoza.pdf', '2022-01-06', '2022010615837-mendoza.pdf'),
-(12, 25, 'patient/25/admission/2022010620121-legaspi.pdf', '2022-01-06', '2022010620121-legaspi.pdf'),
-(13, 26, 'patient/26/admission/2022010632417-balot.pdf', '2022-01-06', '2022010632417-balot.pdf'),
-(14, 15, 'patient/15/admission/20220109102049-macchiato.pdf', '2022-01-09', '20220109102049-macchiato.pdf'),
-(15, 15, 'patient/15/admission/20220109102052-macchiato.pdf', '2022-01-09', '20220109102052-macchiato.pdf');
 
 -- --------------------------------------------------------
 
@@ -91,15 +87,9 @@ CREATE TABLE `tbl_consult` (
   `patient_id` int(20) NOT NULL,
   `pdf_path` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL
+  `file_name` varchar(255) NOT NULL,
+  `complaint` varchar(535) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_consult`
---
-
-INSERT INTO `tbl_consult` (`record_cons_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(7, 14, 'patient/14/consultation/2021123041927-test.pdf', '2021-12-30', '2021123041927-test.pdf');
 
 -- --------------------------------------------------------
 
@@ -110,16 +100,25 @@ INSERT INTO `tbl_consult` (`record_cons_id`, `patient_id`, `pdf_path`, `date`, `
 CREATE TABLE `tbl_discharge` (
   `discharge_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
+  `record_admission_id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `disposition` varchar(60) NOT NULL
+  `disposition` varchar(60) NOT NULL,
+  `final_diagnosis` varchar(535) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbl_discharge`
+-- Table structure for table `tbl_history`
 --
 
-INSERT INTO `tbl_discharge` (`discharge_id`, `patient_id`, `date`, `disposition`) VALUES
-(1, 15, '2022-01-09', 'transferred');
+CREATE TABLE `tbl_history` (
+  `history_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `uploaded_date_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `record_id` int(11) NOT NULL,
+  `record_type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -132,34 +131,10 @@ CREATE TABLE `tbl_lab_result` (
   `patient_id` int(11) NOT NULL,
   `pdf_path` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL
+  `file_name` varchar(255) NOT NULL,
+  `result_type` varchar(50) NOT NULL,
+  `uploader` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_lab_result`
---
-
-INSERT INTO `tbl_lab_result` (`lab_result_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(7, 26, 'patient/26/laboratory_result/PROPOSALONGENDERDISCRIMINATION.pdf', '2022-01-08', 'PROPOSALONGENDERDISCRIMINATION.pdf'),
-(8, 26, 'patient/26/laboratory_result/How_Many_Interviews_Are_Enough.pdf', '2022-01-09', 'How_Many_Interviews_Are_Enough.pdf'),
-(9, 26, 'patient/26/laboratory_result/How_Many_Interviews_Are_Enough.pdf', '2022-01-09', 'How_Many_Interviews_Are_Enough.pdf'),
-(10, 26, 'patient/26/laboratory_result/_.._patient_14_medical certificate_2012-09-15-test (2).pdf', '2022-01-09', '_.._patient_14_medical certificate_2012-09-15-test (2).pdf'),
-(11, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(12, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(13, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(14, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(15, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(16, 26, 'patient/26/laboratory_result/AlmeraJohnMark_Declaration_IT401.pdf', '2022-01-09', 'AlmeraJohnMark_Declaration_IT401.pdf'),
-(17, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(18, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(19, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(20, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(21, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(22, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(23, 26, 'patient/26/laboratory_result/BSIT4N_Almera_JohnMark_Resume.pdf', '2022-01-09', 'BSIT4N_Almera_JohnMark_Resume.pdf'),
-(24, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf'),
-(25, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf'),
-(26, 26, 'patient/26/laboratory_result/PLEDGE OF COMMITMENT.pdf', '2022-01-14', 'PLEDGE OF COMMITMENT.pdf');
 
 -- --------------------------------------------------------
 
@@ -172,15 +147,11 @@ CREATE TABLE `tbl_med_cert` (
   `patient_id` int(20) NOT NULL,
   `pdf_path` varchar(255) NOT NULL,
   `date` date NOT NULL,
-  `file_name` varchar(255) NOT NULL
+  `file_name` varchar(255) NOT NULL,
+  `diagnosis` varchar(535) NOT NULL,
+  `recommendation` varchar(535) NOT NULL,
+  `physician` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_med_cert`
---
-
-INSERT INTO `tbl_med_cert` (`record_med_cert_id`, `patient_id`, `pdf_path`, `date`, `file_name`) VALUES
-(9, 26, 'patient/26/medical certificate/2022010983104-balot.pdf', '2022-01-09', '2022010983104-balot.pdf');
 
 -- --------------------------------------------------------
 
@@ -217,19 +188,9 @@ CREATE TABLE `tbl_patients` (
   `status` varchar(255) NOT NULL,
   `record_status` varchar(255) NOT NULL,
   `date_added` date DEFAULT NULL,
-  `time_added` time DEFAULT NULL
+  `time_added` time DEFAULT NULL,
+  `pass_status` varchar(20) NOT NULL DEFAULT 'default'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_patients`
---
-
-INSERT INTO `tbl_patients` (`patient_id`, `username`, `password`, `first_name`, `middle_name`, `last_name`, `contact_no`, `email`, `sex`, `religion`, `address`, `birthdate`, `occupation`, `status`, `record_status`, `date_added`, `time_added`) VALUES
-(14, '', '', 'Dean', '', 'Doe', '09089899291', 'deandoe@gmail.com', 'Female', 'Roman Catholic', 'Seoul, Korea', '1999-09-15', 'Streamer', 'Not Admitted', 'Active', '2021-12-02', '23:56:57'),
-(15, '', '', 'Machi', '', 'Macchiato', '', NULL, 'Female', '', 'Malolos, Bulacan', '2021-12-03', '', 'Not Admitted', 'Active', '2021-12-03', '15:34:54'),
-(24, '2420211201', '$2y$10$U7R5RthTEiaGvcJtsH06/.dCKtLUdWoWMKW0Ew9ImrQjBHF1n4Qhu', 'Jasper', 'Alvaro', 'Mendoza', '0989786731', 'jas@gmail.com', 'Male', 'Roman Catholic', 'Maunlad Homes', '2021-12-01', 'Rapper', 'Not Admitted', 'Active', '2021-12-30', '12:20:34'),
-(25, '2520220106', '$2y$10$9CfN9vbVSmOHgv6JGp/GMONssphbbMCcENTSf29h/ZbaCPaT1Tzzy', 'Lady Jobel', 'Ignacio', 'Legaspi', '', 'ladyboj@gmail.com', 'Female', '', 'Batia, Bocaue', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '14:00:00'),
-(26, '2620220106', '$2y$10$jtvs7h/aA5zTy7UlIiiLYe9EL5.fOZqS0yfdxqDR2FzvUdm5PUA6e', 'Dexter', '', 'Balot', '', 'dex@gmail.com', 'Male', '', 'dex residence', '2022-01-06', '', 'Not Admitted', 'Active', '2022-01-06', '15:21:36');
 
 -- --------------------------------------------------------
 
@@ -247,27 +208,6 @@ CREATE TABLE `tbl_requests` (
   `view_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_requests`
---
-
-INSERT INTO `tbl_requests` (`request_id`, `patient_id`, `result_type`, `request_date`, `request_time`, `request_status`, `view_status`) VALUES
-(107, 25, 'platelet_count', '2022-01-14', '20:10:23', 'sent', 'viewed'),
-(108, 25, 'blood_typing', '2022-01-14', '20:10:23', 'sent', 'viewed'),
-(109, 25, 'platelet_count', '2022-01-14', '20:14:26', 'sent', 'viewed'),
-(110, 25, 'blood_urea_nitrogen', '2022-01-14', '20:14:26', 'sent', 'viewed'),
-(111, 25, 'hepatitis_b', '2022-01-14', '20:14:46', 'sent', 'viewed'),
-(112, 25, 'fasting_blood_sugar', '2022-01-14', '20:14:46', 'sent', 'viewed'),
-(113, 25, 'platelet_count', '2022-01-14', '20:17:42', 'sent', 'viewed'),
-(114, 25, 'hepatitis_b', '2022-01-14', '20:17:43', 'sent', 'viewed'),
-(115, 25, 'cross_matching', '2022-01-14', '20:17:58', 'sent', 'viewed'),
-(116, 25, 'hepatitis_b', '2022-01-14', '20:18:41', 'sent', 'viewed'),
-(117, 25, 'fasting_blood_sugar', '2022-01-14', '20:18:41', 'sent', 'viewed'),
-(118, 25, 'blood_urea_nitrogen', '2022-01-14', '20:18:46', 'responded', 'viewed'),
-(119, 25, 'hepatitis_b', '2022-01-14', '20:20:28', 'sent', 'viewed'),
-(120, 25, 'fasting_blood_sugar', '2022-01-14', '20:20:58', 'responded', 'viewed'),
-(121, 25, 'uric_acid', '2022-01-14', '20:20:58', 'sent', 'viewed');
-
 -- --------------------------------------------------------
 
 --
@@ -283,14 +223,6 @@ CREATE TABLE `tbl_responses` (
   `response_date` date NOT NULL,
   `response_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_responses`
---
-
-INSERT INTO `tbl_responses` (`response_id`, `patient_id`, `request_id`, `response_status`, `view_status`, `response_date`, `response_time`) VALUES
-(85, 25, 120, 'not available', 'viewed', '2022-01-14', '20:22:59'),
-(86, 25, 118, 'already available', 'viewed', '2022-01-14', '20:23:07');
 
 --
 -- Indexes for dumped tables
@@ -321,7 +253,14 @@ ALTER TABLE `tbl_consult`
 --
 ALTER TABLE `tbl_discharge`
   ADD PRIMARY KEY (`discharge_id`),
-  ADD KEY `patient_id` (`patient_id`);
+  ADD KEY `patient_id` (`patient_id`),
+  ADD KEY `record_admission_id` (`record_admission_id`);
+
+--
+-- Indexes for table `tbl_history`
+--
+ALTER TABLE `tbl_history`
+  ADD PRIMARY KEY (`history_id`);
 
 --
 -- Indexes for table `tbl_lab_result`
@@ -366,55 +305,61 @@ ALTER TABLE `tbl_responses`
 -- AUTO_INCREMENT for table `tbl_accounts`
 --
 ALTER TABLE `tbl_accounts`
-  MODIFY `acc_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `acc_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tbl_admission`
 --
 ALTER TABLE `tbl_admission`
-  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `record_admission_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `tbl_consult`
 --
 ALTER TABLE `tbl_consult`
-  MODIFY `record_cons_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `record_cons_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_discharge`
 --
 ALTER TABLE `tbl_discharge`
-  MODIFY `discharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `discharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `tbl_history`
+--
+ALTER TABLE `tbl_history`
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_lab_result`
 --
 ALTER TABLE `tbl_lab_result`
-  MODIFY `lab_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `lab_result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `tbl_med_cert`
 --
 ALTER TABLE `tbl_med_cert`
-  MODIFY `record_med_cert_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `record_med_cert_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_patients`
 --
 ALTER TABLE `tbl_patients`
-  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `patient_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_requests`
 --
 ALTER TABLE `tbl_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `tbl_responses`
 --
 ALTER TABLE `tbl_responses`
-  MODIFY `response_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `response_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- Constraints for dumped tables
@@ -436,7 +381,8 @@ ALTER TABLE `tbl_consult`
 -- Constraints for table `tbl_discharge`
 --
 ALTER TABLE `tbl_discharge`
-  ADD CONSTRAINT `tbl_discharge_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `tbl_patients` (`patient_id`);
+  ADD CONSTRAINT `tbl_discharge_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `tbl_patients` (`patient_id`),
+  ADD CONSTRAINT `tbl_discharge_ibfk_2` FOREIGN KEY (`record_admission_id`) REFERENCES `tbl_admission` (`record_admission_id`);
 
 --
 -- Constraints for table `tbl_lab_result`

@@ -168,10 +168,21 @@ function make_consultation() {
   $mpdf->Output("../../".$file,"F");
   
   
-  $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date,file_name) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."');";
+  $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date,file_name,complaint) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."','".$patient_complaint."');";
   mysqli_query($conn,$insertSql);
+
+
+  //for history
+  $record_cons_id = $conn->insert_id;
+  $record_type = 'consultation';
   
-  // header('Location: record_management.php');
+
+  // history
+  $history_stmt = $connection->prepare("INSERT INTO tbl_history(patient_id, record_id, record_type) VALUES (?, ?, ?)");
+  /* Prepared statement, stage 2: bind and execute */
+  $history_stmt->bind_param("sss",$patient_id, $record_cons_id, $record_type);
+  $history_stmt->execute();
+
   }
 
 function make_admission(){
@@ -220,6 +231,8 @@ function make_admission(){
         $stmt->bind_param("ssssssssssssssssssssss", $patient_id,$record_date,$patient_address,$patient_contact_no,$patient_age,$patient_sex,$patient_religion,$patient_philhealth_no,$patient_father_name
         ,$patient_mother_name,$patient_spouse_name,$patient_date_of_marriage,$patient_place_of_marriage,$patient_room_no,$patient_case_no,$patient_cs,$patient_date_admitted,$patient_time_admitted,$patient_physician,$patient_admitting_diagnosis,
         $patient_occupation,$patient_admitted_by); // "is" means that $id is bound as an integer and $label as a string
+
+
     
         $stmt->execute();
         /* Prepared statement, stage 1: prepare */
@@ -359,14 +372,23 @@ function make_medcert(){
       $mpdf->Output("../../".$file,"F");
 
       /* Prepared statement, stage 1: prepare */
-      $stmt = $connection->prepare("INSERT INTO tbl_med_cert(patient_id,pdf_path,date,file_name) VALUES (?,?,?,?);");
+      $stmt = $connection->prepare("INSERT INTO tbl_med_cert(patient_id,pdf_path,date,file_name,diagnosis,recommendation,physician) VALUES (?,?,?,?,?,?,?);");
   
       /* Prepared statement, stage 2: bind and execute */
-      $stmt->bind_param("ssss", $patient_id,$file,$record_date,$file_name ); // "is" means that $id is bound as an integer and $label as a string
+      $stmt->bind_param("sssssss", $patient_id,$file,$record_date,$file_name,$patient_diagnosis,$patient_recommendation,$patient_physician ); // "is" means that $id is bound as an integer and $label as a string
     
       $stmt->execute();
 
+      //for history
+      $record_med_cert_id = $connection->insert_id;
+      $record_type = 'med_cert';
+      
 
+      // history
+      $history_stmt = $connection->prepare("INSERT INTO tbl_history(patient_id, record_id, record_type) VALUES (?, ?, ?)");
+      /* Prepared statement, stage 2: bind and execute */
+      $history_stmt->bind_param("sss",$patient_id, $record_med_cert_id, $record_type);
+      $history_stmt->execute();
      
         
       // header('Location: record_management.php');
@@ -412,8 +434,23 @@ function make_lab_res() {
             echo 'Please upload a pdf file.';
           }else{
             if (move_uploaded_file($tmp_file, "../../".$file)) {
-              $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name) VALUES ('$patient_id','$file','$record_date','$pdfName');";
+              $result_type = $_POST['result'];
+
+              $get_uploader_stmt = $connection->prepare("SELECT * FROM tbl_accounts WHERE acc_id = ?;");
+
+              /* Prepared statement, stage 2: bind and execute */
+              $get_uploader_stmt->bind_param("s", $_SESSION['ID']); // "is" means that $id is bound as an integer and $label as a string
+              $get_uploader_stmt->execute();
+              $uploader_result = $get_uploader_stmt->get_result();
+              $uploader_row = $uploader_result->fetch_array(MYSQLI_ASSOC);
+              $uploader = $uploader_row['first_name']." ".$uploader_row['last_name'];
+
+              $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name,result_type,uploader) VALUES ('$patient_id','$file','$record_date','$pdfName','$result_type','$uploader');";
                 if (mysqli_query($conn, $insertSql)) {
+
+                  //for history
+                  $lab_result_id = $conn->insert_id;
+                  $record_type = 'lab_result';
 
                   if(isset($_POST['request_id']))
                   {
@@ -423,6 +460,8 @@ function make_lab_res() {
                     $time = date("H:i:s");
                     $request_status = "responded";
                     $view_status = "sent";
+                    $result_type = $_POST['result'];
+                    
 
                     $stmt = $connection->prepare("INSERT INTO tbl_responses(patient_id, request_id, response_status, view_status, response_date, response_time) VALUES (?, ?, ?, ?, ?, ?)");
 
@@ -432,10 +471,17 @@ function make_lab_res() {
 
                     /* Prepared statement, stage 1: prepare */
                     $request_stmt = $connection->prepare("UPDATE tbl_requests SET request_status = ? WHERE request_id = ?");
-
-
                     $request_stmt->bind_param("ss",$request_status, $request_id);
                     $request_stmt->execute();
+
+
+                    // history
+                    $history_stmt = $connection->prepare("INSERT INTO tbl_history(patient_id, result_type, record_id, record_type) VALUES (?, ?, ?, ?)");
+
+                    /* Prepared statement, stage 2: bind and execute */
+                    $history_stmt->bind_param("ssss",$patient_id, $result_type, $lab_result_id, $record_type);
+                    $history_stmt->execute();
+
 
                     echo "1";
 
@@ -466,8 +512,15 @@ function make_lab_res() {
                   $stmt->bind_param("ssssss",$patient_id, $request_id, $response_status, $view_status, $today, $time);
                   $stmt->execute();
 
-                  echo "1";
-                  // header('Location: record_management.php');
+                   // history
+                   $history_stmt = $connection->prepare("INSERT INTO tbl_history(patient_id, record_id, record_type) VALUES (?, ?, ?)");
+
+                   /* Prepared statement, stage 2: bind and execute */
+                   $history_stmt->bind_param("sss",$patient_id, $lab_result_id, $record_type);
+                   $history_stmt->execute();
+
+                    echo "1";
+                    // header('Location: record_management.php');
 
                   }
               }else{
@@ -811,13 +864,24 @@ function discharge_patient() {
       
           $stmt->execute();
 
-          $discharge_stmt = $connection->prepare("INSERT INTO tbl_discharge(patient_id, date, disposition) VALUES (?, ?, ?)");
+          $discharge_stmt = $connection->prepare("INSERT INTO tbl_discharge(patient_id, record_admission_id, date, disposition, final_diagnosis) VALUES (?, ?, ?, ?, ?)");
                 
-/* Prepared statement, stage 2: bind and execute */
+          /* Prepared statement, stage 2: bind and execute */
 
           $discharge_disposition = $_POST['disposition'];
-          $discharge_stmt->bind_param("sss",$patient_id, $patient_date_discharged, $discharge_disposition);
+          $discharge_stmt->bind_param("sssss",$patient_id, $record_admission_id, $patient_date_discharged, $discharge_disposition, $patient_final_diagnosis);
           $discharge_stmt->execute();
+          
+          //for history
+          $record_admission_id = $connection->insert_id;
+          $record_type = 'admission';
+          
+
+          // history
+          $history_stmt = $connection->prepare("INSERT INTO tbl_history(patient_id, record_id, record_type) VALUES (?, ?, ?)");
+          /* Prepared statement, stage 2: bind and execute */
+          $history_stmt->bind_param("sss",$patient_id, $record_admission_id, $record_type);
+          $history_stmt->execute();
 
 
   

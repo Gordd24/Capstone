@@ -1,70 +1,61 @@
 <?php
 session_start();
-if(!isset($_SESSION['ID'])){
-    header("Location: ../../index.php");
+
+if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
+  header("Location: ../../index.php");
 }
+if(isset($_SESSION['ID'])){
+  header("Location: ../../index.php");
+}
+
+if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
+  header("Location: ../../patient_website/change_patient_pass.php");
+}
+include_once '../dbconn.php';
+
+$stmt = $connection->prepare("UPDATE tbl_responses SET view_status = 'viewed' WHERE patient_id = ? and view_status='sent'; ");
+$patient_id = $_SESSION['PATIENT_ID'];
+$stmt->bind_param("s", $patient_id);
+$stmt->execute();
+$id = $_SESSION['PATIENT_ID'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../images/favicon.ico" />
-    <title>Patient History</title>
-    <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- boxicons -->
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <!-- css -->
-    <link href='../../css/patients_records.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../css/nav.css">
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../../js/patient_history.js"></script>
-    <script src="../../js/nav.js"></script>
-    <!-- sweet alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../../images/favicon.ico" />
+  <title>Responses</title>
+ <!-- bootstrap -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../nav/patient_header.css">
+  <link rel="stylesheet" href="patient_history.css">
+   <!-- boxicons -->
+   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../nav/patient_header.js"></script>
+
+  <!-- javascript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../../js/notification.js"></script>
+  <script src="patient_history.js"></script>
 </head>
 
-<body id="body-pd">
+<body>
 
-<?php include_once '../admin_nav.php';?>
+  <?php include_once '../nav/patient_header.php' ?>
 
-<div class="container-lg">
-
-    <!-- pre values -->
-    <?php
-        include_once '../dbconn.php';
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-        }
-    ?>
-
-
-
-    <div class="row justify-content-center p-3">
-        <div class="col-12 wrapper">
-
-                        
-
-
-                        <div class="row justify-content-center mb-3">
-                            <div class="col-4">
-                                <h2>Patient's History</h2>
-                            </div>
-                            <div class="col-6">
-                            </div>
-                        </div>
+    <div class="row">
+      <div class="col wrapper">
 
                          <!-- SELECT ROW -->
-                         <div class="row justify-content-center">
-                            <div class="col-5">
+                         <div class="row justify-content-center mt-3">
+                            <div class="col-10 col-md-5">
 
                                 <select class="form-select record_type" id="<?php echo $id; ?>">
-                                    <option value="admission">Admissions</option>
-                                    <option value="consultation">Consultations</option>
                                     <option value="med_cert">Medical Certifications</option>
                                     <option value="lab_res" selected>Laboratory Results</option>
                                 </select>
@@ -108,7 +99,7 @@ if(!isset($_SESSION['ID'])){
                               
                                 <div class="row mt-5 justify-content-center">
 
-                                    <div class="col-3">
+                                    <div class="col-10 col-md-3  mt-1">
                                         <select class="form-select" data-type="lab_result" data-id="<?php echo $id; ?>" id="select_by_type">
                                             <option value="all" selected>Select All</option>
                                             <option value="complete_blood_count">Complete Blood Count</option>
@@ -126,7 +117,7 @@ if(!isset($_SESSION['ID'])){
                                         </select>
                                     </div> 
 
-                                    <div class="col-3">
+                                    <div class="col-10 col-md-3 mt-1">
                                         <form>
                                                 <div class="form-group shadow-lg">
                                                     <input type="date" class="form-control" id="search_record_date" data-type="lab_result" data-id="<?php echo $id; ?>">
@@ -134,10 +125,10 @@ if(!isset($_SESSION['ID'])){
                                         </form>
                                     </div>  
 
-                                    <div class="col-1">
+                                    <div class="col-10 col-md-1 mt-1">
                                     </div>    
 
-                                    <div class="col-3">
+                                    <div class="col-10 col-md-3 mt-1">
                                         <select class="form-select" data-type="lab_result" data-id="<?php echo $id; ?>" id="sort_by">
                                             <option value="date_asc">Date Ascending</option>
                                             <option value="date_desc" selected>Date Descending</option>
@@ -154,8 +145,6 @@ if(!isset($_SESSION['ID'])){
                                             <thead class="text-white">
                                                 <tr>
                                                     <th scope="col">Result Type</th>
-                                                    <th scope="col">Release By</th>   
-                                                    <th scope="col">Uploaded By</th>
                                                     <th scope="col">Uploaded On</th>
                                                 </tr>
                                             </thead>
@@ -185,8 +174,6 @@ if(!isset($_SESSION['ID'])){
                                                         
                                                         echo "<tr class='show_mods' data-date_uploaded=\"".$lab_row['date']."\" data-result_type=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-release_by=\"".'Dummy Person'."\" data-uploaded_by=\"".$lab_row['uploader']."\"  data-record_type=\"lab_result\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
                                                                 <td  '>".ucwords(str_replace("_"," ",$lab_row['result_type']))."</td>
-                                                                <td>Dummy Release</td>
-                                                                <td>".$lab_row['uploader']."</td>
                                                                 <td>".$lab_row['date']."</td>
                                                             </tr>";
 
@@ -199,19 +186,23 @@ if(!isset($_SESSION['ID'])){
                                 </div>
                                 <!-- table row end -->
                                 <!-- lab -->
-                        
-                                
+                    
 
-                                
+                                        
 
-                            </div>
-                        </div>
-
-        </div>
+      </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+                                        
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
 

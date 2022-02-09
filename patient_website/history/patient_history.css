@@ -1,0 +1,12 @@
+#history{
+    font-weight: bolder;
+  }
+
+.text{
+  text-align: justify; 
+  text-justify: inter-word;
+}
+
+thead{
+  background-color: rgb(27, 73, 101);
+}

@@ -20,7 +20,6 @@ $(document).ready(function () {
             }
         });
 
-
     });
 
     //sorting
@@ -45,36 +44,6 @@ $(document).ready(function () {
 
                 }
             });
-        } else if (type == "consultation") {
-            $.ajax({
-                url: "sort_history.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    sort: sort
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.cons_tbody').html(data);
-
-                }
-            });
-        } else if (type == "admission") {
-            $.ajax({
-                url: "sort_history.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    sort: sort
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.admission_tbody').html(data);
-
-                }
-            });
         } else if (type == "med_cert") {
             $.ajax({
                 url: "sort_history.php",
@@ -87,7 +56,6 @@ $(document).ready(function () {
                 dataType: "text",
                 success: function (data) {
                     $('.med_tbody').html(data);
-
                 }
             });
         }
@@ -110,36 +78,6 @@ $(document).ready(function () {
                 dataType: "text",
                 success: function (data) {
                     $('.lab_tbody').html(data);
-
-                }
-            });
-        } else if (type == "consultation") {
-            $.ajax({
-                url: "search_record_date.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    date: date
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.cons_tbody').html(data);
-
-                }
-            });
-        } else if (type == "admission") {
-            $.ajax({
-                url: "search_record_date.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    date: date
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.admission_tbody').html(data);
 
                 }
             });
@@ -167,22 +105,7 @@ $(document).ready(function () {
         var type = $(this).data('type');
         var id = $(this).data('id');
         var txt = $(this).val();
-        if (type == "admission") {
-            $.ajax({
-                url: "search_history.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    search: txt
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.admission_tbody').html(data);
-
-                }
-            });
-        } else if (type == "med_cert") {
+        if (type == "med_cert") {
             $.ajax({
                 url: "search_history.php",
                 method: "post",
@@ -194,22 +117,6 @@ $(document).ready(function () {
                 dataType: "text",
                 success: function (data) {
                     $('.med_tbody').html(data);
-
-                }
-            });
-        } else if (type == "consultation") {
-            $.ajax({
-                url: "search_history.php",
-                method: "post",
-                data: {
-                    type: type,
-                    id: id,
-                    search: txt
-                },
-                dataType: "text",
-                success: function (data) {
-                    $('.cons_tbody').html(data);
-
                 }
             });
         }
@@ -255,7 +162,7 @@ $(document).ready(function () {
             $(".release_by").text(release_by)
             $(".uploaded_by").text(uploader)
         } else if (record_type == 'consultation') {
-            var date = $(this).data('date_consulted');
+            var date = $(this).data('date_admitted');
             var time = $(this).data('time_consulted');
             var physician = $(this).data('physician');
             var complaint = $(this).data('complaint');
