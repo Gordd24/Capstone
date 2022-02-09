@@ -112,8 +112,8 @@ include_once '../dbconn.php';
                 $cons_result = $get_cons_stmt->get_result();
                 $cons_row = $cons_result->fetch_array(MYSQLI_ASSOC);
                 
-                echo "<tr class='show_mods' data-date_uploaded=\"".$cons_row['date']."\" data-physician=\"".'Dummy Phycisian'."\" data-record_type=\"consultation\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
-                        <td>Dummy Physician</td>
+                echo "<tr class='show_mods' data-date_uploaded=\"".$cons_row['date']."\" data-physician=\"".$cons_row['personnel']."\" data-record_type=\"consultation\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
+                        <td>".$cons_row['personnel']."</td>
                         <td>".date("Y-m-d",strtotime($row['uploaded_date_time']))."</td>
                         <td>".date("h:i A",strtotime($row['uploaded_date_time']))."</td>
                     </tr>";

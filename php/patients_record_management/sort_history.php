@@ -36,7 +36,7 @@ include_once '../dbconn.php';
                 
                 echo "<tr class='show_mods' data-date_uploaded=\"".$lab_row['date']."\" data-result_type=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-release_by=\"".'Dummy Person'."\" data-uploaded_by=\"".$lab_row['uploader']."\"  data-record_type=\"lab_result\" data-pat_id=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
                         <td>".$lab_row['result_type']."</td>
-                        <td>Dummy Release</td>
+                        <td>".$lab_row['release_by']."</td>
                         <td>".$lab_row['uploader']."</td>
                         <td>".$lab_row['date']."</td>
                     </tr>";
@@ -73,8 +73,8 @@ include_once '../dbconn.php';
                 $cons_result = $get_cons_stmt->get_result();
                 $cons_row = $cons_result->fetch_array(MYSQLI_ASSOC);
                 
-                echo "<tr class='show_mods' data-date_uploaded=\"".$cons_row['date']."\" data-physician=\"".'Dummy Phycisian'."\" data-record_type=\"consultation\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
-                        <td>Dummy Physician</td>
+                echo "<tr class='show_mods' data-date_uploaded=\"".$cons_row['date']."\" data-physician=\"".$cons_row['personnel']."\" data-record_type=\"consultation\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
+                        <td>".$cons_row['personnel']."</td>
                         <td>".date("Y-m-d",strtotime($row['uploaded_date_time']))."</td>
                         <td>".date("h:i A",strtotime($row['uploaded_date_time']))."</td>
                     </tr>";

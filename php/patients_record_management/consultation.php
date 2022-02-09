@@ -38,6 +38,9 @@ if(!isset($_SESSION['ID'])){
     <!-- pre values -->
     <?php
     include_once '../dbconn.php';
+    $sql = "SELECT acc_id,first_name,last_name,position FROM tbl_accounts WHERE position NOT IN ('Medical Technologist')";
+    $all_accounts = mysqli_query($conn,$sql);
+
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         /* Prepared statement, stage 1: prepare */
@@ -334,6 +337,26 @@ if(!isset($_SESSION['ID'])){
                                                                 <textarea class="form-control required" id="complaint" name="complaint" rows="8"></textarea>
                                                                 <div class="error" id="complaint_error"></div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <label for="consult_by" class="form-label required">Consulted by:</label>
+                                                            <!-- <input type="text" class="form-control" id="consult_by" name="consult_by"> -->
+                                                            <select class="form-select"  name="consult_by" id="consult_by">
+                                                            <option value="">--Select who consulted the patient--</option>
+                                                                <?php
+                                                                    while ($account = mysqli_fetch_array(
+                                                                        $all_accounts,MYSQLI_ASSOC)):; 
+                                                                   ?>
+                                                                  
+                                                                   <option value="<?php echo $account["first_name"] . " ". $account["last_name"];?>">
+                                                                   <?php echo $account["first_name"] . " ". $account["last_name"] ;?>
+                                                                </option>
+                                                                <?php endwhile?>
+                                                            </select>
+                                                            <div class="error" id="consult_by_error"></div> 
                                                         </div>
                                                     </div>
 

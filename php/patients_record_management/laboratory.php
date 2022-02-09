@@ -39,6 +39,9 @@ if(!isset($_SESSION['ID'])){
     <?php
     include_once '../dbconn.php';
 
+    $sql = "SELECT acc_id,first_name,last_name,position FROM tbl_accounts WHERE position ='Medical Technologist'";
+    $all_accounts = mysqli_query($conn,$sql);
+
     if(isset($_GET['id'])){
     
         $id = $_GET['id'];
@@ -270,6 +273,26 @@ if(!isset($_SESSION['ID'])){
 
                                                     <!-- radio group end -->
 
+                                                    <div class="row my-3">
+                                                        <div class="col">
+                                                            <label for="release_by" class="form-label required">Released by</label>
+                                                            <!-- <input type="text" class="form-control" id="release_by" name="release_by" > -->
+                                                            <select class="form-select"  name="release_by" id="release_by">
+                                                            <option value="">--Select who released the laboratory result--</option>
+                                                                <?php
+                                                                    while ($account = mysqli_fetch_array(
+                                                                        $all_accounts,MYSQLI_ASSOC)):; 
+                                                                   ?>
+                                                                  
+                                                                   <option value="<?php echo $account["first_name"] . " ". $account["last_name"];?>">
+                                                                   <?php echo $account["first_name"] . " ". $account["last_name"] ;?>
+                                                                </option>
+                                                                <?php endwhile?>
+                                                            </select>
+                                                            <div class="error" id="release_by_error"></div> 
+                                                        </div>
+                                                    </div>
+
                                                     <div class="row my-5">
                                                         <div class="col">                                               
                                                                 <label for="lab_res" class="form-label required"><i class='bx bx-test-tube'></i> Upload Laboratory Result</label>
@@ -278,6 +301,8 @@ if(!isset($_SESSION['ID'])){
                                                                 <input type="hidden" name="hidden_field_labres" id="hidden_field_labres" value="form_check">
                                                         </div>
                                                     </div>
+
+                                                    
 
                                                     <div class="row my-3">
                                                         <div class="col">

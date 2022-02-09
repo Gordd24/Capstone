@@ -72,8 +72,10 @@ $(document).ready(function () {
                     success: function (data) {
                         Swal.fire({
                             title: 'Success',
-                            text:'Registration Successful',
+                            text:'Account Deleted',
                             icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
                         }).then((result) => {
                              // Reload the Page
                              location.reload();

@@ -185,7 +185,7 @@ if(!isset($_SESSION['ID'])){
                                                         
                                                         echo "<tr class='show_mods' data-date_uploaded=\"".$lab_row['date']."\" data-result_type=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-release_by=\"".'Dummy Person'."\" data-uploaded_by=\"".$lab_row['uploader']."\"  data-record_type=\"lab_result\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
                                                                 <td  '>".ucwords(str_replace("_"," ",$lab_row['result_type']))."</td>
-                                                                <td>Dummy Release</td>
+                                                                <td>".$lab_row['release_by']."</td>
                                                                 <td>".$lab_row['uploader']."</td>
                                                                 <td>".$lab_row['date']."</td>
                                                             </tr>";

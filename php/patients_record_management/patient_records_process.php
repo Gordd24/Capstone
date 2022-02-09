@@ -59,6 +59,7 @@ function make_consultation() {
   $ob_patient_lmp = $_POST['lmp']; 
   $ob_patient_aog= $_POST['aog'];
   $ob_patient_edc= $_POST['edc'];
+  $consult_by= $_POST['consult_by'];
   
   
   $mpdf->WriteHTML('
@@ -168,7 +169,7 @@ function make_consultation() {
   $mpdf->Output("../../".$file,"F");
   
   
-  $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date,file_name,complaint) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."','".$patient_complaint."');";
+  $insertSql = "INSERT INTO tbl_consult(patient_id,pdf_path,date,file_name,complaint,personnel) VALUES ('".$patient_id."','".$file."','".$record_date."','".$file_name."','".$patient_complaint."','".$consult_by."');";
   mysqli_query($conn,$insertSql);
 
 
@@ -444,8 +445,9 @@ function make_lab_res() {
               $uploader_result = $get_uploader_stmt->get_result();
               $uploader_row = $uploader_result->fetch_array(MYSQLI_ASSOC);
               $uploader = $uploader_row['first_name']." ".$uploader_row['last_name'];
-
-              $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name,result_type,uploader) VALUES ('$patient_id','$file','$record_date','$pdfName','$result_type','$uploader');";
+              $release_by = $_POST['release_by'];
+             
+              $insertSql = "INSERT INTO tbl_lab_result(patient_id,pdf_path,date,file_name,result_type,uploader,release_by) VALUES ('$patient_id','$file','$record_date','$pdfName','$result_type','$uploader','$release_by');";
                 if (mysqli_query($conn, $insertSql)) {
 
                   //for history

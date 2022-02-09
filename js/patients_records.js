@@ -249,13 +249,16 @@ $(document).ready(function () {
 
     //consult submit
     $('#consultation_form').on('submit', function (e) {
+        e.preventDefault();
         complaint = $('#complaint').val()
+        consult = $('#consult_by').val() 
         var data = $('#consultation_form').serialize()
-        if (complaint == '') {
-            $('#complaint_error').html('Please enter complaint')
-            e.preventDefault();
+        if (complaint == '' || consult == '') {
+            if(complaint == '')$('#complaint_error').html('Please enter complaint')
+            if(consult == '')$('#consult_by_error').html('Please enter who consulted the patient.')
+            
         } else {
-            e.preventDefault()
+            
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
@@ -506,13 +509,13 @@ $(document).ready(function () {
     //laboratory validation
     $('#lab_form').on('submit', function (e) {
         e.preventDefault()
-        if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0) {
+        release_by = $('#release_by').val()
+        if ($('#patient_lab_res').get(0).files.length === 0 || $('input[name="result"]:checked').length === 0 || release_by=='') {
             if ($('#patient_lab_res').get(0).files.length === 0) $('#lab_res_error').html('Please upload laboratory result')
             if ($('input[name="result"]:checked').length === 0) $('#radio_error').html('Please select laboratory result type')
+            if (release_by=='') $('#release_by_error').html('Please enter who released the laboratory result')
 
         } else {
-
-
             $.ajax({
                 type: 'POST',
                 url: 'patient_records_process.php',
