@@ -87,7 +87,6 @@ include_once '../dbconn.php';
             }
 
     }else if(isset($_POST['type'])&&$_POST['type']=="consultation"){
-
         /* Prepared statement, stage 1: prepare */
         $record_type="consultation";
         $id = $_POST['id'];
@@ -104,19 +103,21 @@ include_once '../dbconn.php';
 
             while ($row = $hist_result->fetch_array(MYSQLI_ASSOC)) {
 
-                $get_cons_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and record_cons_id = ?;");
+                $get_cons_stmt = $connection->prepare("SELECT * FROM tbl_consult WHERE patient_id = ? and record_cons_id = ? and personnel LIKE ?;");
 
                 /* Prepared statement, stage 2: bind and execute */
-                $get_cons_stmt->bind_param("ss", $id, $row['record_id']); // "is" means that $id is bound as an integer and $label as a string
+                $get_cons_stmt->bind_param("sss", $id, $row['record_id'],$search); // "is" means that $id is bound as an integer and $label as a string
                 $get_cons_stmt->execute();
                 $cons_result = $get_cons_stmt->get_result();
-                $cons_row = $cons_result->fetch_array(MYSQLI_ASSOC);
                 
+                while($cons_row = $cons_result->fetch_array(MYSQLI_ASSOC)){
                 echo "<tr class='show_mods' data-date_uploaded=\"".$cons_row['date']."\" data-physician=\"".$cons_row['personnel']."\" data-record_type=\"consultation\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
                         <td>".$cons_row['personnel']."</td>
                         <td>".date("Y-m-d",strtotime($row['uploaded_date_time']))."</td>
                         <td>".date("h:i A",strtotime($row['uploaded_date_time']))."</td>
                     </tr>";
+                }
+                    
 
             }
 

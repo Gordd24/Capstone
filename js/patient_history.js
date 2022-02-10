@@ -198,6 +198,7 @@ $(document).ready(function () {
                 }
             });
         } else if (type == "consultation") {
+            console.log(txt);
             $.ajax({
                 url: "search_history.php",
                 method: "post",
@@ -296,6 +297,7 @@ $(document).ready(function () {
             $(".recommendation").text(recommendation);
         }
     });
+
 
 
 

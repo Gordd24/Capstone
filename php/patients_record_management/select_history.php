@@ -190,7 +190,7 @@ include_once '../dbconn.php';
                 <div class="col-3">
                     <form>
                             <div class="form-group shadow-lg">
-                                <input type="text" class="form-control" id="search_patient" placeholder="Search History">
+                                <input type="text" class="form-control" id="search_patient" data-type="consultation" data-id="'.$_POST['id'].'" placeholder="Search History">
                             </div>
                     </form>
                 </div>
