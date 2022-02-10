@@ -37,6 +37,9 @@ if(!isset($_SESSION['ID'])){
     <!-- pre values -->
     <?php
     include_once '../dbconn.php';
+    $sql = "SELECT acc_id,first_name,last_name,position FROM tbl_accounts WHERE position ='Doctor'";
+    $all_accounts = mysqli_query($conn,$sql);
+
     if(isset($_GET['id'])){
     $id = $_GET['id'];
     /* Prepared statement, stage 1: prepare */
@@ -286,7 +289,19 @@ if(!isset($_SESSION['ID'])){
                                                     <div class="row my-3">
                                                         <div class="col">
                                                             <label for="physician" class="form-label required">Physician (Full Name)</label>
-                                                            <input type="text" class="form-control" id="physician" name="physician" autocomplete="off"> 
+                                                            <select class="form-select"  name="physician" id="physician">
+                                                            <option value="">--Select who created the medical certificate--</option>
+                                                                <?php
+                                                                    while ($account = mysqli_fetch_array(
+                                                                        $all_accounts,MYSQLI_ASSOC)):; 
+                                                                   ?>
+                                
+                                                                   <option value="<?php echo $account["first_name"] . " ". $account["last_name"];?>">
+                                                                   <?php echo $account["first_name"] . " ". $account["last_name"] ;?>
+                                                                </option>
+                                                                <?php endwhile?>
+                                                            </select>                                                    
+                                                            <!-- <input type="text" class="form-control" id="physician" name="physician" autocomplete="off">  -->
                                                             <div class="error" id="phys_error"></div>
                                                         </div>
                                                     </div>

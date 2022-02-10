@@ -229,11 +229,11 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="religion" class="form-label required">Religion</label>
+                                                            <label for="religion" class="form-label">Religion</label>
                                                             <input type="text" class="form-control" id="religion" name="religion" value="<?php echo $row['religion']; ?>"  autocomplete="off"> 
                                                         </div>
                                                         <div class="col">
-                                                            <label for="occupation" class="form-label required">Occupation</label>
+                                                            <label for="occupation" class="form-label">Occupation</label>
                                                             <input type="text" class="form-control" id="occupation" name="occupation" value="<?php echo $row['occupation']; ?>"  autocomplete="off"> 
                                                         </div>
                                                     </div>
