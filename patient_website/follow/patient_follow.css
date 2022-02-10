@@ -11,3 +11,9 @@
     background-color: rgb(16, 42, 58);
     color: white;
 }
+
+.head_list{
+    background-color: rgb(27, 73, 101);
+    color: white;
+    font-weight: bolder;
+}

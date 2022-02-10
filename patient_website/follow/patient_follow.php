@@ -12,6 +12,29 @@ if(isset($_SESSION['ID'])){
 if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
   header("Location: ../../patient_website/change_patient_pass.php");
 }
+
+
+include_once '../dbconn.php';
+
+
+$limit = 20;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+
+
+$get_count_stmt = $connection->prepare("SELECT count(request_id) as id  FROM tbl_requests  WHERE patient_id = ?;");
+/* Prepared statement, stage 2: bind and execute */ 
+$get_count_stmt->bind_param("s", $_SESSION['PATIENT_ID']); 
+$get_count_stmt->execute();
+
+$count_result = $get_count_stmt->get_result();
+$count_row = $count_result->fetch_array(MYSQLI_ASSOC);
+$total = $count_row['id']; 
+$pages =  ceil($total/$limit);   
+$Previous = $page - 1;
+$Next = $page + 1; 
+
 ?>
 
 <!DOCTYPE html>
@@ -226,8 +249,96 @@ if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
               </div>
             </div>
             
+            
             <!-- div for check results end -->
         </form>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-11">
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        
+                        <?php
+
+                            if($Previous>0)
+                            {
+                                echo' <li class="page-item">
+                                    <a class="page-link" href="patient_follow.php?page='.$Previous.'">Previous</a>
+                                </li>';
+                            }else{
+                                echo' <li class="page-item disabled">
+                                    <a class="page-link" href="#">Previous</a>
+                                </li>';
+                            }
+
+
+                            for($i=1; $i<=$pages; $i++)
+                            {
+                                echo '<li class="page-item"><a class="page-link" href="patient_follow.php?page='.$i.'">'.$i.'</a></li>';
+                            }
+
+                            
+                            if($Next<=$pages)
+                            {
+                                echo' <li class="page-item">
+                                    <a class="page-link" href="patient_follow.php?page='.$Next.'">Next</a>
+                                </li>';
+                            }else{
+                                echo' <li class="page-item disabled">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>';
+                            }
+
+                        ?>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+         <!-- table row  -->
+         <div class="row justify-content-center mx-2">
+              <div class="col-12 col-sm-12 col-md-12">
+                  <ul class="list-group">
+                    <li class="list-group-item head_list" aria-current="true">Previous Follow Ups</li>
+                      <?php 
+                      
+                          
+                        $get_request_stmt = $connection->prepare("SELECT * FROM tbl_requests  WHERE patient_id = ? ORDER BY request_date DESC,request_time DESC LIMIT ?,?;");
+
+                                $id = $_SESSION['PATIENT_ID'];
+                                /* Prepared statement, stage 2: bind and execute */
+                                $get_request_stmt->bind_param("sss", $id,$start,$limit); 
+                                $get_request_stmt->execute();
+                                $request_result = $get_request_stmt->get_result();
+
+                                while ($request_row = $request_result->fetch_array(MYSQLI_ASSOC)) {
+                                
+                                    echo '
+                                    <li class="list-group-item" aria-current="true">
+                                      <div class="row">
+                                        <div class="col">
+                                          <strong>'.ucwords(str_replace("_"," ",$request_row['result_type'])).'</strong>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col">
+                                            Followed up on '.date('m-d-Y',strtotime($request_row['request_date'])).' at '.date('h:i A',strtotime($request_row['request_time'])).'
+                                        </div>
+                                      </div>
+                                    </li>';
+                                }
+                                    
+                                    
+                            
+                        ?>
+                      
+                  </ul>
+              </div>
+          </div>
+          <!-- table row end -->
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
