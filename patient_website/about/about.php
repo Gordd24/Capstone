@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include_once '../dbconn.php';
 
 if(!(isset($_SESSION['PATIENT_ID']))||empty($_SESSION['PATIENT_ID'])){
   header("Location: ../../index.php");

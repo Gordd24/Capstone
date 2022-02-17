@@ -92,14 +92,14 @@ if(!isset($_SESSION['ID'])){
                                                 <strong>Type of Result: </strong><br><span style="margin-left:50px;" class="result_type"></span>
                                             </div>
                                             <div style="margin-bottom:5px;">
-                                                <strong>Release By: </strong><br><span style="margin-left:50px;" class="release_by"></span>
+                                                <strong>Released By: </strong><br><span style="margin-left:50px;" class="release_by"></span>
                                             </div>
                                             <div style="margin-bottom:5px;">
-                                                <strong>Upload By: </strong><br><span style="margin-left:50px;" class="uploaded_by"></span>
+                                                <strong>Uploaded By: </strong><br><span style="margin-left:50px;" class="uploaded_by"></span>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                         </div>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@ if(!isset($_SESSION['ID'])){
                                                         $lab_result = $get_lab_stmt->get_result();
                                                         $lab_row = $lab_result->fetch_array(MYSQLI_ASSOC);
                                                         
-                                                        echo "<tr class='show_mods' data-date_uploaded=\"".$lab_row['date']."\" data-result_type=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-release_by=\"".'Dummy Person'."\" data-uploaded_by=\"".$lab_row['uploader']."\"  data-record_type=\"lab_result\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
+                                                        echo "<tr class='show_mods' data-date_uploaded=\"".$lab_row['date']."\" data-result_type=\"".ucwords(str_replace("_"," ",$lab_row['result_type']))."\" data-release_by=\"".$lab_row['release_by']."\" data-uploaded_by=\"".$lab_row['uploader']."\"  data-record_type=\"lab_result\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
                                                                 <td  '>".ucwords(str_replace("_"," ",$lab_row['result_type']))."</td>
                                                                 <td>".$lab_row['release_by']."</td>
                                                                 <td>".$lab_row['uploader']."</td>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include_once '../dbconn.php';
 // if(isset($_SESSION['ID'])){
 //   header("Location: ../../index.php");
 // }
@@ -91,7 +91,7 @@ if(isset($_SESSION['PASS_STATUS']) && $_SESSION['PASS_STATUS'] === 'default'){
                                                     </thead>
                                                     <tbody>
                                                             <?php
-                                                            include_once '../dbconn.php';
+                                                         
                                                         
                                                             $get_record_stmt = $connection->prepare("SELECT * FROM tbl_med_cert  WHERE patient_id = ? ORDER BY date DESC, record_med_cert_id DESC;");
 
