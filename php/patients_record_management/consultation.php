@@ -239,7 +239,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="bp" class="form-label required">BP</label>
+                                                            <label for="bp" class="form-label required">Blood Pressure</label>
                                                             <input type="text" class="form-control" id="bp" name="bp" required autocomplete="off">
                                                             <div class="error" id="bp_error"></div>
                                                         </div>
@@ -252,12 +252,12 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3">
                                                         <div class="col">
-                                                            <label for="rr" class="form-label required">RR</label>
+                                                            <label for="rr" class="form-label required">Respiratory Rate</label>
                                                             <input type="text" class="form-control" id="rr" name="rr" required autocomplete="off">
                                                             <div class="error" id="rr_error"></div>
                                                         </div>
                                                         <div class="col">
-                                                            <label for="pr" class="form-label required">PR</label>
+                                                            <label for="pr" class="form-label required">Pulse Rate</label>
                                                             <input type="text" class="form-control" id="pr" name="pr" required autocomplete="off">
                                                             <div class="error" id="pr_error"></div>
                                                         </div>
@@ -277,7 +277,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="lmp" class="form-label required">LMP</label>
+                                                            <label for="lmp" class="form-label required">Last Menstrual Period</label>
                                                             <input type="text" class="form-control ob" id="lmp" name="lmp" autocomplete="off">
                                                             <div class="error" id="lmp_error"></div>
                                                         </div>
@@ -285,7 +285,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="aog" class="form-label required">AOG</label>
+                                                            <label for="aog" class="form-label required">Age of Gestation</label>
                                                             <input type="text" class="form-control ob" id="aog" name="aog"  autocomplete="off">
                                                             <div class="error" id="aog_error"></div>
                                                         </div>
@@ -293,7 +293,7 @@ if(!isset($_SESSION['ID'])){
 
                                                     <div class="row my-3 ob_patient">
                                                         <div class="col">
-                                                            <label for="edc" class="form-label required">EDC</label>
+                                                            <label for="edc" class="form-label required">Estimated Date of Confinement </label>
                                                             <input type="text" class="form-control ob" id="edc" name="edc"  autocomplete="off">
                                                             <div class="error" id="edc_error"></div>
                                                         </div>

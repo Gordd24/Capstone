@@ -319,7 +319,7 @@ if(!isset($_SESSION['ID'])){
                                                             <div class="error" id="case_error"></div>
                                                         </div>
                                                         <div class="col">
-                                                            <label for="cs" class="form-label required">CS</label>
+                                                            <label for="cs" class="form-label required">Civil Status</label>
                                                             <input type="text" class="form-control" id="cs" name="cs" autocomplete="off"> 
                                                             <div class="error" id="cs_error"></div>
                                                         </div>
