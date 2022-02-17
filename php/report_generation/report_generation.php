@@ -6,6 +6,10 @@ if(!isset($_SESSION['ID'])){
 if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
     header("Location: ../../index.php");
 }
+include_once '../dbconn.php';
+
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +28,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/nav.js"></script>
+    <script src="report_generation.js"></script>
     <!-- sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -31,7 +36,7 @@ if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
 <body id="body-pd">
 
 <?php include_once '../admin_nav.php';
-   include_once '../dbconn.php';
+   
 date_default_timezone_set('Asia/Manila');
 ?>
 
@@ -231,18 +236,43 @@ date_default_timezone_set('Asia/Manila');
                                                                 
                                                             </tbody>
                                                         </table>
-                                                        
+                                                    
+                                                    
                                                     </div>
                                                 </div>
                                                 <!-- table row end -->
                                                  <!-- add button -->
-                                                <div class="row justify-content-center">
-                                                    <div class="col-md-10 text-center">
-                                                            <a href="display_report.php" target='_blank'> 
-                                                                <div class="btn generate text-white">
-                                                                        Generate Report
+                                                <div class="row justify-content-center my-3">
+                                                    <div class="col-md-10">
+
+                                                        <form action='report.php' method="POST" id='generate_form' enctype="multipart/form-data">
+                                                        <div class="row my-4">
+                                                                <div class="col-5">                                               
+                                                                        <label for="signature" class="form-label required">Upload Signature</label>
+                                                                        <input class="form-control file_upload" type="file" id="signature" name="signature">
+                                                                        <div class="error" id="sign_error"></div>
                                                                 </div>
-                                                            </a>
+                                                            </div>
+                                                            <div class="row my-3">
+                                                                <div class="col">
+                                                                    <div class="row  justify-content-center">
+                                                                        <div class="col-4 m-3">
+                                                                            <input type="submit" value="Generate Report" class="form-control btn generate text-white" name="generate" id="generate">
+                                                                            <input type="hidden" name="hidden_field_generate" id="hidden_field_generate" value="form_check">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <!-- <div class="row justify-content-center">
+                                                            <div class="col-md-10 text-center">
+                                                                    <a href="display_report.php" target='_blank'> 
+                                                                        <div class="btn generate text-white">
+                                                                                Generate Report
+                                                                        </div>
+                                                                    </a>
+                                                            </div>
+                                                        </div> -->
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!-- add button end-->

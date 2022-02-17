@@ -1,20 +1,20 @@
 <?php
-
 session_start();
-
-
 if(!isset($_SESSION['ID'])){
     header("Location: ../../index.php");
 }
-
 if(isset($_SESSION['position']) && $_SESSION['position']!='Administrator'){
     header("Location: ../../index.php");
 }
-
 include_once '../dbconn.php';
+
 require_once __DIR__ . '../../../vendor/autoload.php';
-// Create an instance of the class:
-$mpdf = new \Mpdf\Mpdf();
+if(isset($_POST['generate']))
+{
+
+    $mpdf = new \Mpdf\Mpdf();
+
+    
 date_default_timezone_set('Asia/Manila');
 
 /* Prepared statement, stage 1: prepare */
@@ -92,9 +92,29 @@ $get_account_stmt->execute();
 $account = $get_account_stmt->get_result();
 $account_row = $account->fetch_assoc();
 
+$signature_name =$_FILES['signature']['name'];
+    //$destination = 'patient/' . $pdfName;
 
-// Write some HTML code:
-    $mpdf->WriteHTML('
+    $signature_path = "images/tmp/";
+    if (!is_dir( "../../".$signature_path ) ) {
+        mkdir( "../../".$signature_path );       
+    } 
+    //destination
+    $signature_file = $signature_path."/".$signature_name;
+
+    $extension = pathinfo($signature_name, PATHINFO_EXTENSION);//check if the extension is correct
+    $tmp_file = $_FILES['signature']['tmp_name'];
+    //$size = $_FILES['patient_lab_res']['size'];//for size limit
+
+  
+        // move the uploaded (temporary) file to the specified destination
+        if(!in_array($extension,['png','jpg'])){
+          echo 'Please upload a png or jpg file only.';
+        }
+        else{
+          if (move_uploaded_file($tmp_file, "../../".$signature_file)) {
+            
+            $mpdf->WriteHTML('
     <div  style="position:relative;">
     <table style="width:100%">
         <tr>
@@ -157,11 +177,15 @@ $account_row = $account->fetch_assoc();
             </tr>
             
         </table>
+       
+        <div style="text-align:center; width:35%; float:right;">
+        <p><img src="../../'.$signature_file.'" style="width:30mm; font-weight: bold;" /></p></br><p>'.$account_row['first_name'].' '.$account_row['last_name'].'</p>
+      </div>
     '
     );
 
 
-
+    
     $arr = array (
         'odd' => array (
           'L' => array (
@@ -192,8 +216,14 @@ $account_row = $account->fetch_assoc();
       
       $mpdf->SetFooter($arr);
 // Output a PDF file directly to the browser
-$mpdf->Output();
+    $mpdf->Output("Report.pdf",'D');
+          } 
+          else {
+            echo "Failed to upload file.";
+          }
+        }
 
-
-
+// Write some HTML code:
+    
+}
 ?>
