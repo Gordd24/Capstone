@@ -216,7 +216,7 @@ $signature_name =$_FILES['signature']['name'];
       
       $mpdf->SetFooter($arr);
 // Output a PDF file directly to the browser
-    $mpdf->Output("Report.pdf",'D');
+    $mpdf->Output();
           } 
           else {
             echo "Failed to upload file.";

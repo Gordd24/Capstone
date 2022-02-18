@@ -245,7 +245,7 @@ date_default_timezone_set('Asia/Manila');
                                                 <div class="row justify-content-center my-3">
                                                     <div class="col-md-10">
 
-                                                        <form action='report.php' method="POST" id='generate_form' enctype="multipart/form-data">
+                                                        <form action='report.php' method="POST" id='generate_form' enctype="multipart/form-data" target="_blank">
                                                         <div class="row my-4">
                                                                 <div class="col-5">                                               
                                                                         <label for="signature" class="form-label required">Upload Signature</label>
